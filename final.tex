@@ -3,6 +3,7 @@
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{microtype}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
@@ -18,6 +19,7 @@
 \newcommand{\nuA}[4]{\nu^{#1}_{#2,#3,#4}}
 \DeclareMathOperator{\Id}{Id}
 \title{A terminal-germ counterexample to local exploration classification}
+\hypersetup{pdftitle={A terminal-germ counterexample to local exploration classification},pdfauthor={Autonomous mathematical research}}
 \author{Autonomous mathematical investigation, with independent critical checks}
 \date{26 October 2026}
 \begin{document}
@@ -295,6 +297,104 @@ reparametrizing by capacity. This also treats nonsmooth slit domains in
 the Markov property without assuming Euclidean continuity of their
 uniformizing maps on every boundary point. The counterexample therefore
 applies to the driving-function formulation as well as to curves.
+
+% Technical completion of affine-image Loewner admissibility.
+\subsection{Quasiconformal images have infinite capacity lifetime}
+\label{sec:qc-capacity-lifetime}
+
+Yuan's characterization gives a continuous Loewner driver after recoding
+an affine image by its capacity, but this alone does not assert that the
+capacity lifetime is infinite.  A continuous curve tending to infinity need
+not have infinite half-plane capacity.  The following argument proves the
+required assertion for the quasiconformal changes arising here.
+
+\begin{lemma}
+Let $F:\mathbb H\to\mathbb H$ be a fixed $K$-quasiconformal
+self-homeomorphism whose boundary extension fixes $0$ and $\infty$.
+If $\eta$ is ordinary chordal SLE$_6$ from $0$ to $\infty$, then
+$F\eta$ has unbounded imaginary part almost surely.  Consequently its
+half-plane-capacity lifetime is infinite.
+\end{lemma}
+
+\begin{proof}
+Put $C=\overline{B(i,1/4)}\subset\mathbb H$.  The boundary map of $F$
+is increasing, so $F(R)>0$ for $R>0$ and $F(R)\to+\infty$ as
+$R\to\infty$.  The normalized maps
+\[
+ F_R(z)=\frac{F(Rz)}{F(R)}
+\]
+are $K$-quasiconformal half-plane maps fixing $0,1,\infty$.
+Reflecting them across the real line gives normalized quasiconformal sphere
+maps.  Compactness of this normalized family, including its inverses,
+implies
+\[
+ \inf_{R>0}\inf_{z\in C}\operatorname{Im}F_R(z)=c_K>0.
+\]
+Indeed, a sequence violating positivity would have a subsequence converging
+uniformly on the sphere to a quasiconformal homeomorphism preserving the
+half-plane, and a subsequence of points in $C$ would then be mapped to its
+real boundary, an impossibility.  Hence
+\[
+ \inf_{z\in RC}\operatorname{Im}F(z)\geq c_K F(R)
+       \longrightarrow\infty.
+ \tag{QC1}
+\]
+
+The event $E=\{\eta\cap C\ne\varnothing\}$ has positive probability.
+One elementary justification avoids invoking a support theorem.  In the
+normalization $\partial_tg_t=2/(g_t-W_t)$, the Brownian event
+\[
+ \sup_{0\leq t\leq1}|W_t|<\varepsilon,
+       \qquad 0<\varepsilon<1/4,
+\]
+has positive probability.  On this event the Loewner hull stays within the
+vertical strip $|\operatorname{Re}z|\leq\varepsilon$ up to time $1$.
+For example, a point initially to the right of that strip has increasing
+real part under the Loewner ODE and retains a positive real gap from the
+driver, so it cannot be swallowed in finite time; the other side is
+identical.  If the entire trace up to time $1$ had height at most $1$, its
+filled hull would lie in the half-disk of radius
+$\sqrt{1+\varepsilon^2}$.  By capacity monotonicity its capacity would be
+at most $1+\varepsilon^2<2$, whereas its actual capacity is $2$.
+Here a half-disk of radius $R$ has hydrodynamic map $z+R^2/z$ and
+capacity $R^2$.  Thus the continuous trace crosses height $1$ in the strip,
+and that crossing lies in $C$.
+
+Fix $r>1$.  Brownian scaling, and therefore scalar dilation of ordinary
+SLE$_6$, is mixing.  Indeed $Z_s=e^{-s/2}B_{e^s}$, $s\in\mathbb R$,
+is a stationary Gaussian process with covariance $e^{-|s-u|/2}$; scalar
+Brownian scaling becomes a log-time shift.  Decay of these covariances
+gives mixing first for Gaussian cylinder functions and then for the whole
+path sigma-field.  Its inverse dilation is ergodic as well.  Birkhoff's
+theorem applied to $1_E$ gives
+\[
+ \eta\cap r^nC\ne\varnothing
+       \qquad\text{for infinitely many positive integers }n,
+       \quad\text{almost surely}.
+\]
+In fact these visits have limiting positive frequency, since
+$1_E(S_{r^{-n}}\eta)=1_{\{\eta\cap r^nC\ne\varnothing\}}$.
+Equation (QC1) then shows that $F\eta$ has unbounded height.
+
+Every finite initial image trace is compact away from infinity and has
+finite capacity.  The standard Loewner height estimate
+\[
+ \max\{\operatorname{Im}z:z\in K\}^2
+       \leq2\operatorname{hcap}(K)
+\]
+for a half-plane hull, or equivalently
+$\max\operatorname{Im}K_u\leq2\sqrt u$ when
+$\operatorname{hcap}(K_u)=2u$, now forces the capacities of these image
+prefixes to tend to infinity.  Thus the capacity-recoded image has lifetime
+$[0,\infty)$.
+\end{proof}
+
+For an affine image in a bounded marked domain, conjugating the affine map
+by its source and image conformal charts gives exactly such a fixed
+quasiconformal $F$ fixing the marked ends.  This lemma therefore completes
+the infinite-time driving-function assertion for the target-germ
+counterexample.  It uses properties of SLE$_6$, rather than an invalid
+general assertion about arbitrary curves tending to infinity.
 
 \section{A positive classification within the global-deformation class}
 \label{sec:global-rigidity}

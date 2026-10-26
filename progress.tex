@@ -3,6 +3,7 @@
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{microtype}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
@@ -18,6 +19,7 @@
 \newcommand{\nuA}[4]{\nu^{#1}_{#2,#3,#4}}
 \DeclareMathOperator{\Id}{Id}
 \title{Research record: locality, terminal information, and planar exploration laws}
+\hypersetup{pdftitle={Research record: locality, terminal information, and planar exploration laws},pdfauthor={Autonomous mathematical research}}
 \author{Autonomous mathematical investigation, with independent critical checks}
 \date{26 October 2026}
 \begin{document}
@@ -349,6 +351,104 @@ reparametrizing by capacity. This also treats nonsmooth slit domains in
 the Markov property without assuming Euclidean continuity of their
 uniformizing maps on every boundary point. The counterexample therefore
 applies to the driving-function formulation as well as to curves.
+
+% Technical completion of affine-image Loewner admissibility.
+\subsection{Quasiconformal images have infinite capacity lifetime}
+\label{sec:qc-capacity-lifetime}
+
+Yuan's characterization gives a continuous Loewner driver after recoding
+an affine image by its capacity, but this alone does not assert that the
+capacity lifetime is infinite.  A continuous curve tending to infinity need
+not have infinite half-plane capacity.  The following argument proves the
+required assertion for the quasiconformal changes arising here.
+
+\begin{lemma}
+Let $F:\mathbb H\to\mathbb H$ be a fixed $K$-quasiconformal
+self-homeomorphism whose boundary extension fixes $0$ and $\infty$.
+If $\eta$ is ordinary chordal SLE$_6$ from $0$ to $\infty$, then
+$F\eta$ has unbounded imaginary part almost surely.  Consequently its
+half-plane-capacity lifetime is infinite.
+\end{lemma}
+
+\begin{proof}
+Put $C=\overline{B(i,1/4)}\subset\mathbb H$.  The boundary map of $F$
+is increasing, so $F(R)>0$ for $R>0$ and $F(R)\to+\infty$ as
+$R\to\infty$.  The normalized maps
+\[
+ F_R(z)=\frac{F(Rz)}{F(R)}
+\]
+are $K$-quasiconformal half-plane maps fixing $0,1,\infty$.
+Reflecting them across the real line gives normalized quasiconformal sphere
+maps.  Compactness of this normalized family, including its inverses,
+implies
+\[
+ \inf_{R>0}\inf_{z\in C}\operatorname{Im}F_R(z)=c_K>0.
+\]
+Indeed, a sequence violating positivity would have a subsequence converging
+uniformly on the sphere to a quasiconformal homeomorphism preserving the
+half-plane, and a subsequence of points in $C$ would then be mapped to its
+real boundary, an impossibility.  Hence
+\[
+ \inf_{z\in RC}\operatorname{Im}F(z)\geq c_K F(R)
+       \longrightarrow\infty.
+ \tag{QC1}
+\]
+
+The event $E=\{\eta\cap C\ne\varnothing\}$ has positive probability.
+One elementary justification avoids invoking a support theorem.  In the
+normalization $\partial_tg_t=2/(g_t-W_t)$, the Brownian event
+\[
+ \sup_{0\leq t\leq1}|W_t|<\varepsilon,
+       \qquad 0<\varepsilon<1/4,
+\]
+has positive probability.  On this event the Loewner hull stays within the
+vertical strip $|\operatorname{Re}z|\leq\varepsilon$ up to time $1$.
+For example, a point initially to the right of that strip has increasing
+real part under the Loewner ODE and retains a positive real gap from the
+driver, so it cannot be swallowed in finite time; the other side is
+identical.  If the entire trace up to time $1$ had height at most $1$, its
+filled hull would lie in the half-disk of radius
+$\sqrt{1+\varepsilon^2}$.  By capacity monotonicity its capacity would be
+at most $1+\varepsilon^2<2$, whereas its actual capacity is $2$.
+Here a half-disk of radius $R$ has hydrodynamic map $z+R^2/z$ and
+capacity $R^2$.  Thus the continuous trace crosses height $1$ in the strip,
+and that crossing lies in $C$.
+
+Fix $r>1$.  Brownian scaling, and therefore scalar dilation of ordinary
+SLE$_6$, is mixing.  Indeed $Z_s=e^{-s/2}B_{e^s}$, $s\in\mathbb R$,
+is a stationary Gaussian process with covariance $e^{-|s-u|/2}$; scalar
+Brownian scaling becomes a log-time shift.  Decay of these covariances
+gives mixing first for Gaussian cylinder functions and then for the whole
+path sigma-field.  Its inverse dilation is ergodic as well.  Birkhoff's
+theorem applied to $1_E$ gives
+\[
+ \eta\cap r^nC\ne\varnothing
+       \qquad\text{for infinitely many positive integers }n,
+       \quad\text{almost surely}.
+\]
+In fact these visits have limiting positive frequency, since
+$1_E(S_{r^{-n}}\eta)=1_{\{\eta\cap r^nC\ne\varnothing\}}$.
+Equation (QC1) then shows that $F\eta$ has unbounded height.
+
+Every finite initial image trace is compact away from infinity and has
+finite capacity.  The standard Loewner height estimate
+\[
+ \max\{\operatorname{Im}z:z\in K\}^2
+       \leq2\operatorname{hcap}(K)
+\]
+for a half-plane hull, or equivalently
+$\max\operatorname{Im}K_u\leq2\sqrt u$ when
+$\operatorname{hcap}(K_u)=2u$, now forces the capacities of these image
+prefixes to tend to infinity.  Thus the capacity-recoded image has lifetime
+$[0,\infty)$.
+\end{proof}
+
+For an affine image in a bounded marked domain, conjugating the affine map
+by its source and image conformal charts gives exactly such a fixed
+quasiconformal $F$ fixing the marked ends.  This lemma therefore completes
+the infinite-time driving-function assertion for the target-germ
+counterexample.  It uses properties of SLE$_6$, rather than an invalid
+general assertion about arbitrary curves tending to infinity.
 
 \section{A positive classification within the global-deformation class}
 \label{sec:global-rigidity}
@@ -1065,6 +1165,1061 @@ decrease the distance to zero.  Exact first-hit stopping needs a separate
 continuity argument and is not implicit in this observation.
 
 
+% Research fragment; intended for inclusion in progress.tex.
+\section{Affine identifiability without Jordan boundary regularity}
+\label{sec:rough-affine}
+
+\paragraph{Status and interpretation.}
+The extension proved here uses only standard quasiconformal compactness,
+prime-end extension for quasiconformal disk maps, Fatou's theorem for bounded
+analytic functions, and uniqueness of bounded harmonic functions from their
+almost-everywhere disk boundary values.  It removes the Jordan assumption
+from affine metric identifiability.  At completely arbitrary prime ends a
+conformal image of SLE need not have a Euclidean-continuous endpoint; its
+law is therefore understood in the prime-end compactification, or as its
+conformal hull exploration.  The result applies in particular whenever the
+physical curves are continuous, as in the exploration setting of interest.
+No classification of arbitrary exploration ensembles is asserted.
+
+\subsection{A quasiconformal disk map fixing the boundary stays close to the identity}
+
+\paragraph{Lemma (proved).}
+For each finite $K\geq1$ there exists $C(K)<\infty$ such that every
+orientation-preserving $K$-quasiconformal self-homeomorphism
+$h:\mathbb D\to\mathbb D$ whose boundary extension fixes every point of
+$\partial\mathbb D$ satisfies
+\[
+ d_{\mathbb D}(h(z),z)\leq C(K)\qquad(z\in\mathbb D).
+ \tag{RA1}
+\]
+Here $d_{\mathbb D}$ is hyperbolic distance.
+
+\begin{proof}
+First there is $r(K)<1$ with $|h(0)|\leq r(K)$ for all such maps.  To see
+this, extend $h$ to the sphere by reflection in the unit circle:
+\[
+ \widetilde h(z)=\frac1{\overline{h(1/\bar z)}}\quad(|z|>1).
+\]
+This is a $K$-quasiconformal sphere map, and fixes three prescribed distinct
+points of the unit circle.  The standard compactness theorem for normalized
+$K$-quasiconformal sphere maps, including compactness of their inverses,
+precludes a sequence with $h_n(0)\to\zeta\in\partial\mathbb D$: a limiting
+quasiconformal homeomorphism would send both $0$ and the fixed boundary
+point $\zeta$ to $\zeta$.  Thus such an $r(K)$ exists.
+For an arbitrary $z$ choose a disk automorphism $a_z$ sending $z$ to $0$.
+The map $a_z\circ h\circ a_z^{-1}$ is again $K$-quasiconformal with identity
+boundary map, so
+\[
+ |a_z(h(z))|\leq r(K).
+\]
+Conformal invariance of the hyperbolic metric gives (RA1), for example with
+$C(K)=2\operatorname{arctanh}r(K)$ in the usual normalization.
+\end{proof}
+
+\paragraph{Consequence (proved).}
+For every $\zeta\in\partial\mathbb D$, the image of the radial approach
+$r\zeta$ under $h$ is a nontangential approach to the same $\zeta$, with
+aperture bounded solely in terms of $K$.
+Indeed rotate so $\zeta=1$ and write
+\[
+ h(r)=\frac{r+u_r}{1+ru_r},\qquad |u_r|\leq r(K).
+\]
+Then
+\[
+ |1-h(r)|\leq(1-r)\frac{1+r(K)}{1-r(K)},
+\]
+while
+\[
+ 1-|h(r)|\geq
+ \frac{1-r}{2}\frac{1-r(K)}{1+r(K)}.
+\]
+The ratio $|1-h(r)|/(1-|h(r)|)$ is therefore uniformly bounded.  In
+particular $h(r\zeta)\to\zeta$ within a fixed Stolz region.
+
+\subsection{The identifiability theorem on any bounded simply connected domain}
+
+\paragraph{Theorem (proved).}
+Let $D$ be any bounded simply connected planar domain and let $p,q$ be
+distinct prime ends.  For orientation-preserving invertible real-linear
+maps $A,B$, define
+\[
+ \nu^A_{D,p,q}
+ =(A^{-1})_*\operatorname{Law}(\mathrm{SLE}_6(AD;Ap,Aq)).
+\]
+Then
+\[
+ \nu^A_{D,p,q}=\nu^B_{D,p,q}
+ \quad\Longleftrightarrow\quad
+ BA^{-1}\text{ is a Euclidean similarity}
+ \quad\Longleftrightarrow\quad
+ B^{\mathsf T}B=cA^{\mathsf T}A\quad(c>0).
+ \tag{RA2}
+\]
+The statement holds for exploration laws in the prime-end compactification,
+and hence for their physical curves whenever defined continuously.
+
+\begin{proof}
+Set $M=BA^{-1}:AD\to BD$.  This bilipschitz map carries null crosscut
+chains to null crosscut chains, with equivalent chains remaining equivalent;
+thus it induces the natural homeomorphism of prime-end compactifications.
+Choose conformal charts $\phi_A:AD\to\mathbb H$ and
+$\phi_B:BD\to\mathbb H$ sending the corresponding source and target to
+$0,\infty$.  The interior map
+\[
+ H=\phi_B\circ M\circ\phi_A^{-1}:\mathbb H\to\mathbb H
+\]
+is quasiconformal with a boundary extension to $\mathbb R\cup\{\infty\}$,
+fixing $0,\infty$.  The boundary map is increasing.  The boundary-swallowing
+race of the main record remains a prime-end topological event: an affine
+homeomorphism preserves the order in which boundary ends are cut off from
+the target by the explored filled hull.  Equality of the two path laws,
+followed by strictness of that race probability, therefore gives, for every
+$x<0<y$,
+\[
+ \frac{-H(x)}{H(y)-H(x)}=\frac{-x}{y-x}.
+\]
+Consequently $H(x)=cx$ on the entire extended real boundary, for some $c>0$.
+This step uses prime-end boundary values of $H$, not Euclidean boundary
+values of either Riemann map.
+
+Pass to disk charts, absorbing the conformal map $z\mapsto cz$ into the
+second chart.  We obtain bounded conformal maps
+\[
+ \psi_A:\mathbb D\to AD,\qquad \psi_B:\mathbb D\to BD
+\]
+such that
+\[
+ h=\psi_B^{-1}\circ M\circ\psi_A
+\]
+is a $K$-quasiconformal disk self-homeomorphism with identity boundary map.
+Thus pointwise in the disk,
+\[
+ M\psi_A=\psi_B\circ h.
+ \tag{RA3}
+\]
+Fatou's theorem gives radial limits $\psi_A^*(\zeta)$ and nontangential
+limits $\psi_B^*(\zeta)$ for almost every circle point $\zeta$.
+The preceding lemma shows that $h(r\zeta)$ approaches that same $\zeta$
+nontangentially.  Taking $r\uparrow1$ in (RA3) yields
+\[
+ M\psi_A^*(\zeta)=\psi_B^*(\zeta)
+ \quad\text{for almost every }\zeta\in\partial\mathbb D.
+ \tag{RA4}
+\]
+Both real coordinates of $M\psi_A$ are bounded harmonic functions on the
+disk, since $M$ is real-linear and $\psi_A$ is bounded analytic.
+The coordinates of $\psi_B$ are also bounded harmonic.  Uniqueness of the
+Poisson representation for bounded harmonic functions now gives
+\[
+ M\psi_A=\psi_B\qquad\text{throughout }\mathbb D.
+\]
+Thus $M$ is conformal on the nonempty open set $AD$.  Writing
+$M(z)=\alpha z+\beta\bar z$, holomorphicity of $M\psi_A$ gives
+$\beta\overline{\psi_A'(z)}=0$.  Since $\psi_A'$ never vanishes,
+$\beta=0$.  Invertibility and orientation imply that $M$ is a direct
+Euclidean similarity.  The converse is SLE similarity covariance.
+Reflections reduce orientation-reversing normalizers to this case.
+\end{proof}
+
+The boundedness assumption was used exactly when invoking bounded analytic
+Fatou limits and bounded harmonic uniqueness.  No assertion about arbitrary
+unbounded domains follows without a growth or uniqueness condition.
+
+\subsection{A necessary and sufficient DMP condition inside the affine ansatz}
+
+Suppose, as an explicit additional ansatz, that an ensemble has the form
+\[
+ P_{D,p,q}=\nu^{A(D,p,q)}_{D,p,q}
+ \tag{RA5}
+\]
+for a deterministic measurable affine label on each marked bounded simply
+connected domain.  Remove the inessential positive scalar from its metric by
+putting
+\[
+ T(D,p,q)=
+ \frac{A(D,p,q)^{\mathsf T}A(D,p,q)}
+ {\sqrt{\det(A(D,p,q)^{\mathsf T}A(D,p,q))}}.
+ \tag{RA6}
+\]
+Thus $T$ is a positive-definite symmetric matrix of determinant one.
+Assume the usual Borel family and strong conditional-kernel formulation, so
+that equality of conditional path laws at a stopping time is an equality of
+probability kernels almost surely.
+
+\paragraph{Corollary (proved).}
+Within ansatz (RA5), the strong domain Markov property holds if and only if,
+for every starting marked domain and every admissible stopping time $\tau$,
+\[
+ T(D_\tau,p_\tau,q)=T(D,p,q)\qquad\text{almost surely}.
+ \tag{RA7}
+\]
+Here $D_\tau$ is the target component of the remaining domain.  It need not
+have Jordan boundary.
+
+\begin{proof}
+Fix the starting label $A=A(D,p,q)$.  Under the fixed-$A$ affine SLE law,
+ordinary SLE's strong domain Markov property gives, conditional on the
+explored initial segment, the remaining law
+\[
+ \nu^A_{D_\tau,p_\tau,q}.
+\]
+Strong DMP for (RA5) demands that this be
+$\nu^{A(D_\tau,p_\tau,q)}_{D_\tau,p_\tau,q}$ almost surely.
+The rough-domain theorem (RA2), applied at each realized slit domain,
+is equivalent to equality of their normalized metric tensors, namely
+(RA7).  Conversely (RA7) and similarity covariance identify these two
+conditional laws, proving strong DMP.
+\end{proof}
+
+This corollary classifies the DMP constraint only \emph{within the stated
+ansatz}: the affine tensor must be a conserved quantity of the exploration
+state.  A target-germ tensor supplies exactly such a conserved quantity.
+The corollary neither proves that a general ensemble has affine-SLE form nor
+that every conserved tensor must arise from a target germ.  Locality,
+translation covariance, target consistency, and boundary continuity impose
+further constraints which are not characterized by (RA7) alone.
+
+% Independent verification fragment: transfer of local target consistency.
+\section{Local target consistency passes to marginal curve limits}
+\label{sec:local-target-transfer}
+
+\paragraph{Scope.}
+This lemma transfers an exploration coupling only inside a fixed neighborhood
+of the common start. It needs convergence of the two marginal curve laws, but
+neither convergence of random slit-domain kernels nor a limiting strong domain
+Markov theorem. It does not assert a coupling of the limiting curves all the
+way to a distant boundary arc.
+
+\subsection{Stopping an ordered unparameterized curve on a circle}
+
+Fix $p\in\mathbb R^2$ and $R_0>0$. Work in the usual metric space of oriented
+continuous curves modulo increasing reparameterization, with the uniform
+Fr\'echet topology. Curves start at $p$ and end outside
+$\overline{B(p,R_0)}$. Small changes of the starting points are harmless;
+for the sequence version they need only lie inside every fixed smaller ball
+for sufficiently large indices.
+For a continuous representative $\gamma:[0,1]\to\mathbb R^2$ and
+$0<r<R_0$, put
+\[
+ \tau_\gamma(r)=\inf\{t:|\gamma(t)-p|\geq r\},\qquad
+ E_r\gamma=\gamma|_{[0,\tau_\gamma(r)]}.
+ \tag{LT1}
+\]
+The stopped path is regarded as an ordered unparameterized curve, so this
+definition is independent of pauses or changes of clock.
+
+\begin{lemma}[Almost every circle is a continuity circle]
+\label{lem:lt-stopcontinuity}
+For each fixed continuous curve $\gamma$, the map
+$(\eta,s)\mapsto E_s\eta$ is continuous at $(\gamma,r)$ for all but at most
+countably many radii $r\in(0,R_0)$. The stopping map is Borel.
+Consequently, for any probability law $\mu$ on these curves, $E_r$ is
+$\mu$-almost surely continuous for Lebesgue-almost every deterministic $r$.
+\end{lemma}
+\begin{proof}
+Choose any continuous representative of $\gamma$.
+The function $r\mapsto\tau_\gamma(r)$ is nondecreasing and hence has at
+most countably many discontinuities. Suppose it is continuous at $r$.
+If $(\gamma_n,r_n)\to(\gamma,r)$ in the product of Fr\'echet and ordinary
+metrics, choose increasing reparameterizations for which representatives
+$\widetilde\gamma_n$ converge uniformly to $\gamma$.
+Writing $\varepsilon_n=\|\widetilde\gamma_n-\gamma\|_\infty+|r_n-r|$,
+first-hit times obey, for every slightly larger positive error tending to zero,
+\[
+ \tau_\gamma(r-2\varepsilon_n)
+ \ \leq\ \tau_{\widetilde\gamma_n}(r_n)
+ \ \leq\ \tau_\gamma(r+2\varepsilon_n).
+ \tag{LT2}
+\]
+If $\varepsilon_n=0$ the assertion is immediate; using a strictly larger error
+avoids any immaterial equality convention. Continuity of $\tau_\gamma$ at
+$r$ gives convergence of the middle times to $\tau_\gamma(r)$.
+Uniform continuity of $\gamma$ then makes the stopped representatives,
+linearly recoded onto $[0,1]$, converge uniformly. This proves joint
+continuity at $(\gamma,r)$.
+
+The stopping map is understood on all curves reaching the selected radius, including already stopped curves reaching a larger radius. For parameterized curves the stopping time is Borel, since
+\[
+ \{\tau_\gamma(r)\leq t\}
+ =\left\{\max_{0\leq u\leq t}|\gamma(u)-p|\geq r\right\}.
+\]
+Stopping and linear recoding are therefore Borel path operations. They
+commute with reparameterization and give the usual Borel stopping map on
+ordered unparameterized curves.
+
+For completeness, the almost-every-radius assertion does not require a
+measurable choice of representatives. For a map between metric spaces its
+set of continuity points is a $G_\delta$ set, obtained from its oscillations
+on neighborhoods. Apply this to the joint stopping map. Its discontinuity
+set in the product of curve space and radius space is Borel, and every
+vertical section has Lebesgue measure zero by the countability argument
+above. Fubini's theorem now gives the assertion under $\mu$.
+\end{proof}
+
+\paragraph{Why a bad radius can occur.}
+A path may first touch a circle, then spend a nontrivial segment inside it,
+and only later cross it. A small outward perturbation can postpone its
+first exit until that later crossing. This is why stopping continuity
+cannot simply be claimed at every deterministic radius for every path.
+The preceding lemma handles these tangencies without excluding them by an
+unproved regularity assumption.
+
+\subsection{Transfer using only two marginal limits}
+
+\begin{theorem}[Transfer of local target consistency]
+\label{thm:lt-transfer}
+For $i=1,2$, let $\gamma_n^i$ be oriented continuous random curves whose
+marginal laws converge weakly in the uniform Fr\'echet topology to laws
+$\mu^i$. Assume the limiting curves start at $p$ and end outside
+$\overline{B(p,R_0)}$. Suppose that for every fixed $r\in(0,R_0)$ and all
+sufficiently large $n$,
+\[
+ \operatorname{Law}(E_r\gamma_n^1)
+ =\operatorname{Law}(E_r\gamma_n^2).
+ \tag{LT3}
+\]
+Then the same equality holds for the limiting curves at \emph{every}
+$r\in(0,R_0)$:
+\[
+ (E_r)_*\mu^1=(E_r)_*\mu^2.
+ \tag{LT4}
+\]
+The hypothesis (LT3) may equivalently be replaced by a discrepancy tending
+to zero in any metric inducing weak convergence of the stopped laws.
+\end{theorem}
+\begin{proof}
+Lemma~\ref{lem:lt-stopcontinuity} gives a full-Lebesgue-measure set of
+radii at which $E_r$ is almost surely continuous under both limiting laws.
+At each such radius the continuous mapping theorem and (LT3) give (LT4).
+This part needs no joint convergence of $(\gamma_n^1,\gamma_n^2)$.
+
+To obtain every smaller radius, fix arbitrary $r<R_0$ and choose a good
+$s\in(r,R_0)$. Equality of the stopped-at-$s$ laws remains equality after
+applying the Borel map $E_r$. Since
+$E_r(E_s\gamma)=E_r\gamma$ for $r<s$, this proves (LT4) at $r$ without
+requiring any continuity of $E_r$ there.
+\end{proof}
+
+\subsection{Application to two percolation targets}
+
+Let $D$ be a Jordan domain, $p$ a common boundary start, and let the targets
+$q_1,q_2$ lie on a boundary arc $J$ with $p\notin\overline J$.
+The boundary colors for the two Dobrushin explorations differ only on the
+arc between the targets. Use identical independent bulk colors and identical
+boundary colors outside a lattice approximation $J_n$ of this disagreement
+arc, with a common discrete starting edge. The discrete exploration rules
+produce exactly the same ordered initial path until the exploration first
+encounters $J_n$.
+Choose
+\[
+ 0<R_0<\operatorname{dist}(p,\overline J).
+\]
+For all large $n$, the approximating disagreement arc stays outside the
+closed ball $\overline{B(p,R_0)}$. Thus (LT3) holds inside every smaller
+ball. If a common subsequence makes each marginal exploration converge,
+Theorem~\ref{thm:lt-transfer} supplies local target consistency for their
+limiting initial segments. The lattice approximations must in fact have the
+stated common-start/common-color coupling; a small displacement of two
+unrelated explorations alone would not justify pathwise closeness.
+
+\paragraph{Consequence for affine decorations.}
+The affine-metric elimination argument needs only equality of these local
+prefix laws, not equality until the full distant arc. Suppose $D$ is
+analytic near $p$ and the two limiting marginals have laws
+\[
+ (A_i^{-1})_*\operatorname{SLE}_6(A_iD,A_ip,A_iq_i),\qquad i=1,2.
+\]
+Translate $p$ to zero and blow up space. By conformal kernel convergence at
+the smooth start, the local initial laws tend to
+\[
+ (A_i^{-1})_*\operatorname{SLE}_6(A_iH_p,0,\infty),
+\]
+where $H_p$ is the tangent half-plane. Equality in every sufficiently small
+physical ball transfers after dilation to equality of the limiting stopped
+laws in every fixed half-disk (first at common continuity radii, then all
+smaller radii by the same composition argument). These local restrictions
+determine the entire half-plane law. Strict left-passage identifiability
+therefore makes $A_2A_1^{-1}$ a similarity.
+
+Consequently the target-tangent affine counterexample cannot be the family
+of simultaneous two-target subsequential percolation limits on a fixed
+smooth domain with targets carrying different tangent directions. This
+exclusion is independent of the more difficult transfer of a strong domain
+Markov property to random limiting slit domains.
+
+% Independent research fragment: a rigorous partial result, not a counterexample.
+% Independent research fragment: a rigorous partial result, not a counterexample.
+\section{Affine metrics encoded in initial path germs}
+\label{sec:source-germ-decoder}
+
+\paragraph{Status and motivation.}
+The result below is proved for the \emph{oriented initial trace germ} of an
+affine image of half-plane SLE$_6$ at its smooth starting boundary point.
+It does not construct a source-dependent domain Markov family. In particular,
+it does not establish that the metric can be recovered from the unlabelled
+boundary germ at a later random exploration tip. Those distinctions are
+important when assessing whether target consistency alone could repair the
+classification conjecture.
+
+\subsection{State space and the meaning of a trace germ}
+
+We retain the chronological order of a path but forget its original clock.
+For the half-plane curves used here, the usual half-plane-capacity clock
+provides a canonical representative: the filled hull at time $t$ has
+hydrodynamic map $g_t(z)=z+2t/z+o(1/z)$.
+This clock is determined by the ordered unparameterized trace. Section~\ref{sec:loewner-admissible} justifies continuous Loewner driving of affine images; hence they admit this clock.
+The clock has infinite total lifetime almost surely: its total half-plane
+capacity $T$ is positive, while spatial scale invariance makes its law equal
+to that of $r^2T$ for every $r>0$; the only such probability laws on
+$[0,\infty]$ are supported on $\{0,\infty\}$. Thus $T=\infty$.
+All functions below are functions of the ordered unparameterized trace.
+
+Use the standard Borel space of these capacity-parameterized continuous
+curves, with the sigma-field generated by restrictions to finite time
+intervals. Equivalently, this can be regarded as a Borel realization of the
+usual ordered unparameterized path space. For $t>0$, let
+\[
+ \mathcal F_t=\sigma\{\gamma(s):0\leq s\leq t\},\qquad
+ \mathcal F_{0+}=\bigcap_{t>0}\mathcal F_t.
+\]
+The latter is the initial trace-germ sigma-field. It is unaffected by changing
+any part of the curve after a positive capacity time. The canonical time is
+used only to give an explicit measurable coding of this germ.
+
+For $r>0$, let $S_r\gamma$ be the spatially dilated trace, again put in the
+canonical clock. Capacity scaling gives the exact identity
+\[
+ (S_r\gamma)(t)=r\gamma(t/r^2).
+ \tag{SG1}
+\]
+In particular $S_r$ is invertible with inverse $S_{1/r}$.
+
+\subsection{Dilation ergodicity}
+
+\begin{lemma}[Brownian scaling is mixing]
+\label{lem:sg-brownianmix}
+For a one-sided Brownian motion $B=(B_t)_{t\geq0}$ and any fixed $r>1$, the
+measure-preserving transformation
+\[
+ (\mathcal S_rB)_t=rB_{t/r^2}
+\]
+is mixing and hence ergodic.
+\end{lemma}
+\begin{proof}
+Set $Z_s=e^{-s/2}B_{e^s}$ for $s\in\mathbb R$.
+This is a stationary centered Gaussian process with
+\[
+ \mathbb E[Z_sZ_u]=e^{-|s-u|/2}.
+\]
+It is the stationary Ornstein--Uhlenbeck process. Under $\mathcal S_r$, it
+becomes $Z_{s-2\log r}$. Covariances between finite collections of coordinates
+separated by $n(2\log r)$ tend to zero, so the corresponding jointly Gaussian
+vectors become independent in the limit. Approximation by finite-coordinate
+cylinder functions gives mixing on the full path sigma-field.
+The correspondence is invertible almost surely:
+$B_t=\sqrt t\,Z_{\log t}$ for $t>0$, with $B_0=0$. Thus mixing transfers back
+to Brownian scaling. The two-sided log-time process here is obtained from a
+one-sided Brownian path at times $t>0$; no independent Brownian past is being
+added.
+\end{proof}
+
+\begin{lemma}[Affine SLE$_6$ is dilation mixing]
+\label{lem:sg-affinemix}
+Let $A$ be any invertible linear map carrying $\mathbb H$ onto itself and
+fixing its positive boundary orientation. Define
+\[
+ \mu_A=\operatorname{Law}\bigl(A^{-1}\eta\bigr),\qquad
+ \eta\sim\operatorname{SLE}_6(\mathbb H,0,\infty),
+\]
+with the physical half-plane-capacity representative understood.
+For every fixed $r>1$, $S_r$ preserves $\mu_A$ and is mixing under $\mu_A$.
+\end{lemma}
+\begin{proof}
+The SLE trace is a measurable, scaling-equivariant function of its Brownian
+Loewner driver $\sqrt6B$. The trace exists almost surely. Therefore its
+dilation action is a factor of the Brownian scaling action and is mixing
+by Lemma~\ref{lem:sg-brownianmix}. The map on ordered traces
+$\eta\mapsto A^{-1}\eta$ commutes with scalar spatial dilations, and is an
+invertible measurable map after recoding by capacity. Mixing and invariance
+therefore transfer to $\mu_A$.
+\end{proof}
+
+\subsection{Separating distinct metrics from arbitrarily short initial segments}
+
+Normalize the maps preserving $\mathbb H$ by
+\[
+ A_{b,c}=\begin{pmatrix}1&b\\0&c\end{pmatrix},
+ \qquad b\in\mathbb R,\ c>0.
+ \tag{SG2}
+\]
+This parametrizes all constant positive-definite conformal metrics, up to a
+positive scalar, in a fixed half-plane frame: the tensor is
+$A_{b,c}^{\mathsf T}A_{b,c}$ with its $(1,1)$ entry normalized to $1$.
+The laws $\mu_{A_{b,c}}$ are distinct. Indeed, the strictly increasing SLE$_6$
+left-passage function $F$ gives
+\[
+ \mu_{A_{b,c}}[L(x+iy)]=F\left(\frac{x+by}{cy}\right).
+ \tag{SG3}
+\]
+Equality of the probabilities at $z=i$ and $z=1+i$ first identifies $b/c$
+and then $1/c$, hence both parameters.
+
+\begin{lemma}[Unit-time restrictions distinguish the metrics]
+\label{lem:sg-unitrestriction}
+If $A\ne A'$ are two normalized maps in (SG2), the laws of their traces
+restricted to capacity time $[0,1]$ are distinct.
+\end{lemma}
+\begin{proof}
+If the restrictions agreed, dilation invariance and (SG1) would make the
+restrictions to $[0,T]$ agree for every $T>0$. Those restrictions generate the
+full path sigma-field, so the entire laws would agree, contrary to (SG3).
+\end{proof}
+
+\begin{theorem}[Metric decoding from an initial trace germ]
+\label{thm:sg-decoder}
+Let $\{A_j:j\in J\}$ be any finite or countable collection of distinct
+normalized maps (SG2). There exists an $\mathcal F_{0+}$-measurable function
+$D$ with values in $J\cup\{\dagger\}$ such that
+\[
+ \mu_{A_j}[D(\gamma)=j]=1\qquad\hbox{for every }j\in J.
+ \tag{SG4}
+\]
+In particular, restrictions of these affine SLE$_6$ measures to the initial
+trace-germ sigma-field are mutually singular, even though each separately
+has its usual almost-sure germ zero-one property.
+\end{theorem}
+\begin{proof}
+For each pair $j\ne k$, Lemma~\ref{lem:sg-unitrestriction} supplies a Borel
+set of unit-time traces whose indicator $f_{jk}$ has distinct expectations
+under $\mu_{A_j}$ and $\mu_{A_k}$. There are only countably many such pairs;
+list all the resulting bounded unit-time observables as $(f_m)_{m\geq1}$.
+Write $v_{j,m}=\int f_m\,d\mu_{A_j}$. The vectors
+$v_j=(v_{j,m})_m$ are pairwise distinct.
+
+Fix $r>1$. By Lemma~\ref{lem:sg-affinemix} and Birkhoff's ergodic theorem,
+for each $m$ and each $j$,
+\[
+ \frac1N\sum_{n=1}^N f_m(S_{r^n}\gamma)
+ \longrightarrow v_{j,m}\qquad\mu_{A_j}\hbox{-almost surely}.
+ \tag{SG5}
+\]
+The intersection of these events over $m$ still has full $\mu_{A_j}$ measure.
+Every term $f_m(S_{r^n}\gamma)$ depends only on the trace up to time
+$r^{-2n}$. For any $t>0$, all sufficiently late terms are consequently
+$\mathcal F_t$-measurable. Omitting finitely many initial terms does not
+change a Ces\`aro limit. Thus every limit in (SG5), and the event that the
+limit exists, is $\mathcal F_{0+}$-measurable.
+
+Define $D=j$ if all limits exist and their vector equals $v_j$; use
+$D=\dagger$ otherwise. Countability of $J$ and pairwise distinctness of the
+$v_j$ make this a measurable unambiguous definition. Formula (SG5) proves
+(SG4).
+\end{proof}
+
+
+\subsection{A common decoder for the continuum of normalized metrics}
+
+The countable proof extends to all parameters $(b,c)\in\Theta
+=\mathbb R\times(0,\infty)$, provided the standard path coding is used
+jointly in the affine parameter. We state this coding point explicitly.
+
+\paragraph{Joint Borel capacity coding.}
+Let $\eta$ be an ordinary capacity-parameterized SLE$_6$ trace and $K_s$ its
+filled hull. Before recoding, its affine image is the continuous path
+$A_{b,c}^{-1}\eta(s)$. Its physical capacity clock is
+\[
+ u_{b,c,\eta}(s)=\tfrac12\operatorname{hcap}(A_{b,c}^{-1}K_s).
+ \tag{SG6}
+\]
+Use the standard measurable coding of compact half-plane hulls, in which
+filling a continuous path prefix and taking its half-plane capacity are
+Borel operations. Linear transformation is jointly continuous on compact
+sets. Consequently $(b,c,\eta,s)\mapsto u_{b,c,\eta}(s)$ is Borel.
+The inverse clock is measurable because, on the set where the clock is
+continuous and strictly increasing,
+\[
+ u_{b,c,\eta}^{-1}(t)=\inf\{s:u_{b,c,\eta}(s)>t\}
+\]
+can be computed using rational $s$ (with equality interpreted by continuity).
+Thus evaluation of the recoded image on $[0,1]$ is jointly Borel in
+$(b,c,\eta)$. The good-clock conditions are Borel using rational tests;
+on their complement use a cemetery path. For each fixed $(b,c)$ this
+complement has SLE probability zero by the affine local-growth and lifetime
+arguments above. No single full-probability set valid simultaneously for
+all affine parameters is required.
+
+This paragraph uses the usual deterministic measurability of hull capacity
+as part of the standard Borel curve coding. If that coding fact is not
+taken as established, the next corollary should be read conditionally on
+joint Borel recoding. The preceding countable theorem needs only measurable
+recoding for each of its countably many fixed maps.
+
+\begin{corollary}[Continuum metric decoder]
+\label{cor:sg-continuum}
+With the joint Borel coding just specified, there exists one
+$\mathcal F_{0+}$-measurable map
+\[
+ D_{\mathrm{all}}:\mathcal C\longrightarrow\Theta\cup\{\dagger\}
+\]
+such that for every $(b,c)\in\Theta$,
+\[
+ \mu_{A_{b,c}}[D_{\mathrm{all}}(\gamma)=(b,c)]=1.
+ \tag{SG7}
+\]
+The same single measurable rule therefore recovers every normalized affine
+metric, with almost-sure correctness under each metric law separately.
+\end{corollary}
+\begin{proof}
+Choose a countable generating $\pi$-system for the standard Borel space of
+unit-capacity path segments, including the cemetery state. For example, use
+finite intersections of rational-time evaluation cylinders in rational
+rectangles, together with the cemetery singleton. Let $(f_m)_{m\geq1}$ be
+their indicator functions. They determine probability laws on unit segments.
+Joint Borel recoding and integration against the fixed ordinary SLE law imply
+that
+\[
+ v:\Theta\to[0,1]^{\mathbb N},\qquad
+ v_m(b,c)=\int f_m\,d\mu_{A_{b,c}},
+ \tag{SG8}
+\]
+is Borel. Lemma~\ref{lem:sg-unitrestriction} and the determining property
+of $(f_m)$ imply that $v$ is injective.
+Both parameter and sequence spaces are standard Borel, so the Lusin--Souslin
+theorem makes $v(\Theta)$ Borel and $v^{-1}:v(\Theta)\to\Theta$ Borel.
+
+Fix $r>1$. Form the vector $L(\gamma)$ of Ces\`aro limits
+\[
+ L_m(\gamma)=\lim_{N\to\infty}\frac1N\sum_{n=1}^N
+ f_m(S_{r^n}\gamma),
+\]
+using a cemetery value if any limit fails to exist. The proof of
+Theorem~\ref{thm:sg-decoder} shows that $L$ is
+$\mathcal F_{0+}$-measurable. Define
+$D_{\mathrm{all}}=v^{-1}(L)$ when $L\in v(\Theta)$ and set it to
+$\dagger$ otherwise. This is a measurable definition; no measurable
+selection theorem is needed.
+For each fixed $(b,c)$, ergodicity and Birkhoff applied to the countable
+family $(f_m)$ give $L=v(b,c)$ almost surely under $\mu_{A_{b,c}}$.
+This proves (SG7).
+\end{proof}
+
+\paragraph{Quantifiers and limitations.}
+The statement is one common decoder with correctness under each law:
+$\forall(b,c)\ \mu_{A_{b,c}}(D_{\mathrm{all}}=(b,c))=1$.
+It does not assert one common full-probability set of Brownian seeds on
+which correctness holds simultaneously after every uncountable collection
+of affine transformations. More importantly, the decoded object is still
+an ordered initial trace germ at a smooth start, not the bare boundary germ
+of a random slit-domain tip.
+
+\paragraph{What has and has not been proved.}
+The theorem demonstrates an exact mechanism by which a microscopic ordered
+path germ can store a constant affine metric. It is more than identifiability
+of the law: a single arbitrarily short trace germ distinguishes any prescribed
+countable collection of metrics almost surely, and the continuum corollary
+extends this under the stated joint Borel coding. The result does not contradict
+a germ zero-one law, since that law concerns one probability measure, while
+the distinguishing full-measure germ sets differ between measures.
+
+A hypothetical source-germ decoration could choose a metric from the smooth
+initial source geometry, then attempt to recover the same metric from the
+slit boundary at all later tips. That recovery does \emph{not} follow from Theorem~\ref{thm:sg-decoder}.
+Three obstacles remain:
+\begin{enumerate}
+\item A later tip is not a smooth half-plane starting boundary point; the
+nearby past trace can have a different two-sided or conditioned local law.
+\item The remaining marked domain gives an embedded boundary germ, which may
+lose chronological information when the trace has touched itself. The theorem
+uses an oriented initial trace germ and does not prove that the needed data
+are recoverable from that boundary alone.
+\item A domain Markov construction would need one measurable rule valid at
+all relevant stopping times and compatible with locality deletions, not merely
+a decoder at a deterministic initial point under each fixed metric law.
+\end{enumerate}
+Extending local metric decoding to random interior or tip germs, or proving
+that such decoding is impossible from the domain state, is a concrete next
+research question. No full counterexample satisfying target consistency is
+claimed from this mechanism.
+
+\section{A fixed metric follows inside the affine-SLE ansatz with target consistency and reversal}
+\label{sec:affine-ansatz-classification}
+
+\paragraph{Status.}
+This theorem assumes that every marginal is already an affine image of
+SLE$_6$. It does not derive that ansatz from coarse percolation properties.
+It shows that quite weak physical coherence conditions then eliminate all
+variation of the affine conformal structure between domains and marked points.
+Geometric reversal is an explicit additional hypothesis; it is not asserted
+here to follow from RSW or from the original three axioms.
+
+Let $\mathcal D$ be the class of bounded Jordan domains whose boundaries
+consist of finitely many regular real-analytic arcs meeting at corners.
+Each analytic arc extends to a neighborhood of its closed parameter interval.
+Restrict marks to regular boundary points, meaning interior points of these
+arcs. Suppose
+\[
+ P_{D,p,q}=(A_{D,p,q}^{-1})_*\operatorname{SLE}_6
+ (A_{D,p,q}D,A_{D,p,q}p,A_{D,p,q}q),
+ \tag{AA1}
+\]
+where $A_{D,p,q}$ is an invertible orientation-preserving linear map. Write
+$[Q_{D,p,q}]$ for the projective positive-definite tensor
+$[A_{D,p,q}^{\mathsf T}A_{D,p,q}]$; brackets identify positive scalar multiples.
+
+The following elementary local identifiability principle will be used:
+if two laws of the form (AA1), on domains agreeing near the same regular
+start, have identical initial paths stopped in every sufficiently small ball,
+then their projective tensors are equal. Indeed blow up at the regular start.
+Conformal kernel convergence for ordinary SLE gives half-plane limits
+$A_i^{-1}\operatorname{SLE}_6(A_iH,0,\infty)$. Equality of local prefixes
+gives equality of these half-plane laws; the strictly monotone SLE$_6$
+left-passage function makes $A_2A_1^{-1}$ a similarity. This argument uses
+only local SLE convergence and the affine ansatz.
+
+\begin{theorem}[Conditional global metric rigidity]
+\label{thm:aa-global}
+Assume (AA1), together with the following properties on $\mathcal D$:
+\begin{enumerate}
+\item \emph{Translation covariance.}
+\item \emph{Locality for nested domains}: if $D'\subset D$ agrees with $D$
+near regular marks $p,q$, the two initial laws agree until they encounter the
+removed set.
+\item \emph{Local target consistency}: for fixed $D,p$ and any two regular
+targets $q_1,q_2$, the two initial laws agree when stopped on every
+sufficiently small circle centered at $p$.
+\item \emph{Geometric reversibility}: reversing an ordered path with law
+$P_{D,p,q}$ gives law $P_{D,q,p}$.
+\end{enumerate}
+Then there is one fixed positive-definite tensor $Q_0$, up to scalar, with
+$[Q_{D,p,q}]=[Q_0]$ for every admissible triple. Equivalently, one fixed
+linear map transforms the entire family into ordinary chordal SLE$_6$.
+No domain Markov hypothesis is needed for this conditional conclusion.
+\end{theorem}
+
+\begin{proof}
+\emph{First, remove dependence on marks inside one domain.}
+Fix $D$ and a regular start $p$. Local target consistency and local
+identifiability make $[Q_{D,p,q}]$ independent of $q$.
+Ordinary SLE$_6$ is geometrically reversible by \cite{ms}. Therefore reversal of (AA1)
+retains its same tensor, and the assumed reversal of $P$ implies
+\[
+ [Q_{D,p,q}]=[Q_{D,q,p}].
+\]
+Given regular $p,p'$, choose a third regular point $q$. Changing the target
+with fixed start $q$ and reversing at the two ends shows
+\[
+ [Q_{D,p,q}]=[Q_{D,q,p}]=[Q_{D,q,p'}]=[Q_{D,p',q}].
+\]
+Thus there is a tensor $[Q(D)]$ independent of both marks.
+
+\emph{Second, compare nested domains with retained regular boundary arcs.}
+If $D'\subset D$ agrees with $D$ near two distinct regular boundary points,
+choose them as $p,q$. Locality makes the initial laws agree in some ball
+about $p$, and local identifiability gives $[Q(D')]=[Q(D)]$.
+The removed set may meet other parts of the boundary; it stays a positive
+distance from the selected marks.
+
+\emph{Third, create a horizontal boundary segment without changing the metric.}
+For any $D\in\mathcal D$, choose a horizontal line $\{y=c\}$ with $\min_{\partial D}\operatorname{Im}z<c<\max_{\partial D}\operatorname{Im}z$, at a regular value of the boundary height and not through a corner, and intersect $D$ with
+$\{y>c\}$. Such a regular value with nonempty intersection exists: on each nonhorizontal
+analytic boundary arc the critical points are isolated, and horizontal arcs
+contribute only finitely many excluded height values. Choose the level also
+away from all corner heights. The analytic arcs are understood to extend
+regularly to neighborhoods of their closed parameter intervals, so there
+are only finitely many critical points unless an arc is horizontal.
+There are finitely many transverse crossings, and a component $U$ of the
+intersection is again a piecewise real-analytic Jordan domain. It contains an
+original analytic boundary arc above the cutting line and also an open
+horizontal segment of the cutting line on its boundary.
+Choose two regular marks on the retained original arc. The second step gives
+$[Q(U)]=[Q(D)]$.
+
+Choose a sufficiently short subsegment of the horizontal boundary segment.
+An upper half-disk $V$ on that diameter lies in $U$, agrees with $U$ near
+two distinct interior diameter points, and belongs to $\mathcal D$.
+The second step again gives $[Q(V)]=[Q(U)]$.
+
+\emph{Finally, compare all horizontal upper half-disks.}
+Translation covariance identifies their tensors for equal radii and arbitrary centers. Two upper half-disks with the same center and radii
+$r<R$ are nested and agree near any two distinct points on the smaller open
+diameter. The second step makes their tensors equal. Thus all such half-disks
+have one tensor $[Q_0]$, and the third step shows $[Q(D)]=[Q_0]$ for every $D$.
+
+Choose a fixed $A_0$ with $A_0^{\mathsf T}A_0=Q_0$. Equality of projective
+tensors gives $A_{D,p,q}=c_{D,p,q}R_{D,p,q}A_0$ with $c_{D,p,q}>0$ and
+$R_{D,p,q}$ orthogonal. Similarity covariance of SLE$_6$ in (AA1) removes
+those extra factors, leaving exactly
+$(A_0^{-1})_*\operatorname{SLE}_6(A_0D,A_0p,A_0q)$.
+\end{proof}
+
+\paragraph{Boundary regularity in the cutting step.}
+A transverse horizontal cut of a piecewise real-analytic Jordan domain has finitely
+many intersections with its boundary. Each component is simply connected:
+a Jordan loop in the intersection has its interior in both the original
+Jordan domain and the upper half-plane. Its boundary consists of finitely
+many original arcs and cutting-line segments meeting at transverse corners,
+so the component is Jordan with piecewise real-analytic boundary. At least one
+retained original arc and one cutting segment occur in every nontrivial
+component chosen in the proof. This also makes all marked-point comparisons
+legitimate within the stated class.
+
+\paragraph{Use for the percolation program.}
+Local target consistency can be transferred from common-color discrete
+couplings to simultaneous marginal curve limits without random-domain kernel
+convergence, as established separately. Reversibility is a further assumption.
+For a general lattice model with critical density different from $1/2$,
+reversing the color-oriented exploration is not automatically the same as
+swapping its start and target in a fixed convention: it also changes which
+boundary arc has each color. No exact discrete color symmetry, nor limiting
+reversal theorem, is supplied by the present argument.
+The main unsolved analytic step remains establishing (AA1), or an alternative
+local structure theorem, from the original axioms plus appropriate coherence.
+
+% Research fragment; intended for inclusion in progress.tex.
+\section{Continuous affine labels: deterministic support and source independence}
+\label{sec:support-source}
+
+\paragraph{Status.}
+The result here is conditional on the deterministic affine-SLE ansatz and an
+explicit continuity condition on its metric labels.  It does not apply to a
+general exploration ensemble.  It gives a further restriction inside that
+ansatz: a continuous conserved label cannot encode information in the source
+prime end.  Source independence alone gives no target or domain independence; the final corollary adds explicit target-consistency and locality hypotheses to obtain a global metric.
+
+\subsection{The precise continuity premise}
+
+Let $T(D,p,q)$ be the determinant-one conformal metric tensor of the affine
+label, as in (RA6), on all bounded simply connected domains with two distinct
+prime ends.  We use the following sufficient premise, stated in a form that
+is stable under the fixed affine change of coordinates needed for each
+starting law.
+
+\paragraph{Affine-stable marked-chart continuity.}
+For every fixed invertible real-linear map $L$, suppose
+$f_n:\mathbb H\to E_n$ are conformal maps onto bounded simply connected
+domains, with a nondegenerate conformal limit
+$f_n\to f:\mathbb H\to E$ locally uniformly in $\mathbb H$.  The marked
+prime ends are $f_n(0),f_n(\infty)$ and $f(0),f(\infty)$, respectively;
+these are prime-end extensions, whether or not they have Euclidean point
+limits.  Require
+\[
+ T(LE_n,Lf_n(0),Lf_n(\infty))
+   \longrightarrow T(LE,Lf(0),Lf(\infty)).
+ \tag{SS1}
+\]
+Thus the topology is locally uniform convergence of inverse conformal
+charts with the two designated boundary preimages $0,\infty$, and the
+premise also applies after each fixed affine map.  This is an explicit
+additional hypothesis; it is not inferred merely from DMP, locality, or
+physical translation invariance.  An equivalent affine-stable marked kernel
+notion may be used instead, provided it supplies (SS1).
+
+
+\paragraph{Why fixed affine maps preserve this marked topology (proved using
+standard Beltrami stability).}
+In fact the displayed premise for all $L$ follows from its case $L=I$.
+Here is the needed topological fact.  Write an orientation-preserving
+real-linear map as $L(z)=\alpha z+\beta\bar z$, with
+$|\beta/\alpha|<1$.  The Beltrami coefficients of $L\circ f_n$ are
+\[
+ \mu_n(z)=\frac{\beta}{\alpha}
+             \frac{\overline{f_n'(z)}}{f_n'(z)}.
+\]
+Since the nonvanishing derivatives $f_n'$ converge locally uniformly to
+$f'$, these coefficients converge pointwise in $\mathbb H$ to the analogous
+$\mu$, all with the same bound $k<1$.  Extend them to the lower half-plane
+by reflection, $\mu_n(\bar z)=\overline{\mu_n(z)}$.  Let $h_n$ be the
+normalized quasiconformal sphere solutions fixing $0,1,\infty$.
+The standard stability theorem for the measurable Riemann mapping theorem
+(uniform bound $k<1$ and almost-everywhere convergence of coefficients)
+gives locally uniform convergence of $h_n$ and their inverses to $h$ and
+$h^{-1}$.  Reflection symmetry and normalized uniqueness imply that every
+$h_n$ maps $\mathbb H$ onto itself and fixes the two marked boundary points
+$0,\infty$.
+
+The maps
+\[
+ \chi_n=L\circ f_n\circ h_n^{-1}:\mathbb H\longrightarrow LE_n
+\]
+are conformal by Beltrami factorization.  They converge locally uniformly
+to the nondegenerate conformal map
+$\chi=L\circ f\circ h^{-1}$, and their marked endpoints are precisely
+$Lf_n(0),Lf_n(\infty)$.  This proves continuity of a fixed orientation-
+preserving affine change of the physical domains in the marked conformal-
+chart topology.  A reflection handles the other orientation.
+Consequently ordinary marked-chart continuity of $T$ implies (SS1).
+Keeping (SS1) explicit in the proof below makes clear that its charts are
+holomorphic in the affine SLE coordinates, even when their physical pullbacks
+are only quasiconformal.  The additional analytical input in this paragraph
+is the standard normalized Beltrami stability theorem; no claim about
+Euclidean uniform boundary convergence is needed.
+
+\subsection{Full support transfers conservation to deterministic Loewner controls}
+
+Fix a starting label $A=A(D,p,q)$ and a conformal map
+$f:\mathbb H\to AD$ with $f(0)=Ap$, $f(\infty)=Aq$.  For any continuous
+real function $w$ on $[0,t]$ with $w(0)=0$, let $g_t^w$ denote the associated
+hydrodynamic Loewner map on its surviving half-plane domain.  Define the
+marked target state by the inverse conformal chart
+\[
+ f_t^w(z)=f\bigl((g_t^w)^{-1}(z+w(t))\bigr),\qquad z\in\mathbb H.
+ \tag{SS2}
+\]
+This state is a simply connected domain with two designated prime ends for
+\emph{every} continuous $w$.  The assertion does not say that every such
+$w$ generates a trace.  No trace is needed to define the domain state in
+(SS2).  For the Brownian driving paths of SLE the state is its actual
+remaining target domain.
+
+The map $w\mapsto f_t^w$ is continuous from the uniform norm on $C[0,t]$
+to locally uniform convergence of conformal maps on $\mathbb H$.
+For example, the inverse map can be represented by the reverse ODE
+\[
+ \dot v_s=-\frac{2}{v_s-w(t-s)},\quad v_0=z,\quad
+ (g_t^w)^{-1}(z)=v_t.
+ \tag{SS3}
+\]
+Its imaginary part is nondecreasing.  On a compact set with
+$\operatorname{Im}z\geq\delta>0$, denominators stay away from zero and the
+usual ODE stability estimate gives locally uniform continuity in $w$.
+Translations by $w(t)$ and composition with $f$ preserve this continuity.
+The corresponding metric functional
+\[
+ \mathcal T_t(w)=
+ T\bigl(A^{-1}f_t^w(\mathbb H),
+         A^{-1}f_t^w(0),A^{-1}f_t^w(\infty)\bigr)
+ \tag{SS4}
+\]
+is therefore continuous by (SS1), with $L=A^{-1}$.
+
+\paragraph{Deterministic-support lemma (proved).}
+If the affine-label ensemble has strong DMP and satisfies (SS1), then for
+every $t>0$ and every continuous control $w\in C[0,t]$ with $w(0)=0$,
+\[
+ \mathcal T_t(w)=T(D,p,q).
+ \tag{SS5}
+\]
+For the source-independence conclusion below it suffices to apply this to
+smooth linear ramps.
+
+\begin{proof}
+Under the original affine SLE law the driving process in $AD$ is
+$\sqrt6 B$.  The DMP conservation criterion (RA7) gives
+$\mathcal T_t(\sqrt6 B)=T(D,p,q)$ almost surely.  Brownian measure has full
+support on the space of continuous functions starting at zero in the
+uniform topology.  If (SS5) failed at one control $w$, continuity of
+$\mathcal T_t$ would give an open uniform neighborhood on which it differs
+from the fixed tensor.  Brownian full support gives that neighborhood
+positive probability, contradicting almost-sure conservation.
+\end{proof}
+
+One could avoid defining the functional at non-trace-generating controls
+by restricting the statement to controls at which the state functional has
+a continuous extension, and applying full support there.  In particular
+smooth ramps suffice.  The all-prime-end ansatz already makes (SS4) defined
+on every state, so the formulation above is simpler.
+
+\subsection{Rapid driving ramps move the source at vanishing capacity}
+
+\paragraph{Theorem (proved, within the stated ansatz).}
+Under strong DMP and (SS1), the tensor $T(D,p,q)$ is independent of the
+source prime end: for every bounded simply connected $D$ and every three
+prime ends with $p,p'\ne q$,
+\[
+ T(D,p,q)=T(D,p',q).
+ \tag{SS6}
+\]
+It may still depend on the target or on the domain; these are unresolved
+by this argument.
+
+\begin{proof}
+Use the notation above and write $Ap'=f(a)$ for the unique finite
+$a\in\mathbb R$ corresponding to the new source.  Choose $t_n\downarrow0$
+and use the smooth control
+\[
+ w_n(s)=\frac{as}{t_n},\qquad 0\leq s\leq t_n.
+\]
+The deterministic-support lemma says that every resulting metric equals
+$T(D,p,q)$.  From the reverse equation (SS3),
+\[
+ |(g_{t_n}^{w_n})^{-1}(z)-z|
+ \leq\frac{2t_n}{\operatorname{Im}z}.
+ \tag{SS7}
+\]
+Consequently, locally uniformly in $\mathbb H$,
+\[
+ f_{t_n}^{w_n}(z)
+   = f\bigl((g_{t_n}^{w_n})^{-1}(z+a)\bigr)
+   \longrightarrow f(z+a).
+\]
+The limiting chart has image $AD$, source $f(a)=Ap'$, and the same target
+$f(\infty)=Aq$.  Applying (SS1) with $L=A^{-1}$ gives (SS6).
+\end{proof}
+
+The controls may have very large slopes as $t_n\to0$; this is harmless.
+Each fixed ramp lies in the support of Brownian driving on its own finite
+interval.  The argument uses the possibility of rare events, not their
+uniform probability as $n\to\infty$.  The limiting source change is a
+statement about marked prime-end charts, not Euclidean convergence of a
+curve of vanishing diameter: the capacity vanishes while the tip may
+travel far along a thin boundary region.
+
+\subsection{A fixed metric in the affine ansatz without a reversal hypothesis}
+
+\paragraph{Corollary (proved, conditional on the global affine ansatz).}
+Suppose the ensemble has a deterministic affine-SLE label on \emph{all}
+bounded simply connected domains and distinct prime ends, has strong DMP,
+and its normalized tensor $T$ is continuous for marked inverse-conformal-
+chart convergence.  Suppose in addition that its piecewise real-analytic
+Jordan subfamily has translation covariance, locality for nested domains
+retaining neighborhoods of regular marks, and local target consistency in
+the sense used by the conditional global metric-rigidity theorem.  Then
+there is one fixed determinant-one tensor $Q_0$ such that
+\[
+ T(D,p,q)=Q_0
+\]
+for every bounded simply connected marked domain.  No geometric reversal
+hypothesis is needed for this conditional conclusion.
+
+\begin{proof}
+The source-independence theorem removes dependence on $p$.  On a regular
+piecewise real-analytic Jordan domain, local target consistency together
+with the local half-plane identifiability argument removes dependence on
+$q$ as well.  Thus these domains have a tensor $Q(D)$ independent of both
+marks.  The nested-cut argument in the preceding conditional global
+metric-rigidity theorem now applies verbatim, without its reversal step:
+nested locality identifies tensors of domains agreeing near two retained
+regular marks; a transverse horizontal cut creates a horizontal segment;
+a small upper half-disk on that segment retains the metric; translation
+and nesting identify all such half-disks.  Hence all piecewise real-analytic
+Jordan domains have the same tensor $Q_0$.
+
+To extend to an arbitrary bounded simply connected $D$, choose a conformal
+$f:\mathbb D\to D$ and distinct circle points $\zeta_p,\zeta_q$ representing
+$p,q$.  For $r_n\uparrow1$, set
+\[
+ D_n=f(r_n\mathbb D),\qquad
+ p_n=f(r_n\zeta_p),\quad q_n=f(r_n\zeta_q).
+\]
+Each $D_n$ is an analytic Jordan domain: $f$ extends holomorphically and
+univalently across the compact circle $|z|=r_n$, with nonzero derivative.
+Choose a conformal $m:\mathbb H\to\mathbb D$ with
+$m(0)=\zeta_p$, $m(\infty)=\zeta_q$.  The marked inverse charts
+\[
+ f_n(z)=f(r_n m(z))
+\]
+converge locally uniformly to $f(m(z))$, giving exactly the desired marked
+prime-end limit, even if $f$ has no Euclidean limit at one of the selected
+circle points.  Tensor continuity and $T(D_n,p_n,q_n)=Q_0$ give
+$T(D,p,q)=Q_0$.  The fixed-affine normalizer follows from SLE similarity
+covariance as in the preceding theorem.
+\end{proof}
+
+This corollary removes a reversal assumption \emph{inside the global affine
+ansatz}, at the price of strong DMP and a precise continuity premise.  It
+still supplies no argument that the original three axioms, RSW, or local
+target consistency force a marginal exploration law to belong to that ansatz.
+
 \section{Unsuccessful routes, revised objectives, and next experiments}
 \label{sec:next}
 
@@ -1106,19 +2261,22 @@ not promote its plausibility to a theorem. Full similarity covariance alone
 is already defeated by the exact construction above.
 
 \paragraph{Concrete priorities for the next session.}
-First formulate the common-coloring/boundary-condition coupling that gives
-target consistency before taking a scaling limit, and prove the necessary
-kernel continuity in random slit domains using uniform crossing estimates.
-Next investigate a local characterization of the conformal metric from
-initial curve laws; single-domain affine identifiability is available, but
-the existence of one metric across all domains is not. A third route is to
-seek an observable implying the driving-local-martingale premise in
-Section~\ref{sec:loewner-locality}, possibly after one affine normalization.
-That premise would finish identification by the proved conditional theorem,
-but deriving it from coarse percolation properties is the substantial open
-step. Finally examine whether source-boundary germs can encode persistent
-geometry and produce further counterexamples even after target consistency
-is imposed; no such full construction has been established here.
+The local common-coloring transfer is now proved in
+Section~\ref{sec:local-target-transfer}. The next limit questions are
+controlled marked-domain stability and conditional-kernel convergence in
+random slit domains, ideally from uniform crossing estimates. The main
+structural question is to derive affine-SLE marginals, or a different useful
+local structure theorem, for arbitrary exploration laws. Once that ansatz
+is available, the conditional common-metric theorem above removes the
+domain dependence under explicit coherence and continuity hypotheses.
+A parallel route is to seek an observable implying the driving-local-
+martingale premise in Section~\ref{sec:loewner-locality}, possibly after
+one affine normalization. That premise would finish identification by the
+proved conditional theorem, but deriving it from coarse percolation
+properties remains open. Finally examine whether later accessible frontier
+germs can encode geometry despite target consistency: initial ordered-germ
+decoding is now established, but the later unlabelled-boundary construction
+is not. No full additional counterexample is claimed.
 
 \paragraph{Reproducibility and preservation.}
 The concise project handoff is \texttt{STATUS.md}. The polished counterexample
