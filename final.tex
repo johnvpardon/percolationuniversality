@@ -18,13 +18,734 @@
 \newcommand{\Law}{\operatorname{Law}}
 \newcommand{\nuA}[4]{\nu^{#1}_{#2,#3,#4}}
 \DeclareMathOperator{\Id}{Id}
-\title{A terminal-germ counterexample to local exploration classification}
-\hypersetup{pdftitle={A terminal-germ counterexample to local exploration classification},pdfauthor={Autonomous mathematical research}}
+
+\title{Local exploration laws and regular driving characteristics}
+\hypersetup{pdftitle={Local exploration laws and regular driving characteristics},pdfauthor={Autonomous mathematical research}}
 \author{Autonomous mathematical investigation, with independent critical checks}
 \date{26 October 2026}
 \begin{document}
 \maketitle
-\begin{abstract}We construct continuous Loewner exploration laws satisfying strong domain Markov, locality, translation covariance, and all Euclidean similarity covariances, yet admitting no fixed affine SLE$_6$ normalization. The construction chooses the metric from the terminal boundary germ. A boundary-swallowing probability proves single-domain affine identifiability. We also prove that translation-invariant families obtained from SLE$_6$ by one global homeomorphism must use a real-affine map, and describe precisely how boundary stability excludes tangent-dependent metrics.\end{abstract}\section{Conventions}Curves are oriented and unparameterized. Locality uses deletions preserving neighborhoods of the two marked prime ends and compares paths up to first encounter with the removed set. After exploration, use the component facing the target. We use standard SLE$_6$ existence, conformal covariance, strong domain Markov, and locality \cite{lawler}, and the Loewner trace characterization \cite{yuan}. The counterexample is already nontrivial on one disk with smooth marked targets. Its prime-end extension is made explicit below. The result refutes the stated abstract classification; it does not establish or refute critical percolation universality.
+\begin{abstract}
+We investigate the corrected source-neighborhood locality axiom.
+For continuous semimartingale Loewner drivers with absolutely continuous,
+right-continuous drift, locality itself gives an initial quadratic-variation
+rate. Two shrinking mirrored slits show that local boundedness of the
+initial drift forces zero drift and variance six. Strong domain Markov
+then identifies SLE$_6$, without assuming conformal covariance or Brownian
+driving. The exact instability rates are inverse-linear and inverse-cubic
+in the slit parameter. Separately, exact scaling proves that a fixed
+nonconformal affine SLE$_6$ deformation cannot have the stated tame drift
+structure in every bounded domain. These are conditional results: the
+analytic hypotheses have not been derived from RSW or from the project
+axioms, and the corrected classification and universality remain open.
+\end{abstract}
+
+\section{Current locality and scope}
+Two colored marked domains that agree near their common source must have
+identical initial exploration laws until exit from that neighborhood,
+even if their remote targets differ. This is the user's corrected locality
+axiom at commit \texttt{0e47018}. We fix one color orientation throughout.
+The terminal-germ construction for the earlier fixed-target axiom is
+excluded; its original proofs are retained in
+\texttt{archive/original-locality-results.tex} and the detailed research record.
+
+The first theorem below needs only a deletion consequence of corrected
+locality. It does not claim that locality supplies regular driving drift.
+For rough restart domains we state the prime-end neighborhood or admissible
+test-deletion requirement explicitly. All driving clocks use
+$\partial_tg=2/(g-W)$ and hence $\operatorname{hcap}(K_t)=2t$.
+The standard conformal-map comparison for Loewner chains is derived below;
+ordinary SLE facts used for affine examples are described in \cite{lawler,yuan}.
+Continuous Loewner generation and infinite lifetime of affine SLE images
+were proved in the companion research record \cite{record}.
+% Research fragment for the corrected source-neighborhood locality assumption.
+% Requires amsmath/amssymb/amsthm; all additional hypotheses are explicit.
+\section{A near-source drift-boundedness criterion}
+\label{sec:strong-local-loewner}
+
+\paragraph{Status.}
+This is a new conditional rigidity result.  It does not assume conformal
+invariance, Brownian driving, or local-martingale driving.  Instead it shows
+that a locally bounded \emph{initial driving drift}, together with an
+absolutely continuous drift part and locality, already forces zero drift and
+variance six.  No regularity of quadratic variation is assumed.  Strong DMP then identifies the whole driving law.  The
+boundedness and characteristic hypotheses are not derived from RSW or from
+the three project axioms.  A finite-dimensional bulk-jet closure is given as
+one explicit sufficient hypothesis.
+
+Only a particular deletion consequence of the corrected source-neighborhood
+locality is needed.  Arbitrary target changes and the full force of corrected
+locality are not used in this theorem.  Thus the result is compatible with,
+but does not exhaust, the corrected research objective.
+
+\subsection{Chart-dependent initial characteristics and their covariance}
+
+Let $f:\mathbb H\to D$ be an inverse chordal conformal chart, with source
+$f(0)=p$ and target $f(\infty)=q$, both interpreted as prime ends.
+For the physical ensemble in $D$, let $W^f$ be its driving process in this
+chart, with half-plane capacity normalization
+\[
+ \partial_t g_t(z)=\frac{2}{g_t(z)-W^f_t},\qquad W^f_0=0.
+\]
+Assume that it is a continuous semimartingale in its natural trace filtration,
+with decomposition
+\[
+ W^f_t=M^f_t+\int_0^t b^f_s\,ds,\qquad
+ C^f_t=\langle M^f\rangle_t.
+ \tag{DR1}
+\]
+The drift-density paths $b^f$ are assumed finite and right-continuous,
+after local stopping if necessary.  No absolute continuity or regularity
+of $C^f$ is assumed.  At the initial time suppose
+\[
+ b^f_0=B(f)\in\mathbb R
+ \tag{DR2}
+\]
+is deterministic.  It may depend on the entire physical marked domain and
+its conformal chart.  In particular no Markov property of the single real
+driver is assumed.  A finite deterministic initial variance rate $V(f)$
+will be \emph{derived} below from locality and (DR1)--(DR2).
+
+Let $A\subset\overline{\mathbb H}$ be a half-plane hull disjoint from $0$,
+let $h:\mathbb H\setminus A\to\mathbb H$ be hydrodynamically normalized,
+and set
+\[
+ \bar h(z)=h(z)-h(0),\qquad f_A=f\circ\bar h^{-1}.
+ \tag{DR3}
+\]
+The source is still the same physical prime end, since $\bar h(0)=0$;
+the target is also unchanged.  Put $d=h'(0)>0$, $e=h''(0)$.
+Source locality, together with the usual deletion-chart calculation, will
+give a finite deterministic initial variance rate $V(f)$ and the covariance
+\[
+ \boxed{\quad V(f_A)=V(f),\qquad
+ B(f_A)=\frac{B(f)}{d}
+       +\left(\frac{V(f)}2-3\right)\frac{e}{d^2}.\quad}
+ \tag{DR4}
+\]
+These are identities for \emph{initial} characteristics and do not identify
+the two complete driving laws.
+
+Here are the details without assuming a quadratic-variation density.
+If $h_t$ is the evolving deletion map, then $du=h_t'(W_t)^2dt$, and
+It\^o's formula gives
+\[
+ d\widehat W_{u(t)}
+  =h_t'(W_t)\,dM_t+h_t'(W_t)b_t\,dt
+       +\frac12 h_t''(W_t)\,dC_t-3h_t''(W_t)\,dt.
+ \tag{DR5}
+\]
+The $-3$ comes from
+\[
+ \partial_t h_t(z)
+ =\frac{2h_t'(W_t)^2}{h_t(z)-h_t(W_t)}
+       -\frac{2h_t'(z)}{z-W_t},\qquad
+ (\partial_t h_t)(W_t)=-3h_t''(W_t).
+\]
+The comparison of filtrations is justified by geometric invertibility:
+from a deleted-domain initial trace one reconstructs its original trace and
+capacity, so the inverse capacity clock is adapted and its inverse is a
+stopping-time clock.  Locality therefore compares the same trace filtration,
+not an unrelated enlargement.  Adaptedness of an arbitrary increasing clock
+would not suffice for this step.
+
+\paragraph{Local bracket-regularization lemma (proved).}
+Suppose $h''(0)\ne0$.  Then on a positive initial interval, $C_t$ is absolutely
+continuous and has a finite right-continuous density.  In particular its
+initial right derivative $V(f)$ exists and is deterministic.
+
+\begin{proof}
+The deleted-domain driver also has an absolutely continuous drift,
+$\int\widehat b_u\,du$, by (DR1).  Uniqueness of the continuous
+semimartingale decomposition applied to (DR5), after the justified capacity
+time change, gives the signed-measure identity
+\[
+ h_t''(W_t)\bigl(dC_t-6\,dt\bigr)
+   =2\bigl[h_t'(W_t)^2\widehat b_{u(t)}
+                      -h_t'(W_t)b_t\bigr]dt.
+ \tag{DR5a}
+\]
+The second derivative starts nonzero and remains so on a positive initial
+interval.  On that interval the bracket is absolutely continuous, with
+\[
+ v_t=6+2\frac{h_t'(W_t)^2\widehat b_{u(t)}
+                         -h_t'(W_t)b_t}{h_t''(W_t)}.
+ \tag{DR5b}
+\]
+The derivative paths of $h_t$ along the continuous driving point are
+continuous, while the two drift-density paths are right-continuous and
+finite.  Thus $v$ is right-continuous and finite there.  In particular
+\[
+ V(f)=v_0
+   =6+2\frac{d^2 B(f_A)-d B(f)}e
+ \tag{DR5c}
+\]
+is deterministic.  This is an intrinsic initial rate of $C$, so it does
+not depend on which nonzero-$e$ deletion was used to derive it.
+Applying the same time change to bracket gives
+$V(f_A)=V(f)$.  Rearranging (DR5c) gives the drift identity (DR4).
+\end{proof}
+
+There is always an available nonzero-$e$ test deletion, for example one
+vertical slit at any fixed real point different from $0$.  Right-continuity
+makes the initial drift and variance rates intrinsic, rather than arbitrary
+versions of densities at a single time.  The bracket density has only been
+proved locally at the start; its global regularity is not being presumed.
+
+\paragraph{Source-neighborhood convention.}
+In half-plane coordinates these slit deletions preserve a full neighborhood
+of the source end.  Under $f$ this is a prime-end neighborhood.  Thus (DR4)
+is justified on arbitrary rough domains if the corrected locality assumption
+is formulated for such neighborhoods, or if these particular deletions are
+explicitly admissible.  For regular analytic source boundaries it is ordinary
+Euclidean neighborhood locality.  If locality is instead stated only using
+Euclidean balls at non-singleton source impressions, the all-rough-domain
+extension must remain an explicit additional hypothesis.
+
+\subsection{Two vanishing slits force both characteristics}
+
+For $\epsilon>0$ take the reflected vertical slits
+\[
+ A_\epsilon^\pm
+  =\{\,\pm\epsilon^2+iy:0\leq y\leq2\epsilon\,\}.
+ \tag{DR6}
+\]
+Their hydrodynamic maps are
+\[
+ h_\epsilon^\pm(z)
+ =\pm\epsilon^2+
+   \sqrt{(z\mp\epsilon^2)^2+4\epsilon^2},
+ \tag{DR7}
+\]
+with the square-root branch asymptotic to $z\mp\epsilon^2$ at infinity.
+Let $f_\epsilon^\pm=f\circ
+(h_\epsilon^\pm-h_\epsilon^\pm(0))^{-1}$.
+Both sequences are conformal charts of bounded simply connected domains and
+\[
+ f_\epsilon^\pm\longrightarrow f
+ \quad\text{locally uniformly in }\mathbb H.
+ \tag{DR8}
+\]
+Indeed the slits have diameter $2\epsilon$ and approach $0$; directly from
+(DR7), their maps and inverse maps converge to the identity on compact
+subsets of $\mathbb H$, while $h_\epsilon^\pm(0)\to0$.
+Crucially their boundary derivatives do \emph{not} converge to the identity
+jet:
+\[
+ d_\epsilon=(h_\epsilon^\pm)'(0)
+     =\frac{\epsilon}{\sqrt{\epsilon^2+4}}\longrightarrow0,
+ \qquad
+ e_\epsilon^\pm=(h_\epsilon^\pm)''(0)
+     =\mp\frac{4}{\epsilon(\epsilon^2+4)^{3/2}}.
+ \tag{DR9}
+\]
+In particular
+\[
+ \frac{e_\epsilon^\pm}{d_\epsilon^2}
+ =\mp\frac{4}{\epsilon^3\sqrt{\epsilon^2+4}}.
+ \tag{DR10}
+\]
+Thus compact convergence of inverse charts permits very large second-jet
+changes precisely at the source boundary.
+
+\paragraph{Initial rigidity theorem (proved).}
+Fix $f$ and assume (DR1)--(DR4) for $f$ and the charts $f_\epsilon^\pm$.
+If
+\[
+ \sup_{0<\epsilon<\epsilon_0}
+       \max\{|B(f_\epsilon^+)|,|B(f_\epsilon^-)|\}<\infty
+ \tag{DR11}
+\]
+for some $\epsilon_0>0$, then
+\[
+ B(f)=0,\qquad V(f)=6.
+ \tag{DR12}
+\]
+No continuity of $B$ is required.
+
+\begin{proof}
+Write $b=B(f)$, $v=V(f)$ and $b_\epsilon^\pm=B(f_\epsilon^\pm)$.
+Equation (DR4) gives
+\[
+ b_\epsilon^\pm
+ =\frac b{d_\epsilon}
+    +\left(\frac v2-3\right)
+                       \frac{e_\epsilon^\pm}{d_\epsilon^2}.
+\]
+Since $e_\epsilon^-=-e_\epsilon^+$,
+\[
+ b_\epsilon^++b_\epsilon^-=\frac{2b}{d_\epsilon},\qquad
+ b_\epsilon^+-b_\epsilon^-=
+       (v-6)\frac{e_\epsilon^+}{d_\epsilon^2}.
+ \tag{DR13}
+\]
+The first right side is bounded only if $b=0$, since
+$d_\epsilon\to0$.  The second is bounded only if $v=6$, since its multiplier
+has magnitude asymptotic to $2\epsilon^{-3}$.  This proves (DR12).
+\end{proof}
+
+\paragraph{Exact instability and weaker rate conditions.}
+For real numbers $U,C$ one has
+$\max\{|U+C|,|U-C|\}=|U|+|C|$.  Hence the two drift covariances give the
+exact identity
+\[
+ \boxed{\quad
+ \max\{|b_\epsilon^+|,|b_\epsilon^-|\}
+ =\frac{|b|\sqrt{\epsilon^2+4}}{\epsilon}
+  +\frac{4|v/2-3|}{\epsilon^3\sqrt{\epsilon^2+4}}.
+ \quad}
+ \tag{DR14}
+\]
+There is no possible cancellation between the two reflected tests.
+In particular, if the displayed maximum is $o(\epsilon^{-3})$, then $v=6$.
+If it is $o(\epsilon^{-1})$, then $b=0$ and $v=6$.
+Boundedness is more than sufficient.  Conversely, if $v\ne6$, its leading
+blow-up is $|v-6|\epsilon^{-3}$; if $v=6$ and $b\ne0$, its leading blow-up
+is $2|b|\epsilon^{-1}$.  This is a concrete, quantitative obstruction to any
+alternative semimartingale driving law with tame initial drift under source
+perturbations.
+
+\subsection{Local boundedness in marked-chart topology suffices}
+
+Equip inverse marked charts with locally uniform convergence on
+$\mathbb H$, retaining the fixed preimages $0,\infty$ of source and target.
+If $B$ is locally bounded at every $f$ in this topology, then (DR8) implies
+(DR11).  In particular continuity of $B$ is sufficient, but unnecessarily
+strong.  This is a hypothesis about the driving characteristic itself;
+weak convergence of curve laws alone does not imply it.
+
+\paragraph{Conditional classification theorem (proved).}
+Suppose a Borel family of continuous Loewner-generating exploration laws on
+all bounded simply connected marked prime-end domains has strong DMP and
+source-neighborhood locality (including the test deletions (DR6) in each
+chart).  Suppose its drivers satisfy (DR1)--(DR2), with finite right-continuous
+drift-density paths and the usual restart compatibility of characteristic
+kernels, with no initial assumption on quadratic variation.  If the initial drift map $B$ is locally bounded in marked inverse-
+chart topology, then every driving process is
+\[
+ W^f_t=\sqrt6\,B_t,
+\]
+and the family is chordal SLE$_6$ in these conformal coordinates.
+
+\begin{proof}
+The initial rigidity theorem gives $B(f)=0$ and the derived $V(f)=6$ for
+every marked inverse chart.  At any deterministic rational time $r$,
+condition on the initial exploration and use strong DMP in its remaining
+marked domain and current conformal chart.  The centered future driver is
+exactly the restarted driver; its initial drift is $b^f_r$, by
+right-continuity.  The restarted law has initial drift zero, so
+$b^f_r=0$ almost surely.  Countably many rational times and right-continuity
+give $b^f_t=0$ throughout each localized lifetime.  Therefore all domain
+chart drivers are continuous local martingales.
+
+For completeness the no-density local-martingale locality argument then
+identifies their brackets.  With both drifts zero, (DR5a) becomes
+$h_t''(W_t)(dC_t-6\,dt)=0$.  A nonzero-$e$ vertical deletion yields
+$C_t=6t$ on a positive initial interval.  Let
+\[
+ T=\inf\{t\geq0:C_t-6t\ne0\}.
+\]
+This is an entrance stopping time of a continuous adapted process into an
+open set, in the usual right-continuous filtration.  The initial zero
+interval gives $T>0$.  If $T<\infty$, continuity gives $C_T=6T$ and the
+first-deviation definition gives nonzero values arbitrarily soon after $T$.
+Strong DMP restarted at $T$ gives another positive zero interval, a
+contradiction.  Thus $C_t=6t$ throughout.  L\'evy's characterization gives
+Brownian driving, and Loewner generation identifies SLE$_6$.
+\end{proof}
+
+The Borel-kernel condition means that the family admits the standard strong
+conditional-kernel interpretation on random slit domains, and that the
+characteristics can be chosen consistently on that family.  It is not a
+claim that deterministic-domain convergence of discrete explorations proves
+this property.  Translation invariance is not needed in this conditional
+theorem.  If its hypotheses hold only after one fixed physical affine
+normalization, the conclusion is the corresponding fixed-affine SLE$_6$
+family; an affine change of physical coordinates is not presumed to preserve
+semimartingale driving in an arbitrary preselected complex structure.
+
+\subsection{A finite-dimensional closure that is completely classified}
+
+For example, fix finitely many interior points $z_j\in\mathbb H$ and
+finitely many nonnegative derivative orders $m_j$.  Let
+\[
+ J(f)=\bigl(f^{(k)}(z_j):1\leq j\leq N,
+                              0\leq k\leq m_j\bigr).
+\]
+Suppose the initial drift has a representation
+\[
+ B(f)=\mathcal B(J(f)),
+ \tag{DR15}
+\]
+where $\mathcal B$ is locally bounded at every realized jet vector.
+The bracket has no assumed density or finite-dimensional representation;
+its initial rate is supplied by the local regularization lemma.
+Locally uniform convergence of conformal maps implies convergence of all
+these interior jets by Cauchy's formula, so (DR15) implies local boundedness
+of $B$ in marked-chart topology.  The conditional classification theorem
+therefore applies: within (DR1)--(DR2), every source-local strong-DMP family
+with such a locally bounded finite-dimensional \emph{bulk-jet drift closure}
+is SLE$_6$.
+
+This statement does not cover a closure depending on unbounded source
+boundary derivatives such as $f'(0)$ or a boundary pre-Schwarzian.  Those
+quantities can change without control under (DR8), and can carry exactly the
+singular terms in (DR13).  Nor does it show that true percolation limits have
+semimartingale driving in a fixed physical complex structure.  The new
+rigorous reduction is that any non-SLE candidate with regular characteristic
+rates must violate the displayed near-source drift bound, in the explicit
+$\epsilon^{-1}$ or $\epsilon^{-3}$ manner above.
+
+
+\subsection{The criterion also detects a wrong affine coordinate system}
+
+\paragraph{Corollary (proved).}
+Let $A$ be an orientation-preserving real-linear map which is not a Euclidean
+similarity, and let the physical ensemble be the fixed-affine pullback
+\[
+ P_{D,p,q}=(A^{-1})_*
+       \operatorname{Law}(\mathrm{SLE}_6(AD;Ap,Aq)).
+\]
+Although this family satisfies corrected source-neighborhood locality and
+strong DMP, in the original Euclidean complex structure it cannot satisfy
+both the regular semimartingale characteristic assumptions (DR1)--(DR2) in
+all marked domains and the locally bounded initial-drift condition above.
+
+\begin{proof}
+If both properties held, the conditional classification theorem would make
+this ensemble ordinary SLE$_6$ in the original complex structure.  The
+single-domain affine identifiability theorem would then make $A$ a
+similarity, a contradiction.
+\end{proof}
+
+Thus the drift criterion selects a conformal structure.  It is not a
+coordinate-free consequence of coarse crossing bounds: bounded affine
+changes preserve such bounds, whereas a wrong affine structure necessarily
+violates at least one of the criterion's additional analytic hypotheses.
+The corollary does not decide whether the failure is semimartingality,
+right-continuity of the drift density, deterministic initial drift,
+or boundedness of the initial drift; distinguishing these failures is a
+separate question.
+
+\subsection{What corrected locality says at a regular analytic source germ}
+
+Here is a separate necessary local structure statement that uses the full
+corrected locality, including changes of the distant target.  It concerns
+initial characteristics only, not existence of a process from arbitrary
+coefficient choices.
+
+Suppose the physical boundary is analytic near $p$ and the source colors
+are fixed there.  Let $G$ denote this embedded colored source germ.  For a
+chart $f$ extending conformally across $0$, define
+\[
+ a(f)=|f'(0)|>0,\qquad
+ P(f)=\operatorname{Re}\frac{f''(0)}{f'(0)}.
+ \tag{DR16}
+\]
+If another physical marked domain has the same source germ but any distant
+target, let $k$ be its inverse chordal chart with $k(0)=p$.  The local map
+$h=k^{-1}\circ f$ is analytic across $0$, takes the real boundary interval
+to a real interval, and has $h(0)=0$, $d=h'(0)>0$, $e=h''(0)\in\mathbb R$.
+The two initial physical traces agree by corrected locality.  The local
+Loewner coordinate comparison is exactly (DR4), with the same derivation
+from pole cancellation and It\^o's formula; a globally defined deletion map
+is unnecessary.  Consequently $V(f)=V(k)$ depends only on $G$.
+
+\paragraph{Proposition (proved).}
+Under the semimartingale assumptions above, corrected locality at analytic
+source germs is equivalent at the level of initial characteristic covariance
+to the existence of two source-germ quantities $V(G)$ and $\beta(G)$ such that
+\[
+ \boxed{\quad
+ V(f)=V(G),\qquad
+ B(f)=a(f)\,\beta(G)
+                 +\left(3-\frac{V(G)}2\right)P(f).
+ \quad}
+ \tag{DR17}
+\]
+Here ``equivalent at the level of covariance'' means precisely that every
+covariant initial-characteristic assignment has this form, and every
+assignment of this form obeys the local chart covariance identity.  It does
+not mean that arbitrary $V,\beta$ yield a domain Markov exploration family.
+
+\begin{proof}
+Since $k=f\circ h^{-1}$, the chain rule gives
+\[
+ a(k)=\frac{a(f)}d,\qquad
+ P(k)=\frac{P(f)}d-\frac e{d^2}.
+\]
+Write $c=V(G)/2-3$.  Combining these transformations with
+$B(k)=B(f)/d+c e/d^2$ yields
+\[
+ \frac{B(k)+cP(k)}{a(k)}
+       =\frac{B(f)+cP(f)}{a(f)}.
+\]
+This common value is the source-germ invariant $\beta(G)$, proving (DR17).
+Conversely direct substitution gives the required covariance.
+\end{proof}
+
+Physical translation invariance makes $V(G)$ and $\beta(G)$ invariant under
+translations of the colored germ.  If dilation covariance is separately
+assumed, then $V(\lambda G)=V(G)$ and
+$\beta(\lambda G)=\lambda^{-1}\beta(G)$.  For a straight source-boundary germ,
+which is unchanged up to translation by dilation, this would force
+$\beta(G)=0$; the dimensionless variance can still depend on the boundary
+orientation before an affine metric has been identified.
+
+The boundary pre-Schwarzian term in (DR17) explains the quantitative anomaly
+in the vanishing-slit test.  Even when the physical source germ is unchanged,
+$P(f_\epsilon)$ may grow as $\epsilon^{-3}$ while $f_\epsilon\to f$ on every
+interior compact set.  Thus source locality by itself gives a connection-type
+transformation law, rather than vanishing drift.  The locally bounded bulk
+closure theorem removes exactly this uncontrolled boundary dependence.
+The missing global step is to understand how DMP constrains these local
+assignments at rough, dynamically created source germs, where the analytic
+boundary jet in (DR16) no longer exists.
+
+% Research fragment; requires amsmath/amssymb/amsthm.
+\section{A wrong affine metric cannot have tame driving drift in every bounded domain}
+\label{sec:scaling-semimartingale}
+
+\paragraph{Status.}
+The conclusion here is stronger than the earlier wrong-coordinate consequence
+of drift boundedness.  For a fixed non-similarity affine deformation of SLE$_6$,
+regular semimartingale driving with absolutely continuous right-continuous
+drift cannot hold in every bounded domain in the wrong Euclidean complex
+structure.  No local boundedness of the initial drift functional is needed.
+The proof uses exact scale invariance only for the \emph{known fixed-affine
+SLE$_6$ half-plane law}; it does not assume that arbitrary critical
+subsequential limits are scale invariant.  All characteristic regularity
+assumptions remain explicit.
+
+\subsection{Exact Brownian scaling and a regular initial bracket}
+
+\paragraph{Scaling lemma (proved).}
+Let $W$ be a continuous real process on $[0,\infty)$ with $W_0=0$, whose law
+has exact Brownian scaling:
+\[
+ (c^{-1/2}W_{ct})_{t\geq0}\ \stackrel{\rm law}{=}\ (W_t)_{t\geq0}
+ \qquad(c>0).
+ \tag{SM1}
+\]
+Suppose up to a strictly positive stopping time it is a continuous
+semimartingale
+\[
+ W_t=M_t+\int_0^t b_s\,ds,
+ \tag{SM2}
+\]
+where $M_0=0$ is a continuous local martingale and $b$ is finite and
+right-continuous at $0$.  Suppose its bracket has a finite deterministic
+initial right derivative
+\[
+ \lim_{t\downarrow0}\frac{\langle M\rangle_t}{t}=v\in[0,\infty)
+ \quad\text{almost surely}.
+ \tag{SM3}
+\]
+Then the entire law of $W$ is that of $\sqrt v B$.  This includes the
+identically zero process if $v=0$.
+
+\begin{proof}
+Fix $T<\infty$ and stop the local decomposition at a positive initial
+localizing time.  As $c\downarrow0$, with probability tending to one the
+whole interval $[0,cT]$ lies before that time.  Right-continuity of $b$ gives
+\[
+ \sup_{t\leq T}\left|c^{-1/2}\int_0^{ct}b_s\,ds\right|
+ \leq\sqrt c\,T\sup_{s\leq cT}|b_s|\longrightarrow0
+\]
+almost surely on the localized event.  Writing $C_t=\langle M\rangle_t$,
+(SM3) implies
+\[
+ \sup_{t\leq T}|C_{ct}/c-vt|\longrightarrow0.
+ \tag{SM4}
+\]
+Indeed $|C_{ct}/c-vt|\leq t\sup_{0<s\leq cT}|C_s/s-v|$.
+The continuous-martingale functional central limit theorem now gives
+$c^{-1/2}M_{c\cdot}\Rightarrow\sqrt v B$ on $C[0,T]$.
+One may see this directly from Dambis--Dubins--Schwarz: extend its Brownian
+motion if necessary and write
+\[
+ c^{-1/2}M_{ct}=B^{(c)}_{C_{ct}/c},
+ \qquad B^{(c)}_u=c^{-1/2}\widetilde B_{cu}.
+\]
+Each $B^{(c)}$ has standard Brownian law.  Uniform bracket convergence to the
+deterministic clock and the Brownian modulus of continuity imply the stated
+limit; independence between $B^{(c)}$ and the bracket is unnecessary.
+Adding the negligible drift gives the same limit for $W$.
+By exact scaling, however, each rescaled process already has the law of
+$W$ on $[0,T]$.  That law is therefore Brownian with variance $v$.
+Arbitrariness of $T$ proves the assertion.
+\end{proof}
+
+The regular initial bracket is not automatic for a general self-similar
+continuous process.  In the affine-SLE application below it follows from
+locality and absolutely continuous drift in two domain charts, using the
+local bracket-regularization identity.
+
+\subsection{The half-plane affine-SLE obstruction}
+
+Let $A$ be an invertible orientation-preserving real-linear map and let
+$\eta$ be chordal SLE$_6$ in $A\mathbb H$ from $0$ to $\infty$.  Put
+$\gamma=A^{-1}\eta\subset\overline{\mathbb H}$ and let $W$ be its
+half-plane-capacity driving function.  Its continuous Loewner generation and
+infinite capacity lifetime are supplied by the affine-admissibility result
+already proved in the research record.  Its law has exact Brownian scaling
+(SM1): ordinary SLE is dilation covariant, $A$ commutes with positive scalar
+dilations, and capacity scales by the square of physical length.
+
+\paragraph{Proposition (proved).}
+If this $W$ satisfies (SM2)--(SM3), then $A$ is a Euclidean similarity.
+
+\begin{proof}
+The scaling lemma makes $W$ ordinary Brownian driving of variance $v$.
+Thus the trace is ordinary chordal SLE$_v$ in $\mathbb H$.
+We identify $v$ without a Hausdorff-dimension theorem.
+
+For $\kappa\leq4$ the nonzero real boundary points are never swallowed by
+SLE$_\kappa$: their Loewner distances divided by $\sqrt\kappa$ are Bessel
+processes of dimension $1+4/\kappa\geq2$ (the case $\kappa=0$ is immediate).
+An affine image of SLE$_6$ swallows boundary points, so $v>4$.
+For any $\kappa>4$, the boundary-race calculation gives
+\[
+ \mathbb P_\kappa(\tau_y<\tau_x)
+ =F_\kappa\!\left(\frac{-x}{y-x}\right),\qquad
+ F_\kappa(r)=
+ \frac{\displaystyle\int_0^r[u(1-u)]^{-4/\kappa}\,du}
+ {\displaystyle\int_0^1[u(1-u)]^{-4/\kappa}\,du},
+ \quad x<0<y.
+ \tag{SM5}
+\]
+This includes $\kappa\geq8$.  To check it, the ratio
+$R=-X/(Y-X)$ has generator
+\[
+ \frac\kappa2\frac{d^2}{dr^2}
+   +\frac{2(1-2r)}{r(1-r)}\frac d{dr}
+\]
+after $ds=dt/(Y-X)^2$.  Its scale density is
+$[r(1-r)]^{-4/\kappa}$, integrable at both ends exactly when $\kappa>4$.
+The first swallowing is finite almost surely by the Bessel description;
+simultaneous swallowing is impossible since $Y-X$ is positive and
+nondecreasing.  Bounded optional stopping gives (SM5).
+
+Rotate $A\mathbb H$ conformally back to $\mathbb H$.  The resulting map
+has matrix
+\[
+ T=\begin{pmatrix}\alpha&\beta\\0&\delta\end{pmatrix},
+ \qquad \alpha,\delta>0.
+\]
+It acts on the real boundary by $x\mapsto\alpha x$, so it preserves the
+ratio $-x/(y-x)$ and the topological swallowing order.  The law of
+$\gamma$ therefore has boundary-race function $F_6$, while its Brownian
+driving gives $F_v$.  Equality for every $r\in(0,1)$ forces $v=6$:
+compare the derivatives in (SM5), proportional respectively to
+$[r(1-r)]^{-4/v}$ and $[r(1-r)]^{-2/3}$.
+
+Finally $T^{-1}\mathrm{SLE}_6(\mathbb H;0,\infty)$ is ordinary SLE$_6$.
+Half-plane affine identifiability now implies $T$ is a similarity.
+For completeness, the strictly increasing SLE$_6$ left-passage function
+\[
+ L(u)=\frac{\int_{-\infty}^u(1+s^2)^{-2/3}\,ds}
+ {\int_{-\infty}^{\infty}(1+s^2)^{-2/3}\,ds}
+\]
+and preservation of topological side give
+$L(u)=L((\alpha u+\beta)/\delta)$ for all real $u$.
+Thus $\alpha=\delta$ and $\beta=0$.  Rotation does not affect whether $A$
+is a similarity, proving the proposition.
+\end{proof}
+
+\subsection{Transfer from bounded-domain regularity to the half-plane germ}
+
+The preceding proposition is already a complete unbounded-domain statement.
+The following additional argument shows why requiring the tame drift
+structure in \emph{every bounded domain} is enough to trigger it.
+We spell out the local coordinate transfer, rather than silently assume
+semimartingality is preserved by a general physical affine map.
+
+\paragraph{Bounded-domain obstruction theorem (proved).}
+Consider the canonical fixed-affine SLE$_6$ family
+\[
+ P_{D,p,q}=(A^{-1})_*\operatorname{Law}
+       (\mathrm{SLE}_6(AD;Ap,Aq))
+\]
+on bounded simply connected marked domains.  Suppose in the original
+Euclidean complex structure every domain-chart driver is a continuous
+semimartingale whose finite-variation part is
+$\int_0^t b_s\,ds$, with finite right-continuous drift density and
+deterministic initial value $B(f)$, consistently under the usual conditional
+kernel interpretation.  Then $A$ is a Euclidean similarity.
+No boundedness or continuity of the map $f\mapsto B(f)$ is assumed.
+
+\begin{proof}
+Choose a bounded half-disk $D\subset\mathbb H$ with $0$ in the interior of
+its real diameter, and a distinct target on that diameter away from $0$.
+Choose the boundary colors so they agree near $0$ with the half-plane
+problem $(\mathbb H,0,\infty)$.  Let $\phi:D\to\mathbb H$ be its chordal
+chart sending these two marks to $0,\infty$.  It extends analytically
+across $0$, with $\phi'(0)>0$.
+
+The local bracket-regularization lemma applies to this bounded-domain
+driver: delete one further vertical slit in its $\phi$ chart, away from its
+marks, with nonzero $h''(0)$.  Both domains have tame absolutely continuous
+drift by hypothesis.  The signed-measure identity
+\[
+ h_t''(W_t)(dC_t-6\,dt)
+  =2\bigl[h_t'(W_t)^2\widehat b_{u(t)}
+                        -h_t'(W_t)b_t\bigr]dt
+\]
+therefore gives a finite right-continuous initial bracket density in $D$,
+with deterministic initial value $v_D$.
+
+Corrected source-neighborhood locality of ordinary SLE$_6$, preserved by
+the fixed map $A^{-1}$, couples this bounded-domain curve to the canonical
+affine-SLE$_6$ half-plane curve so that their physical initial segments are
+identical until leaving a sufficiently small half-neighborhood of $0$.
+This uses ordinary SLE$_6$ locality including distant target changes; it is
+not a new hypothesis about an unknown nonconformal family.
+On that common initial trace, the coordinate change is the analytic map
+$\phi$ at the source.
+
+A local analytic coordinate change and its inverse preserve the tame
+semimartingale structure just obtained.  More explicitly, if $t$ is physical
+half-plane capacity and $u$ is the bounded-chart capacity, the evolving local
+map satisfies
+\[
+ W_D(u(t))=h_t(W_H(t)),\qquad
+ \dot u(t)=h_t'(W_H(t))^2.
+\]
+Initially $h_0=\phi$, so $h_0'(0)>0$ and all required local derivatives are
+finite.  Before the trace leaves the common neighborhood, localize so the
+first derivative stays bounded away from zero and the derivatives stay
+bounded.  Both capacity clocks are adapted functions of the same initial
+trace; their inverses are stopping-time clocks.  The inverse field
+$h_t^{-1}$ has finite variation in time, as follows by differentiating the
+Loewner composition.  Applying the finite-variation It\^o--Wentzell formula
+to the semimartingale $W_D$, and changing the capacity clock, produces a
+continuous-semimartingale decomposition of $W_H$ on a positive initial
+interval.  Its drift is absolutely continuous and right-continuous, and its
+initial bracket density is the same scalar $v_D$.  These conclusions use
+only a \emph{conformal local chart transition}, not the nonconformal map $A$.
+
+For an explicit initial check, writing $d=\phi'(0)$, $e=\phi''(0)$,
+the transferred rates obey
+\[
+ V_H=v_D,\qquad
+ B_H=dB_D-\left(\frac{v_D}{2}-3\right)\frac ed,
+ \tag{SM6}
+\]
+so both are finite and deterministic.  Thus the canonical half-plane driver
+satisfies (SM2)--(SM3).  Its exact scaling and the half-plane proposition
+force $A$ to be a similarity.
+\end{proof}
+
+Only a bounded domain flat at its source and one of its source-preserving
+slit deletions are needed for the bracket part of this contradiction.
+The full all-bounded-domain assumption is a convenient sufficient
+formulation.  The obstruction does not identify the precise failure for a
+particular wrong affine metric: semimartingality, absolute continuity or
+right-continuity of the drift, or deterministic initial drift may fail.
+It does show that at least one must fail somewhere.  It supplies no argument
+that an unknown exploration family admits a correct affine normalization
+with tame drift.
+
 \section{An affine metric is identifiable from one chordal law}
 \label{sec:identifiability}
 
@@ -151,398 +872,16 @@ similarity. The converse is ordinary SLE similarity covariance.
 Reflection covariance reduces the remaining orientation case to this one.
 \end{proof}
 
-\section{An exact counterexample using the terminal boundary germ}
-\label{sec:target-germ}
 
-\subsection{The conserved information and the admissible domain class}
-
-Let $G(D,q)$ be the embedded germ of $D$ at its terminal prime end.
-Concretely, target neighborhoods may be taken as
-\[
- f^{-1}\bigl(\HH\setminus\overline{B(0,R)}\bigr),\qquad R\to\infty,
-\]
-for any conformal $f:D\to\HH$ sending $q$ to infinity. The embedded
-germ records the planar domain in a full neighborhood of that end;
-one may shrink neighborhoods without changing it. A full neighborhood
-contains a neighborhood in the prime-end compactification, rather than
-merely an arbitrarily narrow approach sector. Germ equivalence means
-agreement on such neighborhoods with the same inherited marked end.
-
-At a Jordan boundary point this is the ordinary local boundary germ.
-At a slit tip one must retain which prime end is intended. A germ is
-called $C^1$-regular here when it has a singleton endpoint and, in a full
-end neighborhood, a single $C^1$ boundary arc with a nonzero tangent and
-the domain locally on one side. The tangent line $\ell(G)$ is unoriented.
-All other germs receive the default label below. Regularity and tangent
-are properties of the germ itself.
-
-Finite chordal Loewner hulls in a target-normalized half-plane chart are
-bounded. They therefore miss some target neighborhood. At every finite
-stopping time prior to reaching the target, the remaining marked domain
-$D_t$ satisfies
-\begin{equation}
- G(D_t,q)=G(D,q).
- \label{eq:germ-persistent}
-\end{equation}
-Likewise locality deletions away from the terminal end preserve this germ.
-Thus the following proof already works on domains with regular targets,
-together with their slit domains, a class closed under all operations
-needed in the argument. Assigning defaults to nonregular end germs extends
-it to arbitrary prime ends under the stated end-neighborhood convention.
-Locality for sets accumulating at a nonsingleton impression must always be
-formulated in prime-end terms; it is not defined by pretending the end is
-a single physical point.
-
-\begin{proposition}[Conserved-label construction]
-\label{prop:germ-construction}
-Assign to each embedded terminal germ an orientation-preserving invertible
-real-linear map $A(G)$, measurably and in a translation-covariant way:
-$A(G(D+v,q+v))=A(G(D,q))$. Define
-\begin{equation}
- P_{D,p,q}=(A(G(D,q))^{-1})_*
-       \SLE\bigl(A(G(D,q))D;A(G(D,q))p,A(G(D,q))q\bigr).
- \label{eq:germ-ensemble}
-\end{equation}
-Then this family has strong domain Markov, locality, and translation
-covariance as unparameterized paths.
-\end{proposition}
-
-\begin{proof}
-Write $A=A(G(D,q))$. By \eqref{eq:germ-persistent} the same deterministic
-$A$ is prescribed after any finite initial exploration. Apply strong
-domain Markov to SLE$_6$ in $AD$, then pull the tail back by $A^{-1}$.
-This gives exactly \eqref{eq:germ-ensemble} in the remaining target
-component, at its exposed tip and target. Stopping times are carried
-to stopping times because the invertible map preserves the explored
-filtration; the capacity clock is an adapted increasing time change.
-For deletion of $K$ away from both ends, the two domains use the same
-$A$. SLE$_6$ locality in $AD$ and $AD\setminus AK$, pulled back by
-$A^{-1}$, couples their paths identically until first encounter with $K$.
-Finally the displayed covariance of the label and translation covariance
-of SLE$_6$ prove physical translation covariance. No conditioning on a
-hidden random parameter occurs: the label is a deterministic conserved
-function of the current marked domain.
-\end{proof}
-
-\subsection{A concrete example with full similarity covariance}
-
-Fix $a>0$, $a\ne1$, and set
-\begin{equation}
- A(G)=\begin{cases}
- \Pi_{\ell(G)}+a\Pi_{\ell(G)^\perp},&G\text{ is }C^1\text{-regular},\\
- I,&\text{otherwise}.
- \end{cases}
- \label{eq:tangent-label}
-\end{equation}
-Here $\Pi$ is orthogonal projection. On smooth-target domains this is a
-continuous function of the tangent in the topology controlling that
-tangent; on arbitrary germs it is a deterministic local geometric rule.
-If desired, the class can first be restricted to piecewise smooth
-domains and their finite slit descendants, avoiding any measurable-space
-conventions for the class of all planar domains.
-
-For a similarity $S(x)=cRx+v$, $c>0$, $R$ orthogonal, one has
-\[
- A(G(SD,Sq))=R A(G(D,q))R^{-1}.
-\]
-Combining this with SLE$_6$ similarity and reflection covariance proves
-$P_{SD,Sp,Sq}=S_*P_{D,p,q}$. Thus adding scale invariance, reflection
-covariance, or covariance under every rotation does not exclude this
-construction.
-
-\begin{theorem}[The proposed fixed-affine classification is false]
-\label{thm:counterexample}
-The ensemble \eqref{eq:germ-ensemble}--\eqref{eq:tangent-label} satisfies
-the three proposed axioms, and full Euclidean similarity covariance, but
-there is no one fixed affine transformation sending all its laws to
-ordinary chordal SLE$_6$. This failure already occurs for smooth targets
-on one disk.
-\end{theorem}
-
-\begin{proof}
-Take $D$ to be the unit disk and fix $p=-1$. At $q_h=i$ the tangent is
-horizontal, while at $q_v=1$ it is vertical. The respective matrices are
-\[
- A_h=\begin{pmatrix}1&0\\0&a\end{pmatrix},\qquad
- A_v=\begin{pmatrix}a&0\\0&1\end{pmatrix}.
-\]
-A fixed affine normalizer with linear part $B$ would imply
-$\nuA{B}{D}{p}{q_h}=\nuA{A_h}{D}{p}{q_h}$ and
-$\nuA{B}{D}{p}{q_v}=\nuA{A_v}{D}{p}{q_v}$.
-Theorem~\ref{thm:affine-identifiability} makes both $BA_h^{-1}$ and
-$BA_v^{-1}$ similarities. Hence $A_vA_h^{-1}=\operatorname{diag}(a,a^{-1})$
-would be a similarity, forcing $a^2=1$, contrary to $a>0$, $a\ne1$.
-\end{proof}
-
-\subsection{Why these really are continuous-driving Loewner curves}
-\label{sec:loewner-admissible}
-
-Continuity and the absence of transverse crossings alone would not suffice
-to settle this point. Instead use the deterministic characterization in
-\cite[Theorem 1.1 and Remark 1.4]{yuan}: a continuous half-plane path with
-strictly increasing filled hulls is a continuous-driving Loewner trace if
-and only if it is a locally uniform limit of simple interior paths. The
-condition is independent of parametrization.
-
-An ordinary SLE$_6$ trace has this property. Conjugating an invertible
-affine map by the conformal charts of its source and image domains gives
-a quasiconformal self-map of $\HH$. It extends to a homeomorphism of the
-closed half-plane with its point at infinity, fixing the two marked ends
-after normalization. It carries simple interior approximants to simple
-interior approximants; uniform convergence survives on compact time
-intervals because the extended map is uniformly continuous on relevant
-compact sets. Filled hulls and their strict growth are topologically
-preserved. Yuan's theorem gives a continuous driving function after
-reparametrizing by capacity. This also treats nonsmooth slit domains in
-the Markov property without assuming Euclidean continuity of their
-uniformizing maps on every boundary point. The counterexample therefore
-applies to the driving-function formulation as well as to curves.
-
-% Technical completion of affine-image Loewner admissibility.
-\subsection{Quasiconformal images have infinite capacity lifetime}
-\label{sec:qc-capacity-lifetime}
-
-Yuan's characterization gives a continuous Loewner driver after recoding
-an affine image by its capacity, but this alone does not assert that the
-capacity lifetime is infinite.  A continuous curve tending to infinity need
-not have infinite half-plane capacity.  The following argument proves the
-required assertion for the quasiconformal changes arising here.
-
-\begin{lemma}
-Let $F:\mathbb H\to\mathbb H$ be a fixed $K$-quasiconformal
-self-homeomorphism whose boundary extension fixes $0$ and $\infty$.
-If $\eta$ is ordinary chordal SLE$_6$ from $0$ to $\infty$, then
-$F\eta$ has unbounded imaginary part almost surely.  Consequently its
-half-plane-capacity lifetime is infinite.
-\end{lemma}
-
-\begin{proof}
-Put $C=\overline{B(i,1/4)}\subset\mathbb H$.  The boundary map of $F$
-is increasing, so $F(R)>0$ for $R>0$ and $F(R)\to+\infty$ as
-$R\to\infty$.  The normalized maps
-\[
- F_R(z)=\frac{F(Rz)}{F(R)}
-\]
-are $K$-quasiconformal half-plane maps fixing $0,1,\infty$.
-Reflecting them across the real line gives normalized quasiconformal sphere
-maps.  Compactness of this normalized family, including its inverses,
-implies
-\[
- \inf_{R>0}\inf_{z\in C}\operatorname{Im}F_R(z)=c_K>0.
-\]
-Indeed, a sequence violating positivity would have a subsequence converging
-uniformly on the sphere to a quasiconformal homeomorphism preserving the
-half-plane, and a subsequence of points in $C$ would then be mapped to its
-real boundary, an impossibility.  Hence
-\[
- \inf_{z\in RC}\operatorname{Im}F(z)\geq c_K F(R)
-       \longrightarrow\infty.
- \tag{QC1}
-\]
-
-The event $E=\{\eta\cap C\ne\varnothing\}$ has positive probability.
-One elementary justification avoids invoking a support theorem.  In the
-normalization $\partial_tg_t=2/(g_t-W_t)$, the Brownian event
-\[
- \sup_{0\leq t\leq1}|W_t|<\varepsilon,
-       \qquad 0<\varepsilon<1/4,
-\]
-has positive probability.  On this event the Loewner hull stays within the
-vertical strip $|\operatorname{Re}z|\leq\varepsilon$ up to time $1$.
-For example, a point initially to the right of that strip has increasing
-real part under the Loewner ODE and retains a positive real gap from the
-driver, so it cannot be swallowed in finite time; the other side is
-identical.  If the entire trace up to time $1$ had height at most $1$, its
-filled hull would lie in the half-disk of radius
-$\sqrt{1+\varepsilon^2}$.  By capacity monotonicity its capacity would be
-at most $1+\varepsilon^2<2$, whereas its actual capacity is $2$.
-Here a half-disk of radius $R$ has hydrodynamic map $z+R^2/z$ and
-capacity $R^2$.  Thus the continuous trace crosses height $1$ in the strip,
-and that crossing lies in $C$.
-
-Fix $r>1$.  Brownian scaling, and therefore scalar dilation of ordinary
-SLE$_6$, is mixing.  Indeed $Z_s=e^{-s/2}B_{e^s}$, $s\in\mathbb R$,
-is a stationary Gaussian process with covariance $e^{-|s-u|/2}$; scalar
-Brownian scaling becomes a log-time shift.  Decay of these covariances
-gives mixing first for Gaussian cylinder functions and then for the whole
-path sigma-field.  Its inverse dilation is ergodic as well.  Birkhoff's
-theorem applied to $1_E$ gives
-\[
- \eta\cap r^nC\ne\varnothing
-       \qquad\text{for infinitely many positive integers }n,
-       \quad\text{almost surely}.
-\]
-In fact these visits have limiting positive frequency, since
-$1_E(S_{r^{-n}}\eta)=1_{\{\eta\cap r^nC\ne\varnothing\}}$.
-Equation (QC1) then shows that $F\eta$ has unbounded height.
-
-Every finite initial image trace is compact away from infinity and has
-finite capacity.  The standard Loewner height estimate
-\[
- \max\{\operatorname{Im}z:z\in K\}^2
-       \leq2\operatorname{hcap}(K)
-\]
-for a half-plane hull, or equivalently
-$\max\operatorname{Im}K_u\leq2\sqrt u$ when
-$\operatorname{hcap}(K_u)=2u$, now forces the capacities of these image
-prefixes to tend to infinity.  Thus the capacity-recoded image has lifetime
-$[0,\infty)$.
-\end{proof}
-
-For an affine image in a bounded marked domain, conjugating the affine map
-by its source and image conformal charts gives exactly such a fixed
-quasiconformal $F$ fixing the marked ends.  This lemma therefore completes
-the infinite-time driving-function assertion for the target-germ
-counterexample.  It uses properties of SLE$_6$, rather than an invalid
-general assertion about arbitrary curves tending to infinity.
-
-\section{A positive classification within the global-deformation class}
-\label{sec:global-rigidity}
-
-The preceding example does not arise from one deterministic global change
-of spatial coordinates. Within that narrower class the proposed affine
-conclusion does follow, and no differentiability of the change of
-coordinates is required.
-
-\begin{theorem}[Full-family homeomorphism symmetries are conformal]
-\label{thm:homeo-symmetry}
-Let $h:\CC\to\CC$ be an orientation-preserving homeomorphism such that,
-for every bounded Jordan domain and marked boundary pair,
-\[
- h_*\SLE(D;p,q)=\SLE(hD;hp,hq).
-\]
-Then $h$ is an entire conformal automorphism, hence $h(z)=\alpha z+\beta$
-for complex $\alpha\ne0$. For an orientation-reversing homeomorphism,
-the corresponding conclusion is anticonformality.
-\end{theorem}
-
-\begin{proof}
-Take any nondegenerate closed Euclidean triangle $T$ and distinct
-$p,q\in\partial T$. Lemma~\ref{lem:boundary-rigidity} gives a conformal
-$f_T:T^\circ\to h(T^\circ)$ whose continuous boundary extension equals
-$h$ on $\partial T$. Cauchy's theorem, applied on interior triangles
-and then passed to the boundary by continuity, yields
-\[
- \int_{\partial T}h(z)\,dz=\int_{\partial T}f_T(z)\,dz=0.
-\]
-Since $h$ is continuous and this holds for every triangle, Morera's
-theorem makes $h$ entire holomorphic. Its injectivity makes it conformal,
-and an entire conformal automorphism of the plane is complex affine.
-Composition with a reflection proves the other orientation case.
-\end{proof}
-
-\begin{theorem}[Stationary global deformations are real affine]
-\label{thm:stationary-deformation}
-Let $h:\CC\to\CC$ be a homeomorphism and define, on all bounded Jordan
-domains,
-\[
- P^h_{D,p,q}=(h^{-1})_*\SLE(hD;hp,hq).
-\]
-If this ensemble is covariant under every physical translation, then
-$h$ is a real-affine homeomorphism.
-\end{theorem}
-
-\begin{proof}
-Reflection covariance lets us assume $h$ preserves orientation. For every
-$v\in\CC$, physical translation covariance says that
-\[
- \psi_v=h\circ T_v\circ h^{-1},\qquad T_v(z)=z+v,
-\]
-preserves the full chordal SLE$_6$ family. All bounded Jordan domains are
-available, since inverse images under a plane homeomorphism are bounded
-Jordan domains. Theorem~\ref{thm:homeo-symmetry} gives
-$\psi_v(z)=\alpha_v z+\beta_v$. For $v\ne0$, the conjugate of a nonzero
-translation has no fixed point. A complex affine map with
-$\alpha_v\ne1$ has a fixed point, so $\alpha_v=1$ for all $v$.
-It follows that $h(x+v)=h(x)+\beta_v$, and putting $x=0$ gives
-\[
- h(x+v)-h(0)=(h(x)-h(0))+(h(v)-h(0)).
-\]
-The continuous additive map $h-h(0)$ is real-linear. It is invertible
-because $h$ is a homeomorphism.
-\end{proof}
-
-\paragraph{What this does not prove.}
-The original axioms do not give a representation by one global $h$.
-The counterexample shows that replacing a domain-dependent geometry by
-one fixed spatial geometry is a substantive missing step, not an
-innocent coordinate choice.
-
-\section{Boundary stability and other ways to remove terminal dependence}
-\label{sec:boundary-stability}
-
-\subsection{An explicit failure of continuity under small target perturbations}
-
-The tangent rule is continuous when target tangents converge, but not under
-ordinary uniform approximation of the domains and their boundaries.
-This defect persists even when every domain is smooth and the approximating
-domains are uniform quasidisks.
-
-\begin{proposition}[Local rotation of a terminal germ]
-\label{prop:boundary-discontinuity}
-For the ensemble of Theorem~\ref{thm:counterexample}, there are smooth
-Jordan $D_n\to D$, with uniformly converging boundary parametrizations
-and fixed distinct marked points $p,q$, for which $P_{D_n,p,q}$ does
-not converge to $P_{D,p,q}$ in the uniform unparameterized-curve topology.
-\end{proposition}
-
-\begin{proof}
-Let $D$ be the unit disk, $q=i$, $p=-1$. Choose a smooth radial cutoff
-$\chi$ equal to $1$ near $0$ and $0$ outside the unit disk, and define
-the orientation-preserving smooth diffeomorphism
-\[
- F(re^{i\theta})=r\exp\bigl(i\theta+i(\pi/2)\chi(r)\bigr).
-\]
-It is a rotation by $\pi/2$ near $0$ and the identity outside the disk.
-Its quasiconformal distortion is finite, since $r\chi'(r)$ is bounded.
-Put $F_\epsilon(z)=q+\epsilon F((z-q)/\epsilon)$ and
-$D_\epsilon=F_\epsilon(D)$. Then $F_\epsilon(q)=q$, and $F_\epsilon(p)=p$
-for small $\epsilon$, while $\sup_z|F_\epsilon(z)-z|\leq2\epsilon$.
-All $F_\epsilon$ have one common quasiconformal bound. At $q$ the target
-tangent has rotated by $\pi/2$, so the matrix used for every
-$D_\epsilon$ is $A_v$, whereas the matrix for $D$ is $A_h$.
-
-The domains $A_vD_\epsilon$ are uniform quasidisks converging to $A_vD$,
-with the marked boundary points converging as well. Kernel convergence
-and uniform boundary equicontinuity of normalized Riemann maps on
-uniform quasidisks give uniform convergence of these maps on the closed
-disk. Coupling their chordal SLE$_6$ paths with one common disk SLE path
-therefore gives convergence of the entire unparameterized curves. Thus
-\[
- P_{D_\epsilon,p,q}\ \Longrightarrow\ \nuA{A_v}{D}{p}{q}.
-\]
-By Theorem~\ref{thm:affine-identifiability}, this limit differs from
-$P_{D,p,q}=\nuA{A_h}{D}{p}{q}$ because
-$A_vA_h^{-1}=\operatorname{diag}(a,a^{-1})$ is not a similarity.
-\end{proof}
-
-This proves that an appropriate boundary-stability requirement excludes
-the example. It does not prove that boundary stability plus the three
-original axioms suffices for classification.
-
-\begin{corollary}[Boundary stability classifies tangent-dependent affine laws]
-\label{cor:tangent-stability}
-Suppose, on smooth bounded Jordan domains with smooth targets, an ensemble
-has the form $P_{D,p,q}=\nuA{A_{\ell(D,q)}}{D}{p}{q}$, where $A_\ell$
-is an arbitrary orientation-preserving invertible linear map depending
-only on the unoriented target tangent line. If these laws are continuous
-under the uniform smooth-boundary approximations used in
-Proposition~\ref{prop:boundary-discontinuity}, then one fixed affine
-map normalizes all of them. If the ensemble is also covariant under
-all rotations, that fixed map is a similarity.
-\end{corollary}
-\begin{proof}
-Given any two tangent lines $\ell_1,\ell_2$, take a disk having tangent
-$\ell_1$ at $q$ and apply the preceding local twist with the rotation
-carrying $\ell_1$ to $\ell_2$. Every approximating domain uses the
-constant matrix $A_{\ell_2}$. SLE continuity in that fixed metric shows
-that the limiting law is $\nuA{A_{\ell_2}}{D}{p}{q}$, whereas the assumed
-boundary stability makes it $\nuA{A_{\ell_1}}{D}{p}{q}$. Single-pair
-identifiability implies $A_{\ell_2}A_{\ell_1}^{-1}$ is a similarity.
-Thus all $A_\ell^{\mathsf T}A_\ell$ are proportional, which is exactly
-one fixed affine family. For rotation covariance its fixed tensor $Q$
-satisfies $R^{\mathsf T}QR=Q$ for every rotation $R$, by the same metric
-uniqueness, hence $Q$ is scalar.
-\end{proof}
-
-\begin{thebibliography}{9}\bibitem{lawler}G. F. Lawler, \emph{Schramm--Loewner Evolution}, Park City lecture notes (2007), Lectures 3--4. \url{https://math.uchicago.edu/~lawler/utah.pdf}.\bibitem{yuan}Y. Yuan, \emph{Topological characterisations of Loewner traces}, Indiana Univ. Math. J. \textbf{71} (2022), 1027--1046, Theorem 1.1 and Remark 1.4. \url{https://arxiv.org/abs/2003.05535}.\end{thebibliography}\end{document}
+\begin{thebibliography}{9}
+\bibitem{lawler}G. F. Lawler, \emph{Schramm--Loewner Evolution},
+Park City lecture notes (2007), Lectures 3--4.
+\url{https://math.uchicago.edu/~lawler/utah.pdf}.
+\bibitem{yuan}Y. Yuan, \emph{Topological characterisations of Loewner traces},
+Indiana Univ. Math. J. \textbf{71} (2022), 1027--1046.
+\url{https://arxiv.org/abs/2003.05535}.
+\bibitem{record}\emph{Research record: locality, terminal information, and planar exploration laws},
+\texttt{progress.tex} in this repository, including the original-locality
+investigation and the corrected-locality continuation (26 October 2026).
+\end{thebibliography}
+\end{document}

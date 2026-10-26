@@ -1,0 +1,555 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\SLE}{\mathrm{SLE}_6}
+\newcommand{\HH}{\mathbb H}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\Law}{\operatorname{Law}}
+\newcommand{\nuA}[4]{\nu^{#1}_{#2,#3,#4}}
+\DeclareMathOperator{\Id}{Id}
+\title{A terminal-germ counterexample to local exploration classification}
+\hypersetup{pdftitle={A terminal-germ counterexample to local exploration classification},pdfauthor={Autonomous mathematical research}}
+\author{Autonomous mathematical investigation, with independent critical checks}
+\date{26 October 2026}
+\begin{document}
+\maketitle
+\begin{quote}\small
+Historical note: this document concerns the original fixed-target deletion
+locality axiom. The source-neighborhood locality adopted in commit
+\texttt{0e47018} excludes its terminal-germ counterexample. The corrected
+classification remains open; see the current \texttt{final.tex} and
+\texttt{progress.tex} for the continuation.
+\end{quote}
+\begin{abstract}We construct continuous Loewner exploration laws satisfying strong domain Markov, locality, translation covariance, and all Euclidean similarity covariances, yet admitting no fixed affine SLE$_6$ normalization. The construction chooses the metric from the terminal boundary germ. A boundary-swallowing probability proves single-domain affine identifiability. We also prove that translation-invariant families obtained from SLE$_6$ by one global homeomorphism must use a real-affine map, and describe precisely how boundary stability excludes tangent-dependent metrics.\end{abstract}\section{Conventions}Curves are oriented and unparameterized. Locality uses deletions preserving neighborhoods of the two marked prime ends and compares paths up to first encounter with the removed set. After exploration, use the component facing the target. We use standard SLE$_6$ existence, conformal covariance, strong domain Markov, and locality \cite{lawler}, and the Loewner trace characterization \cite{yuan}. The counterexample is already nontrivial on one disk with smooth marked targets. Its prime-end extension is made explicit below. The result refutes the stated abstract classification; it does not establish or refute critical percolation universality.
+\section{An affine metric is identifiable from one chordal law}
+\label{sec:identifiability}
+
+For a bounded Jordan domain $D$, distinct $p,q\in\partial D$, and an
+orientation-preserving invertible real-linear map $A$, put
+\begin{equation}
+ \nuA{A}{D}{p}{q}
+ = (A^{-1})_*\Law\bigl(\SLE(AD;Ap,Aq)\bigr).
+ \label{eq:affine-law}
+\end{equation}
+Translations in an affine normalizer are immaterial. The tensor
+$A^{\mathsf T}A$ is its Euclidean conformal metric, determined only up to a
+positive scalar.
+
+\subsection{A boundary-swallowing race}
+
+\begin{lemma}[Strict boundary-race probability]
+\label{lem:race}
+Let $\eta$ be chordal SLE$_6$ in $\HH$ from $0$ to $\infty$. For
+$x<0<y$, let $\tau_x,\tau_y$ denote their Loewner swallowing times. Then
+\begin{equation}
+ \mathbb P(\tau_y<\tau_x)=F\left(\frac{-x}{y-x}\right),\qquad
+ F(r)=\frac{\int_0^r[u(1-u)]^{-2/3}\,du}
+ {\int_0^1[u(1-u)]^{-2/3}\,du}.
+ \label{eq:race}
+\end{equation}
+In particular $F$ is strictly increasing on $(0,1)$. The event in
+\eqref{eq:race} is invariant under orientation-preserving homeomorphisms of
+marked Jordan domains, when formulated as the order of separation from
+the terminal prime end by the filled exploration hull.
+\end{lemma}
+
+\begin{proof}
+Use $\partial_tg_t(z)=2/(g_t(z)-W_t)$ with $W_t=\sqrt6 B_t$. Until the
+first swallowing time put
+\[
+ X_t=g_t(x)-W_t<0,\quad Y_t=g_t(y)-W_t>0,\quad
+ T_t=Y_t-X_t,\quad R_t=-X_t/T_t\in(0,1).
+\]
+Then
+\begin{align*}
+ dX_t&=\frac{2}{X_t}\,dt-\sqrt6\,dB_t,&
+ dY_t&=\frac{2}{Y_t}\,dt-\sqrt6\,dB_t,\\
+ dT_t&=\frac{2T_t}{-X_tY_t}\,dt>0,&
+ dR_t&=\frac{2(1-2R_t)}{R_t(1-R_t)T_t^2}\,dt
+                 +\frac{\sqrt6}{T_t}\,dB_t.
+\end{align*}
+With $ds=dt/T_t^2$, the generator of $R$ is
+\[
+ \mathcal L=3\frac{d^2}{dr^2}
+       +\frac{2(1-2r)}{r(1-r)}\frac d{dr}.
+\]
+The increasing solution of $\mathcal LF=0$, $F(0)=0$, $F(1)=1$ has
+$F'(r)=C[r(1-r)]^{-2/3}$, giving \eqref{eq:race} by bounded optional
+stopping. To justify the terminal values, $|X|/\sqrt6$ and $Y/\sqrt6$
+are Bessel processes of dimension $1+4/6=5/3$ up to their first zero;
+thus the first swallowing time is finite almost surely. Alternatively,
+the accessible endpoints of the displayed diffusion give the same stopping
+argument. There is no simultaneous swallowing, since $T_t\geq y-x>0$,
+whereas both $X_t,Y_t\to0$ would force $T_t\to0$. At the first swallowing,
+$R=1$ exactly when $y$ is swallowed first. ODE solutions and the continuous
+driver stay finite up to that first time.
+
+Swallowing means that the marked boundary end has been cut off from the
+target by the explored filled hull (including the boundary swallowed at
+first contact). This definition uses only the domain, the oriented path,
+and its order of traversal. A homeomorphism carries filled target
+components to filled target components. Capacity parametrization therefore
+has no role in the comparison event.
+\end{proof}
+
+\subsection{Boundary rigidity and affine uniqueness}
+
+\begin{lemma}[A single SLE law identifies its conformal boundary map]
+\label{lem:boundary-rigidity}
+Let $h:\overline D\to\overline{D'}$ be an orientation-preserving
+homeomorphism between closed bounded Jordan domains, with
+$p'=h(p)$, $q'=h(q)$. If $h_*\SLE(D;p,q)=\SLE(D';p',q')$, then
+$h|_{\partial D}$ agrees with the boundary extension of a conformal
+map $f:D\to D'$.
+\end{lemma}
+
+\begin{proof}
+Choose conformal maps $\phi:D\to\HH$ and $\phi':D'\to\HH$ sending
+their marked endpoints to $0,\infty$. Their Jordan boundary extensions
+give an increasing homeomorphism
+\[
+ H=\phi'\circ h\circ\phi^{-1}:\overline\RR\to\overline\RR
+\]
+fixing $0,\infty$. For every $x<0<y$, equality of the corresponding
+boundary-race probabilities and strictness in Lemma~\ref{lem:race} give
+\[
+ \frac{-H(x)}{H(y)-H(x)}=\frac{-x}{y-x},\quad\text{hence}\quad
+ \frac{H(x)}{H(y)}=\frac{x}{y}.
+\]
+Fixing one $x<0$ and one $y>0$ shows $H(s)=cs$ for all real $s$, with
+$c>0$. Consequently $f=(\phi')^{-1}\circ(c\phi)$ has exactly the
+required boundary values. Equality of interior maps is not asserted for
+an arbitrary $h$.
+\end{proof}
+
+\begin{theorem}[Single-domain affine identifiability]
+\label{thm:affine-identifiability}
+For even one bounded Jordan $D$ and one pair of distinct boundary points
+$p,q$, the equality $\nuA{A}{D}{p}{q}=\nuA{B}{D}{p}{q}$ holds if and
+only if $BA^{-1}$ is a Euclidean similarity. Equivalently,
+\[
+ B^{\mathsf T}B=c A^{\mathsf T}A\qquad(c>0).
+\]
+The statement also allows orientation-reversing normalizers by composing
+one map with a reflection.
+\end{theorem}
+
+\begin{proof}
+The equality of laws means $M=BA^{-1}$ carries the SLE law in $AD$ to
+the SLE law in $BD$, at the corresponding endpoints. By
+Lemma~\ref{lem:boundary-rigidity}, a conformal map $f:AD\to BD$ has
+boundary values equal to $M$. Both real coordinate functions of the
+real-linear map $M$ are harmonic. The real and imaginary parts of $f$
+are also harmonic, continuous on the closure, with the same boundary
+values. The maximum principle on the bounded domain gives $f=M$
+throughout $AD$. Thus $M$ is complex-linear and invertible, hence a
+similarity. The converse is ordinary SLE similarity covariance.
+Reflection covariance reduces the remaining orientation case to this one.
+\end{proof}
+
+\section{An exact counterexample using the terminal boundary germ}
+\label{sec:target-germ}
+
+\subsection{The conserved information and the admissible domain class}
+
+Let $G(D,q)$ be the embedded germ of $D$ at its terminal prime end.
+Concretely, target neighborhoods may be taken as
+\[
+ f^{-1}\bigl(\HH\setminus\overline{B(0,R)}\bigr),\qquad R\to\infty,
+\]
+for any conformal $f:D\to\HH$ sending $q$ to infinity. The embedded
+germ records the planar domain in a full neighborhood of that end;
+one may shrink neighborhoods without changing it. A full neighborhood
+contains a neighborhood in the prime-end compactification, rather than
+merely an arbitrarily narrow approach sector. Germ equivalence means
+agreement on such neighborhoods with the same inherited marked end.
+
+At a Jordan boundary point this is the ordinary local boundary germ.
+At a slit tip one must retain which prime end is intended. A germ is
+called $C^1$-regular here when it has a singleton endpoint and, in a full
+end neighborhood, a single $C^1$ boundary arc with a nonzero tangent and
+the domain locally on one side. The tangent line $\ell(G)$ is unoriented.
+All other germs receive the default label below. Regularity and tangent
+are properties of the germ itself.
+
+Finite chordal Loewner hulls in a target-normalized half-plane chart are
+bounded. They therefore miss some target neighborhood. At every finite
+stopping time prior to reaching the target, the remaining marked domain
+$D_t$ satisfies
+\begin{equation}
+ G(D_t,q)=G(D,q).
+ \label{eq:germ-persistent}
+\end{equation}
+Likewise locality deletions away from the terminal end preserve this germ.
+Thus the following proof already works on domains with regular targets,
+together with their slit domains, a class closed under all operations
+needed in the argument. Assigning defaults to nonregular end germs extends
+it to arbitrary prime ends under the stated end-neighborhood convention.
+Locality for sets accumulating at a nonsingleton impression must always be
+formulated in prime-end terms; it is not defined by pretending the end is
+a single physical point.
+
+\begin{proposition}[Conserved-label construction]
+\label{prop:germ-construction}
+Assign to each embedded terminal germ an orientation-preserving invertible
+real-linear map $A(G)$, measurably and in a translation-covariant way:
+$A(G(D+v,q+v))=A(G(D,q))$. Define
+\begin{equation}
+ P_{D,p,q}=(A(G(D,q))^{-1})_*
+       \SLE\bigl(A(G(D,q))D;A(G(D,q))p,A(G(D,q))q\bigr).
+ \label{eq:germ-ensemble}
+\end{equation}
+Then this family has strong domain Markov, locality, and translation
+covariance as unparameterized paths.
+\end{proposition}
+
+\begin{proof}
+Write $A=A(G(D,q))$. By \eqref{eq:germ-persistent} the same deterministic
+$A$ is prescribed after any finite initial exploration. Apply strong
+domain Markov to SLE$_6$ in $AD$, then pull the tail back by $A^{-1}$.
+This gives exactly \eqref{eq:germ-ensemble} in the remaining target
+component, at its exposed tip and target. Stopping times are carried
+to stopping times because the invertible map preserves the explored
+filtration; the capacity clock is an adapted increasing time change.
+For deletion of $K$ away from both ends, the two domains use the same
+$A$. SLE$_6$ locality in $AD$ and $AD\setminus AK$, pulled back by
+$A^{-1}$, couples their paths identically until first encounter with $K$.
+Finally the displayed covariance of the label and translation covariance
+of SLE$_6$ prove physical translation covariance. No conditioning on a
+hidden random parameter occurs: the label is a deterministic conserved
+function of the current marked domain.
+\end{proof}
+
+\subsection{A concrete example with full similarity covariance}
+
+Fix $a>0$, $a\ne1$, and set
+\begin{equation}
+ A(G)=\begin{cases}
+ \Pi_{\ell(G)}+a\Pi_{\ell(G)^\perp},&G\text{ is }C^1\text{-regular},\\
+ I,&\text{otherwise}.
+ \end{cases}
+ \label{eq:tangent-label}
+\end{equation}
+Here $\Pi$ is orthogonal projection. On smooth-target domains this is a
+continuous function of the tangent in the topology controlling that
+tangent; on arbitrary germs it is a deterministic local geometric rule.
+If desired, the class can first be restricted to piecewise smooth
+domains and their finite slit descendants, avoiding any measurable-space
+conventions for the class of all planar domains.
+
+For a similarity $S(x)=cRx+v$, $c>0$, $R$ orthogonal, one has
+\[
+ A(G(SD,Sq))=R A(G(D,q))R^{-1}.
+\]
+Combining this with SLE$_6$ similarity and reflection covariance proves
+$P_{SD,Sp,Sq}=S_*P_{D,p,q}$. Thus adding scale invariance, reflection
+covariance, or covariance under every rotation does not exclude this
+construction.
+
+\begin{theorem}[The proposed fixed-affine classification is false]
+\label{thm:counterexample}
+The ensemble \eqref{eq:germ-ensemble}--\eqref{eq:tangent-label} satisfies
+the three proposed axioms, and full Euclidean similarity covariance, but
+there is no one fixed affine transformation sending all its laws to
+ordinary chordal SLE$_6$. This failure already occurs for smooth targets
+on one disk.
+\end{theorem}
+
+\begin{proof}
+Take $D$ to be the unit disk and fix $p=-1$. At $q_h=i$ the tangent is
+horizontal, while at $q_v=1$ it is vertical. The respective matrices are
+\[
+ A_h=\begin{pmatrix}1&0\\0&a\end{pmatrix},\qquad
+ A_v=\begin{pmatrix}a&0\\0&1\end{pmatrix}.
+\]
+A fixed affine normalizer with linear part $B$ would imply
+$\nuA{B}{D}{p}{q_h}=\nuA{A_h}{D}{p}{q_h}$ and
+$\nuA{B}{D}{p}{q_v}=\nuA{A_v}{D}{p}{q_v}$.
+Theorem~\ref{thm:affine-identifiability} makes both $BA_h^{-1}$ and
+$BA_v^{-1}$ similarities. Hence $A_vA_h^{-1}=\operatorname{diag}(a,a^{-1})$
+would be a similarity, forcing $a^2=1$, contrary to $a>0$, $a\ne1$.
+\end{proof}
+
+\subsection{Why these really are continuous-driving Loewner curves}
+\label{sec:loewner-admissible}
+
+Continuity and the absence of transverse crossings alone would not suffice
+to settle this point. Instead use the deterministic characterization in
+\cite[Theorem 1.1 and Remark 1.4]{yuan}: a continuous half-plane path with
+strictly increasing filled hulls is a continuous-driving Loewner trace if
+and only if it is a locally uniform limit of simple interior paths. The
+condition is independent of parametrization.
+
+An ordinary SLE$_6$ trace has this property. Conjugating an invertible
+affine map by the conformal charts of its source and image domains gives
+a quasiconformal self-map of $\HH$. It extends to a homeomorphism of the
+closed half-plane with its point at infinity, fixing the two marked ends
+after normalization. It carries simple interior approximants to simple
+interior approximants; uniform convergence survives on compact time
+intervals because the extended map is uniformly continuous on relevant
+compact sets. Filled hulls and their strict growth are topologically
+preserved. Yuan's theorem gives a continuous driving function after
+reparametrizing by capacity. This also treats nonsmooth slit domains in
+the Markov property without assuming Euclidean continuity of their
+uniformizing maps on every boundary point. The counterexample therefore
+applies to the driving-function formulation as well as to curves.
+
+% Technical completion of affine-image Loewner admissibility.
+\subsection{Quasiconformal images have infinite capacity lifetime}
+\label{sec:qc-capacity-lifetime}
+
+Yuan's characterization gives a continuous Loewner driver after recoding
+an affine image by its capacity, but this alone does not assert that the
+capacity lifetime is infinite.  A continuous curve tending to infinity need
+not have infinite half-plane capacity.  The following argument proves the
+required assertion for the quasiconformal changes arising here.
+
+\begin{lemma}
+Let $F:\mathbb H\to\mathbb H$ be a fixed $K$-quasiconformal
+self-homeomorphism whose boundary extension fixes $0$ and $\infty$.
+If $\eta$ is ordinary chordal SLE$_6$ from $0$ to $\infty$, then
+$F\eta$ has unbounded imaginary part almost surely.  Consequently its
+half-plane-capacity lifetime is infinite.
+\end{lemma}
+
+\begin{proof}
+Put $C=\overline{B(i,1/4)}\subset\mathbb H$.  The boundary map of $F$
+is increasing, so $F(R)>0$ for $R>0$ and $F(R)\to+\infty$ as
+$R\to\infty$.  The normalized maps
+\[
+ F_R(z)=\frac{F(Rz)}{F(R)}
+\]
+are $K$-quasiconformal half-plane maps fixing $0,1,\infty$.
+Reflecting them across the real line gives normalized quasiconformal sphere
+maps.  Compactness of this normalized family, including its inverses,
+implies
+\[
+ \inf_{R>0}\inf_{z\in C}\operatorname{Im}F_R(z)=c_K>0.
+\]
+Indeed, a sequence violating positivity would have a subsequence converging
+uniformly on the sphere to a quasiconformal homeomorphism preserving the
+half-plane, and a subsequence of points in $C$ would then be mapped to its
+real boundary, an impossibility.  Hence
+\[
+ \inf_{z\in RC}\operatorname{Im}F(z)\geq c_K F(R)
+       \longrightarrow\infty.
+ \tag{QC1}
+\]
+
+The event $E=\{\eta\cap C\ne\varnothing\}$ has positive probability.
+One elementary justification avoids invoking a support theorem.  In the
+normalization $\partial_tg_t=2/(g_t-W_t)$, the Brownian event
+\[
+ \sup_{0\leq t\leq1}|W_t|<\varepsilon,
+       \qquad 0<\varepsilon<1/4,
+\]
+has positive probability.  On this event the Loewner hull stays within the
+vertical strip $|\operatorname{Re}z|\leq\varepsilon$ up to time $1$.
+For example, a point initially to the right of that strip has increasing
+real part under the Loewner ODE and retains a positive real gap from the
+driver, so it cannot be swallowed in finite time; the other side is
+identical.  If the entire trace up to time $1$ had height at most $1$, its
+filled hull would lie in the half-disk of radius
+$\sqrt{1+\varepsilon^2}$.  By capacity monotonicity its capacity would be
+at most $1+\varepsilon^2<2$, whereas its actual capacity is $2$.
+Here a half-disk of radius $R$ has hydrodynamic map $z+R^2/z$ and
+capacity $R^2$.  Thus the continuous trace crosses height $1$ in the strip,
+and that crossing lies in $C$.
+
+Fix $r>1$.  Brownian scaling, and therefore scalar dilation of ordinary
+SLE$_6$, is mixing.  Indeed $Z_s=e^{-s/2}B_{e^s}$, $s\in\mathbb R$,
+is a stationary Gaussian process with covariance $e^{-|s-u|/2}$; scalar
+Brownian scaling becomes a log-time shift.  Decay of these covariances
+gives mixing first for Gaussian cylinder functions and then for the whole
+path sigma-field.  Its inverse dilation is ergodic as well.  Birkhoff's
+theorem applied to $1_E$ gives
+\[
+ \eta\cap r^nC\ne\varnothing
+       \qquad\text{for infinitely many positive integers }n,
+       \quad\text{almost surely}.
+\]
+In fact these visits have limiting positive frequency, since
+$1_E(S_{r^{-n}}\eta)=1_{\{\eta\cap r^nC\ne\varnothing\}}$.
+Equation (QC1) then shows that $F\eta$ has unbounded height.
+
+Every finite initial image trace is compact away from infinity and has
+finite capacity.  The standard Loewner height estimate
+\[
+ \max\{\operatorname{Im}z:z\in K\}^2
+       \leq2\operatorname{hcap}(K)
+\]
+for a half-plane hull, or equivalently
+$\max\operatorname{Im}K_u\leq2\sqrt u$ when
+$\operatorname{hcap}(K_u)=2u$, now forces the capacities of these image
+prefixes to tend to infinity.  Thus the capacity-recoded image has lifetime
+$[0,\infty)$.
+\end{proof}
+
+For an affine image in a bounded marked domain, conjugating the affine map
+by its source and image conformal charts gives exactly such a fixed
+quasiconformal $F$ fixing the marked ends.  This lemma therefore completes
+the infinite-time driving-function assertion for the target-germ
+counterexample.  It uses properties of SLE$_6$, rather than an invalid
+general assertion about arbitrary curves tending to infinity.
+
+\section{A positive classification within the global-deformation class}
+\label{sec:global-rigidity}
+
+The preceding example does not arise from one deterministic global change
+of spatial coordinates. Within that narrower class the proposed affine
+conclusion does follow, and no differentiability of the change of
+coordinates is required.
+
+\begin{theorem}[Full-family homeomorphism symmetries are conformal]
+\label{thm:homeo-symmetry}
+Let $h:\CC\to\CC$ be an orientation-preserving homeomorphism such that,
+for every bounded Jordan domain and marked boundary pair,
+\[
+ h_*\SLE(D;p,q)=\SLE(hD;hp,hq).
+\]
+Then $h$ is an entire conformal automorphism, hence $h(z)=\alpha z+\beta$
+for complex $\alpha\ne0$. For an orientation-reversing homeomorphism,
+the corresponding conclusion is anticonformality.
+\end{theorem}
+
+\begin{proof}
+Take any nondegenerate closed Euclidean triangle $T$ and distinct
+$p,q\in\partial T$. Lemma~\ref{lem:boundary-rigidity} gives a conformal
+$f_T:T^\circ\to h(T^\circ)$ whose continuous boundary extension equals
+$h$ on $\partial T$. Cauchy's theorem, applied on interior triangles
+and then passed to the boundary by continuity, yields
+\[
+ \int_{\partial T}h(z)\,dz=\int_{\partial T}f_T(z)\,dz=0.
+\]
+Since $h$ is continuous and this holds for every triangle, Morera's
+theorem makes $h$ entire holomorphic. Its injectivity makes it conformal,
+and an entire conformal automorphism of the plane is complex affine.
+Composition with a reflection proves the other orientation case.
+\end{proof}
+
+\begin{theorem}[Stationary global deformations are real affine]
+\label{thm:stationary-deformation}
+Let $h:\CC\to\CC$ be a homeomorphism and define, on all bounded Jordan
+domains,
+\[
+ P^h_{D,p,q}=(h^{-1})_*\SLE(hD;hp,hq).
+\]
+If this ensemble is covariant under every physical translation, then
+$h$ is a real-affine homeomorphism.
+\end{theorem}
+
+\begin{proof}
+Reflection covariance lets us assume $h$ preserves orientation. For every
+$v\in\CC$, physical translation covariance says that
+\[
+ \psi_v=h\circ T_v\circ h^{-1},\qquad T_v(z)=z+v,
+\]
+preserves the full chordal SLE$_6$ family. All bounded Jordan domains are
+available, since inverse images under a plane homeomorphism are bounded
+Jordan domains. Theorem~\ref{thm:homeo-symmetry} gives
+$\psi_v(z)=\alpha_v z+\beta_v$. For $v\ne0$, the conjugate of a nonzero
+translation has no fixed point. A complex affine map with
+$\alpha_v\ne1$ has a fixed point, so $\alpha_v=1$ for all $v$.
+It follows that $h(x+v)=h(x)+\beta_v$, and putting $x=0$ gives
+\[
+ h(x+v)-h(0)=(h(x)-h(0))+(h(v)-h(0)).
+\]
+The continuous additive map $h-h(0)$ is real-linear. It is invertible
+because $h$ is a homeomorphism.
+\end{proof}
+
+\paragraph{What this does not prove.}
+The original axioms do not give a representation by one global $h$.
+The counterexample shows that replacing a domain-dependent geometry by
+one fixed spatial geometry is a substantive missing step, not an
+innocent coordinate choice.
+
+\section{Boundary stability and other ways to remove terminal dependence}
+\label{sec:boundary-stability}
+
+\subsection{An explicit failure of continuity under small target perturbations}
+
+The tangent rule is continuous when target tangents converge, but not under
+ordinary uniform approximation of the domains and their boundaries.
+This defect persists even when every domain is smooth and the approximating
+domains are uniform quasidisks.
+
+\begin{proposition}[Local rotation of a terminal germ]
+\label{prop:boundary-discontinuity}
+For the ensemble of Theorem~\ref{thm:counterexample}, there are smooth
+Jordan $D_n\to D$, with uniformly converging boundary parametrizations
+and fixed distinct marked points $p,q$, for which $P_{D_n,p,q}$ does
+not converge to $P_{D,p,q}$ in the uniform unparameterized-curve topology.
+\end{proposition}
+
+\begin{proof}
+Let $D$ be the unit disk, $q=i$, $p=-1$. Choose a smooth radial cutoff
+$\chi$ equal to $1$ near $0$ and $0$ outside the unit disk, and define
+the orientation-preserving smooth diffeomorphism
+\[
+ F(re^{i\theta})=r\exp\bigl(i\theta+i(\pi/2)\chi(r)\bigr).
+\]
+It is a rotation by $\pi/2$ near $0$ and the identity outside the disk.
+Its quasiconformal distortion is finite, since $r\chi'(r)$ is bounded.
+Put $F_\epsilon(z)=q+\epsilon F((z-q)/\epsilon)$ and
+$D_\epsilon=F_\epsilon(D)$. Then $F_\epsilon(q)=q$, and $F_\epsilon(p)=p$
+for small $\epsilon$, while $\sup_z|F_\epsilon(z)-z|\leq2\epsilon$.
+All $F_\epsilon$ have one common quasiconformal bound. At $q$ the target
+tangent has rotated by $\pi/2$, so the matrix used for every
+$D_\epsilon$ is $A_v$, whereas the matrix for $D$ is $A_h$.
+
+The domains $A_vD_\epsilon$ are uniform quasidisks converging to $A_vD$,
+with the marked boundary points converging as well. Kernel convergence
+and uniform boundary equicontinuity of normalized Riemann maps on
+uniform quasidisks give uniform convergence of these maps on the closed
+disk. Coupling their chordal SLE$_6$ paths with one common disk SLE path
+therefore gives convergence of the entire unparameterized curves. Thus
+\[
+ P_{D_\epsilon,p,q}\ \Longrightarrow\ \nuA{A_v}{D}{p}{q}.
+\]
+By Theorem~\ref{thm:affine-identifiability}, this limit differs from
+$P_{D,p,q}=\nuA{A_h}{D}{p}{q}$ because
+$A_vA_h^{-1}=\operatorname{diag}(a,a^{-1})$ is not a similarity.
+\end{proof}
+
+This proves that an appropriate boundary-stability requirement excludes
+the example. It does not prove that boundary stability plus the three
+original axioms suffices for classification.
+
+\begin{corollary}[Boundary stability classifies tangent-dependent affine laws]
+\label{cor:tangent-stability}
+Suppose, on smooth bounded Jordan domains with smooth targets, an ensemble
+has the form $P_{D,p,q}=\nuA{A_{\ell(D,q)}}{D}{p}{q}$, where $A_\ell$
+is an arbitrary orientation-preserving invertible linear map depending
+only on the unoriented target tangent line. If these laws are continuous
+under the uniform smooth-boundary approximations used in
+Proposition~\ref{prop:boundary-discontinuity}, then one fixed affine
+map normalizes all of them. If the ensemble is also covariant under
+all rotations, that fixed map is a similarity.
+\end{corollary}
+\begin{proof}
+Given any two tangent lines $\ell_1,\ell_2$, take a disk having tangent
+$\ell_1$ at $q$ and apply the preceding local twist with the rotation
+carrying $\ell_1$ to $\ell_2$. Every approximating domain uses the
+constant matrix $A_{\ell_2}$. SLE continuity in that fixed metric shows
+that the limiting law is $\nuA{A_{\ell_2}}{D}{p}{q}$, whereas the assumed
+boundary stability makes it $\nuA{A_{\ell_1}}{D}{p}{q}$. Single-pair
+identifiability implies $A_{\ell_2}A_{\ell_1}^{-1}$ is a similarity.
+Thus all $A_\ell^{\mathsf T}A_\ell$ are proportional, which is exactly
+one fixed affine family. For rotation covariance its fixed tensor $Q$
+satisfies $R^{\mathsf T}QR=Q$ for every rotation $R$, by the same metric
+uniqueness, hence $Q$ is scalar.
+\end{proof}
+
+\begin{thebibliography}{9}\bibitem{lawler}G. F. Lawler, \emph{Schramm--Loewner Evolution}, Park City lecture notes (2007), Lectures 3--4. \url{https://math.uchicago.edu/~lawler/utah.pdf}.\bibitem{yuan}Y. Yuan, \emph{Topological characterisations of Loewner traces}, Indiana Univ. Math. J. \textbf{71} (2022), 1027--1046, Theorem 1.1 and Remark 1.4. \url{https://arxiv.org/abs/2003.05535}.\end{thebibliography}\end{document}
