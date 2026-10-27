@@ -34,7 +34,8 @@ mirrored slit tests can replace deterministic initial tangents.
 The slit tests give inverse-linear drift and inverse-cubic variance anomalies,
 and a scaling argument obstructs tame driving in a wrong affine structure.
 Independent-color RSW shields give source-patch coalescence, an initial
-trace-germ zero-one law, and quantitative prefix/full-curve decorrelation.
+trace-germ zero-one law, quantitative prefix/full-curve decorrelation,
+and total-variation decoupling of a short prefix from a distant terminal suffix.
 Endpoint tensor decoding and source splicing collapse coherent affine-SLE
 mixtures to one deterministic common metric, without deriving that ansatz.
 Other results give stability criteria, anisotropy bounds, and an abstract
@@ -4912,6 +4913,146 @@ small radius, so the limit belongs to the trivial initial germ.
 This removes the deterministic-value premise at these starts once existence
 of a tangent and natural-trace-filtration compatibility are known; neither
 tangent existence nor the required slit-uniform bound is obtained here.
+
+
+\section{Total-variation decoupling of an initial prefix and a distant suffix}
+\label{sec:spatial-beta-mixing}
+
+The closed exact-coalescence relation gives a stronger consequence than
+bounded-Lipschitz covariance. It controls arbitrary measurable observables
+of the distant terminal suffix in total variation. This uses the actual
+independent-color source-shield coupling, not just abstract locality or
+an unforced-crossing bound.
+
+Fix a bounded domain with source $p$, target $q$, flat source geometry,
+and a marginal curve scaling limit $P$ satisfying the hypotheses of
+Theorem~\ref{thm:ed-germzeroone}. Let $\sigma_r\gamma$ be the initial
+ordered prefix stopped on the radius-$r$ circle about $p$. For
+$R<|q-p|$ define $\lambda_R\gamma$ to be the ordered terminal suffix
+beginning at the \emph{last} visit to $\overline B(p,R)$. For any
+continuous representative on $[0,1]$ this means restriction from
+\[
+ t_R(\gamma)=\max\{t\in[0,1]:|\gamma(t)-p|\leq R\}
+\]
+to $1$, followed by linear reparameterization. The resulting ordered
+curve does not depend on the representative or pauses.
+
+Both stopping operations are Borel maps on the assumed Polish oriented
+Fr\'echet curve space. For completeness, on the continuous-parameter
+curve space, $t_R$ is Borel because, for fixed $a$,
+\[
+ \{t_R\geq a\}
+ =\left\{\min_{a\leq t\leq1}|\gamma(t)-p|\leq R\right\}
+\]
+is closed. Restriction and rescaling are jointly continuous in a curve
+and its cut parameter. Hence the terminal-suffix map to the quotient
+curve space is Borel on representatives and invariant under
+reparameterization. It descends to a Borel map on the Polish quotient:
+the preimages of Borel sets are saturated Borel sets, whose images and
+complements under the continuous quotient map are analytic; both are
+therefore Borel. First-exit stopping has the same Borel property.
+
+\begin{theorem}[Prefix--suffix decoupling]
+\label{thm:spatial-beta}
+There exist $C<\infty$ and $\alpha>0$, determined by the source-shield
+constants, such that for all sufficiently small $R$ and all
+$0<r<R/64$,
+\[
+ \left\|\mathcal L_P(\sigma_r\gamma,\lambda_R\gamma)
+       -\mathcal L_P(\sigma_r\gamma)
+           \otimes\mathcal L_P(\lambda_R\gamma)\right\|_{\rm TV}
+ \leq C(r/R)^\alpha.
+ \tag{SB1}
+\]
+Here total variation is $\sup_A|\mu(A)-\nu(A)|$ on the product
+space. In particular this estimate holds at \emph{every} small radius
+$r$, not merely almost every stopping-continuity radius.
+\end{theorem}
+
+\begin{proof}
+Set $\epsilon=8r$. At the discrete level take two configurations with
+independent colors in $B(p,\epsilon)$ and identical independent colors
+outside that ball. Both marginal explorations have the same scaling
+limit $P$. Their joint laws are tight. Choose a radius
+$\rho\in(r,2r)$ at which first-exit stopping is $P$-almost surely
+continuous; such radii have full Lebesgue measure by
+Lemma~\ref{lem:lt-stopcontinuity}.
+The first discrete exploration up to radius $\rho$ uses only the first
+configuration's interior colors, once the mesh is sufficiently small.
+It is consequently independent of the entire second exploration.
+Continuous mapping along a joint subsequential limit gives
+\[
+ \sigma_\rho\gamma_1\ \perp\!\!\!\perp\ \gamma_2.
+\]
+Stopping the limiting first prefix again, now at radius $r$, is a Borel
+operation and requires no continuity assertion at $r$. Thus
+$\sigma_r\gamma_1$ is independent of the full curve $\gamma_2$.
+
+Apply the source-shield estimate with shield radius $R/2$. Outside an
+event of probability at most $C(r/R)^\alpha$, both prefixes before
+coalescence stay in $K=\overline B(p,R/2)$ and the ordered suffixes
+are identical. Lemma~\ref{lem:cb-closed} and the closed-set Portmanteau
+inequality preserve this statement in the same joint subsequential
+limit. Since $q\notin\overline B(p,R)$, each full curve's last visit
+to $\overline B(p,R)$ is on the common suffix. Therefore
+\[
+ \mathbb P\{\lambda_R\gamma_1\ne\lambda_R\gamma_2\}
+ \leq C(r/R)^\alpha.
+\]
+The pairs
+$(\sigma_r\gamma_1,\lambda_R\gamma_1)$ and
+$(\sigma_r\gamma_1,\lambda_R\gamma_2)$ form a coupling of the
+joint law in (SB1) with the displayed product law. The usual coupling
+bound for total variation proves (SB1).
+\end{proof}
+
+\begin{corollary}[Expected conditional total-variation stability]
+\label{cor:spatial-conditional-tv}
+Let $K_r(x,\cdot)$ be a regular conditional law of $\lambda_R\gamma$
+given $\sigma_r\gamma=x$. Then
+\[
+ \int\left\|K_r(x,\cdot)-\mathcal L_P(\lambda_R\gamma)
+          \right\|_{\rm TV}
+       \,\mathcal L_P(\sigma_r\gamma)(dx)
+ \leq C(r/R)^\alpha.
+ \tag{SB2}
+\]
+Consequently for bounded Borel functions $F,G$ of the two respective
+variables,
+\[
+ |\operatorname{Cov}_P(F(\sigma_r\gamma),G(\lambda_R\gamma))|
+ \leq 2C\|F\|_\infty\|G\|_\infty(r/R)^\alpha.
+ \tag{SB3}
+\]
+\end{corollary}
+\begin{proof}
+On standard Borel spaces, total variation between a joint law and the
+product of its marginals is the integral of the total variations of
+the corresponding regular conditional laws. One may verify the identity
+using a countable generating algebra to compute the variation of each
+signed conditional measure. This gives (SB2). Integrating the bounded
+product observable against the difference of the two probability laws
+costs at most twice its supremum norm times the convention for total
+variation used in (SB1), proving (SB3).
+\end{proof}
+
+\paragraph{Variants and limitation.}
+The same proof applies to any standard-Borel-valued observable $Y_R$
+that agrees whenever two curves belong to $E_{\overline B(p,R/2)}$.
+For example one may use the compact trace outside the open radius-$R$
+ball instead of the ordered distant suffix. Measurability of a given
+variant should be checked separately. Completed prefix sigma-fields
+are harmless, since versions may be chosen modulo their common
+marginal null sets.
+
+This is quantitative spatial loss of memory at a deterministic regular
+source. It does not identify a conditional continuation kernel in an
+arbitrary random slit domain: the proof has no shield estimate uniform
+over rough explored frontiers. In particular it neither proves strong
+DMP in a curve limit nor the whole-slit stability premise of the
+driving-rigidity results. The whole-tube approach based on boundary
+three-arm estimates still needs the deterministic implication from
+ordered curve disagreement to an appropriate arm event.
 
 
 \section{Unsuccessful routes, revised objectives, and next experiments}
