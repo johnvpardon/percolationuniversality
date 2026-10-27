@@ -19,25 +19,29 @@
 \newcommand{\nuA}[4]{\nu^{#1}_{#2,#3,#4}}
 \DeclareMathOperator{\Id}{Id}
 
-\title{Local exploration laws and regular driving characteristics}
-\hypersetup{pdftitle={Local exploration laws and regular driving characteristics},pdfauthor={Autonomous mathematical research}}
+\title{Local exploration laws, initial germs, and affine metrics}
+\hypersetup{pdftitle={Local exploration laws, initial germs, and affine metrics},pdfauthor={Autonomous mathematical research}}
 \author{Autonomous mathematical investigation, with independent critical checks}
-\date{26 October 2026}
+\date{27 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-We investigate the corrected source-neighborhood locality axiom.
-For continuous semimartingale Loewner drivers with absolutely continuous,
-right-continuous drift, locality itself gives an initial quadratic-variation
-rate. Two shrinking mirrored slits show that local boundedness of the
-initial drift forces zero drift and variance six. Strong domain Markov
-then identifies SLE$_6$, without assuming conformal covariance or Brownian
-driving. The exact instability rates are inverse-linear and inverse-cubic
-in the slit parameter. Separately, exact scaling proves that a fixed
-nonconformal affine SLE$_6$ deformation cannot have the stated tame drift
-structure in every bounded domain. These are conditional results: the
-analytic hypotheses have not been derived from RSW or from the project
-axioms, and the corrected classification and universality remain open.
+Independent-color resampling and RSW source shields imply an initial
+ordered trace-germ zero-one law, with quantitative decorrelation between
+small prefixes and the full exploration curve. This conclusion does not
+assume affine-SLE marginals or a limiting domain Markov theorem.
+A universal tensor decoder at analytic regular endpoints, exact suffix
+coalescence, and source splicing then show that a coherent family of
+affine-SLE$_6$ mixtures must use one deterministic common affine metric.
+The affine-mixture representation itself remains an unproved hypothesis.
+Separately, a conditional Loewner-driving classification permits arbitrary
+continuous finite-variation drift with a uniform first-order initial
+tangent in probability; tightness in law along mirrored slit tests can
+replace deterministic tangents. Locality and compatible strong DMP then
+force Brownian driving of variance six. A wrong-affine-coordinate
+obstruction holds under the weakened deterministic tangent assumptions.
+These results leave the corrected three-axiom classification and critical
+percolation universality open.
 \end{abstract}
 
 \section{Current locality and scope}
@@ -503,6 +507,331 @@ assignments at rough, dynamically created source germs, where the analytic
 boundary jet in (DR16) no longer exists.
 
 % Research fragment; requires amsmath/amssymb/amsthm.
+\section{Rigidity from an averaged initial finite-variation characteristic}
+\label{sec:fv-tangent-rigidity}
+
+\paragraph{Scope.}
+This conditional theorem weakens the preceding driving-regularity premise.
+The canonical finite-variation characteristic need not be absolutely
+continuous and need not possess a right-continuous density. We assume only
+a deterministic first-order tangent in probability, uniformly on shrinking
+initial intervals. No such property is derived from RSW or the three axioms.
+
+Let the driver in inverse chart $f$ have canonical decomposition
+\[
+ W^f=M^f+A^f,\qquad W^f_0=M^f_0=A^f_0=0,
+ \tag{FV1}
+\]
+where $M^f$ is a continuous local martingale and $A^f$ is continuous,
+adapted, and locally of finite variation. Write $C^f=\langle M^f\rangle$.
+Assume for every deterministic state and inherited chordal chart that a
+finite deterministic number $B(f)$ satisfies
+\[
+ \frac{1}{t}\sup_{0\le s\le t}|A^f_s-B(f)s|
+       \xrightarrow[t\downarrow0]{\mathbb P}0.
+ \tag{FV2}
+\]
+An almost-sure derivative $A^f_t/t\to B(f)$ implies (FV2), but (FV2)
+is weaker. No bound on $\operatorname{TV}(A^f;[0,t])/t$ is assumed.
+
+\begin{lemma}[A small finite-variation displacement in an analytic field]
+\label{lem:fv-analytic-displacement}
+Let $W=M+A$ as in (FV1), let $C=\langle M\rangle$, and suppose
+$\sup_{s\le t}|A_s|=O_{\mathbb P}(t)$ and $A_t/t\to B$ in probability.
+Let $H_t(x)$ be a random field analytic in $x$ on a fixed neighborhood of
+zero for a positive initial time interval. Suppose it has absolutely
+continuous finite variation in $t$, and, after localization, its first three
+spatial derivatives and the first spatial derivative of $\partial_tH_t$
+are bounded there. Assume $H_t'(x)\to d$ as $(t,x)\to(0,0)$.
+Then
+\[
+ \frac1t\int_0^t H_s'(W_s)\,dA_s\longrightarrow dB
+       \quad\hbox{in probability}.
+ \tag{FV3}
+\]
+\end{lemma}
+\begin{proof}
+Localize so $M,A,W$ stay in the spatial neighborhood. Apply the
+finite-variation It\^o--Wentzell formula to
+$F_t(x)=H_t(x+A_t)-H_t(x)$ at $x=M_t$. It gives
+\begin{align*}
+ \int_0^tH_s'(W_s)\,dA_s
+ ={}&H_t(M_t+A_t)-H_t(M_t)\\
+ &-\int_0^t[H_s'(M_s+A_s)-H_s'(M_s)]\,dM_s\\
+ &-\frac12\int_0^t[H_s''(M_s+A_s)-H_s''(M_s)]\,dC_s\\
+ &-\int_0^t[(\partial_sH_s)(M_s+A_s)
+                  -(\partial_sH_s)(M_s)]\,ds.
+\end{align*}
+The first term divided by $t$ converges to $dB$ by the mean-value formula.
+The second term is a continuous local martingale $N_t$ with bracket at
+most $K^2\sup_{s\le t}|A_s|^2 C_t$. Thus $N_t/t\to0$ in probability:
+stop when $|A_s|>Lt$ or $C_s>\eta$, apply the martingale maximal
+inequality, then let $t\downarrow0$, $\eta\downarrow0$, and $L\uparrow\infty$.
+Here $C_t\to0$ almost surely and $\sup|A_s|/t$ is tight. The third term
+divided by $t$ is bounded by
+$K\sup|A_s|C_t/t=o_{\mathbb P}(1)$; the fourth is bounded by
+$K\sup|A_s|=o_{\mathbb P}(1)$. No total-variation estimate was used.
+\end{proof}
+
+\begin{proposition}[Initial covariance without a drift density]
+\label{prop:fv-initial-covariance}
+Suppose source locality allows one test deletion with hydrodynamic map $h$,
+$d=h'(0)>0$, $e=h''(0)\ne0$, and both original and deleted drivers obey
+(FV1)--(FV2), with their canonical characteristics in the same trace
+filtration. Then
+\[
+ C^f_t/t\longrightarrow V(f)\in[0,\infty)
+       \quad\hbox{in probability},
+\]
+where $V(f)$ is deterministic, and
+\[
+ V(f_A)=V(f),\qquad
+ B(f_A)=\frac{B(f)}d+
+            \left(\frac{V(f)}2-3\right)\frac e{d^2}.
+ \tag{FV4}
+\]
+\end{proposition}
+\begin{proof}
+Use the same evolving deletion maps and stopping-time capacity clocks as
+in (DR5), now without assuming a drift density. Put
+$p_t=h_t'(W_t)$, $q_t=h_t''(W_t)$ and $u(t)=\int_0^t p_s^2ds$.
+Uniqueness of the canonical semimartingale decomposition gives
+\[
+ \widehat A_{u(t)}
+  =\int_0^t p_s\,dA_s+\frac12\int_0^tq_s\,dC_s
+                                    -3\int_0^tq_s\,ds.
+ \tag{FV5}
+\]
+The deletion field satisfies the analytic-field lemma after localization;
+its Loewner field derivative and spatial derivatives are bounded near the
+uncollided source. Therefore the first integral divided by $t$ tends to
+$dB(f)$, without assuming $C_t/t$ is tight. Also $u(t)/t\to d^2$.
+Condition (FV2) for the deleted state implies
+$\widehat A_{u(t)}/t\to d^2B(f_A)$: on the event $u(t)\le Kt$, bound
+the error by $t^{-1}\sup_{s\le Kt}|\widehat A_s-B(f_A)s|$, and choose
+fixed $K>d^2$.
+
+Since $q_t\to e\ne0$, (FV5) first implies $C_t/t$ is tight: with
+probability tending to one $q_s$ has fixed sign and magnitude at least
+$|e|/2$ on $[0,t]$, so $|\int q_s dC_s|\ge |e|C_t/2$.
+Consequently
+\[
+ \frac1t\int_0^tq_s\,dC_s-e\frac{C_t}t
+      \longrightarrow0
+ \quad\hbox{in probability}.
+\]
+Taking (FV5) divided by $t$ now gives
+\[
+ V(f)=6+\frac{2\{d^2B(f_A)-dB(f)\}}e.
+\]
+This is intrinsic, nonnegative, and deterministic. The bracket relation
+$\widehat C_{u(t)}=\int_0^t p_s^2dC_s$ gives $V(f_A)=V(f)$.
+For this last step the tangents of $C,\widehat C$ may be evaluated at
+asymptotically deterministic clocks by monotonic squeezing; convergence in
+probability of an arbitrary signed process would not justify that step.
+\end{proof}
+
+\begin{lemma}[A finite-variation process with zero right tangent at every stopping time]
+\label{lem:fv-zero-stopping-tangents}
+Let $A_0=0$ be a continuous adapted locally finite-variation process. If
+for every bounded stopping time $\tau$ before lifetime
+\[
+ \frac{A_{\tau+h}-A_\tau}{h}\longrightarrow0
+       \quad\hbox{in probability as }h\downarrow0,
+ \tag{FV6}
+\]
+then $A$ is indistinguishably zero.
+\end{lemma}
+\begin{proof}
+Work on a compact localized interval. Pathwise put
+$V_t=\operatorname{TV}(A;[0,t])$, and use its generalized inverse
+$\theta(u)=\inf\{t:V_t\ge u\}$ for $0<u<V_T$. The usual arclength
+parametrization of a continuous finite-variation path is
+$G(u)=A_{\theta(u)}$: it is $1$-Lipschitz, satisfies
+$A_t=G(V_t)$, and has $|G'(u)|=1$ for Lebesgue almost every $u$.
+Indeed the variation of $G$ on every interval is its interval length.
+The monotone function $\theta$ has a finite derivative
+$\theta'(u)\in[0,\infty)$ for almost every $u$. Exclude also the
+countably many levels corresponding to nontrivial flat intervals of $V$.
+
+At a level where these properties hold, let $s=\theta(u)$ and
+$v(h)=V_{s+h}-u$. Then $v(h)>0$ and $v(h)\to0$ as $h\downarrow0$.
+The generalized-inverse bounds
+$\theta((u+v(h))- )\le s+h\le\theta((u+v(h))+ )$
+and differentiability of $\theta$ at $u$ give
+$h/v(h)\to\theta'(u)$. Combining this with differentiability of $G$ gives
+\[
+ \lim_{h\downarrow0}\frac{A_{s+h}-A_s}{h}
+ =\begin{cases}
+ G'(u)/\theta'(u),&\theta'(u)>0,\\
+ \operatorname{sgn}(G'(u))\,\infty,&\theta'(u)=0.
+ \end{cases}
+ \tag{FV7}
+\]
+Thus the extended right derivative is nonzero at almost every variation
+level, including levels whose inverse belongs to a singular part of $dV$.
+
+For deterministic $u>0$ use the stopping times
+$\tau_u=\inf\{t:V_t\ge u\}$, truncated at a deterministic endpoint $T$.
+Fubini and the preceding pathwise statement show that for Lebesgue
+almost every deterministic $u$, on $\{\tau_u<T\}$ the quotient in
+(FV6) has a nonzero or infinite pathwise limit almost surely.
+But (FV6) gives convergence in probability to zero at this stopping time,
+which forbids such an event of positive probability. Thus
+$\mathbb P(\tau_u<T)=0$ for Lebesgue almost every $u$, and
+$\mathbb E[V_T]=\int_0^\infty\mathbb P(\tau_u<T)du=0$ after localizing
+$V_T$ to be integrable. Hence $V_T=0$ almost surely. Localization and a
+countable exhaustion of the lifetime prove the claim.
+\end{proof}
+
+\begin{theorem}[Conditional classification from a finite-variation initial tangent]
+\label{thm:fv-tangent-rigidity}
+Suppose a Borel family on all relevant marked slit states has strong DMP
+and source locality, including the same mirrored test deletions (DR6).
+Suppose canonical decompositions (FV1), compatible with conditional restart
+in the inherited chordal charts, obey (FV2). If $B(f)$ is locally bounded
+in inverse-chart topology, or just satisfies the paired slit bound (DR11)
+at every state, the family is chordal SLE$_6$ in these coordinates.
+\end{theorem}
+\begin{proof}
+Proposition~\ref{prop:fv-initial-covariance} gives exactly (DR4), hence
+the reflected-slit sum and difference argument gives $B(f)=0$, $V(f)=6$
+at every deterministic state.
+
+At a stopping time $\tau$, the centered future driver is the driver of
+the remaining physical state in the inherited conformal chart. Its
+capacity parameter is exactly $s=t-\tau$ in the original half-plane
+coordinate: recentering by $W_\tau$ introduces no additional scale clock.
+Strong DMP and conditional-characteristic compatibility identify its
+canonical finite-variation part with $A_{\tau+s}-A_\tau$ under the
+regular conditional law. Applying (FV2) with $B=0$, and integrating these
+conditional probabilities over the random state, gives (FV6).
+Lemma~\ref{lem:fv-zero-stopping-tangents} therefore makes $A=0$.
+
+The same conditional restart argument gives
+$(C_{\tau+h}-C_\tau)/h\to6$ in probability at every stopping time.
+Apply Lemma~\ref{lem:fv-zero-stopping-tangents} to the continuous
+finite-variation process $C_t-6t$: it is identically zero.
+Thus $W=M$ and $\langle M\rangle_t=6t$ globally.
+L\'evy's characterization and continuous Loewner generation identify SLE$_6$.
+\end{proof}
+
+\paragraph{Strict weakening and remaining limitation.}
+Even an absolutely continuous drift with density
+$b_s=B+\sin(1/s)$, $s>0$, has no right limit at zero, whereas
+$\int_0^t b_sds=Bt+O(t^2)$ and therefore satisfies (FV2).
+The theorem also allows an a priori singular finite-variation drift;
+its exclusion is a conclusion, not an assumption. A claim that an actual
+exploration family has these initial characteristic tangents remains
+unproved. The theorem still depends on choosing one correct physical
+conformal structure and on tame behavior under the source slit tests.
+
+\subsection{The wrong-coordinate obstruction also only needs finite-variation tangents}
+
+\paragraph{Scaling lemma with probability tangents.}
+The exact-scaling lemma (SM1)--(SM4) remains true if its drift assumption
+is replaced by continuous finite variation and (FV2), and its bracket
+assumption by $C_t/t\to v$ in probability for deterministic $v$.
+Indeed (FV2) makes
+$\sup_{s\le T}|c^{-1/2}A_{cs}|=O_{\mathbb P}(\sqrt c)\to0$.
+Since $C$ is increasing, a finite deterministic mesh and monotonic
+squeezing show
+\[
+ \sup_{s\le T}|C_{cs}/c-vs|\longrightarrow0
+           \quad\hbox{in probability}.
+\]
+The continuous-martingale functional central limit argument in the earlier
+scaling lemma then applies unchanged. Exact scaling makes the whole law
+Brownian with variance $v$.
+
+\paragraph{Local transfer of the tangent.}
+In Proposition~\ref{prop:fv-initial-covariance}, the analytic-field
+argument actually gives the uniform version
+\[
+ \frac1t\sup_{s\le t}
+ \left|\int_0^s h_r'(W_r)\,dA_r-dB(f)s\right|
+          \longrightarrow0
+          \quad\hbox{in probability}.
+\]
+Use the martingale maximal inequality in its proof, and the same uniform
+initial bound for $A$. Monotonic squeezing similarly makes
+$C_{ts}/t\to V(f)s$ uniformly on compact $s$ intervals in probability.
+Equation (FV5) therefore transfers (FV2) through a local analytic chart
+change, once the initial bracket tangent has been obtained; it also
+transfers its inverse, since the first chart derivative is positive.
+No total-variation rate bound is introduced by this transfer.
+
+\begin{corollary}[Wrong-affine obstruction under finite-variation tangents]
+\label{cor:fv-wrong-affine}
+Consider the canonical fixed-affine SLE$_6$ family with matrix $A$ on all
+bounded marked domains. If every Euclidean chart driver admits (FV1)--(FV2),
+then $A$ is a Euclidean similarity. No local boundedness of $B(f)$ is needed.
+\end{corollary}
+\begin{proof}
+Choose the bounded flat-source domain and one test deletion used in the
+bounded-domain obstruction theorem. Proposition~\ref{prop:fv-initial-covariance}
+gives its deterministic bracket tangent in probability. Couple its initial
+physical trace by known affine-SLE locality to the canonical half-plane
+affine-SLE trace. The local analytic chart transfer just proved gives a
+finite-variation decomposition and uniform deterministic drift tangent for
+the half-plane driver, and the same deterministic bracket tangent.
+Its exact Brownian scaling and the extended scaling lemma make its law
+ordinary Brownian driving. The boundary-swallowing-race and affine
+identification arguments in the half-plane obstruction theorem then give
+variance six and force $A$ to be a similarity.
+\end{proof}
+
+
+% Independently checked extension of the finite-variation theorem.
+\subsection{A tightness-in-law variant without deterministic initial tangents}
+
+\paragraph{Proposition (proved).}
+There is a useful alternative formulation of the preceding theorem.
+Allow (FV2) to have a finite random tangent $\beta^f$ rather than a
+deterministic $B(f)$. Assume that for every fixed chart $f$ the family of
+initial tangents in its two shrinking slit domains is uniformly tight:
+\[
+ \lim_{K\to\infty}\sup_{0<\epsilon<\epsilon_0}
+ \max_{\sigma\in\{+,-\}}
+ \mathbb P\{|\beta^{f_\epsilon^\sigma}|>K\}=0.
+ \tag{FV8}
+\]
+Then the same classification follows, with all other family and restart
+hypotheses unchanged.
+
+The analytic-field lemma and initial covariance proof apply verbatim to
+finite random tangents, producing an intrinsic finite random bracket
+tangent $V^f$. For each fixed $\epsilon$, source locality and the
+invertible local coordinate changes put the original and both deleted
+initial traces on one probability space. Only their initial germs are
+needed, so no simultaneous extension of this coupling past their exit times
+is required. On that space the covariances give
+\[
+ \beta^{f_\epsilon^+}+\beta^{f_\epsilon^-}
+       =2\beta^f/d_\epsilon,
+ \qquad
+ \beta^{f_\epsilon^+}-\beta^{f_\epsilon^-}
+       =(V^f-6)e_\epsilon^+/d_\epsilon^2.
+\]
+Uniform tightness of the two marginals makes their sum and difference
+uniformly tight under any coupling. Since $d_\epsilon\to0$ and
+$|e_\epsilon^+|/d_\epsilon^2\to\infty$, these identities force
+$\beta^f=0$ and $V^f=6$ almost surely. Formally, for $a>0$,
+\[
+ \mathbb P\{|\beta^f|>a\}
+ \le \sum_{\sigma=\pm}
+       \mathbb P\{|\beta^{f_\epsilon^\sigma}|>a/d_\epsilon\}
+       \longrightarrow0,
+\]
+and the identical argument with threshold
+$a|e_\epsilon^+|/(2d_\epsilon^2)$ gives $V^f=6$.
+The stopping-time lemma then kills the finite-variation drift and identifies
+the bracket as before. Local boundedness of a deterministic drift tangent
+is one special case of (FV8); no deterministic initial-tangent premise is
+otherwise necessary for this version.
+
+
+
 \section{A wrong affine metric cannot have tame driving drift in every bounded domain}
 \label{sec:scaling-semimartingale}
 
@@ -873,6 +1202,879 @@ Reflection covariance reduces the remaining orientation case to this one.
 \end{proof}
 
 
+\section{An affine tensor is readable from a regular endpoint germ}
+\label{sec:regular-endpoint-decoder}
+
+\paragraph{Status.}
+The argument below extends the initial half-plane trace-germ decoder to
+analytic regular source germs. By ordinary SLE$_6$ reversibility, it gives
+a decoder from the ordered terminal trace germ at any analytic regular
+target, even when the other endpoint and the rest of the domain are rough.
+It does not decode the unlabelled accessible frontier at a random tip.
+All almost-sure assertions are made separately under each fixed affine
+tensor; no uncountable intersection of full-probability events is used.
+
+Let $\mathcal X$ be the usual Polish space of oriented unparameterized
+continuous finite curves, with the uniform Fr\'echet metric. Curves are
+identified under increasing reparameterization, including deletion of
+pauses. For a continuous path $Y$ starting at $0$ and exiting every disk,
+write $\tau_a(Y)$ for its first hit of $\{|z|=a\}$ and
+$\operatorname{Stop}_aY=Y[0,\tau_a(Y)]$.
+The operations used here are Borel in standard continuous-curve coding;
+first hits can equivalently be defined by rational-time approximation.
+For a rough opposite prime end the full curve need not land continuously
+there. Only finite prefixes near the decoded regular endpoint are coded
+in $\mathcal X$; the unbounded half-plane curves exit every finite disk.
+This avoids any assumption of a singleton impression at the other mark.
+
+\begin{lemma}[Unit-radius stopping is almost surely continuous]
+\label{lem:ed-goodradius}
+Let $Y$ have a law invariant under positive scalar spatial dilation and
+suppose it is continuous, starts at $0$, and exits every disk. Then almost
+surely
+\[
+ \tau_{1-\delta}(Y)\uparrow\tau_1(Y),\qquad
+ \tau_{1+\delta}(Y)\downarrow\tau_1(Y)
+ \quad(\delta\downarrow0).
+\]
+Consequently the diameter of
+$Y[\tau_{1-\delta},\tau_{1+\delta}]$ tends to zero.
+\end{lemma}
+\begin{proof}
+The first assertion on the left holds pathwise by continuity. The
+nondecreasing function $a\mapsto\tau_a(Y)$ has only countably many
+right jumps. Thus the set of radii with
+$\tau_{a+}(Y)>\tau_a(Y)$ has Lebesgue measure zero for every sample.
+Spatial dilation invariance implies that the probability of such a jump
+is the same at every fixed radius. Fubini's theorem on $[1,2]$ makes this
+probability zero. Continuity of $Y$ on a compact time interval containing
+these exit times then gives the diameter assertion. The argument is
+independent of the chosen continuous strictly increasing curve clock.
+\end{proof}
+
+For an orientation-preserving real linear map $L$ carrying $\mathbb H$
+onto itself, let $\mu_L$ be the law of $L\eta$, where $\eta$ is chordal
+SLE$_6$ in $\mathbb H$ from $0$ to $\infty$. Scalar multiples of $L$
+give the same law. Normalize
+\[
+ L=\begin{pmatrix}1&u\\0&v\end{pmatrix},\qquad
+ (u,v)\in\Theta:=\mathbb R\times(0,\infty).
+ \tag{ED1}
+\]
+The normalized metric represented by this law is
+$[(L^{-1})^{\mathsf T}L^{-1}]$.
+
+Choose a countable bounded Lipschitz determining class
+$(f_m)_{m\geq1}$ on $\mathcal X$, with values in $[0,1]$ and Lipschitz
+constant at most one, allowing constant rescaling of an arbitrary
+countable bounded Lipschitz determining class. Such a class can be built
+from truncated distances to a countable dense set and finite rational
+combinations. Set
+\[
+ v_m(L)=\mathbb E_{\mu_L}
+       f_m(\operatorname{Stop}_1Y).
+ \tag{ED2}
+\]
+The vector $v(L)=(v_m(L))_m$ is Borel in $L$. Indeed, linear image and
+first-exit stopping are jointly Borel, so integration against the fixed
+ordinary SLE law preserves Borel measurability.
+
+Brownian spatial scaling is mixing: under the Lamperti transform
+$Z_s=e^{-s/2}B_{e^s}$ it becomes a shift of a stationary Gaussian process
+with covariance $e^{-|s-u|/2}$. Its SLE trace factor, and each fixed
+linear image, are therefore dilation mixing. This gives the ergodicity
+used below without a separate path-space independence assumption.
+
+The map $L\mapsto v(L)$ is injective. If two unit-radius stopped laws
+agreed, scaling invariance would identify their stopped laws at every
+radius. Those restrictions determine the entire ordered unbounded curve,
+contradicting the half-plane affine identifiability theorem unless the
+normalized matrices agree. Therefore the Lusin--Souslin theorem makes
+$v(\Theta)$ Borel and its inverse Borel.
+
+Fix $\rho>1$ and $r_n=\rho^{-n}$. For a curve $\gamma$ starting at
+$p$ define the local observable
+\[
+ X_n(\gamma,p)=r_n^{-1}
+       \bigl(\gamma[0,\tau_{r_n}(\gamma-p)]-p\bigr).
+ \tag{ED3}
+\]
+If a finite curve fails to exit one of the large initial disks, assign a
+cemetery value to that term. It exits all sufficiently small disks, and
+finitely many cemetery values do not affect the limits below.
+Define
+\[
+ \ell_m(\gamma,p)=\lim_{N\to\infty}
+       \frac1N\sum_{n=1}^N f_m(X_n(\gamma,p)),
+ \tag{ED4}
+\]
+using a cemetery vector if any limit fails to exist. Each limit is a
+function of every sufficiently small ordered initial trace prefix:
+deleting finitely many summands changes no Ces\`aro limit. In particular
+this is a Borel ordered-trace-germ statistic.
+
+\begin{lemma}[The decoder survives a quadratic local error]
+\label{lem:ed-linearization}
+Let $\eta$ be ordinary half-plane SLE$_6$ and let $\Phi$ be a local
+$C^1$ embedding at $0$, defined on a half-neighborhood of $0$, with
+\[
+ \Phi(0)=0,\qquad \Phi(z)=Lz+O(|z|^2),
+ \tag{ED5}
+\]
+where $L$ is invertible. Assume after a fixed rotation that $L$ maps
+$\mathbb H$ onto itself. Let $\gamma$ agree with $\Phi(\eta)$ up to
+the first exit from this local chart. Then almost surely
+\[
+ \ell_m(\gamma,0)=v_m(L)\quad\hbox{for every }m.
+ \tag{ED6}
+\]
+Scalar normalization of $L$ is understood in (ED2).
+\end{lemma}
+\begin{proof}
+Put $Y_n=r_n^{-1}L\eta$. Spatial dilation of the trace includes the
+induced capacity reparameterization. Brownian scaling is mixing; its
+trace factor and every fixed affine image are therefore dilation
+ergodic, as proved in the initial half-plane decoder theorem. Hence
+\[
+ \frac1N\sum_{n=1}^N
+ f_m(\operatorname{Stop}_1Y_n)\longrightarrow v_m(L)
+ \quad\hbox{almost surely}.
+ \tag{ED7}
+\]
+One must control the error in this average; pointwise stopping continuity
+at all the scaled random samples is not asserted.
+
+For $0<\delta<1/4$ define
+\[
+ h_\delta(Y)=\min\!\left\{2,
+  \operatorname{diam}
+   Y[\tau_{1-\delta}(Y),\tau_{1+\delta}(Y)]\right\}.
+ \tag{ED8}
+\]
+The linearization error on a fixed bounded scaled chart is at most
+$Cr_n$, uniformly over the sample path until its linear image exits the
+disk of radius $1+\delta$. This uniformity is deterministic: the inverse
+linear map bounds the relevant preimage disk, and (ED5) bounds the error
+there. For all sufficiently large $n$, the first time that
+$r_n^{-1}\Phi(\eta)$ reaches radius one lies between the corresponding
+$Y_n$ exit times at radii $1-\delta$ and $1+\delta$.
+Thus the two stopped curves consist of matched portions with pointwise
+error at most $Cr_n$, together with an unmatched terminal portion whose
+diameter is bounded by the diameter in (ED8). Increasing
+reparameterizations, with pauses allowed, give
+\[
+ \left|f_m(X_n(\gamma,0))-
+ f_m(\operatorname{Stop}_1Y_n)\right|
+       \leq Cr_n+h_\delta(Y_n).
+ \tag{ED9}
+\]
+The bounded range of $f_m$ justifies capping the diameter by two.
+
+Take a countable sequence $\delta_k\downarrow0$. Birkhoff's theorem
+applied to every $h_{\delta_k}$ gives
+\[
+ \limsup_N\frac1N\sum_{n=1}^N
+ \left|f_m(X_n(\gamma,0))-
+ f_m(\operatorname{Stop}_1Y_n)\right|
+ \leq\mathbb E_{\mu_L}h_{\delta_k}(Y)
+ \tag{ED10}
+\]
+simultaneously for all $m,k$. Lemma~\ref{lem:ed-goodradius} and dominated
+convergence make the right side tend to zero as $k\to\infty$. Combine
+this with (ED7). Only the initial segment of $\eta$ enters the argument,
+since all sufficiently small physical exits occur inside the fixed local
+chart. This proves (ED6).
+\end{proof}
+
+\begin{theorem}[A universal analytic-endpoint tensor decoder]
+\label{thm:ed-analytic}
+There is a Borel rule, depending only on the ordered initial trace germ,
+the endpoint, and its oriented tangent half-plane, that recovers the
+projective affine tensor from a single affine-SLE$_6$ sample in every
+bounded simply connected marked domain with analytic regular source.
+The rest of its boundary and its target may be rough prime-end data.
+There is also a terminal version of the rule for every domain with
+analytic regular target; the source may then be rough. The rule is the
+same for two domains agreeing near that regular endpoint.
+\end{theorem}
+\begin{proof}
+Let the law be
+$(A^{-1})_*\operatorname{SLE}_6(AD,Ap,Aq)$ and assume $p$ is an analytic
+regular source. A conformal map $f:\mathbb H\to AD$ with marks
+$0,\infty$ extends conformally across $0$ by analytic boundary
+reflection, with $f(0)=Ap$ and $f'(0)\ne0$. In a physical tangent frame
+$Q$ carrying the interior tangent half-plane to $\mathbb H$, the local
+map is
+\[
+ \Phi(z)=Q(A^{-1}f(z)-p)=Lz+O(|z|^2),
+ \qquad L=QA^{-1}M_{f'(0)},
+ \tag{ED11}
+\]
+where $M_c$ denotes multiplication by the nonzero complex number $c$.
+The linear map $L$ carries $\mathbb H$ onto itself and has positive
+diagonal entries in the boundary frame. Apply
+Lemma~\ref{lem:ed-linearization}. The Borel inverse of (ED2) recovers
+the scalar-normalized $L$, hence the projective tensor
+\[
+ [(L^{-1})^{\mathsf T}L^{-1}]
+       =[QA^{\mathsf T}AQ^{\mathsf T}].
+ \tag{ED12}
+\]
+Conjugating back by the known orthogonal frame $Q$ recovers
+$[A^{\mathsf T}A]$. The derivative of the conformal map contributes
+only a positive scalar to this tensor. This rule uses the endpoint
+germ and tangent half-plane, not the rest of the conformal chart.
+
+Ordinary SLE$_6$ reversibility \cite{ms} says the reversed curve has the same affine-SLE form
+with marks swapped. Apply the source decoder to that reversed curve at
+the regular target. Reversibility on prime-end domains follows by
+conformal transport from the half-plane theorem; only the regular
+target germ needs a Euclidean analytic boundary extension.
+\end{proof}
+
+\begin{corollary}[Terminal singularity and identifiable mixtures]
+\label{cor:ed-mixtures}
+For one fixed marked domain with analytic regular target, affine-SLE$_6$
+laws with distinct projective affine tensors are mutually singular on
+the ordered terminal trace-germ sigma-field. More strongly, if
+$\pi$ is any Borel probability on normalized affine tensors and
+$P_\pi=\int P_T\,\pi(dT)$, then the terminal decoder has law $\pi$
+under $P_\pi$. Consequently $\pi\mapsto P_\pi$ is injective, and no
+nontrivial affine mixture can equal one pure affine-SLE law.
+\end{corollary}
+\begin{proof}
+The same Borel decoder equals $T$ almost surely under $P_T$.
+Integrating that equality proves the distribution statement. Distinct
+pure laws concentrate on disjoint decoder fibers.
+\end{proof}
+
+\paragraph{Additional initial-germ obstruction for random mixtures.}
+At an analytic regular source, the initial decoder likewise returns the
+latent tensor almost surely. Therefore a nontrivial mixture of affine
+metrics has a nontrivial initial trace-germ sigma-field. At every
+positive exploration time the metric posterior has already collapsed to
+a point, even though its prior was nontrivial. This rules out such
+mixtures under an additional initial-germ zero-one premise. It does not
+rule out a deterministic source-germ metric assignment; that mechanism
+still asks whether the current unlabelled frontier recovers the tensor.
+
+\begin{proposition}[DMP forces restarted mixing measures to be pure]
+\label{prop:ed-posterior}
+Suppose an all-state family has the mixed-affine representation
+$P_S=\int\nu^T_S\,\pi_S(dT)$, with Borel mixing kernel $\pi_S$.
+Start it in a domain with analytic regular source and target. If it has
+strong DMP, then at each admissible stopping time $\tau>0$ before the
+target is reached,
+\[
+ \pi_{S_\tau}=\delta_{D_s(\gamma)}\qquad\hbox{almost surely},
+ \tag{ED13}
+\]
+where $D_s$ is the initial tensor decoder. In particular a rule that
+uses a nondegenerate prior at every restarted state cannot satisfy DMP.
+\end{proposition}
+\begin{proof}
+Sample the latent tensor $T$ with law $\pi_S$ and then sample the
+fixed-$T$ affine SLE. The source decoder gives $D_s(\gamma)=T$ almost
+surely, and this variable is measurable from every positive prefix,
+including the prefix up to $\tau$. Conditional on this prefix,
+ordinary fixed-$T$ SLE DMP therefore gives the pure continuation law
+$\nu^{D_s(\gamma)}_{S_\tau}$. The family's DMP gives the mixed law with
+mixing measure $\pi_{S_\tau}$. Since $\tau$ precedes reaching the
+target, the surviving target end has the same analytic regular germ:
+the compact prefix avoids a sufficiently small target neighborhood.
+Corollary~\ref{cor:ed-mixtures} applied to this current state makes
+the two mixing measures equal, proving (ED13).
+\end{proof}
+
+
+
+\section{A discrete source shield and stability of two exploration starts}
+\label{sec:source-shield}
+
+\paragraph{Status and model.}
+The deterministic shielding statement and the ensuing probabilistic estimate
+are proved here for independent site percolation on a triangular-lattice
+triangulation of a Jordan disk. Boundary vertices are wired black or white,
+with exactly two color changes, the marked source and target. The exploration
+is the nonbranching face-dual black--white interface between those changes.
+The same argument applies to a cellular model with the corresponding
+nonbranching primal/dual geometry and the stated white RSW bounds.
+It is an actual common-color coupling argument. It is \emph{not} inferred
+for an arbitrary random-curve family from abstract locality or G2 alone.
+
+Work at mesh $\delta$. Two triangulated domains, their source positions,
+and their boundary colors may differ inside $B(p,\epsilon)$, but agree
+outside it. Their common target lies outside $B(p,R_0)$.
+Outside the source patch and inside this latter ball, assume the common
+geometry is either a lattice half-plane with straight boundary, or a
+canonical thin straight slit with its two boundary sides. The lattice
+approximations are chosen with free first rows adjacent to the wired
+boundary rows; slit width is $O(\delta)$. The black and white wired sides
+are the same for the two configurations outside the patch.
+Couple all free colors outside the patch identically. Those shared colors
+have the independent percolation law. The colors inside the patch may be
+coupled arbitrarily, with their correct marginal laws.
+
+\subsection{The deterministic one-edge crosscut}
+
+In a triangular face, either zero or two of its primal edges have endpoints
+of different colors. Hence the dual interface graph has degree zero or two
+at every interior dual vertex. In the Dobrushin disk it has a unique open
+simple path between the source and target; other components are loops.
+
+\begin{lemma}[A one-heterochromatic-edge shield]
+\label{lem:ss-oneedge}
+Let a simple primal crosscut $c$ of a triangulated disk connect a white
+wired boundary vertex to a black wired boundary vertex. Suppose every
+edge of $c$ is white--white except its final edge $e$, which joins a white
+\emph{interior} vertex to the black boundary vertex. Suppose $c$ separates
+the entire source patch from the target. Then the exploration must use
+the dual edge $e^*$, with the direction determined by its black and white
+sides. After using $e^*$ it cannot reenter the source side of the crosscut.
+
+Consequently, if the same such crosscut and its colors occur in both
+configurations above, their explorations have identical ordered suffixes
+from $e^*$ to the common target.
+\end{lemma}
+
+\begin{proof}
+The source--target dual path must cross the primal crosscut. Primal and
+dual vertices are distinct, and dual edges cross primal edges only at
+their matched transverse intersections. No interface edge can cross a
+white--white primal edge. Thus the crossing must be $e^*$, and matching
+colors give the same direction in both configurations.
+
+The dual interface path is simple, so it cannot traverse $e^*$ twice.
+All other primal edges of $c$ remain monochromatic, so they cannot be
+crossed later either. The path therefore stays on the target side after
+using $e^*$. In particular it never returns to the altered source patch.
+Outside the patch the two triangulations and all colors coincide.
+At each subsequent dual vertex the outgoing edge is uniquely determined
+by the local colors and the incoming edge. Starting at the same directed
+edge $e^*$, the two paths consequently have the same entire suffix.
+\end{proof}
+
+Using boundary \emph{vertices} in this formulation avoids an ambiguity of
+cell-exterior pictures: $e$ is an interior primal edge incident to a boundary
+vertex, so its dual edge is an ordinary interior edge. Neither a crossing
+through a dual/primal common vertex nor an unexplained passage around the
+end of a physical boundary edge is being used.
+
+\subsection{Uniform probability of a white arch}
+
+Assume a uniform white RSW lower bound for fixed-aspect rectangles of free
+vertices. No connection to a prescribed individual vertex is assumed.
+We give the geometry for a horizontal half-plane source, translated to $p=0$,
+with black boundary on the negative real side and white boundary on the
+positive side. Let $r\gg\epsilon+\delta$.
+
+Use a white vertical crossing in each of
+\[
+ [-3r,-2r]\times[0,3r],\qquad [2r,3r]\times[0,3r],
+\]
+and a white horizontal crossing of
+\[
+ [-3r,3r]\times[r,2r].
+\]
+At the bottom of a stem, start the rectangle in the first free vertex
+row, not in the fixed wired row. Rounding by $O(\delta)$ changes the
+aspect ratios by a uniformly bounded amount. The crossings in the
+overlapping squares intersect by planarity. Thus their union contains a
+white path from a free vertex adjacent to the black boundary to a free
+vertex adjacent to the white boundary. Add a white--white edge at the
+white endpoint and choose an edge $e$ to a black boundary vertex at the
+other endpoint. Trim the white path at its last white-wired-boundary contact before reaching the left endpoint, so that all its subsequent white vertices are interior; then erase loops. This gives a proper simple primal crosscut with just the one heterochromatic edge $e$.
+
+All these vertices lie, allowing lattice rounding, in
+$A(0,r/2,6r)$. The crosscut and the boundary arc through the source
+enclose the source patch. Its source-side component is inside $B(0,6r)$:
+the crosscut and that local boundary arc form a Jordan polygon contained
+there, so their bounded interior is also contained there. The common
+half-annulus between the patch and crosscut shows that the entire altered
+domain portion of the source patch is on that side.
+
+Each rectangle event is increasing in white colors of independent free
+vertices. RSW and FKG therefore give a constant $\vartheta>0$, independent
+of $r,\delta$ and the contents of the source patch, for this white-arch
+event. Importantly, the left endpoint is \emph{some} first-row white vertex
+adjacent to the black boundary, selected after the crossing occurs. Requiring
+connection to one predetermined microscopic vertex would not have this
+uniform lower bound.
+
+\paragraph{Straight slit geometry.}
+The same construction works for a finite-width lattice slit along the
+negative real axis, with black upper lip and white lower lip, by using
+five crossings around a square annulus: an upper-left vertical stem,
+a top horizontal crossing, a right vertical crossing, a bottom horizontal
+crossing, and a lower-left vertical stem. The stems occupy
+$[-3r,-2r]\times[0,3r]$ and
+$[-3r,-2r]\times[-3r,0]$ on their respective sides of the slit.
+The other three rectangles may be
+\[
+ [-3r,3r]\times[2r,3r],\quad
+ [2r,3r]\times[-3r,3r],\quad
+ [-3r,3r]\times[-3r,-2r].
+\]
+The first free upper row is adjacent to the black wired lip; the first
+free lower row is adjacent to the white wired lip. The resulting crosscut
+goes around the right side of the slit and separates its tip patch from
+the distant target. The boundary arc through the tip, including the two
+separate lattice lips, stays inside $B(0,6r)$. The finite-width triangulated
+domain is Jordan; one need not identify its two physical boundary rows.
+RSW and FKG again give a uniform $\vartheta>0$ after adjusting constants.
+
+\subsection{Polynomial source-patch stability}
+
+\begin{theorem}[Common-color coalescence outside a source patch]
+\label{thm:ss-coalescence}
+Under the preceding geometric and percolation hypotheses, there are
+constants $C<\infty$ and $\alpha>0$ depending only on the RSW bounds and
+the fixed geometry such that, for $0<R<R_0/6$, the common-color coupling
+of the two full exploration curves satisfies
+\[
+ \mathbb P\{d_{\mathrm F}(\gamma_1,\gamma_2)>2R\}
+       \leq C\left(\frac{\epsilon+\delta}{R}\right)^\alpha.
+ \tag{SH1}
+\]
+More concretely, outside an event of the displayed probability the curves
+coalesce at a directed dual edge inside $B(p,R)$; both prefixes before
+that edge stay inside this ball, and the entire suffixes are identical.
+\end{theorem}
+
+\begin{proof}
+Put $r_0=16(\epsilon+\delta)$ and $r_j=16^j r_0$.
+For every $j$ with $6r_j\leq R$, the corresponding white-arch event
+depends only on shared free vertices in
+$A(p,r_j/2,6r_j)$. These vertex sets are disjoint for different $j$,
+up to an immaterial lattice enlargement absorbed by increasing $r_0$.
+The events are therefore independent and each has probability at least
+$\vartheta$. If there are $N$ available bands, the probability of no
+shield is at most $(1-\vartheta)^N$.
+
+On any shield event select a white crosscut by a deterministic finite-graph
+rule using only shared colors, for example a lexicographic simple path in
+the crossing cluster. The two configurations select the same crosscut and
+the same single heterochromatic edge. Lemma~\ref{lem:ss-oneedge} gives a
+common suffix. Before crossing the shield, each path stays in its
+source-side component, contained in $B(p,6r_j)\subset B(p,R)$.
+Synchronize the two prefixes by any increasing reparameterization and then
+align their common suffix. The prefixes are in a ball of diameter $2R$,
+so their oriented Fr\'echet distance is at most $2R$.
+
+The number of bands is a logarithmic function of $R/(\epsilon+\delta)$.
+For instance with
+$\alpha=-\log(1-\vartheta)/\log16>0$, enlarging a fixed constant $C$
+gives $(1-\vartheta)^N\leq
+C((\epsilon+\delta)/R)^\alpha$. This also covers the case with no
+available band by making its right-hand side at least one.
+\end{proof}
+
+\paragraph{Passage to marginal curve limits.}
+Suppose along a common mesh subsequence the two exploration laws converge
+in the usual Polish oriented uniform-Fr\'echet curve space. The coupled
+pairs are tight because their two marginals are tight. Choose a joint
+subsequential limit. The set
+$\{d_{\mathrm F}>2R\}$ is open in the product curve space; the Portmanteau
+inequality transfers (SH1), with $\delta\downarrow0$, to this limiting
+coupling. Thus the same quantitative source-patch stability holds for the
+two marginal curve limits. It requires neither convergence of random
+slit-domain kernels nor a limiting strong DMP theorem.
+
+If source patches themselves shrink and the mesh is negligible relative
+to their radii, this gives continuity in law for these particular local
+source perturbations. One may first fix $R$ and let $\epsilon\downarrow0$,
+then let $R\downarrow0$, or balance the coupling estimate to obtain an
+explicit Prokhorov rate.
+
+\paragraph{What is not proved.}
+This is not a consequence of abstract unforced-crossing estimates for one
+curve. It uses a common independent coloring and the planar nonbranching
+interface to force \emph{coalescence at one edge}. It also is not the full
+marked inverse-conformal-chart stability condition used in the affine-ansatz
+support theorems: arbitrary converging charts may create forced thin fjords,
+noncommon microscopic boundaries, or source approaches outside this shared
+half-plane/slit geometry. Extending the shield coupling to such approximations
+requires additional work. No classification of arbitrary source-local
+exploration ensembles follows from (SH1) alone.
+
+% Draft for root integration; not a standalone document.
+
+\section{Exact suffix coalescence survives curve limits}
+\label{sec:coalescence-bridge}
+
+The source-shield estimate contains more information than a small
+Fr\'echet distance. Its exact common suffix is stable under taking a
+joint curve limit, provided that the prefixes stay in a fixed closed set
+away from the target. This allows the discontinuous terminal metric
+decoder to be used without asserting that it is a continuous observable.
+
+Let $K\subset\mathbb C$ be closed and consider two oriented continuous
+curves. Define $E_K$ to be the relation
+that there exist cut times $s_1,s_2$ in continuous representatives on
+$[0,1]$ such that
+\[
+ \gamma_i[0,s_i]\subset K\quad(i=1,2),\qquad
+ \gamma_1[s_1,1]=\gamma_2[s_2,1]
+ \quad\text{as ordered unparameterized curves}.
+ \tag{CB1}
+\]
+The relation is independent of the chosen representatives and allows
+pauses, as does the usual uniform Fr\'echet curve space. It implies a
+common endpoint, which may belong to $K$ in this definition. All
+applications below have limiting common target $q\notin K$.
+
+\begin{lemma}[A closed relation of common ordered suffixes]
+\label{lem:cb-closed}
+$E_K$ is closed in the product uniform-Fr\'echet curve space.
+\end{lemma}
+\begin{proof}
+Suppose $(\gamma_1^n,\gamma_2^n)\to(\gamma_1,\gamma_2)$ and the pairs
+belong to $E_K$. Choose representatives of each convergent sequence
+converging uniformly to fixed continuous representatives of its limit.
+This is possible by the definition of the Fr\'echet metric; reparameterize
+the cut times along with the curves. Pass to a subsequence on which both
+cut times $s_i^n$ converge to $s_i\in[0,1]$.
+
+Closedness of $K$ and uniform convergence give
+$\gamma_i[0,s_i]\subset K$. Linear rescaling of $[s_i^n,1]$ to $[0,1]$ makes
+the restricted curves converge uniformly to the restrictions on
+$[s_i,1]$, by uniform continuity of $\gamma_i$ (a cut at $s_i=1$
+gives a constant curve). The two restrictions
+at stage $n$ have Fr\'echet distance zero. Their limits therefore also
+have distance zero and are the same ordered curve. Thus the limiting
+pair belongs to $E_K$.
+\end{proof}
+
+\begin{proposition}[Coalescence transfer and comparison of metric priors]
+\label{prop:cb-priors}
+Suppose pairs of discrete curves with a common target converge marginally
+to laws $P_1,P_2$ on the oriented curve space, and their couplings satisfy
+\[
+ \mathbb P(E_K)\ge1-e_n,\qquad \limsup_n e_n\le e<1,
+ \tag{CB2}
+\]
+where $K$ is a fixed closed ball not containing the target. Each limiting
+domain is analytic and regular near that target, and the two colored
+target germs agree. Suppose
+\[
+ P_i=\int P_{i,T}\,\pi_i(dT),
+ \tag{CB3}
+\]
+where $P_{i,T}$ is the affine-SLE$_6$ law with normalized tensor $T$ in
+domain $i$, and $\pi_i$ are Borel probability measures on tensors.
+Then, with total variation defined as $\sup_B|\pi_1(B)-\pi_2(B)|$,
+\[
+ \|\pi_1-\pi_2\|_{\mathrm{TV}}\le e.
+ \tag{CB4}
+\]
+In particular if both marginals are pure affine-SLE laws, any positive
+uniform lower bound on the discrete coalescence probability forces their
+tensors to be equal.
+\end{proposition}
+\begin{proof}
+Tightness of the marginals makes the coupled pairs tight. Take a joint
+subsequential limit. Lemma~\ref{lem:cb-closed} and the closed-set
+Portmanteau inequality give $\mathbb P(E_K)\ge1-e$ in the limit.
+Because the target is outside $K$, the common suffix on $E_K$ includes
+a nonconstant ordered terminal germ at that target. The universal
+terminal decoder of Theorem~\ref{thm:ed-analytic} is the same for the
+two domains, since their colored target germs agree. Let $T_i$ be its
+value on curve $i$. The laws of these random variables are $\pi_i$,
+and on $E_K$ they are equal. Hence
+\[
+ \sup_B|\mathbb P(T_1\in B)-\mathbb P(T_2\in B)|
+       \le\mathbb P(T_1\ne T_2)\le e.
+\]
+For two distinct point masses the left-hand side equals one, proving the
+last assertion. The proof uses exact suffix equality, not continuity of
+the decoder and not just small curve distance.
+\end{proof}
+
+For the source-shield coupling, take $K=\overline B(p,R)$ with the
+regular target outside this ball. Common discrete targets may vary with
+mesh, provided $q_n\to q\notin K$; the closed-relation proof already allows
+this. Equation (SH1) then gives
+\[
+ \|\pi_1-\pi_2\|_{\mathrm{TV}}
+   \le C(\epsilon/R)^\alpha
+ \tag{CB5}
+\]
+for two source-patch perturbations with common flat or straight-slit
+annuli. This is a quantitative stability statement for mixing measures,
+and yields exact tensor equality for pure marginals once the right side
+is less than one. It is conditional on the affine-mixture marginal
+ansatz; no such ansatz is derived from RSW here.
+
+
+\subsection{Stopping an ordered unparameterized curve on a circle}
+
+Fix $p\in\mathbb R^2$ and $R_0>0$. Work in the usual metric space of oriented
+continuous curves modulo increasing reparameterization, with the uniform
+Fr\'echet topology. Curves start at $p$ and end outside
+$\overline{B(p,R_0)}$. Small changes of the starting points are harmless;
+for the sequence version they need only lie inside every fixed smaller ball
+for sufficiently large indices.
+For a continuous representative $\gamma:[0,1]\to\mathbb R^2$ and
+$0<r<R_0$, put
+\[
+ \tau_\gamma(r)=\inf\{t:|\gamma(t)-p|\geq r\},\qquad
+ E_r\gamma=\gamma|_{[0,\tau_\gamma(r)]}.
+ \tag{LT1}
+\]
+The stopped path is regarded as an ordered unparameterized curve, so this
+definition is independent of pauses or changes of clock.
+
+\begin{lemma}[Almost every circle is a continuity circle]
+\label{lem:lt-stopcontinuity}
+For each fixed continuous curve $\gamma$, the map
+$(\eta,s)\mapsto E_s\eta$ is continuous at $(\gamma,r)$ for all but at most
+countably many radii $r\in(0,R_0)$. The stopping map is Borel.
+Consequently, for any probability law $\mu$ on these curves, $E_r$ is
+$\mu$-almost surely continuous for Lebesgue-almost every deterministic $r$.
+\end{lemma}
+\begin{proof}
+Choose any continuous representative of $\gamma$.
+The function $r\mapsto\tau_\gamma(r)$ is nondecreasing and hence has at
+most countably many discontinuities. Suppose it is continuous at $r$.
+If $(\gamma_n,r_n)\to(\gamma,r)$ in the product of Fr\'echet and ordinary
+metrics, choose increasing reparameterizations for which representatives
+$\widetilde\gamma_n$ converge uniformly to $\gamma$.
+Writing $\varepsilon_n=\|\widetilde\gamma_n-\gamma\|_\infty+|r_n-r|$,
+first-hit times obey, for every slightly larger positive error tending to zero,
+\[
+ \tau_\gamma(r-2\varepsilon_n)
+ \ \leq\ \tau_{\widetilde\gamma_n}(r_n)
+ \ \leq\ \tau_\gamma(r+2\varepsilon_n).
+ \tag{LT2}
+\]
+If $\varepsilon_n=0$ the assertion is immediate; using a strictly larger error
+avoids any immaterial equality convention. Continuity of $\tau_\gamma$ at
+$r$ gives convergence of the middle times to $\tau_\gamma(r)$.
+Uniform continuity of $\gamma$ then makes the stopped representatives,
+linearly recoded onto $[0,1]$, converge uniformly. This proves joint
+continuity at $(\gamma,r)$.
+
+The stopping map is understood on all curves reaching the selected radius, including already stopped curves reaching a larger radius. For parameterized curves the stopping time is Borel, since
+\[
+ \{\tau_\gamma(r)\leq t\}
+ =\left\{\max_{0\leq u\leq t}|\gamma(u)-p|\geq r\right\}.
+\]
+Stopping and linear recoding are therefore Borel path operations. They
+commute with reparameterization and give the usual Borel stopping map on
+ordered unparameterized curves.
+
+For completeness, the almost-every-radius assertion does not require a
+measurable choice of representatives. For a map between metric spaces its
+set of continuity points is a $G_\delta$ set, obtained from its oscillations
+on neighborhoods. Apply this to the joint stopping map. Its discontinuity
+set in the product of curve space and radius space is Borel, and every
+vertical section has Lebesgue measure zero by the countability argument
+above. Fubini's theorem now gives the assertion under $\mu$.
+\end{proof}
+
+
+\section{Independent color resampling, initial germs, and a common affine metric}
+\label{sec:affine-mixture-purity}
+
+
+\begin{theorem}[Initial-germ zero-one law from independent colors and shielding]
+\label{thm:ed-germzeroone}
+Let $P$ be a subsequential exploration-curve limit of the independent
+color model in a fixed domain with flat source germ. Assume the Polish
+oriented Fr\'echet curve topology and the flat-source shield estimate of
+Theorem~\ref{thm:ss-coalescence}. Then the initial ordered trace-germ
+sigma-field is $P$-trivial. Precisely, if $\sigma_r\gamma$ denotes the
+ordered prefix stopped on the radius-$r$ circle about the source, this
+field is $\bigcap_{r>0}\overline{\sigma(\sigma_r\gamma)}^{\,P}$.
+It is the usual ordered positive-prefix germ, with no clock chosen.
+No affine ansatz, terminal tensor decoder,
+limiting DMP theorem, or continuum configuration-measurability theorem
+is required.
+
+More quantitatively, for each sufficiently small $r$, every bounded
+observable $F$ of the prefix stopped at radius $r$ and every bounded
+Lipschitz observable $G$ of the entire curve satisfy
+\[
+ \left|\mathbb E_P(FG)-\mathbb E_PF\,\mathbb E_PG\right|
+ \leq C\|F\|_\infty
+   (\operatorname{Lip}G+\|G\|_\infty)r^{\alpha/(1+\alpha)},
+ \tag{EDG}
+\]
+first at almost every stopping-continuity radius $r$. Constants and
+length units are fixed by the source geometry. The zero-one assertion
+itself holds on the full initial-germ sigma-field.
+\end{theorem}
+\begin{proof}
+Fix a source-patch radius $\epsilon$ and couple two discrete
+configurations with independent colors inside $B(p,\epsilon)$ and shared
+independent colors outside. For any fixed $r<\epsilon/3$ and all small
+enough meshes, the first exploration stopped at radius $r$ is determined
+entirely by its own interior colors. It is therefore independent of the
+\emph{entire second exploration}, which uses only the shared outer colors
+and the second interior color set.
+
+Take a joint subsequential curve limit. Both marginals equal $P$. Choose
+an almost-sure stopping-continuity radius $r<\epsilon/3$. The continuous
+mapping theorem preserves the product law, so the stopped prefix of
+$\gamma_1$ is independent of the full curve $\gamma_2$. Consequently
+any bounded initial-germ observable $F(\gamma_1)$ is independent of
+$G(\gamma_2)$ for every bounded Lipschitz $G$ on the full curve space.
+This step concerns the limiting product law; it does not attempt to pass
+an arbitrary discontinuous germ statistic through a discrete limit.
+
+The shield estimate supplies, in this same coupling, for a fixed small
+$R$ and $\epsilon\ll R$,
+\[
+ \mathbb P\{d_{\mathrm F}(\gamma_1,\gamma_2)>2R\}
+       \leq C(\epsilon/R)^\alpha.
+\]
+Thus
+\begin{align*}
+ \left|\mathbb E_P(FG)-\mathbb E_PF\,\mathbb E_PG\right|
+ &=\left|\mathbb E
+       F(\gamma_1)(G(\gamma_1)-G(\gamma_2))\right|\\
+ &\leq\|F\|_\infty
+   \left(2\operatorname{Lip}(G)R+
+           2C\|G\|_\infty(\epsilon/R)^\alpha\right).
+ \tag{EDG1}
+\end{align*}
+The left side depends only on the marginal law $P$. Let
+$\epsilon\downarrow0$ with $R$ fixed and then $R\downarrow0$.
+It vanishes. Bounded Lipschitz functions determine finite signed
+measures on a Polish space, so every bounded initial-germ observable
+is independent of the full curve sigma-field. Since it belongs to
+that sigma-field, it is almost surely constant. This proves initial
+trace-germ triviality, including its completion.
+
+For the quantitative prefix assertion, start with a fixed good radius
+$r$, use $\epsilon=4r$, and take
+$R=r^{\alpha/(1+\alpha)}$ after fixing the reference length unit.
+For sufficiently small $r$ this is an admissible radius with
+$\epsilon\ll R$. Formula (EDG1) gives (EDG).
+\end{proof}
+
+\begin{proposition}[Pure affine limit at a flat source]
+\label{prop:ed-resampling}
+Let one independent site-percolation model satisfy the flat-source shield
+coupling of Theorem~\ref{thm:ss-coalescence}. Let $D$ have a flat source
+germ. Suppose along one mesh subsequence its
+exploration converges to
+\[
+ P=\int \nu^T_{D,p,q}\,\pi(dT),
+ \tag{ED14}
+\]
+where $\pi$ is a Borel probability on projective affine tensors. Assume
+the standard Polish oriented curve topology. Then $\pi$ is a point mass.
+No limiting domain Markov theorem or continuum configuration-measurability
+theorem is needed.
+\end{proposition}
+\begin{proof}
+The regular source endpoint decoder has distribution $\pi$ under (ED14)
+and is measurable in the initial trace-germ sigma-field. This sigma-field
+is trivial by Theorem~\ref{thm:ed-germzeroone}. Thus the decoder is almost
+surely one deterministic tensor, and $\pi$ is a point mass. The target
+need only meet the curve-convergence assumptions here; analytic target
+regularity enters the source-comparison theorem below.
+\end{proof}
+
+\begin{lemma}[Splicing a regular colored source germ]
+\label{lem:ed-splicing}
+Fix a bounded reference domain $D_0$ with flat regular source $p=0$,
+analytic regular target $q$, and one fixed boundary-color convention.
+Given any analytic regular colored source germ $G$ at $0$ with that
+convention, and any sufficiently small $\epsilon>0$, there is a bounded
+marked domain $D_{G,\epsilon}$ agreeing with $D_0$ outside
+$B(0,\epsilon)$ and having exactly the germ $G$ at $0$. Its target
+germ at $q$ agrees with $D_0$. The boundary can be chosen smooth except
+for any corners already present in $D_0$; only its two marked germs
+need to be analytic.
+\end{lemma}
+\begin{proof}
+For any analytic regular colored source germ $G$ at $p$ and any small
+$\epsilon$, an orientation-preserving smooth diffeomorphism supported in
+$B(p,\epsilon)$ can map the source germ of one fixed flat-source
+reference domain to $G$, fixing $p$ and the distant regular target.
+For an explicit local construction, use a radial twist to rotate a small
+core to the required tangent, followed by a cutoff graph shear to realize
+the analytic curvature in a still smaller core. The graph derivative can
+be made arbitrarily small, so the cutoff shear remains a diffeomorphism.
+Call the resulting domain $D_{G,\epsilon}$. It agrees with the reference
+outside the source patch and agrees with $G$ in a still smaller neighborhood.
+The support avoids $q$, and ambient orientation preserves the boundary
+color order. Applying the diffeomorphism to $D_0$ proves the claim.
+\end{proof}
+
+\begin{theorem}[One deterministic metric from a coherent affine mixture]
+\label{thm:ed-coherent}
+Consider a translation-covariant source-local exploration family arising
+from one independent Bernoulli nonbranching cellular percolation model
+admitting the flat-source shield coupling of
+Theorem~\ref{thm:ss-coalescence}. Suppose each bounded-domain marginal
+with analytic regular marks is a Borel mixture of fixed affine-SLE$_6$
+laws. Require the family to include the source splices of
+Lemma~\ref{lem:ed-splicing}, and require coherent subsequential limits
+for these comparisons: for every such splice and the reference, compatible
+common-color discrete approximations along one common mesh subsequence
+realize the two specified marginal limits.
+
+Then one deterministic projective affine tensor is shared by every
+such marginal, and each marginal is the pure affine-SLE$_6$ law for
+that tensor. Strong DMP and marked inverse-chart continuity are not
+premises of this theorem.
+\end{theorem}
+\begin{proof}
+The reference mixing measure $\pi_0$ is a point mass by
+Proposition~\ref{prop:ed-resampling}. Fix another original domain with
+analytic regular source germ $G$. Translation covariance allows its source
+to be placed at $0$ without changing its physical projective tensor.
+For every small $\epsilon$, source locality identifies the original
+initial prefix law with that in $D_{G,\epsilon}$ through a common source
+neighborhood. The source tensor decoder is a function of this prefix
+and the common germ. Its distribution is the mixing measure in either
+state, so both have one common mixing measure $\pi_G$, independent of
+$\epsilon$.
+
+Coherence and the common-color shield coupling give a coupling of the
+two limiting curves in $D_{G,\epsilon}$ and $D_0$ such that their ordered
+terminal segments agree outside an event of probability at most
+$C(\epsilon/R)^\alpha$, for one fixed small $R$ in the shared flat
+outer geometry. Their target germs coincide. Apply the two terminal
+decoders; the resulting tensor variables have respective laws
+$\pi_G,\pi_0$ and are equal on the coalescence event. The coupling
+inequality for total variation therefore gives
+\[
+ \|\pi_G-\pi_0\|_{\mathrm{TV}}
+       \leq C(\epsilon/R)^\alpha.
+ \tag{ED16}
+\]
+Here total variation is $\sup_B|\pi_G(B)-\pi_0(B)|$.
+Letting $\epsilon\downarrow0$ gives $\pi_G=\pi_0$. Since $\pi_0$ is
+a point mass, the original marginal is pure and shares the same tensor.
+The argument applies separately to each original regular-source state;
+no simultaneous uncountable full-probability assertion is required.
+\end{proof}
+
+Thus, subject to the explicitly stated coherent independent-color scaling
+and shielding premises, the mixed-affine ansatz on regular domains
+already collapses to one deterministic common affine metric. This does
+not derive the mixed-affine ansatz for an arbitrary curve law, and does
+not classify arbitrary abstract three-axiom families.
+
+\paragraph{Initial characteristic limits become deterministic.}
+At any source to which the preceding zero-one argument applies, a finite
+initial limit in probability of an adapted characteristic $A_t/t$ or
+$C_t/t$ is deterministic. To see germ measurability, stop the characteristic
+at the first exit from an arbitrary source ball. That exit has strictly
+positive capacity time; the stopped and unstopped limits therefore agree.
+A limit in probability of variables measurable from the stopped prefix has
+a measurable version in its completed sigma-field. This holds for every
+small radius, so the limit belongs to the trivial initial germ.
+This removes the deterministic-value premise at these starts once existence
+of a tangent and natural-trace-filtration compatibility are known; neither
+tangent existence nor the required slit-uniform bound is obtained here.
+
+
+
 \begin{thebibliography}{9}
 \bibitem{lawler}G. F. Lawler, \emph{Schramm--Loewner Evolution},
 Park City lecture notes (2007), Lectures 3--4.
@@ -880,8 +2082,13 @@ Park City lecture notes (2007), Lectures 3--4.
 \bibitem{yuan}Y. Yuan, \emph{Topological characterisations of Loewner traces},
 Indiana Univ. Math. J. \textbf{71} (2022), 1027--1046.
 \url{https://arxiv.org/abs/2003.05535}.
+\bibitem{ms} J. Miller and S. Sheffield, \emph{Imaginary geometry III:
+reversibility of SLE$_\kappa$ for $\kappa\in(4,8)$},
+Ann. of Math. \textbf{184} (2016), 455--486.
+\url{https://annals.math.princeton.edu/2016/184-2/p03}.
 \bibitem{record}\emph{Research record: locality, terminal information, and planar exploration laws},
 \texttt{progress.tex} in this repository, including the original-locality
-investigation and the corrected-locality continuation (26 October 2026).
+investigation and the corrected-locality continuation (27 October 2026).
 \end{thebibliography}
 \end{document}
+

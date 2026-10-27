@@ -25,7 +25,7 @@ Brownian full support cannot replace continuity at deterministic null histories.
 
 ## Files, preservation, and verification
 
-progress.tex contains the full arguments (72 compiled pages at this checkpoint). The polished final.tex/results/final.pdf still contain the preceding 13-page report; their update is the next step. results/progress.pdf is current. Historical fixed-target results remain under archive/. AGENTS.md and PROJECT_DESCRIPTION.md are unchanged.
+progress.tex contains the full arguments (72 compiled pages); final.tex presents the checked driving, endpoint-decoding, and independent-color coupling results (28 pages). Both compiled reports under results/ are current. Historical fixed-target results remain under archive/. AGENTS.md and PROJECT_DESCRIPTION.md are unchanged.
 
-The finite-variation, random-tangent, endpoint-decoder, coalescence, germ zero-one, and common-metric arguments received primary and independent-agent checks. LaTeX compilation and cross-reference checks pass; compilation is not mathematical verification. The first intermediate checkpoint was pushed to main as 638039b.
+The finite-variation, random-tangent, endpoint-decoder, coalescence, germ zero-one, and common-metric arguments received primary and independent-agent checks. Both reports compile with clean final logs and resolved references; representative mathematical pages were visually checked. Compilation is not mathematical verification. Intermediate checkpoints were pushed to main as 638039b and 3aae85a before the final report update.
 
