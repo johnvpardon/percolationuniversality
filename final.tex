@@ -30,6 +30,9 @@ Independent-color resampling and RSW source shields imply an initial
 ordered trace-germ zero-one law, with quantitative decorrelation between
 small prefixes and the full exploration curve. This conclusion does not
 assume affine-SLE marginals or a limiting domain Markov theorem.
+Exact coalescence also gives total-variation prefix--suffix decoupling
+and exponential mixing of annular source-crossing statistics, with a
+centered strong law that does not require dilation invariance.
 A universal tensor decoder at analytic regular endpoints, exact suffix
 coalescence, and source splicing then show that a coherent family of
 affine-SLE$_6$ mixtures must use one deterministic common affine metric.
@@ -40,7 +43,11 @@ tangent in probability; tightness in law along mirrored slit tests can
 replace deterministic tangents. Locality and compatible strong DMP then
 force Brownian driving of variance six. A wrong-affine-coordinate
 obstruction holds under the weakened deterministic tangent assumptions.
-These results leave the corrected three-axiom classification and critical
+A separate signed conditional-bias criterion supplies semimartingality
+and the required initial tangents without postulating them; its discrete
+version passes to continuous driver limits without filtration convergence.
+The requisite bias cancellation and compatible limiting DMP remain unproved
+for general percolation. These results leave the corrected three-axiom classification and critical
 percolation universality open.
 \end{abstract}
 
@@ -830,6 +837,269 @@ the bracket as before. Local boundedness of a deterministic drift tangent
 is one special case of (FV8); no deterministic initial-tangent premise is
 otherwise necessary for this version.
 
+
+
+\section{A conditional first-moment criterion without assumed characteristics}
+\label{sec:conditional-bias}
+
+\paragraph{Scope.}
+The next criterion replaces the a priori semimartingale and initial-tangent
+premises by conditional first-moment bounds. It does not derive those bounds
+from RSW. They must hold in one fixed physical conformal structure, with the stated control
+along the specified shrinking slit tests. No quadratic-moment bound or
+initial drift derivative is assumed.
+
+\begin{lemma}[Conditional bias produces a bounded drift density]
+\label{lem:cbias-doobmeyer}
+Let $X$ be a bounded continuous adapted real process, with $X_0=0$, in a
+usual filtration. Suppose a finite deterministic $K$ satisfies
+\[
+ \left|\mathbb E[X_t-X_s\mid\mathcal F_s]\right|
+       \le K(t-s) \quad\hbox{almost surely},\qquad 0\le s\le t.
+ \tag{BI1}
+\]
+Then $X=M+\int_0^\cdot b_rdr$, where $M$ is a continuous local martingale
+and $b$ is predictable with $|b|\le K$ almost everywhere.
+\end{lemma}
+\begin{proof}
+On a fixed finite time interval, $X_t+Kt$ and $-X_t+Kt$ are class-D
+submartingales. Their Doob--Meyer decompositions have increasing predictable
+parts $A^+$ and $A^-$. Adding the decompositions and using uniqueness gives
+$A^++A^-=2Kt$. Thus $A^+$ and $A^-$ are absolutely continuous, with
+densities in $[0,2K]$. The decomposition of $X$ has drift density
+$b=dA^+/dt-K\in[-K,K]$. Since $X$ and its drift are continuous, its
+martingale part is continuous. Uniqueness patches the decompositions over
+finite time intervals.
+\end{proof}
+
+\begin{proposition}[Controlled rate bounds force the tangents to exist]
+\label{prop:cbias-derived-tangents}
+Use the mirrored shrinking slits $A_\epsilon^\pm$ in (DR6), with initial
+derivatives $d_\epsilon$ and $e_\epsilon^\pm$ in (DR9). Assume the driver
+in a state $f$, and the drivers in all these deleted states, have canonical
+continuous-semimartingale decompositions with absolutely continuous drift.
+In each state the drift density is bounded on some strictly positive
+initial stopping interval. The interval may depend on the state and sample.
+Let $K_\epsilon<\infty$ be a deterministic bound common to the two
+deleted states. If $d_\epsilon K_\epsilon\to0$ along a sequence tending
+to zero, then in the original state
+\[
+ \frac1t\sup_{s\le t}|A_s|\longrightarrow0,
+ \qquad \frac{C_t}{t}\longrightarrow6
+ \quad\hbox{almost surely as }t\downarrow0.
+ \tag{BI2}
+\]
+Here $A$ is canonical drift and $C$ is the martingale bracket. No right
+continuity or initial tangent of the drift densities is presumed.
+\end{proposition}
+\begin{proof}
+By locality, compare the original and each deleted driver using the same
+trace filtration and the stopping-time capacity clocks. With
+$p_t^\sigma=(h_t^\sigma)'(W_t)$ and
+$q_t^\sigma=(h_t^\sigma)''(W_t)$, uniqueness of canonical
+characteristics gives
+\[
+ \frac12q_t^\sigma(dC_t-6dt)
+   =\bigl[(p_t^\sigma)^2\widehat b^\sigma_{u_\sigma(t)}
+                    -p_t^\sigma b_t\bigr]dt.
+ \tag{BI3}
+\]
+One fixed nonzero-$q_0$ test makes $C$ absolutely continuous on a positive
+initial interval; write $dC_t=v_tdt$ there. For each fixed $\epsilon$, both
+mirrored identities hold almost everywhere on a positive initial interval,
+as a two-by-two system in $b_t$ and $(v_t-6)/2$. Its coefficients converge
+as $t\downarrow0$ to
+\[
+ \begin{pmatrix}d_\epsilon&e_\epsilon^+\\
+                 d_\epsilon&-e_\epsilon^+\end{pmatrix},
+\]
+whose determinant is nonzero. The right sides are
+$(p_t^\sigma)^2\widehat b^\sigma_{u_\sigma(t)}$, with each transformed
+density bounded by $K_\epsilon$. Continuity of the coefficients and matrix
+inversion therefore give the pathwise bounds
+\[
+ \mathop{\rm ess\,limsup}_{t\downarrow0}|b_t|\le d_\epsilon K_\epsilon,
+ \qquad
+ \mathop{\rm ess\,limsup}_{t\downarrow0}|v_t-6|
+       \le \frac{2d_\epsilon^2K_\epsilon}{|e_\epsilon^+|}.
+ \tag{BI4}
+\]
+These assertions concern the same original densities. Intersect the
+probability-one sets for a countable sequence $\epsilon\downarrow0$.
+By assumption $d_\epsilon K_\epsilon\to0$; also
+$d_\epsilon/|e_\epsilon^+|\to0$, so both right sides tend to zero. Integrating the resulting essential right limits
+proves (BI2). The positive comparison intervals may shrink with
+$\epsilon$: the essential limsup is taken at fixed $\epsilon$ first.
+\end{proof}
+
+\begin{theorem}[SLE from controlled conditional driving bias]
+\label{thm:cbias-rigidity}
+Let a Borel exploration family have continuous Loewner drivers on all
+$t\ge0$, source locality including the test deletions, and strong DMP.
+Require locality to identify the completed natural trace filtrations via
+the invertible capacity clocks. Under conditional restart in an inherited
+chart, require the canonical martingale, drift, and bracket to coincide
+with those of the restarted kernel. These are the same explicit
+filtration and characteristic compatibility premises as in the earlier
+conditional driving theorems. Suppose that, in every
+deterministic state $f$, there is an increasing sequence of stopping times
+$\rho_{f,m}$ increasing almost surely to infinity, with $\rho_{f,1}>0$ almost surely,
+such that each $X^{f,m}_t=W^f_{t\wedge\rho_{f,m}}$ is bounded and
+satisfies (BI1), with a finite deterministic bound $K(f,m)$. Require
+\[
+ \lim_{n\to\infty}\epsilon_n
+          \max_{\sigma=\pm}K(f_{\epsilon_n}^\sigma,1)=0
+ \tag{BI5}
+\]
+at every state, for some sequence $\epsilon_n\downarrow0$. In particular uniformly
+bounded constants suffice; growth $o(\epsilon_n^{-1})$ is allowed.
+Then the family is chordal SLE$_6$ in these coordinates.
+\end{theorem}
+\begin{proof}
+Lemma~\ref{lem:cbias-doobmeyer}, applied to the localizing sequence, gives
+global continuous-semimartingale decompositions with locally bounded
+absolutely continuous drift. Uniqueness patches the decompositions on
+overlapping stopped intervals. Proposition~\ref{prop:cbias-derived-tangents}
+then gives the zero drift tangent and bracket tangent six in every state.
+
+Use the conditional-kernel compatibility of canonical decompositions in
+the inherited natural trace filtration, as in the earlier conditional
+characteristic theorems. At every
+bounded stopping time $\tau$, conditional DMP and (BI2) give
+\[
+ \frac{A_{\tau+h}-A_\tau}{h}\longrightarrow0,
+ \qquad
+ \frac{C_{\tau+h}-C_\tau}{h}\longrightarrow6
+ \quad\hbox{in probability}.
+\]
+The zero-stopping-tangent lemma
+(Lemma~\ref{lem:fv-zero-stopping-tangents}) applied to $A$ and $C-6t$
+gives $A=0$ and $C_t=6t$. L\'evy's characterization identifies the
+driver as $\sqrt6 B$, hence the trace as SLE$_6$.
+\end{proof}
+
+\paragraph{Rates in the slit test.}
+Since $d_\epsilon\sim\epsilon/2$ and
+$|e_\epsilon^+|\sim1/(2\epsilon)$, the two bounds in (BI4)
+are of orders $\epsilon K_\epsilon$ and
+$\epsilon^3 K_\epsilon$. The weaker condition
+$\epsilon^3K_\epsilon\to0$ alone forces the initial bracket tangent
+to be six. The full classification above also needs the stronger drift
+condition in (BI5).
+
+\paragraph{What this reduction gains and what it leaves open.}
+Conditional bias bounds concern first moments of observable driver
+increments, rather than unknown canonical decompositions. They produce
+semimartingality, bounded drift densities, and the missing initial tangents
+without assuming quadratic variation estimates. They are nevertheless
+substantial cancellation estimates: a bound on
+$\mathbb E|W_{t+h}-W_t|$ of Brownian order $\sqrt h$, or tightness from
+RSW, does not imply (BI1). The rate control in (BI5) is coordinate sensitive
+and is not justified by convergence of curve laws in the shrinking slit
+domains. Thus this is a conditional route toward the desired regularity,
+not a proof of percolation universality.
+
+% Research addendum; intended for inclusion after the conditional-bias theorem.
+\subsection{An observable discrete criterion that passes to curve limits}
+\label{sec:discrete-bias-transfer}
+
+There is no need to identify the discrete or limiting canonical
+characteristics in order to test the preceding criterion. Signed
+conditional first moments on a discrete exploration clock suffice.
+The following elementary transfer also avoids convergence of filtrations.
+It does not establish the separate strong-DMP premise of the rigidity
+theorem.
+
+\begin{proposition}[Discrete conditional bias passes to the natural limit filtration]
+\label{prop:discrete-bias-transfer}
+Fix $T>0$. For each $n$, let
+$0=t^n_0<t^n_1<\cdots<t^n_{N_n}=T$ be a deterministic partition
+with maximum spacing tending to zero. Let $X^n$ be its continuous
+linear interpolation of grid values, all bounded by one deterministic
+constant $L$. Suppose the grid values are adapted to filtrations
+$(\mathcal G^n_j)_j$ and
+\[
+ \left|\mathbb E\left[X^n_{t^n_{j+1}}-X^n_{t^n_j}
+                         \mid\mathcal G^n_j\right]\right|
+ \le (K+\delta_n)(t^n_{j+1}-t^n_j),\qquad\delta_n\downarrow0.
+ \tag{DB1}
+\]
+Suppose $X^n$ converges in distribution in $C([0,T])$ to $X$.
+Then in the usual augmentation of the natural filtration of $X$,
+\[
+ \left|\mathbb E[X_t-X_s\mid\mathcal F_s]\right|
+       \le K(t-s),\qquad 0\le s\le t\le T.
+ \tag{DB2}
+\]
+Consequently $X$ has a continuous local-martingale part and an
+absolutely continuous canonical drift with density bounded by $K$.
+\end{proposition}
+\begin{proof}
+Summing the conditional inequalities and using the tower property
+shows that the grid processes
+$X^n_{t^n_j}\pm(K+\delta_n)t^n_j$ are respectively a submartingale
+and a supermartingale. In particular, for grid points $s_n\le t_n$
+and every bounded nonnegative $\mathcal G^n_{j(s_n)}$-measurable $H_n$,
+\[
+ \left|\mathbb E[(X^n_{t_n}-X^n_{s_n})H_n]\right|
+       \le (K+\delta_n)(t_n-s_n)\mathbb E H_n.
+ \tag{DB3}
+\]
+Choose grid points $s_n\to s$ and $t_n\to t$, with $s_n\le t_n$,
+and set $H_n=H(X^n_{\cdot\wedge s_n})$, where $H$ is any bounded
+nonnegative continuous function on $C([0,T])$.
+The stopped interpolated path is measurable at the grid time $s_n$.
+Convergence in $C([0,T])$ and uniform continuity of each limiting
+path give joint convergence of the evaluations and stopped paths.
+The deterministic bound $L$ permits passage of their expectations to
+the limit in (DB3).
+
+Bounded continuous tests determine finite measures on the stopped-path
+space. Thus the resulting two inequalities extend to all bounded
+nonnegative tests measurable in the raw natural filtration at $s$.
+This proves (DB2) there. Equivalently $X_t+Kt$ and $-X_t+Kt$ are
+continuous class-D submartingales. These remain submartingales under
+the usual augmentation: for $u\downarrow s$, apply the inequality
+at $u<t$, then use reverse-martingale convergence and continuity of
+$X$ to condition on $\bigcap_{u>s}\mathcal F_u^{\rm raw}$.
+Completion changes only null sets. Lemma~\ref{lem:cbias-doobmeyer}
+now supplies the asserted canonical decomposition.
+\end{proof}
+
+\paragraph{Exploration-time variant.}
+An equivalent usable sufficient hypothesis allows a random discrete
+clock. Let the successive capacity times $t^n_j$ and grid values
+$X^n_j$ be adapted to the discrete revealed-color filtration, with
+uniform deterministic bounds on the drivers and clock horizons. Assume
+the times are nondecreasing, interpolation is well defined, and
+$J_n(s)=\inf\{j:t^n_j\ge s\}<\infty$ almost surely for each $s<T$. Suppose the times cover
+every fixed $s<T$ almost surely, their largest spacing tends to zero
+in probability, and
+\[
+ \left|\mathbb E[X^n_{j+1}-X^n_j\mid\mathcal G^n_j]\right|
+ \le (K+\delta_n)
+       \mathbb E[t^n_{j+1}-t^n_j\mid\mathcal G^n_j].
+ \tag{DB4}
+\]
+After continuous interpolation, assume the same uniform-path convergence.
+Then (DB2) again follows. Indeed $X^n_j\pm(K+\delta_n)t^n_j$
+are bounded discrete sub/supermartingales. Use optional sampling at
+$J_n(s)=\inf\{j:t^n_j\ge s\}$ and $J_n(t)$, with a test
+of the path stopped at $t^n_{J_n(s)}$. The indices are stopping times
+because $\{J_n(s)\le j\}=\{t^n_j\ge s\}$.
+The clock overshoots tend to zero in probability; tightness in the
+continuous-path topology makes the stopped paths and sampled values
+converge to their deterministic-time counterparts. Boundedness then
+passes the inequalities to the limit as above. At $T$, use continuity
+from times below $T$.
+
+Thus a possible lattice-level research target is the signed cancellation
+estimate (DB4), after suitable bounded stopping, in an unknown but fixed
+affine normalization. The constants must satisfy the shrinking-slit
+control in Theorem~\ref{thm:cbias-rigidity}, and the limit must separately
+have its stated strong-DMP and conditional-characteristic compatibility.
+Neither a Brownian-size absolute increment estimate nor RSW alone is
+being substituted for this signed conditional estimate.
 
 
 \section{A wrong affine metric cannot have tame driving drift in every bounded domain}
@@ -2073,6 +2343,324 @@ This removes the deterministic-value premise at these starts once existence
 of a tangent and natural-trace-filtration compatibility are known; neither
 tangent existence nor the required slit-uniform bound is obtained here.
 
+
+
+\section{Total-variation decoupling of an initial prefix and a distant suffix}
+\label{sec:spatial-beta-mixing}
+
+The closed exact-coalescence relation gives a stronger consequence than
+bounded-Lipschitz covariance. It controls arbitrary measurable observables
+of the distant terminal suffix in total variation. This uses the actual
+independent-color source-shield coupling, not just abstract locality or
+an unforced-crossing bound.
+
+Fix a bounded domain with source $p$, target $q$, flat source geometry,
+and a marginal curve scaling limit $P$ satisfying the hypotheses of
+Theorem~\ref{thm:ed-germzeroone}. Let $\sigma_r\gamma$ be the initial
+ordered prefix stopped on the radius-$r$ circle about $p$. For
+$R<|q-p|$ define $\lambda_R\gamma$ to be the ordered terminal suffix
+beginning at the \emph{last} visit to $\overline B(p,R)$. For any
+continuous representative on $[0,1]$ this means restriction from
+\[
+ t_R(\gamma)=\max\{t\in[0,1]:|\gamma(t)-p|\leq R\}
+\]
+to $1$, followed by linear reparameterization. The resulting ordered
+curve does not depend on the representative or pauses.
+
+Both stopping operations are Borel maps on the assumed Polish oriented
+Fr\'echet curve space. For completeness, on the continuous-parameter
+curve space, $t_R$ is Borel because, for fixed $a$,
+\[
+ \{t_R\geq a\}
+ =\left\{\min_{a\leq t\leq1}|\gamma(t)-p|\leq R\right\}
+\]
+is closed. Restriction and rescaling are jointly continuous in a curve
+and its cut parameter. Hence the terminal-suffix map to the quotient
+curve space is Borel on representatives and invariant under
+reparameterization. It descends to a Borel map on the Polish quotient:
+the preimages of Borel sets are saturated Borel sets, whose images and
+complements under the continuous quotient map are analytic; both are
+therefore Borel. First-exit stopping has the same Borel property.
+
+\begin{theorem}[Prefix--suffix decoupling]
+\label{thm:spatial-beta}
+There exist $C<\infty$ and $\alpha>0$, determined by the source-shield
+constants, such that for all sufficiently small $R$ and all
+$0<r<R/64$,
+\[
+ \left\|\mathcal L_P(\sigma_r\gamma,\lambda_R\gamma)
+       -\mathcal L_P(\sigma_r\gamma)
+           \otimes\mathcal L_P(\lambda_R\gamma)\right\|_{\rm TV}
+ \leq C(r/R)^\alpha.
+ \tag{SB1}
+\]
+Here total variation is $\sup_A|\mu(A)-\nu(A)|$ on the product
+space. In particular this estimate holds at \emph{every} small radius
+$r$, not merely almost every stopping-continuity radius.
+\end{theorem}
+
+\begin{proof}
+Set $\epsilon=8r$. At the discrete level take two configurations with
+independent colors in $B(p,\epsilon)$ and identical independent colors
+outside that ball. Both marginal explorations have the same scaling
+limit $P$. Their joint laws are tight. Choose a radius
+$\rho\in(r,2r)$ at which first-exit stopping is $P$-almost surely
+continuous; such radii have full Lebesgue measure by
+Lemma~\ref{lem:lt-stopcontinuity}.
+The first discrete exploration up to radius $\rho$ uses only the first
+configuration's interior colors, once the mesh is sufficiently small.
+It is consequently independent of the entire second exploration.
+Continuous mapping along a joint subsequential limit gives
+\[
+ \sigma_\rho\gamma_1\ \perp\!\!\!\perp\ \gamma_2.
+\]
+Stopping the limiting first prefix again, now at radius $r$, is a Borel
+operation and requires no continuity assertion at $r$. Thus
+$\sigma_r\gamma_1$ is independent of the full curve $\gamma_2$.
+
+Apply the source-shield estimate with shield radius $R/2$. Outside an
+event of probability at most $C(r/R)^\alpha$, both prefixes before
+coalescence stay in $K=\overline B(p,R/2)$ and the ordered suffixes
+are identical. Lemma~\ref{lem:cb-closed} and the closed-set Portmanteau
+inequality preserve this statement in the same joint subsequential
+limit. Since $q\notin\overline B(p,R)$, each full curve's last visit
+to $\overline B(p,R)$ is on the common suffix. Therefore
+\[
+ \mathbb P\{\lambda_R\gamma_1\ne\lambda_R\gamma_2\}
+ \leq C(r/R)^\alpha.
+\]
+The pairs
+$(\sigma_r\gamma_1,\lambda_R\gamma_1)$ and
+$(\sigma_r\gamma_1,\lambda_R\gamma_2)$ form a coupling of the
+joint law in (SB1) with the displayed product law. The usual coupling
+bound for total variation proves (SB1).
+\end{proof}
+
+\begin{corollary}[Expected conditional total-variation stability]
+\label{cor:spatial-conditional-tv}
+Let $K_r(x,\cdot)$ be a regular conditional law of $\lambda_R\gamma$
+given $\sigma_r\gamma=x$. Then
+\[
+ \int\left\|K_r(x,\cdot)-\mathcal L_P(\lambda_R\gamma)
+          \right\|_{\rm TV}
+       \,\mathcal L_P(\sigma_r\gamma)(dx)
+ \leq C(r/R)^\alpha.
+ \tag{SB2}
+\]
+Consequently for bounded Borel functions $F,G$ of the two respective
+variables,
+\[
+ |\operatorname{Cov}_P(F(\sigma_r\gamma),G(\lambda_R\gamma))|
+ \leq 2C\|F\|_\infty\|G\|_\infty(r/R)^\alpha.
+ \tag{SB3}
+\]
+\end{corollary}
+\begin{proof}
+On standard Borel spaces, total variation between a joint law and the
+product of its marginals is the integral of the total variations of
+the corresponding regular conditional laws. One may verify the identity
+using a countable generating algebra to compute the variation of each
+signed conditional measure. This gives (SB2). Integrating the bounded
+product observable against the difference of the two probability laws
+costs at most twice its supremum norm times the convention for total
+variation used in (SB1), proving (SB3).
+\end{proof}
+
+\paragraph{Variants and limitation.}
+The same proof applies to any standard-Borel-valued observable $Y_R$
+that agrees whenever two curves belong to $E_{\overline B(p,R/2)}$.
+For example one may use the compact trace outside the open radius-$R$
+ball instead of the ordered distant suffix. Measurability of a given
+variant should be checked separately. Completed prefix sigma-fields
+are harmless, since versions may be chosen modulo their common
+marginal null sets.
+
+This is quantitative spatial loss of memory at a deterministic regular
+source. It does not identify a conditional continuation kernel in an
+arbitrary random slit domain: the proof has no shield estimate uniform
+over rough explored frontiers. In particular it neither proves strong
+DMP in a curve limit nor the whole-slit stability premise of the
+driving-rigidity results. The whole-tube approach based on boundary
+three-arm estimates still needs the deterministic implication from
+ordered curve disagreement to an appropriate arm event.
+
+
+\section{Annular crossing statistics self-average at a regular source}
+\label{sec:annular-scenery}
+
+The same source resampling argument applies to a macroscopic observable
+whenever the closed exact-coalescence relation forces its equality. It
+therefore controls annular crossings made \emph{before the first outer
+exit}, even if the full curve later returns arbitrarily close to the
+source. No source nonreturn assumption is needed.
+
+\begin{proposition}[Decoupling for coalescence-invariant observations]
+\label{prop:scenery-decoupling}
+Under the hypotheses of Theorem~\ref{thm:spatial-beta}, let $Y_R$ be
+a Borel map from the oriented curve space into a standard Borel space.
+Assume
+\[
+ (\gamma,\widetilde\gamma)\in E_{\overline B(p,R/2)}
+       \quad\Longrightarrow\quad
+ Y_R(\gamma)=Y_R(\widetilde\gamma).
+ \tag{AS1}
+\]
+Then, for $0<r<R/64$,
+\[
+ \bigl\|\mathcal L_P(\sigma_r\gamma,Y_R(\gamma))
+      -\mathcal L_P(\sigma_r\gamma)
+                    \otimes\mathcal L_P(Y_R(\gamma))\bigr\|_{\rm TV}
+ \le C(r/R)^\alpha.
+ \tag{AS2}
+\]
+The same conclusion holds if the first variable is any Borel function
+of $\sigma_r\gamma$.
+\end{proposition}
+\begin{proof}
+Use exactly the independent-inner/shared-outer coupling in the proof of
+Theorem~\ref{thm:spatial-beta}, including a good stopping-continuity
+radius between $r$ and $2r$. Its limiting curves obey
+$\sigma_r\gamma_1\perp\!\!\!\perp\gamma_2$ and
+\[
+ \mathbb P\bigl(E_{\overline B(p,R/2)}\bigr)
+       \ge1-C(r/R)^\alpha.
+\]
+Assumption (AS1) implies
+$\mathbb P\{Y_R(\gamma_1)\ne Y_R(\gamma_2)\}
+\le C(r/R)^\alpha$. Couple the two pairs with common first variable
+$\sigma_r\gamma_1$, as in the earlier proof. The second pair has the
+product law by independence. This proves (AS2). Applying a Borel map
+to the first variable cannot increase total variation.
+\end{proof}
+
+Fix $a>0$ sufficiently small that the source-shield construction applies
+up to scale $a$, and $|q-p|>a$. Put
+\[
+ r_n=a2^{-n},\qquad n=1,2,\ldots.
+\]
+For a continuous representative of $\gamma$ define
+\[
+ \tau_n=\inf\{t:|\gamma(t)-p|=2r_n\},\qquad
+ \eta_n=\max\{t\le\tau_n:|\gamma(t)-p|\le r_n\}.
+ \tag{AS3}
+\]
+Let $B_n(\gamma)$ be the ordered restriction to $[\eta_n,\tau_n]$,
+translated by $-p$ and dilated by $r_n^{-1}$. This is an oriented curve
+in $\{1\le |z|\le2\}$ from its inner to its outer boundary. It is the
+last inner-to-outer crossing before the first outer hit. Only this
+crossing is recorded; later returns of the full curve are immaterial.
+
+The map $B_n$ is Borel and invariant under changes of representative.
+Indeed $\tau_n$ is a Borel first-hitting operation. Restrict first to
+$[0,\tau_n]$, linearly reparameterized on $[0,1]$. On this stopped
+curve, $\eta_n$ is a Borel last visit to the closed inner ball, by the
+last-visit argument in Section~\ref{sec:spatial-beta-mixing}. Successive
+restriction, translation, dilation, and passage to the oriented quotient
+are Borel. In particular $B_n$ is a Borel function of
+$\sigma_{2r_n}\gamma$.
+
+There is a second property crucial to the proof: if
+$(\gamma,\widetilde\gamma)\in E_{\overline B(p,r_n/2)}$, then
+$B_n(\gamma)=B_n(\widetilde\gamma)$. The prefixes before the common
+suffix remain strictly inside the inner circle, and the common suffix
+starts there. Both first outer hits thus occur on that suffix, and so
+do their last inner-ball visits before those hits. The corresponding
+ordered crossing segments agree exactly.
+
+\begin{theorem}[Exponential absolute regularity across dyadic source scales]
+\label{thm:scenery-beta}
+Under the same source-shield and independent-color limit hypotheses,
+the annular crossing sequence $(B_n)_{n\ge1}$ satisfies
+\[
+ \begin{split}
+ &\bigl\|\mathcal L_P\bigl((B_1,\ldots,B_m),
+                                  (B_{m+k},B_{m+k+1},\ldots)\bigr)\\
+ &\hspace{14mm}
+ -\mathcal L_P(B_1,\ldots,B_m)
+             \otimes\mathcal L_P(B_{m+k},B_{m+k+1},\ldots)
+                         \bigr\|_{\rm TV}
+ \le C_0 2^{-\alpha k},\qquad m,k\ge1.
+ \end{split}
+ \tag{AS4}
+\]
+The countable product on the fine-scale side is a standard Borel space.
+Constants are independent of $m$ and $k$. No stationarity or dilation
+covariance of the marginal curve limit is assumed.
+\end{theorem}
+\begin{proof}
+For $k\ge8$, apply Proposition~\ref{prop:scenery-decoupling} with
+$R=r_m$ and $r=2r_{m+k}$. The vector
+$Y_R=(B_1,\ldots,B_m)$ satisfies (AS1): every one of its inner
+radii is at least $r_m$, so coalescence inside the radius-$r_m/2$
+ball occurs before all the relevant inner and outer visits. The whole
+countable vector $(B_{m+k},B_{m+k+1},\ldots)$ is a Borel function of
+$\sigma_{2r_{m+k}}\gamma$, because every corresponding outer radius
+is at most $2r_{m+k}$. Thus (AS2) gives the upper bound
+\[
+ C(2r_{m+k}/r_m)^\alpha=C2^{\alpha}2^{-\alpha k}.
+\]
+Enlarge $C_0$ to cover $1\le k<8$ by the trivial total-variation bound
+one. Interchanging the two coordinates of a joint law preserves total
+variation, giving (AS4) in the displayed order.
+\end{proof}
+
+\begin{corollary}[A strong law for bounded annular observations]
+\label{cor:scenery-slln}
+Let $f_n$ be any deterministic sequence of Borel real functions of an
+annular oriented crossing, with $|f_n|\le1$. Put
+$Z_n=f_n(B_n)$. Then
+\[
+ \frac1N\sum_{n=1}^N\{Z_n-\mathbb E_P Z_n\}
+          \longrightarrow0\qquad P\text{-almost surely}.
+ \tag{AS5}
+\]
+In particular, for a fixed bounded Borel $f$, if the deterministic
+Ces\`aro means
+\[
+ \frac1N\sum_{n=1}^N\mathbb E_P f(B_n)
+\]
+converge to $c_f$, then the empirical means
+$N^{-1}\sum_{n\le N}f(B_n)$ converge almost surely to $c_f$.
+These assertions hold simultaneously for any prescribed countable
+collection of choices of the sequence $(f_n)$.
+\end{corollary}
+\begin{proof}
+The total-variation estimate (AS4) and $|Z_n|\le1$ imply
+\[
+ |\operatorname{Cov}_P(Z_n,Z_j)|
+       \le2C_0 2^{-\alpha|n-j|}\quad(n\ne j).
+\]
+Consequently, for $S_N=\sum_{n\le N}(Z_n-\mathbb E_P Z_n)$,
+\[
+ \mathbb E_P S_N^2\le C_1 N.
+\]
+Chebyshev's inequality and Borel--Cantelli give
+$S_{\ell^2}/\ell^2\to0$ almost surely, since for every $\zeta>0$,
+\[
+ \sum_{\ell=1}^{\infty}
+ \mathbb P\{|S_{\ell^2}|>\zeta\ell^2\}
+ \le\frac{C_1}{\zeta^2}
+                  \sum_{\ell=1}^{\infty}\ell^{-2}<\infty.
+\]
+For $\ell^2\le N<(\ell+1)^2$, boundedness of the centered summands
+gives
+$|S_N-S_{\ell^2}|\le2(2\ell+1)$. Dividing by $N$ yields (AS5).
+Add the deterministic expectations for the second assertion, and
+intersect countably many probability-one events for the last one.
+\end{proof}
+
+\paragraph{Meaning and remaining gap.}
+Annular crossing statistics of one limiting exploration self-average
+over logarithmically many source scales. The centering sequence is
+deterministic, even when the scaling limit itself has not been shown
+dilation invariant. Neither the convergence of those deterministic
+expectations nor their values is asserted. A source law that is
+invariant under dyadic dilation would make the expectations constant,
+but such invariance is an additional premise and is not inferred from
+precompactness of the collection of scaling limits. The result supplies
+a rigorous scale-statistics diagnostic without an affine-SLE ansatz;
+it does not classify those deterministic statistics or produce random
+slit-domain exploration kernels.
 
 
 \begin{thebibliography}{9}
