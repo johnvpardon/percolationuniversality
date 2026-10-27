@@ -21,7 +21,7 @@
 \title{Research record: locality, terminal information, and planar exploration laws}
 \hypersetup{pdftitle={Research record: locality, terminal information, and planar exploration laws},pdfauthor={Autonomous mathematical research}}
 \author{Autonomous mathematical investigation, with independent critical checks}
-\date{26 October 2026}
+\date{27 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -2704,6 +2704,282 @@ assignments at rough, dynamically created source germs, where the analytic
 boundary jet in (DR16) no longer exists.
 
 % Investigation under the revised source-neighborhood locality axiom.
+% Research fragment; intended for progress.tex after independent checking.
+\section{Rigidity from an averaged initial finite-variation characteristic}
+\label{sec:fv-tangent-rigidity}
+
+\paragraph{Scope.}
+This conditional theorem weakens the preceding driving-regularity premise.
+The canonical finite-variation characteristic need not be absolutely
+continuous and need not possess a right-continuous density. We assume only
+a deterministic first-order tangent in probability, uniformly on shrinking
+initial intervals. No such property is derived from RSW or the three axioms.
+
+Let the driver in inverse chart $f$ have canonical decomposition
+\[
+ W^f=M^f+A^f,\qquad W^f_0=M^f_0=A^f_0=0,
+ \tag{FV1}
+\]
+where $M^f$ is a continuous local martingale and $A^f$ is continuous,
+adapted, and locally of finite variation. Write $C^f=\langle M^f\rangle$.
+Assume for every deterministic state and inherited chordal chart that a
+finite deterministic number $B(f)$ satisfies
+\[
+ \frac{1}{t}\sup_{0\le s\le t}|A^f_s-B(f)s|
+       \xrightarrow[t\downarrow0]{\mathbb P}0.
+ \tag{FV2}
+\]
+An almost-sure derivative $A^f_t/t\to B(f)$ implies (FV2), but (FV2)
+is weaker. No bound on $\operatorname{TV}(A^f;[0,t])/t$ is assumed.
+
+\begin{lemma}[A small finite-variation displacement in an analytic field]
+\label{lem:fv-analytic-displacement}
+Let $W=M+A$ as in (FV1), let $C=\langle M\rangle$, and suppose
+$\sup_{s\le t}|A_s|=O_{\mathbb P}(t)$ and $A_t/t\to B$ in probability.
+Let $H_t(x)$ be a random field analytic in $x$ on a fixed neighborhood of
+zero for a positive initial time interval. Suppose it has absolutely
+continuous finite variation in $t$, and, after localization, its first three
+spatial derivatives and the first spatial derivative of $\partial_tH_t$
+are bounded there. Assume $H_t'(x)\to d$ as $(t,x)\to(0,0)$.
+Then
+\[
+ \frac1t\int_0^t H_s'(W_s)\,dA_s\longrightarrow dB
+       \quad\hbox{in probability}.
+ \tag{FV3}
+\]
+\end{lemma}
+\begin{proof}
+Localize so $M,A,W$ stay in the spatial neighborhood. Apply the
+finite-variation It\^o--Wentzell formula to
+$F_t(x)=H_t(x+A_t)-H_t(x)$ at $x=M_t$. It gives
+\begin{align*}
+ \int_0^tH_s'(W_s)\,dA_s
+ ={}&H_t(M_t+A_t)-H_t(M_t)\\
+ &-\int_0^t[H_s'(M_s+A_s)-H_s'(M_s)]\,dM_s\\
+ &-\frac12\int_0^t[H_s''(M_s+A_s)-H_s''(M_s)]\,dC_s\\
+ &-\int_0^t[(\partial_sH_s)(M_s+A_s)
+                  -(\partial_sH_s)(M_s)]\,ds.
+\end{align*}
+The first term divided by $t$ converges to $dB$ by the mean-value formula.
+The second term is a continuous local martingale $N_t$ with bracket at
+most $K^2\sup_{s\le t}|A_s|^2 C_t$. Thus $N_t/t\to0$ in probability:
+stop when $|A_s|>Lt$ or $C_s>\eta$, apply the martingale maximal
+inequality, then let $t\downarrow0$, $\eta\downarrow0$, and $L\uparrow\infty$.
+Here $C_t\to0$ almost surely and $\sup|A_s|/t$ is tight. The third term
+divided by $t$ is bounded by
+$K\sup|A_s|C_t/t=o_{\mathbb P}(1)$; the fourth is bounded by
+$K\sup|A_s|=o_{\mathbb P}(1)$. No total-variation estimate was used.
+\end{proof}
+
+\begin{proposition}[Initial covariance without a drift density]
+\label{prop:fv-initial-covariance}
+Suppose source locality allows one test deletion with hydrodynamic map $h$,
+$d=h'(0)>0$, $e=h''(0)\ne0$, and both original and deleted drivers obey
+(FV1)--(FV2), with their canonical characteristics in the same trace
+filtration. Then
+\[
+ C^f_t/t\longrightarrow V(f)\in[0,\infty)
+       \quad\hbox{in probability},
+\]
+where $V(f)$ is deterministic, and
+\[
+ V(f_A)=V(f),\qquad
+ B(f_A)=\frac{B(f)}d+
+            \left(\frac{V(f)}2-3\right)\frac e{d^2}.
+ \tag{FV4}
+\]
+\end{proposition}
+\begin{proof}
+Use the same evolving deletion maps and stopping-time capacity clocks as
+in (DR5), now without assuming a drift density. Put
+$p_t=h_t'(W_t)$, $q_t=h_t''(W_t)$ and $u(t)=\int_0^t p_s^2ds$.
+Uniqueness of the canonical semimartingale decomposition gives
+\[
+ \widehat A_{u(t)}
+  =\int_0^t p_s\,dA_s+\frac12\int_0^tq_s\,dC_s
+                                    -3\int_0^tq_s\,ds.
+ \tag{FV5}
+\]
+The deletion field satisfies the analytic-field lemma after localization;
+its Loewner field derivative and spatial derivatives are bounded near the
+uncollided source. Therefore the first integral divided by $t$ tends to
+$dB(f)$, without assuming $C_t/t$ is tight. Also $u(t)/t\to d^2$.
+Condition (FV2) for the deleted state implies
+$\widehat A_{u(t)}/t\to d^2B(f_A)$: on the event $u(t)\le Kt$, bound
+the error by $t^{-1}\sup_{s\le Kt}|\widehat A_s-B(f_A)s|$, and choose
+fixed $K>d^2$.
+
+Since $q_t\to e\ne0$, (FV5) first implies $C_t/t$ is tight: with
+probability tending to one $q_s$ has fixed sign and magnitude at least
+$|e|/2$ on $[0,t]$, so $|\int q_s dC_s|\ge |e|C_t/2$.
+Consequently
+\[
+ \frac1t\int_0^tq_s\,dC_s-e\frac{C_t}t
+      \longrightarrow0
+ \quad\hbox{in probability}.
+\]
+Taking (FV5) divided by $t$ now gives
+\[
+ V(f)=6+\frac{2\{d^2B(f_A)-dB(f)\}}e.
+\]
+This is intrinsic, nonnegative, and deterministic. The bracket relation
+$\widehat C_{u(t)}=\int_0^t p_s^2dC_s$ gives $V(f_A)=V(f)$.
+For this last step the tangents of $C,\widehat C$ may be evaluated at
+asymptotically deterministic clocks by monotonic squeezing; convergence in
+probability of an arbitrary signed process would not justify that step.
+\end{proof}
+
+\begin{lemma}[A finite-variation process with zero right tangent at every stopping time]
+\label{lem:fv-zero-stopping-tangents}
+Let $A_0=0$ be a continuous adapted locally finite-variation process. If
+for every bounded stopping time $\tau$ before lifetime
+\[
+ \frac{A_{\tau+h}-A_\tau}{h}\longrightarrow0
+       \quad\hbox{in probability as }h\downarrow0,
+ \tag{FV6}
+\]
+then $A$ is indistinguishably zero.
+\end{lemma}
+\begin{proof}
+Work on a compact localized interval. Pathwise put
+$V_t=\operatorname{TV}(A;[0,t])$, and use its generalized inverse
+$\theta(u)=\inf\{t:V_t\ge u\}$ for $0<u<V_T$. The usual arclength
+parametrization of a continuous finite-variation path is
+$G(u)=A_{\theta(u)}$: it is $1$-Lipschitz, satisfies
+$A_t=G(V_t)$, and has $|G'(u)|=1$ for Lebesgue almost every $u$.
+Indeed the variation of $G$ on every interval is its interval length.
+The monotone function $\theta$ has a finite derivative
+$\theta'(u)\in[0,\infty)$ for almost every $u$. Exclude also the
+countably many levels corresponding to nontrivial flat intervals of $V$.
+
+At a level where these properties hold, let $s=\theta(u)$ and
+$v(h)=V_{s+h}-u$. Then $v(h)>0$ and $v(h)\to0$ as $h\downarrow0$.
+The generalized-inverse bounds
+$\theta((u+v(h))- )\le s+h\le\theta((u+v(h))+ )$
+and differentiability of $\theta$ at $u$ give
+$h/v(h)\to\theta'(u)$. Combining this with differentiability of $G$ gives
+\[
+ \lim_{h\downarrow0}\frac{A_{s+h}-A_s}{h}
+ =\begin{cases}
+ G'(u)/\theta'(u),&\theta'(u)>0,\\
+ \operatorname{sgn}(G'(u))\,\infty,&\theta'(u)=0.
+ \end{cases}
+ \tag{FV7}
+\]
+Thus the extended right derivative is nonzero at almost every variation
+level, including levels whose inverse belongs to a singular part of $dV$.
+
+For deterministic $u>0$ use the stopping times
+$\tau_u=\inf\{t:V_t\ge u\}$, truncated at a deterministic endpoint $T$.
+Fubini and the preceding pathwise statement show that for Lebesgue
+almost every deterministic $u$, on $\{\tau_u<T\}$ the quotient in
+(FV6) has a nonzero or infinite pathwise limit almost surely.
+But (FV6) gives convergence in probability to zero at this stopping time,
+which forbids such an event of positive probability. Thus
+$\mathbb P(\tau_u<T)=0$ for Lebesgue almost every $u$, and
+$\mathbb E[V_T]=\int_0^\infty\mathbb P(\tau_u<T)du=0$ after localizing
+$V_T$ to be integrable. Hence $V_T=0$ almost surely. Localization and a
+countable exhaustion of the lifetime prove the claim.
+\end{proof}
+
+\begin{theorem}[Conditional classification from a finite-variation initial tangent]
+\label{thm:fv-tangent-rigidity}
+Suppose a Borel family on all relevant marked slit states has strong DMP
+and source locality, including the same mirrored test deletions (DR6).
+Suppose canonical decompositions (FV1), compatible with conditional restart
+in the inherited chordal charts, obey (FV2). If $B(f)$ is locally bounded
+in inverse-chart topology, or just satisfies the paired slit bound (DR11)
+at every state, the family is chordal SLE$_6$ in these coordinates.
+\end{theorem}
+\begin{proof}
+Proposition~\ref{prop:fv-initial-covariance} gives exactly (DR4), hence
+the reflected-slit sum and difference argument gives $B(f)=0$, $V(f)=6$
+at every deterministic state.
+
+At a stopping time $\tau$, the centered future driver is the driver of
+the remaining physical state in the inherited conformal chart. Its
+capacity parameter is exactly $s=t-\tau$ in the original half-plane
+coordinate: recentering by $W_\tau$ introduces no additional scale clock.
+Strong DMP and conditional-characteristic compatibility identify its
+canonical finite-variation part with $A_{\tau+s}-A_\tau$ under the
+regular conditional law. Applying (FV2) with $B=0$, and integrating these
+conditional probabilities over the random state, gives (FV6).
+Lemma~\ref{lem:fv-zero-stopping-tangents} therefore makes $A=0$.
+
+The same conditional restart argument gives
+$(C_{\tau+h}-C_\tau)/h\to6$ in probability at every stopping time.
+Apply Lemma~\ref{lem:fv-zero-stopping-tangents} to the continuous
+finite-variation process $C_t-6t$: it is identically zero.
+Thus $W=M$ and $\langle M\rangle_t=6t$ globally.
+L\'evy's characterization and continuous Loewner generation identify SLE$_6$.
+\end{proof}
+
+\paragraph{Strict weakening and remaining limitation.}
+Even an absolutely continuous drift with density
+$b_s=B+\sin(1/s)$, $s>0$, has no right limit at zero, whereas
+$\int_0^t b_sds=Bt+O(t^2)$ and therefore satisfies (FV2).
+The theorem also allows an a priori singular finite-variation drift;
+its exclusion is a conclusion, not an assumption. A claim that an actual
+exploration family has these initial characteristic tangents remains
+unproved. The theorem still depends on choosing one correct physical
+conformal structure and on tame behavior under the source slit tests.
+
+\subsection{The wrong-coordinate obstruction also only needs finite-variation tangents}
+
+\paragraph{Scaling lemma with probability tangents.}
+The exact-scaling lemma (SM1)--(SM4) remains true if its drift assumption
+is replaced by continuous finite variation and (FV2), and its bracket
+assumption by $C_t/t\to v$ in probability for deterministic $v$.
+Indeed (FV2) makes
+$\sup_{s\le T}|c^{-1/2}A_{cs}|=O_{\mathbb P}(\sqrt c)\to0$.
+Since $C$ is increasing, a finite deterministic mesh and monotonic
+squeezing show
+\[
+ \sup_{s\le T}|C_{cs}/c-vs|\longrightarrow0
+           \quad\hbox{in probability}.
+\]
+The continuous-martingale functional central limit argument in the earlier
+scaling lemma then applies unchanged. Exact scaling makes the whole law
+Brownian with variance $v$.
+
+\paragraph{Local transfer of the tangent.}
+In Proposition~\ref{prop:fv-initial-covariance}, the analytic-field
+argument actually gives the uniform version
+\[
+ \frac1t\sup_{s\le t}
+ \left|\int_0^s h_r'(W_r)\,dA_r-dB(f)s\right|
+          \longrightarrow0
+          \quad\hbox{in probability}.
+\]
+Use the martingale maximal inequality in its proof, and the same uniform
+initial bound for $A$. Monotonic squeezing similarly makes
+$C_{ts}/t\to V(f)s$ uniformly on compact $s$ intervals in probability.
+Equation (FV5) therefore transfers (FV2) through a local analytic chart
+change, once the initial bracket tangent has been obtained; it also
+transfers its inverse, since the first chart derivative is positive.
+No total-variation rate bound is introduced by this transfer.
+
+\begin{corollary}[Wrong-affine obstruction under finite-variation tangents]
+\label{cor:fv-wrong-affine}
+Consider the canonical fixed-affine SLE$_6$ family with matrix $A$ on all
+bounded marked domains. If every Euclidean chart driver admits (FV1)--(FV2),
+then $A$ is a Euclidean similarity. No local boundedness of $B(f)$ is needed.
+\end{corollary}
+\begin{proof}
+Choose the bounded flat-source domain and one test deletion used in the
+bounded-domain obstruction theorem. Proposition~\ref{prop:fv-initial-covariance}
+gives its deterministic bracket tangent in probability. Couple its initial
+physical trace by known affine-SLE locality to the canonical half-plane
+affine-SLE trace. The local analytic chart transfer just proved gives a
+finite-variation decomposition and uniform deterministic drift tangent for
+the half-plane driver, and the same deterministic bracket tangent.
+Its exact Brownian scaling and the extended scaling lemma make its law
+ordinary Brownian driving. The boundary-swallowing-race and affine
+identification arguments in the half-plane obstruction theorem then give
+variance six and force $A$ to be a similarity.
+\end{proof}
+
+
 \section{Strong source locality inside the affine-SLE ansatz}
 \label{sec:strong-local-affine}
 
@@ -3932,3 +4208,4 @@ J. Eur. Math. Soc. \textbf{20} (2018), 1195--1268,
 especially Section 13.2. \url{https://arxiv.org/abs/1305.5526}.
 \end{thebibliography}
 \end{document}
+
