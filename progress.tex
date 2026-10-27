@@ -3037,7 +3037,7 @@ is one special case of (FV8); no deterministic initial-tangent premise is
 otherwise necessary for this version.
 
 
-\section{A conditional first-moment criterion without assumed characteristics}
+\section{Rigidity from conditional first-moment bounds}
 \label{sec:conditional-bias}
 
 \paragraph{Scope.}
@@ -3270,9 +3270,8 @@ clock. Let the successive capacity times $t^n_j$ and grid values
 $X^n_j$ be adapted to the discrete revealed-color filtration, with
 uniform deterministic bounds on the drivers and clock horizons. Assume
 the times are nondecreasing, interpolation is well defined, and
-$J_n(s)=\inf\{j:t^n_j\ge s\}<\infty$ almost surely for each $s<T$. Suppose the times cover
-every fixed $s<T$ almost surely, their largest spacing tends to zero
-in probability, and
+$J_n(s)=\inf\{j:t^n_j\ge s\}<\infty$ almost surely for each $s<T$.
+Suppose their largest spacing tends to zero in probability and
 \[
  \left|\mathbb E[X^n_{j+1}-X^n_j\mid\mathcal G^n_j]\right|
  \le (K+\delta_n)
@@ -3290,6 +3289,16 @@ continuous-path topology makes the stopped paths and sampled values
 converge to their deterministic-time counterparts. Boundedness then
 passes the inequalities to the limit as above. At $T$, use continuity
 from times below $T$.
+
+\paragraph{Fixed-interval block estimates also suffice.}
+The per-reveal condition (DB4) is sufficient, not necessary for this
+transfer argument. It is enough that for each fixed $s<t$ and every
+bounded nonnegative continuous stopped-path test $H$, the tested
+inequalities (DB3), using approximations of $s,t$, hold up to an error
+$o(1)\|H\|_\infty$. The same weak-convergence proof then gives
+(DB2). Thus one may instead seek signed cancellation over mesoscopic
+blocks, allowing microscopic biases to cancel before a fixed capacity
+interval. No per-reveal estimate is asserted for lattice percolation.
 
 Thus a possible lattice-level research target is the signed cancellation
 estimate (DB4), after suitable bounded stopping, in an unknown but fixed
