@@ -53,8 +53,11 @@ Gaussian limit conditional on a deterministic variance rate.
 A spherical empirical-law decoder handles arbitrary sample-dependent
 local $C^1$ charts; a stationary-cylinder argument supplies dilation
 ergodicity for the relevant whole-plane SLE model. A canonical tube-cluster measure supplies an affine-stable intrinsic
-measure class for compact content-regular model traces; identifying
-the relevant frontier pieces and their typical germs remains unresolved.
+measure class. Whole-plane reversal and natural-length Palm laws
+then give a Borel tensor decoder from every unlabelled compact
+subarc of an affine simple SLE, simultaneously under all affine
+maps and subarc choices. Identifying such arcs on general exploration
+frontiers remains unresolved.
 Historical proofs, failed approaches, and all extra hypotheses are retained.
 \end{abstract}
 \tableofcontents
@@ -6826,21 +6829,17 @@ or all-stopping-time compatibility is asserted here.
 
 
 
-\subsection{Proposed extension to natural-length typical points of simple SLE}
+\subsection{The tensor at a natural-length typical point of a simple SLE}
 \label{sec:natural-point-tensor}
-\paragraph{Verification status at this checkpoint.}
-The following is a proposed argument preserved after an execution interruption.
-Its natural-point transfer is undergoing independent checking. It is not
-used by any established result or by the polished report at this checkpoint.
-
 
 The natural-length Palm law uses a different whole-plane model from the
 deterministic-capacity tip law. The stationary cylinder argument applies
 also to this model, with force parameter $\varrho=2$.
 We restrict to $0<\kappa<4$ so that the relevant traces are simple.
 Let $\mu_2$ be the whole-plane SLE$(\kappa;2)$ law from $0$ to
-$\infty$. Retain the proper spherical curve coding and Borel local
-stopping/completion premises of Theorem~\ref{thm:wp-robust-decoder}.
+$\infty$. Continuous proper traces for this explicit SLE model are established
+in \cite[Theorem 1.12 and Proposition 2.5]{ms-ig4}. Retain the spherical
+curve coding and Borel local stopping/completion premises of Theorem~\ref{thm:wp-robust-decoder}.
 Proposition~\ref{prop:wp-cylinder-ergodic}, with $\varrho=2$, supplies
 its full discrete-dilation ergodicity.
 
@@ -6962,6 +6961,12 @@ from the source to $z$, with force point at the remote boundary target.
 Proposition~\ref{prop:radial-two-terminal-germ} makes its reversed
 terminal germ $\mu_2$-generic. Hence the affine-image empirical law
 is $A_*\mu_2$, which the robust decoder identifies as (NP5).
+The bad-point indicator is jointly Borel in $(\beta,z)$: on a
+simple representative the point $z$ has a unique hit (up to pauses),
+whose first-hit cut is Borel; restriction, reversal, translation, and
+the germ decoder with its Borel completion are Borel. One may first
+cut a branch inside $B(z,\operatorname{dist}(z,\partial D)/2)$,
+so rough source or target boundaries do not enter this observation.
 Integrating the Palm identity over compact interior sets, followed by
 a countable exhaustion, proves that the expected Minkowski-content
 mass of bad points is zero. That mass is nonnegative, so it vanishes
@@ -6983,6 +6988,172 @@ exhaustion, or prove compatibility at every random slit state and
 every exploration stopping time. It does not derive an affine-SLE
 representation from the three axioms.
 
+
+
+\subsection{A tensor from an unlabelled compact simple-SLE arc}
+\label{sec:unlabelled-simple-arc}
+
+The natural-point theorem and the intrinsic measure can be combined
+without leaving an unproved choice of orientation for a compact simple
+arc. We give the coding and local-content details explicitly. This
+result concerns arcs already known to be simple SLE; it does not identify
+arbitrary accessible boundary pieces of an unknown exploration.
+
+\begin{lemma}[Borel orientation and cutting of simple compact arcs]
+\label{lem:borel-simple-arc}
+Use the space $\mathcal C_c$ of arbitrary compact planar oriented
+curves, with pauses identified and the Fr\'echet metric. This is a
+separate space from the fixed-endpoint spherical $0$-to-$\infty$ space.
+Use its continuous quotient map from $C([0,1],\mathbb R^2)$.
+The nonconstant simple-arc subspace is Borel. Its trace map to the
+Hausdorff hyperspace of compact planar sets has exactly two elements
+in each nonempty fiber. Consequently its image is Borel and there is
+a Borel choice of an orientation for every compact simple arc. Given
+an oriented simple arc and a point in its trace, cutting there and
+reversing either resulting branch are jointly Borel operations.
+\end{lemma}
+\begin{proof}
+The compact planar curve space is Polish: images of rational
+polygonal paths give separability. For completeness, align the
+representatives of a Cauchy subsequence successively by increasing
+homeomorphisms so that their successive uniform distances are
+summable. Their uniform limit is continuous and represents the
+Fr\'echet limit; the original Cauchy sequence has the same limit.
+The quotient map is continuous.
+
+For continuous representatives, failure of simplicity modulo pauses is
+the existence of $r\le s\le t$ with
+\[
+ \gamma(r)=\gamma(t),\qquad
+             |\gamma(s)-\gamma(r)|\ge1/n
+ \tag{UA1}
+\]
+for some integer $n\ge1$. For fixed $n$ this is a closed condition:
+the three times range over a compact set and subsequential limits
+preserve both relations. These conditions are invariant under the
+identification of pauses. Their images and their complements under
+the continuous Polish quotient are analytic, hence Borel. Excluding
+their countable union and the constant curves gives the claimed
+Borel subspace. The absence of a nonconstant closed subpath is
+equivalent to being an embedded arc after its constant intervals are
+collapsed.
+
+The trace map is continuous for Fr\'echet and Hausdorff metrics.
+An embedded compact arc has exactly two orientations, so its
+restriction to this Borel subspace is two-to-one. The countable-fiber
+Borel uniformization theorem gives both a Borel image and a Borel
+orientation selector. For cutting, the unique point hit (or its
+constant interval in a representative with pauses) is a Borel first
+hitting time. Indeed its sublevel events are given by the minimum
+distance on a compact initial interval being zero. Restriction and
+reversal are Borel on representatives, invariant after quotienting,
+and therefore descend by the same analytic/complement argument.
+Endpoints or a constant branch may be assigned a cemetery observation.
+\end{proof}
+
+\begin{lemma}[Segment content implies weak local tube convergence]
+\label{lem:segment-content-weak}
+Let $y:[s,t]\to\mathbb R^2$ be a simple continuous curve, and let
+$\Theta$ be continuous and strictly increasing. Suppose for every
+$s\le u<v\le t$ the $d$-dimensional total Minkowski content of
+$y([u,v])$ exists and equals $\Theta(v)-\Theta(u)$.
+Then $E=y([s,t])$ is content regular in the sense of (IM1), with
+\[
+ \mu_E=y_*\bigl(d\Theta|_{[s,t]}\bigr).
+ \tag{UA2}
+\]
+In particular the simultaneous segment-content theorem of
+Lawler--Rezaei~\cite[Theorem 1.1]{lawler-rezaei-content} supplies this
+property for every compact nontrivial interior time segment of a
+simple chordal SLE in $\mathbb H$, on one probability-one set.
+\end{lemma}
+\begin{proof}
+For a finite partition $s=t_0<\cdots<t_m=t$, set
+$E_j=y([t_{j-1},t_j])$. The tube measures satisfy
+$m_{E,\epsilon}\le\sum_jm_{E_j,\epsilon}$. The difference is
+nonnegative, and its total mass tends to
+\[
+ \sum_j\{\Theta(t_j)-\Theta(t_{j-1})\}
+                     -\{\Theta(t)-\Theta(s)\}=0.
+\]
+Thus replacing $m_{E,\epsilon}$ by the sum costs $o(1)$ against
+any bounded continuous test $f$. Choose the partition fine enough
+that each $E_j$ has diameter at most $\delta$. On its radius-$\epsilon$
+tube, $f$ differs from $f(y(t_{j-1}))$ by at most its modulus of
+continuity at $\delta+2\epsilon$ on a fixed compact neighborhood
+of $E$. The tube masses converge to the corresponding increments
+of $\Theta$. Riemann--Stieltjes sums give (UA2) by first taking
+$\epsilon\downarrow0$ and then $\delta\downarrow0$.
+\end{proof}
+
+\begin{theorem}[Simultaneous affine decoding from every compact simple-SLE subarc]
+\label{thm:unlabelled-simple-arc}
+Fix $0<\kappa<4$, put $d=1+\kappa/8$, and retain the stated
+Polish spherical curve and Borel completion coding.
+There is a Borel map $\mathcal T_\kappa$ from compact planar sets
+to projective positive definite tensors, with a cemetery value,
+such that the following holds. If $\beta$ is chordal SLE$_\kappa$
+in $\mathbb H$, then on one probability-one set, simultaneously
+for every $A\in GL^+(2,\mathbb R)$ and every $0<s<t<\infty$,
+\[
+ \mathcal T_\kappa\bigl(A\beta([s,t])\bigr)
+        =[(A^{-1})^{\mathsf T}A^{-1}].
+ \tag{UA3}
+\]
+The input is only the unlabelled compact trace. Neither its
+orientation, capacity time, source, nor target is supplied.
+In particular $A,s,t$ may be selected as functions of the sample
+on this conull set.
+\end{theorem}
+\begin{proof}
+The proof of Theorem~\ref{thm:natural-point-tensor} gives more
+than correctness for a single fixed affine map: on one conull
+set, at content-almost every point of $\beta$, both local
+ordered branches are $\mu_2$-generic before affine deformation.
+For each such germ, (NP1) and commutation with linear maps
+give the affine empirical law $A_*\mu_2$ simultaneously for
+all $A$. No uncountable intersection of probability-one events
+is needed. Intersect with the simultaneous segment-content
+event of Lawler--Rezaei.
+
+For any compact simple arc $F$, choose its orientation by
+Lemma~\ref{lem:borel-simple-arc}. At each interior point $x$,
+apply the $\mu_2$ tensor decoder to its reversed incoming branch
+translated to start at $0$, using a Borel radial completion.
+Call this observation $\Theta(F,x)$. A branch can be cut inside
+a small ball about $x$ before completing it, so only its germ
+enters. This is a Borel observation by the lemma and the
+previously established Borel germ decoder.
+
+Set $E=\beta([s,t])$ and $F=AE$ on the conull set above.
+Lemma~\ref{lem:segment-content-weak} makes $E$ content regular,
+with positive finite atomless measure $\mu_E$. By simplicity and
+the natural parametrization identity, $\mu_E$ is exactly the
+restriction of the full natural measure $\mu_\beta$ to $E$.
+At $A_*\mu_E$-almost every point of $F$, the chosen incoming
+branch is one of the two already good branches of the full
+curve. Its observation is therefore the right side of (UA3),
+regardless of the sample-dependent orientation choice.
+Theorem~\ref{thm:intrinsic-tube-measure} makes $\nu_F$ equivalent
+to $A_*\mu_E$. Apply the Dirac-pushforward construction of
+Corollary~\ref{cor:intrinsic-point-decoder} to $\Theta(F,\cdot)$.
+Return the cemetery value off the Borel simple-arc set or when
+the selected measure vanishes or the pushforward is not a
+single non-cemetery Dirac mass. This defines the required
+Borel map and proves (UA3).
+
+All comparisons after the two conull events were deterministic,
+and their statements hold for every affine map and every
+subinterval. This proves the simultaneous assertion.
+\end{proof}
+
+\paragraph{Limit of this advance.}
+This provides an intrinsic measure and orientation-independent decoder
+on known affine simple-SLE arcs, including sample-dependent subarcs.
+It does not assert that an arbitrary accessible frontier decomposes
+into such arcs with Borel extraction, identify those arc laws for
+the unknown exploration family, or supply continuation kernels at
+every random slit state. No classification follows without those steps.
 
 
 \paragraph{A relevant tip theorem and the unresolved selection problem.}
@@ -7008,8 +7179,9 @@ and a decoder valid at intrinsic typical points, with compatibility at
 all exploration stopping times. The tube-cluster construction above
 provides an affine-stable measure class for compact content-regular
 model traces, and the cited natural-length Palm decomposition is
-available for SLE. Identifying the appropriate frontier pieces and
-their intrinsic-point germs remains open.
+available for SLE. The natural-point transfer and unlabelled-subarc theorem now give
+the decoder for known simple-SLE arcs. Identifying the appropriate
+frontier pieces and their model laws remains open.
 
 
 \section{Unsuccessful routes, revised objectives, and next experiments}
