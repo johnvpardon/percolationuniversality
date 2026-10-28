@@ -1141,6 +1141,107 @@ identified.  This investigation therefore records near-critical interfaces
 as a \emph{conditional additional counterexample}, not as the proof of the
 counterexample in the main text.
 
+\subsection{Near-critical germ singularity and the energy of a driving drift}
+\label{sec:germ-energy}
+
+\paragraph{A stronger external obstruction.}
+Aumann~\cite{aumann}, Theorem 2.1 and Corollary 2.2, proves mutual
+singularity of distinct near-critical triangular-percolation interface
+limits already on the raw initial ordered-germ sigma-field. The theorem
+assumes a common subsequence with the stated quad-crossing convergence;
+for comparison with the critical parameter zero, that condition follows
+from Cardy's formula. Corollary 5.1 gives singularity under nontrivial
+scalar dilations at a fixed nonzero parameter, again with its convergence
+hypotheses. Thus a curve-level dilation obstruction is available, without
+identifying random slit-domain continuation kernels. It does not construct
+the coherent Borel strong-DMP family still needed for a counterexample to
+the corrected three-axiom conjecture.
+
+The following consequence concerns a proposed driving representation,
+not a claim of semimartingality of a near-critical interface.
+
+\begin{proposition}[Finite driving energy preserves the Brownian initial germ]
+\label{prop:finite-energy-germ}
+Let $X_0=0$ be continuous on $[0,T]$, and let $B$ be Brownian motion
+in a filtration to which $X$ is adapted. Suppose $\kappa>0$, $\rho>0$
+is a stopping time almost surely, and, for $t\le\rho\wedge T$,
+\[
+ X_t=\sqrt\kappa B_t+\int_0^t b_s\,ds,\qquad
+ \int_0^{\rho\wedge T}b_s^2\,ds<\infty\quad\hbox{almost surely},
+ \tag{GE1}
+\]
+where $b$ is progressively measurable. On the canonical continuous-path
+space put $\mathcal H_{0+}=\bigcap_{t>0}\sigma(x_s:0\le s\le t)$,
+using the raw sigma-fields. Then, for every $E\in\mathcal H_{0+}$,
+\[
+ \mathbb P\{X\in E\}=\mathbb W_\kappa(E)\in\{0,1\},
+ \tag{GE2}
+\]
+where $\mathbb W_\kappa$ is Wiener measure of variance rate $\kappa$.
+\end{proposition}
+\begin{proof}
+Set
+\[
+ \sigma=\rho\wedge T\wedge
+       \inf\left\{t:\int_0^{t\wedge\rho}b_s^2ds\ge\kappa\right\}.
+\]
+The finite energy in (GE1) implies $\sigma>0$ almost surely. Define
+$\theta_s=\kappa^{-1/2}b_s\mathbf1_{\{s\le\sigma\}}$. Its integrated
+square is at most one. Novikov's criterion and Girsanov's theorem
+(for example~\cite{lalley-girsanov}, Theorems 1--2) therefore make
+\[
+ Z_T=\exp\left\{-\int_0^T\theta_s\,dB_s
+                         -\frac12\int_0^T\theta_s^2ds\right\}
+\]
+a strictly positive density of an equivalent probability $Q$. Under $Q$,
+\[
+ \widetilde X_t=\sqrt\kappa B_t+\int_0^{t\wedge\sigma}b_sds
+\]
+is Brownian motion of variance rate $\kappa$ on $[0,T]$. The paths
+$X$ and $\widetilde X$ agree on the strictly positive interval
+$[0,\sigma]$. Every raw germ event has the same membership for two
+paths agreeing on some positive initial interval: choose any deterministic
+$1/n$ inside that interval and use measurability in
+$\sigma(x_s:s\le1/n)$. Consequently
+$Q\{X\in E\}=\mathbb W_\kappa(E)$. Blumenthal's zero--one law makes
+the latter probability zero or one; equivalence of $P$ and $Q$ gives
+(GE2). There is no global Novikov assumption on the original drift.
+\end{proof}
+
+\begin{corollary}[A near-critical limit cannot be a finite-energy drift of SLE]
+\label{cor:nearcritical-energy}
+Consider a nonzero near-critical interface limit covered by Aumann's
+comparison with the critical limit. Assume it has a continuous
+Loewner-generating parametrization, with an adapted Borel correspondence
+between driver prefixes and ordered trace prefixes. Its driver in the
+critical conformal structure cannot satisfy (GE1) with $\kappa=6$.
+\end{corollary}
+\begin{proof}
+A raw ordered trace-germ event is unchanged when two nonconstant
+Loewner traces agree for a positive capacity interval. In the preceding
+proof the original and the $Q$-Brownian drivers have precisely such an
+interval in common. The corresponding traces therefore have the same
+raw germ-event membership. Under $Q$ the comparison trace is SLE$_6$;
+its raw initial germ is zero--one (equivalently use the Brownian germ
+and the adapted correspondence). Equivalence then gives the same germ
+probabilities under the original law. This contradicts the germ event
+separating the nonzero near-critical and critical laws in
+Aumann's Corollary 2.2.
+\end{proof}
+
+\paragraph{Scope and compatibility with source shielding.}
+This excludes Brownian driving with a locally bounded, or more generally
+locally square-integrable, absolutely continuous drift. It does not prove
+that a near-critical driver is not a semimartingale: a singular
+finite-variation part, infinite drift energy at every positive initial
+time, or a different martingale bracket is not excluded. Neither the
+bracket-six premise nor Loewner generation is supplied by the singularity
+theorem. Raw germ singularity between two laws is compatible with an
+individual germ zero--one law for each: different laws may assign
+different deterministic values to the same germ event. Source shielding
+alone therefore cannot identify the universal germ law.
+
+
 \subsection{An explicit limit-transfer lemma}
 
 Here is a precise sufficient condition for the commonly asserted passage of
@@ -5718,6 +5819,15 @@ Theorem 1.1 and Remark 1.4. \url{https://arxiv.org/abs/2003.05535}.
 reversibility of SLE$_\kappa$ for $\kappa\in(4,8)$},
 Ann. of Math. \textbf{184} (2016), 455--486.
 \url{https://annals.math.princeton.edu/2016/184-2/p03}.
+\bibitem{aumann} S. Aumann,
+\emph{Singularity of nearcritical percolation exploration paths},
+ALEA Lat. Am. J. Probab. Math. Stat. \textbf{11} (2014), 229--252,
+Theorem 2.1 and Corollaries 2.2 and 5.1.
+\url{https://alea.impa.br/articles/v11/11-08.pdf}.
+\bibitem{lalley-girsanov} S. Lalley,
+\emph{Lecture 10: Change of measure and the Girsanov theorem},
+Theorems 1--2.
+\url{https://www.stat.uchicago.edu/~lalley/Courses/390/Lecture10.pdf}.
 \bibitem{nw} P. Nolin and W. Werner,
 \emph{Asymmetry of near-critical percolation interfaces},
 J. Amer. Math. Soc. \textbf{22} (2009), 797--819.
