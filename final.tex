@@ -84,6 +84,26 @@ The standard conformal-map comparison for Loewner chains is derived below;
 ordinary SLE facts used for affine examples are described in \cite{lawler,yuan}.
 Continuous Loewner generation and infinite lifetime of affine SLE images
 were proved in the companion research record \cite{record}.
+\paragraph{Current priority: continuum classification under RSW.}
+Following the user's clarification of 28 October 2026, the immediate
+problem is to classify continuum exploration families satisfying strong
+DMP, corrected source-neighborhood locality, physical translation
+covariance, and explicitly specified uniform curve-level RSW estimates.
+Verifying these axioms for percolation subsequential limits is deferred.
+The expected conclusion permits one fixed affine normalization; no
+conformal covariance or scale invariance is assumed.
+
+The exploration is an ordered uniform limit of simple curves, not a
+simple curve. Dense self-touching, boundary contacts, and swallowing are
+allowed. No embedded nontrivial time interval is presumed. Ordered
+prefixes, filled hulls, and unlabelled accessible frontiers are distinct
+objects. The decoder for known simple SLE arcs with $0<\kappa<4$ is a
+separate model theorem and supplies no simple subarc of the unknown
+exploration. Continuous Loewner admissibility and stochastic driving
+regularity are separate questions. At rough restart tips, prime-end
+access and inherited colored boundary sides must be retained; the
+source-locality neighborhood convention must be stated explicitly.
+
 % Research fragment for the corrected source-neighborhood locality assumption.
 % Requires amsmath/amssymb/amsthm; all additional hypotheses are explicit.
 \section{A near-source drift-boundedness criterion}
@@ -4145,6 +4165,297 @@ the unknown exploration family, or supply continuation kernels at
 every random slit state. No classification follows without those steps.
 
 
+\section{Unsigned regularity and the missing continuum signed budget}
+\label{sec:continuum-regularity-gap}
+
+% Independent continuum driving-regularity investigation, 28 October 2026.
+% Fragment only: do not interpret the process example as a curve-family example.
+\subsection{Unsigned Brownian-scale regularity does not supply a semimartingale}
+\label{sec:unsigned-not-semimartingale}
+
+The distinction between topological Loewner admissibility and stochastic
+regularity is substantive even after strong quantitative estimates are
+available. The following process example isolates the missing signed
+cancellation. It is not asserted to obey source locality, domain Markov
+for an undecorated slit domain, or a curve-level unforced-crossing estimate.
+
+\begin{proposition}[A driver-level obstruction to an unsigned regularity argument]
+\label{prop:unsigned-nonsemimartingale}
+For every $\kappa>0$, $H\in(1/2,1)$, and $a\ne0$, there is a continuous
+process $X$ on $[0,1]$ with all the following properties in its usual
+natural filtration:
+\begin{enumerate}
+\item Its paths are locally $\alpha$-H\"older for every $\alpha<1/2$.
+\item For every $c>0$ there is $C_c<\infty$ such that, for every stopping
+ time $\tau$ and deterministic $h>0$ with $\tau+h\le1$ almost surely,
+ \[
+ \mathbb E\!\left[\exp\!\left(
+   c\,\frac{\sup_{0\le u\le h}|X_{\tau+u}-X_\tau|}{\sqrt h}
+                  \right)\,\middle|\,\mathcal F_\tau\right]\le C_c.
+ \tag{UR1}
+ \]
+\item Its sums of squared increments along dyadic partitions have the
+ same limit as Brownian motion of variance rate $\kappa$.
+\item It is not a semimartingale.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Let $\varphi(x)=\operatorname{dist}(x,\mathbb Z)$ and define
+\[
+ g_H(t)=\sum_{n=0}^{\infty}2^{-nH}\varphi(2^nt),
+ \qquad X_t=\sqrt\kappa B_t+a g_H(t),
+ \tag{UR2}
+\]
+where $B$ is standard Brownian motion. Uniform convergence defines a
+continuous deterministic function. The bounds
+$|\varphi(x)-\varphi(y)|\le\min\{|x-y|,1/2\}$ show
+\[
+ |g_H(t)-g_H(s)|\le C_H|t-s|^H.
+ \tag{UR3}
+\]
+Indeed split the series where $2^n|t-s|$ first exceeds one, and sum the
+finite geometric series of Lipschitz bounds and the remaining geometric
+tail separately. Both sums are bounded by a constant times $|t-s|^H$.
+The pathwise H\"older assertion follows.
+
+The natural filtrations of $X$ and $B$ are identical, since the shift
+$ag_H$ is deterministic. Brownian strong Markov and (UR3) give, for
+$h\le1$, the bound in (UR1) by
+\[
+ e^{c|a|C_H}\,
+ \mathbb E\exp\!\left(c\sqrt\kappa\sup_{0\le u\le1}|B_u|\right)<\infty.
+\]
+Reflection bounds for Brownian maxima make the last expectation finite
+for every $c>0$.
+
+Here is an explicit verification of the variation obstruction. Set
+$q=2^{1-H}>1$, and use the mesh $t_j=j2^{-m}$, $0\le j\le2^m$.
+All terms with $n\ge m$ vanish at the mesh points. On each mesh interval
+all the earlier tent functions are linear, so
+\[
+ \Delta_j g_H
+ =2^{-m}\sum_{n=0}^{m-1}q^n r_{n+1}(j),
+ \tag{UR4}
+\]
+where the sign vectors $r_{n+1}$ are the dyadic Rademacher vectors.
+Their orthogonality on this mesh gives
+\[
+ Q_m:=\sum_j(\Delta_jg_H)^2
+   =2^{-m}\frac{q^{2m}-1}{q^2-1},\qquad
+ \max_j|\Delta_jg_H|
+   \le2^{-m}\frac{q^m-1}{q-1}.
+ \tag{UR5}
+\]
+Consequently
+\[
+ \sum_j|\Delta_jg_H|
+ \ge\frac{Q_m}{\max_j|\Delta_jg_H|}
+ \ge\frac{q^m+1}{q+1}\longrightarrow\infty.
+ \tag{UR6}
+\]
+Thus $g_H$ has infinite variation. On the other hand $Q_m\to0$ because
+$H>1/2$. More generally (UR3) bounds the sums of squared increments on
+any subinterval of the dyadic mesh by $C_H^2 2^{-m(2H-1)}$, so they tend
+to zero uniformly over mesh endpoints. Cauchy--Schwarz bounds the mixed
+Brownian/$g_H$ sums by the square root of the product of their squared
+increment sums. The standard Brownian dyadic quadratic-variation limit
+therefore proves the asserted Brownian quadratic variation for $X$.
+
+For completeness, the failure of semimartingality can also be seen
+without relying only on the deterministic infinite-variation criterion.
+The bounded deterministic elementary predictable strategies
+$L^m_t=\operatorname{sign}(a\Delta_j g_H)$ on
+$(t_j,t_{j+1}]$ give the elementary sums
+\[
+ \sum_jL^m_{t_{j+1}}(X_{t_{j+1}}-X_{t_j})
+   = |a|\sum_j|\Delta_jg_H|+Z_m,
+ \tag{UR7}
+\]
+where $Z_m$ is centered Gaussian with variance at most $\kappa$.
+They diverge to $+\infty$ in probability by (UR6). For a continuous
+semimartingale, its elementary integrals with predictable integrands
+bounded by one are bounded in probability on a fixed finite horizon:
+localize the martingale bracket and finite-variation total variation,
+then use the martingale $L^2$ inequality. This contradicts (UR7).
+\end{proof}
+
+\paragraph{What RSW regularity can legitimately supply.}
+Kemppainen--Smirnov~\cite{ks}, Proposition 2.6, Theorem 1.5,
+and Section 3.3, give conformally stable conditional unforced-crossing
+criteria, continuous driving with every H\"older exponent below $1/2$,
+and Brownian-scale exponential driving bounds in their stated setup.
+Their Section 1.4 explicitly permits nonsimple curves already having
+continuous Loewner drivers; it does not alone give that property for an
+arbitrary law of uniformly approximable nonsimple curves. These are
+unsigned estimates; they do not assert semimartingality.
+The example above proves that even the listed stronger process-level
+conclusions, including conditional estimates at stopping times and
+Brownian quadratic variation, cannot replace the missing signed
+cancellation argument. It is not a counterexample to the full curve axioms.
+
+\subsection{A continuum signed budget on visited slit states}
+\label{sec:continuum-signed-budget}
+
+A useful first target is weaker than the uniform linear conditional-bias
+bound (BI1). It asks for finite aggregate predictable variation, not for a
+pointwise drift density. Its probabilistic content is classical
+quasimartingale theory; the formulation below makes the exact continuum
+restart observable and its stopping rule explicit.
+
+Assume only the Borel continuous-law and restart-identity premises of
+(KR1), not the semimartingale premises of Proposition~\ref{prop:automatic-characteristics}.
+Let $\{P_f\}$ be this family, with drivers
+starting at zero and defined on $[0,\infty)$. Fix $L,T>0$, set
+\[
+ \sigma_L=\inf\{t\ge0:|W_t|\ge L\},\qquad
+ X_t=W_{t\wedge\sigma_L},\quad 0\le t\le T,
+ \tag{QV1}
+\]
+and use the usual natural filtration of the original $W$.
+For $\ell<0<r$, define the bounded restarted mean
+\[
+ m_h(f;\ell,r)=\mathbb E_{P_f}
+   W_{h\wedge\inf\{u:W_u\notin(\ell,r)\}}.
+ \tag{QV2}
+\]
+This is a Borel function of its arguments: the stopped evaluation of a
+continuous path at its first exit from an open interval is Borel and is
+bounded between the two endpoints. No claim of continuity in $f$ is made.
+
+\begin{proposition}[An exact signed restart budget]
+\label{prop:continuum-quasimartingale}
+Suppose (KR1) holds in the inherited centered capacity charts. For every
+deterministic partition $\pi=(0=t_0<\cdots<t_n=T)$,
+\[
+ \mathbb E[X_{t_{j+1}}-X_{t_j}\mid\mathcal F_{t_j}]
+ =\mathbf1_{\{t_j<\sigma_L\}}
+ m_{t_{j+1}-t_j}(f_{t_j};-L-W_{t_j},L-W_{t_j}).
+ \tag{QV3}
+\]
+Consequently the aggregate budget
+\[
+ \begin{split}
+ \mathcal V_{L,T}(f)=\sup_\pi\sum_{j=0}^{n-1}\mathbb E_{P_f}\bigl[
+  \mathbf1_{\{t_j<\sigma_L\}}
+  |m_{t_{j+1}-t_j}(f_{t_j};-L-W_{t_j},L-W_{t_j})|\bigr]
+ \end{split}
+ \tag{QV4}
+\]
+is exactly the conditional variation of $X$. It is finite if and only if
+$X=M+A$, $A_0=0$, has a continuous canonical decomposition with $M$ a uniformly
+integrable martingale on $[0,T]$ and
+$\mathbb E\operatorname{Var}_{[0,T]}A<\infty$. In that case
+\[
+ \mathcal V_{L,T}(f)=\mathbb E\operatorname{Var}_{[0,T]}A.
+ \tag{QV5}
+\]
+If it is finite for every $L,T$, every driver is a continuous
+semimartingale locally. No absolute continuity of $A$, initial tangent,
+or Brownian bracket follows just from this finiteness.
+\end{proposition}
+\begin{proof}
+On $\{t_j\ge\sigma_L\}$ the stopped increment vanishes. Otherwise freeze
+the past at $t_j$. The conditional future driver is $P_{f_{t_j}}$ by
+(KR1). The original stopping boundary $(-L,L)$ becomes exactly
+$(-L-W_{t_j},L-W_{t_j})$ for that centered future driver. This proves
+(QV3), hence the conditional-variation identity (QV4).
+
+Since $X$ is bounded and continuous, the quasimartingale decomposition
+theorem gives precisely the stated continuous canonical decomposition
+when its conditional variation is finite; see Rao~\cite{rao}.
+Conversely, given this decomposition, martingale increments have
+conditional mean zero, so each partition sum is at most
+$\mathbb E\operatorname{Var}A$.
+For the reverse inequality, bounded predictable elementary processes on
+deterministic time partitions are dense among bounded predictable
+integrands for the finite measure
+$H\mapsto\mathbb E\int_0^T H_s\,d|A|_s$.
+Approximate the predictable sign of the signed measure $dA$ by such
+processes, all bounded by one. For an elementary process with value
+$H_j\in\mathcal F_{t_j}$ on $(t_j,t_{j+1}]$,
+\[
+ \mathbb E\int_0^T H_s\,dA_s
+ =\sum_j\mathbb E[H_j(X_{t_{j+1}}-X_{t_j})]
+ \le\sum_j\mathbb E\bigl|
+     \mathbb E[X_{t_{j+1}}-X_{t_j}\mid\mathcal F_{t_j}]\bigr|.
+\]
+The approximation gives (QV5). The local conclusion follows by taking
+$L\uparrow\infty$ and $T\uparrow\infty$, using continuity and uniqueness
+of continuous canonical decompositions.
+\end{proof}
+
+\paragraph{Why this is a weaker target, and why it is still missing.}
+The bound (BI1) gives $\mathcal V_{L,T}\le KT$ and thus suffices. Finiteness
+of (QV4) alone also permits singular finite-variation drift. For example,
+Brownian motion plus a deterministic Cantor function has finite conditional
+variation on compact intervals but its canonical drift is not absolutely
+continuous. This example illustrates the distinction between the two
+probabilistic conditions, not a proposed exploration family.
+An unsigned estimate of Brownian order gives only a bound of order
+$\sum_j\sqrt{t_{j+1}-t_j}$, which diverges on finer equal partitions.
+The budget must be proved from interactions of locality and DMP, in a
+suitable common affine structure; none of those additional cancellation
+estimates has been established here. One cannot replace the offsets in
+(QV3) by the fresh symmetric interval $(-L,L)$: the localization boundary
+is inherited from the past.
+
+\subsection{The shrinking-slit anomaly fits inside Brownian-size bounds}
+\label{sec:slit-pulse-obstruction}
+
+\begin{proposition}[Uniform unsigned bounds do not control initial bias rates]
+\label{prop:slit-pulse}
+Let $b_n\ne0$ with $|b_n|\to\infty$, and let $\kappa>0$. Put
+\[
+ a_n(t)=b_n(t\wedge b_n^{-2}),\qquad
+ X^n_t=\sqrt\kappa B_t+a_n(t),\quad t\ge0.
+ \tag{SP1}
+\]
+Then $\sup_t|X^n_t-\sqrt\kappa B_t|\le|b_n|^{-1}\to0$ under the displayed
+coupling. Uniformly in $n$, the processes satisfy the conditional
+Brownian-scale exponential bound (UR1), at every bounded stopping time
+and every deterministic $h>0$. Every $X^n$ is a semimartingale with
+bracket $\kappa t$, but its initial drift is $b_n$. The optimal constant
+in its unstopped linear conditional-bias bound is $K_n=|b_n|$.
+\end{proposition}
+\begin{proof}
+The deterministic shifts obey
+\[
+ |a_n(t)-a_n(s)|
+ \le\min\{|b_n||t-s|,|b_n|^{-1}\}\le\sqrt{|t-s|}.
+ \tag{SP2}
+\]
+Brownian strong Markov therefore gives (UR1), uniformly in $n$, by adding
+one inside the normalized supremum. The uniform-convergence and bracket
+claims are immediate. For $0<h<b_n^{-2}$ the initial mean increment is
+$b_nh$, proving the optimal lower bound on $K_n$; the Lipschitz bound
+$|b_n|$ proves the upper bound.
+\end{proof}
+
+For the mirrored slit derivatives in (DR9), a variance anomaly produces
+\[
+ b_\epsilon^\pm=(\kappa/2-3)\frac{e_\epsilon^\pm}{d_\epsilon^2},
+ \qquad
+ \frac{e_\epsilon^\pm}{d_\epsilon^2}
+ =\mp\frac4{\epsilon^3\sqrt{\epsilon^2+4}}.
+ \tag{SP3}
+\]
+For $\kappa\ne6$ these are of order $\epsilon^{-3}$. Substituting either
+sequence into (SP1) gives pulses of duration $\asymp\epsilon^6$ and
+height $\asymp\epsilon^3$. Thus even uniform convergence to Brownian
+motion, exact Brownian bracket, and uniform conditional Brownian-size
+bounds allow precisely the inverse-cubic initial-bias scale which the
+slit test needs to exclude. Choosing $b_\epsilon=b/d_\epsilon$ similarly
+realizes the inverse-linear drift scale. The sharp corner at the end
+of a pulse can be smoothed without changing these orders.
+
+These processes are not claimed to be the locality-related drivers of
+one exploration family. The point is narrower and rigorous: neither
+uniform unsigned driving estimates nor weak continuity of the driver
+laws implies the rate $\epsilon K_\epsilon\to0$ required in (BI5).
+A successful shrinking-slit proof must use additional structure of the
+locality comparison, not only the size and continuity conclusions of RSW.
+
+
 \section{Near-critical germ singularity and the energy of a driving drift}
 \label{sec:germ-energy}
 
@@ -4283,6 +4594,14 @@ alone therefore cannot identify the universal germ law.
 
 
 \begin{thebibliography}{99}
+\bibitem{ks} A. Kemppainen and S. Smirnov,
+\emph{Random curves, scaling limits and Loewner evolutions},
+Ann. Probab. \textbf{45} (2017), 698--779.
+\url{https://arxiv.org/abs/1212.6215}.
+\bibitem{rao} K. Murali Rao, \emph{Quasi-Martingales},
+Math. Scand. \textbf{24} (1969), 79--92.
+\url{https://doi.org/10.7146/math.scand.a-10921}.
+
 \bibitem{lawler}G. F. Lawler, \emph{Schramm--Loewner Evolution},
 Park City lecture notes (2007), Lectures 3--4.
 \url{https://math.uchicago.edu/~lawler/utah.pdf}.

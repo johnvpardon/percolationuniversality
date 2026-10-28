@@ -14,6 +14,14 @@ The curves are limits of simple curves, **not themselves simple**. Dense self-to
 4. Investigate whether these continuum assumptions yield adequate signed conditional cancellation or another rigidity mechanism in **one unknown fixed affine structure**. Existing driving criteria do not derive this. Regularity in every preselected Euclidean chart would wrongly exclude anisotropic affine-SLE examples.
 5. Test obstructions and counterexamples within this continuum class. Preserve useful failed approaches with exact reasons for failure. Leave discrete correctors, percolation kernel convergence, and universality transfer until later.
 
+## New continuum regularity results (28 October)
+
+- An explicit Brownian-plus-Takagi–Landsberg process has conditional Brownian-scale exponential sup bounds at stopping times, all Hölder exponents below 1/2, and Brownian dyadic quadratic variation, but is not a semimartingale. This is a driver-level obstruction to an unsigned regularity argument, not a curve-family counterexample.
+- The exact signed restart budget (QV4) for bounded stopped drivers equals expected canonical drift variation when finite. Its finiteness is the classical quasimartingale criterion, expressed using mean increments at visited slit states with the correct inherited localization interval. This is a weaker first target than bounded drift density; no initial tangent or bracket follows yet.
+- Vanishing drift pulses preserve uniform unsigned bounds and converge uniformly to Brownian motion while their initial bias diverges. Inverse-cubic slit biases fit pulses of duration order ε⁶ and height order ε³. Thus unsigned estimates and weak law continuity do not supply the slit-growth cancellation rate.
+
+These arguments received an independent critical check. Detailed statements and proofs are in sec:continuum-regularity-gap in both sources. Source builds are being refreshed; report verification below refers to the earlier PDFs until that refresh is complete.
+
 ## Strongest established tools and their limits
 
 - **Conditional driving rigidity:** locality and shrinking mirrored slits force drift zero and bracket six under controlled initial finite-variation characteristics, tight random tangent variants, or suitable signed conditional-bias bounds. Genuine strong DMP transports canonical drift/bracket automatically. The shrinking-slit rate control and existence of the needed characteristics are additional hypotheses, not consequences of RSW. See sec:fv-tangent-rigidity, sec:conditional-bias, and prop:automatic-characteristics.
