@@ -25,6 +25,14 @@
 \begin{document}
 \maketitle
 \begin{abstract}
+The current priority is continuum classification under explicit RSW-type
+crossing assumptions, with verification for lattice limits deferred.
+A direct nonsimple-trace crossing argument gives infinite capacity lifetime
+and conditional Brownian-size driving bounds, assuming continuous Loewner
+admissibility. Explicit driver examples show that these unsigned bounds,
+even with Brownian quadratic variation, do not imply semimartingality
+or the shrinking-slit bias rate. A signed restart budget identifies the
+weaker quasimartingale target exactly.
 We study the corrected source-neighborhood locality axiom introduced at
 commit \texttt{0e47018}. The old terminal-germ counterexample is excluded;
 classification and critical percolation universality remain open.
@@ -7204,6 +7212,229 @@ the decoder for known simple-SLE arcs. Identifying the appropriate
 frontier pieces and their model laws remains open.
 
 
+% Research fragment from nonsimple_restart; no tracked files edited.
+\section{Restart states and direct driving bounds for nonsimple traces}
+\label{sec:nonsimple-direct-bounds}
+
+\paragraph{Scope.}
+The exploration itself is not assumed to contain any embedded time
+interval. It is an ordered, possibly densely self-touching curve. A
+decoder theorem for simple SLE arcs is a separate statement about
+different objects. At a finite capacity time $\tau$, its state is the
+remaining target component with its inherited colored boundary and its
+distinguished source and target \emph{prime ends}, not just the two
+Euclidean endpoint locations. If $f:\mathbb H\to D$ is the initial
+inverse chart, its restarted inverse chart is
+\[
+ f_\tau(z)=f\bigl(g_\tau^{-1}(z+W_\tau)\bigr).
+ \tag{NS1}
+\]
+The centered future driver is $W_{\tau+s}-W_\tau$. This identity uses
+Loewner composition and does not assert conformal covariance of the
+unknown physical family. The marked-state space is required to be Borel,
+and genuine strong DMP is a hypothesis on this state space. The chart
+is coordinate bookkeeping, not an extra physical state variable:
+the law in the physical domain does not depend on its choice.
+
+Uniform approximation of a deterministic ordered curve by simple
+interior paths does not by itself assert strict growth of its filled
+hulls. The topological characterization in Yuan~\cite{yuan}, Theorem 1.1 and
+Remark 1.4, additionally requires strictly increasing filled hulls.
+For the results below continuous Loewner generation and the usual
+capacity clock are standing admissibility hypotheses. No stochastic
+semimartingale property is included in admissibility. Initially the
+capacity lifetime may be $\zeta\le\infty$; strong DMP and all
+restart assertions are imposed on $\{\tau<\zeta\}$ for stopping times
+$\tau$, allowing $\tau=\infty$ elsewhere. The full curve tends to its target prime end, so the charted
+trace tends to infinity as capacity tends to $\zeta$.
+
+\paragraph{A continuum crossing assumption.}
+Fix $M>0$ and $0<q<1$. At every admissible marked state, suppose that
+every nonseparating boundary quadrilateral of modulus at least $M$
+has exploration crossing probability at most $q$. Here the two side
+arcs of the quadrilateral lie on the domain boundary, the two crossed
+arcs lie in the domain, and nonseparating means that the source and
+target can be connected while avoiding the quadrilateral. All crossing
+events, admissible pairs of states and quads, and evaluation kernels
+are assumed jointly Borel. The constants are uniform over the state
+class, including its random slit states. This is a precise upper
+unforced-crossing input; it is not a substitute for a two-sided
+configuration-level RSW hypothesis. We use a boundary-robust
+crossing convention: the joining subcurve may lie in the closed
+quadrilateral and may touch its two boundary side arcs between its
+crosscut hits. Closures at boundary sides are interpreted with their
+inherited prime-end sides. In particular, a nonsimple trace which
+joins the two semicircles of a half-annulus while touching the real
+line is a crossing. An estimate stated only for subcurves strictly
+inside the open quad is not silently substituted for this assumption.
+
+\begin{lemma}[Time-zero crossing bounds become conditional bounds]
+\label{lem:ns-timezero-conditional}
+Suppose a Borel family satisfies genuine strong DMP on the stated
+restart class and the preceding time-zero crossing assumption at every
+state. For every stopping time $\tau$, on $\{\tau<\zeta\}$, and every
+$\mathcal F_\tau$-measurable admissible nonseparating quad $Q_\tau$
+of modulus at least $M$ in the remaining state,
+\[
+ \mathbb P\{\hbox{future exploration crosses }Q_\tau
+                   \mid\mathcal F_\tau\}\le q
+       \quad\hbox{almost surely}.
+ \tag{NS2}
+\]
+The same bound holds in the restarted half-plane chart, with the same
+constants.
+\end{lemma}
+\begin{proof}
+Let $X_\tau$ be the marked state and let $P_x$ be the exploration
+kernel. Strong DMP identifies the conditional crossing probability
+with $P_{X_\tau}(\hbox{cross }Q_\tau)$. The numerical time-zero
+bound holds for every admissible pair $(x,Q)$, so evaluation at the
+random pair gives (NS2). This does not intersect an uncountable
+collection of almost-sure statements. Conformal maps preserve the
+quad modulus, its separation status, and the crossing event.
+Consequently its pullback to the physical state has exactly the same
+bound. We have transported a geometric inequality, not identified the
+law of a conformal image with a law in another physical domain.
+\end{proof}
+
+\begin{lemma}[A deterministic driver localization bound]
+\label{lem:ns-driver-disk}
+Let a continuous chordal Loewner trace have filled hulls $K_s$ and
+driver $W_s$, with $\operatorname{hcap}(K_s)=2s$. If
+$K_t\subset\{z:|z|\le R\}$, then
+\[
+ \sup_{0\le s\le t}|W_s|\le3R.
+ \tag{NS3}
+\]
+Also $\sup\{\operatorname{Im}z:z\in K_t\}\le2\sqrt t$.
+These facts do not require a simple trace.
+\end{lemma}
+\begin{proof}
+For fixed $s\le t$, Schwarz-reflect the hydrodynamic map $g_s$
+across the real line outside $[-R,R]$. On $|z|>R$ it is univalent
+and has expansion $g_s(z)=z+\sum_{n\ge1}b_nz^{-n}$.
+The area theorem applied after rescaling by $R$ gives
+\[
+ \sum_{n\ge1}\frac{n|b_n|^2}{R^{2n+2}}\le1.
+\]
+Consequently Cauchy--Schwarz gives, at $z=\pm2R$,
+\[
+ |g_s(z)-z|\le R\left(\sum_{n\ge1}\frac1{n4^n}\right)^{1/2}<R.
+\]
+The real interval which is the image of the two sides of the hull,
+and in particular its current tip image $W_s$, lies between
+$g_s(-2R)$ and $g_s(2R)$ by boundary order. This proves (NS3).
+For the height bound, while $z$ is unswallowed its image height $Y_s$
+satisfies
+\[
+ \partial_sY_s=-\frac{2Y_s}{|g_s(z)-W_s|^2},\qquad
+ \partial_sY_s^2\ge-4.
+\]
+A point of original height greater than $2\sqrt t$ therefore cannot
+be swallowed by time $t$. The closed-hull bound follows by closure.
+\end{proof}
+
+\begin{proposition}[Conditional Brownian-size driving bounds without simplicity]
+\label{prop:ns-driver-exponential}
+For a continuous-driver family satisfying the hypotheses of
+Lemma~\ref{lem:ns-timezero-conditional}, whose full traces tend to the
+target prime end (and hence to infinity in their half-plane chart),
+the capacity lifetime is infinite almost surely. There are $c,C>0$, depending
+only on $M,q$, such that, for every finite stopping time $\tau$,
+$h>0$, and $x\ge0$,
+\[
+ \mathbb P\left\{\sup_{0\le s\le h}|W_{\tau+s}-W_\tau|
+                         >x\sqrt h\mid\mathcal F_\tau\right\}
+      \le Ce^{-cx}.
+ \tag{NS4}
+\]
+In particular, for some $a,C'>0$,
+\[
+ \mathbb E\left[\left.
+   \exp\left\{a\sup_{0\le s\le h}
+       |W_{\tau+s}-W_\tau|/\sqrt h\right\}
+                    \right|\mathcal F_\tau\right]\le C'.
+ \tag{NS5}
+\]
+For every $p>0$ this gives a constant $C_p$ with conditional
+$p$-th moment at most $C_ph^{p/2}$. The driver is almost surely
+locally $\alpha$-H\"older for every $\alpha<1/2$.
+\end{proposition}
+\begin{proof}
+Work first at time zero in the half-plane chart, before the possible
+capacity lifetime. Fix $u>0$ and choose $d=4e^{\pi M}$. To bound
+horizontal travel before reaching height $u$, use the successive first hitting
+times of the lines $\operatorname{Re}z=kdu$, $k=1,2,\ldots$, before
+upper exit. At the first hit of line $kdu$, all the earlier trace and
+its filled hull lie to its left. The half-annulus centered at
+$(k+1)du$, of inner radius $2u$ and outer radius $du/2$, lies entirely
+to the right of that line and is untouched. As a boundary quad its
+modulus for crossing between the semicircles is
+\[
+ \pi^{-1}\log\frac{du/2}{2u}=M.
+\]
+It does not separate the current source prime end from infinity.
+Indeed, a source access arc eventually lies near the tip, to the left
+of this quad. Any path from such an access point to infinity first
+enters the empty right half-plane to the left of the quad, where it
+can be rerouted around its outer semicircle. This verifies the
+prime-end separation statement without equating prime ends which
+have the same physical impression. Reaching the next line at height
+at most $u$ requires
+crossing this quad from its outer to its inner semicircle. Its
+conditional probability is therefore at most $q$ by (NS2).
+The same construction starts at $k=0$ with the source at zero.
+
+Iterating gives probability at most $q^n$ for hitting line $ndu$
+before upper exit. Reflection of this geometric construction treats
+left exit, without assuming reflection invariance of the laws. If
+the capacity lifetime were at most a fixed $T<\infty$, the height
+bound would confine the full trace to height $2\sqrt T$, while
+convergence to infinity would require unbounded horizontal extent.
+Use the preceding estimate with $u=3\sqrt T$, so that no upper exit
+is possible on this event.
+The iterated crossing estimate makes that event have probability zero.
+A countable union over integer $T$ proves infinite lifetime.
+
+Now put $u=2\sqrt h$. While the trace stays in
+$[-L,L]\times[0,u]$, each filled hull lies in the disk of radius
+$\sqrt{L^2+u^2}$. Lemma~\ref{lem:ns-driver-disk} implies that, for
+$L\ge u$, a driver supremum greater than $5L$ requires a horizontal
+trace exit before time $h$; the height bound excludes upper exit.
+The probability of reaching either side $\pm L$ before upper exit
+is at most $2q^{\lfloor L/(du)\rfloor}$. Taking
+$L=x\sqrt h/5$ when $x\ge10$, and enlarging the prefactor for
+$x<10$, proves (NS4) at zero. The proof only used target-visible
+Loewner hulls and first hits of vertical lines, so dense self-touching
+does not affect it.
+
+Apply the identical argument to the centered future driver in (NS1).
+Lemma~\ref{lem:ns-timezero-conditional} supplies the same crossing
+constants after conditioning at $\tau$. This proves (NS4) for all
+finite stopping times. Tail integration gives (NS5) for $0<a<c$
+and the moment bounds. Kolmogorov continuity, using arbitrarily
+large $p$, also gives pathwise H\"older exponents $\alpha<1/2$
+on every compact capacity interval.
+\end{proof}
+
+\paragraph{Relation to the existing literature and limits of the estimate.}
+This is a direct version of the rectangle argument underlying
+Kemppainen--Smirnov~\cite{ks}, Section 3.3, Propositions 3.8--3.9. Their
+Theorem 1.5 starts with families of simple curves and obtains nonsimple
+limits. One cannot apply that formulation merely by choosing
+deterministic simple approximations of each sample: the approximating
+\emph{laws} need not retain the conditional crossing bound. The direct
+argument above instead assumes continuous-driver admissibility for
+the continuum family and proves its quantitative estimate there.
+
+These estimates control unsigned increments. They do not bound
+$|\mathbb E[W_{t+h}-W_t\mid\mathcal F_t]|$ by $O(h)$,
+establish semimartingality, or identify an affine conformal structure.
+Uniform quad bounds are stable under a fixed quasiconformal change
+with altered constants; Brownian-size bounds therefore also hold in
+coordinates which need not be the correct affine coordinates for
+stochastic driving rigidity.
+
 \section{Unsigned regularity and the missing continuum signed budget}
 \label{sec:continuum-regularity-gap}
 
@@ -7522,7 +7753,9 @@ identity above identifies the precise missing drift control. We have not
 proved that the original axioms imply semimartingale driving, driving
 martingales, or even a fixed underlying conformal structure.
 
-\paragraph{A revised research question, not a proved classification.}
+\paragraph{Historical proposed strengthening, retained for comparison.}
+This earlier proposal is not the current assumption package or research
+priority. It is retained to distinguish it from the continuum focus below.
 Restrict to nondegenerate continuous Loewner exploration laws with strong
 domain Markov, fixed-target locality, physical translation covariance,
 consistency under changing distant boundary conditions and target, and
@@ -7535,46 +7768,34 @@ Even the sufficiency of this strengthened collection is open here. One must
 not promote its plausibility to a theorem. Full similarity covariance alone
 is already defeated by the exact construction above.
 
-\paragraph{Concrete priorities for the next session.}
-The corrected three-axiom classification remains open. The main task is to
-derive affine-SLE/affine-mixture marginals, or adequate driving
-characteristics in one fixed affine structure, from coarse geometric input.
-The new independent-color germ zero-one theorem makes finite adapted
-initial characteristic limits deterministic where the source shielding
-hypotheses apply; it does not produce those limits. The common-metric
-theorem removes domain-dependent and random affine choices for coherent
-independent-color families only after the mixture ansatz is supplied.
-The wrong-coordinate obstruction explains why one cannot assume tame
-characteristics in every physical complex structure.
+\paragraph{Current priorities after the 28 October scope clarification.}
+The continuum classification under uniform RSW is the immediate problem.
+Strong DMP, corrected source-neighborhood locality, and translation
+covariance are assumed for the continuum family; proving them for lattice
+limits is deferred. The old discrete-transfer and independent-color
+coupling routes remain recorded as tools for that later stage.
 
-A more concrete driving route is now available: prove the signed discrete
-conditional-bias estimate (DB4) after suitable bounded stopping in one
-fixed affine normalization, with the slit-growth control (BI5).
-Proposition~\ref{prop:discrete-bias-transfer}, or the vanishing-corrector
-criterion, transfers those bounds without filtration convergence.
-Theorem~\ref{thm:cbias-rigidity} then applies if genuine strong DMP
-is established; canonical characteristic restart follows automatically.
-The annular strong law only centers empirical observations by their
-deterministic expectations; it does not establish convergence or identify
-those expectations.
+Section~\ref{sec:nonsimple-direct-bounds} makes an explicit upper
+unforced-quad input sufficient for continuous admissible nonsimple traces
+to have infinite capacity lifetime and conditional exponential driving
+bounds. This uses no embedded exploration interval or conformal covariance
+of the unknown family. Continuous-driver admissibility is separate, and
+has not been inferred from arbitrary samplewise simple approximations.
 
-Second extend the source coupling to perturbations along a whole slit.
-The curved-annulus extension still assumes an exactly common exterior.
-A tip shield does not isolate a macroscopic altered boundary tube.
-The half-plane three-arm union estimate gives a possible quantitative
-input, but the deterministic ordered-curve implication and endpoint
-control remain missing. Inverse-chart convergence can create forced
-fjords and supplies neither a common exterior nor access control.
+The next concrete target is finite aggregate signed restart variation
+(QV4) in a common unknown affine structure. It would give a continuous
+semimartingale, but initial characteristic control and the slit-growth
+rate remain separate. The checked counterexamples in
+Section~\ref{sec:continuum-regularity-gap} show why unsigned estimates,
+Brownian quadratic variation, and weak kernel continuity do not supply
+these missing conclusions. Investigate whether locality relates the
+signed budgets for different slit states strongly enough to control them,
+or whether a genuine continuum counterexample survives all the assumptions.
 
-Third establish strong limiting conditional kernels in random slit
-domains. Marginal convergence and the new resampling arguments avoid
-this step for their own conclusions, but do not solve it. For the
-abstract three-axiom conjecture, metric recovery from an unlabelled
-accessible frontier remains unresolved. Endpoint decoding and the new random-chart whole-plane decoder
-read ordered germs. The latter also covers deterministic simple-SLE
-capacity tips under its proper/coding premises. Intrinsic frontier
-arc identification remains open, and Brownian full support cannot
-replace stability at deterministic null histories.
+The decoder remains a supporting model result. Its simple arcs must not
+be interpreted as time segments of the densely self-touching exploration.
+No frontier-model law, source-germ tensor recovery at every stopping time,
+or nonconstant conserved-label construction is proved here.
 
 \paragraph{Reproducibility and preservation.}
 The concise handoff is \texttt{STATUS.md}. The polished driving,
