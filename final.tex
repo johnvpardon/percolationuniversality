@@ -28,12 +28,15 @@
 \begin{abstract}
 The current priority is continuum classification under explicit RSW-type
 crossing assumptions, with verification for lattice limits deferred.
-A direct nonsimple-trace crossing argument gives infinite capacity lifetime
-and conditional Brownian-size driving bounds, assuming continuous Loewner
-admissibility. Explicit driver examples show that these unsigned bounds,
-even with Brownian quadratic variation, do not imply semimartingality
-or the shrinking-slit bias rate. A signed restart budget identifies the
-weaker quasimartingale target exactly.
+Corrected source locality and a ray-deletion comparison give a diffusive
+lower driving tail; combined with the upper crossing estimates, this
+forces variation index two without assuming semimartingality. Once the
+signed restart budget is finite, the bracket is absolutely continuous
+and uniformly elliptic, while singular drift remains a separate issue.
+Analytic locality transports finite signed budgets and characteristic
+measures. A Schwarzian test excludes the nontrivial one-force-point
+SLE families without requiring initial drift tangents. None of these
+results proves finiteness of the signed budget or the classification.
 Independent-color resampling and RSW source shields imply an initial
 ordered trace-germ zero-one law, with quantitative decorrelation between
 small prefixes and the full exploration curve. This conclusion does not
@@ -4687,6 +4690,816 @@ A successful shrinking-slit proof must use additional structure of the
 locality comparison, not only the size and continuity conclusions of RSW.
 
 
+% Proposed result for independent checking; no tracked source edited.
+\section{What the continuum crossing estimates give once the signed budget is finite}
+\label{sec:bracket-from-crossing-moments}
+
+The finite aggregate signed budget supplies a continuous
+semimartingale, but by itself it supplies no regularity of its canonical
+characteristics. The unsigned continuum estimate nevertheless supplies
+one additional conclusion at that point: the bracket is absolutely
+continuous with a bounded density. This does not require a tangent of
+the drift, or any regularity of its total variation.
+
+\begin{proposition}[Brownian-order conditional moments dominate the bracket]
+\label{prop:moment-bracket-domination}
+Let $X$ be a continuous semimartingale in a usual filtration, with
+canonical decomposition $X=X_0+M+A$, where $M$ is a continuous local
+martingale starting at zero and $A$ is continuous predictable finite
+variation. Suppose that for every $0\le s<t\le T$,
+\[
+ \mathbb E\bigl[(X_t-X_s)^2\mid\mathcal F_s\bigr]
+       \le K(t-s)\quad\hbox{almost surely}
+ \tag{BR1}
+\]
+with one deterministic finite $K$. Then, pathwise,
+\[
+ d\langle M\rangle_t\le K\,dt.
+ \tag{BR2}
+\]
+Consequently $M$ is square integrable on $[0,T]$ and its bracket has
+a predictable density $v$ with $0\le v\le K$ almost everywhere.
+No bound on the variation or initial tangent of $A$ is asserted.
+\end{proposition}
+\begin{proof}
+Write $C=\langle M\rangle$. For fixed deterministic $s<t$, the
+quadratic increment sums along refining deterministic partitions of
+$[s,t]$ converge in probability to $C_t-C_s$. For any
+$E\in\mathcal F_s$, the tower property and (BR1) give
+\[
+ \mathbb E\left[\mathbf1_E\sum_i
+       (X_{t_{i+1}}-X_{t_i})^2\right]
+       \le K(t-s)\mathbb P(E).
+\]
+Choose an almost-surely converging subsequence of the nonnegative
+sums and apply Fatou. Thus
+\[
+ \mathbb E[\mathbf1_E(C_t-C_s)]
+       \le K(t-s)\mathbb P(E).
+ \tag{BR3}
+\]
+In particular $\mathbb E C_T\le KT$, and $C_t-Kt$ is a
+continuous supermartingale of class D: all of its stopped absolute
+values are dominated by $C_T+KT$.
+
+A continuous predictable finite-variation supermartingale of class D
+is nonincreasing: its existing special-semimartingale decomposition has
+zero martingale part, and uniqueness identifies its drift with the
+negative increasing Doob--Meyer compensator. Apply this fact to
+$C_t-Kt$ to obtain (BR2). Finite expected bracket makes $M$ square
+integrable, and the predictable Radon--Nikodym density of $dC$ gives
+the final assertion.
+\end{proof}
+
+\paragraph{Application to the continuum classification problem.}
+The conditional exponential estimate already proved in the nonsimple
+curve class implies (BR1) with a uniform numerical constant depending
+only on the crossing constants. If the aggregate signed restart budget
+is finite for a bounded stopped driver, then the quasimartingale
+criterion supplies its canonical decomposition. Such a stopped driver
+retains (BR1): on $\{\sigma_L>s\}$ its increment is bounded by the
+original driver supremum over $[s,t]$, and otherwise it vanishes. The proposition then
+gives bounded absolutely continuous bracket automatically. Thus the
+first signed-budget target, if established, leaves drift regularity
+as the characteristic bottleneck; it does not leave both bracket
+regularity and drift regularity independent.
+
+\begin{corollary}[The remaining singular drift is transported without an anomaly]
+\label{cor:singular-drift-transport}
+Assume the proposition for all relevant chart drivers. Before contact
+with a locality deletion, let $h_t$ be the evolving deletion map and
+$u'(t)=h_t'(W_t)^2>0$. Write
+$dA=b_t\,dt+dA^\perp_t$ for the decomposition relative to capacity
+Lebesgue measure. Then the restarted deleted-chart characteristics
+satisfy
+\[
+ d\widehat A_{u(t)}
+   =h_t'(W_t)\,dA_t
+       +\tfrac12h_t''(W_t)(v_t-6)\,dt,
+ \qquad
+ d\widehat A^\perp_{u(t)}
+   =h_t'(W_t)\,dA^\perp_t.
+ \tag{BR4}
+\]
+In particular the deletion cannot create or cancel a singular drift
+component by the variance-six anomaly. The singular part transforms
+as a one-form, with its capacity clock changed as stated.
+\end{corollary}
+\begin{proof}
+The deletion It\^o identity is
+\[
+ d\widehat W_{u(t)}
+ =h_t'(W_t)\,dM_t+h_t'(W_t)\,dA_t
+     +\tfrac12h_t''(W_t)\,dC_t-3h_t''(W_t)\,dt.
+\]
+Insert $dC=v\,dt$ and use uniqueness of canonical decomposition.
+The strictly positive continuous capacity-clock derivative makes
+$u$ locally bi-Lipschitz before deletion contact, so it preserves
+the distinction between absolutely continuous and singular measures.
+All terms except the indicated pushforward of $dA^\perp$ are
+absolutely continuous. This proves (BR4).
+\end{proof}
+
+\paragraph{A failed uniform-variation shortcut.}
+An unscaled bound on total drift variation in mirrored shrinking
+deletion charts does not by itself give the local first-order rates
+needed by the existing rigidity theorem. The anomaly can be supported
+on capacity windows much shorter than the slit scale. The previously
+proved pulse example shows why bounded variation budgets alone cannot
+be replaced silently by drift-density bounds. Conversely, imposing a
+uniform $o(\sqrt t)$ initial variation modulus over \emph{all}
+positive scalings of every chart would be far too strong: if
+$A^{(\lambda)}_{\lambda^2t}=\lambda A_t$, then
+\[
+ \lambda\,\mathbb E\operatorname{Var}(A;[0,T])
+ \le\omega(\lambda^2T)\lambda\sqrt T,
+       \qquad\omega(r)\longrightarrow0,
+\]
+and $\lambda\downarrow0$ already forces $A=0$, without locality.
+Any useful added variation premise must therefore specify its chart
+normalization and its domain dependence rather than hide an
+all-scalings martingale assumption in a uniform modulus.
+
+\paragraph{Remaining research question.}
+Can source locality, physical translation covariance, and the precise
+crossing hypothesis control the finite signed budget, or rule out the
+one-form-valued singular drift in (BR4), in one fixed unknown affine
+structure? The present proposition does not answer either question.
+It narrows the required characteristic input once semimartingality
+has been obtained.
+
+% Continuum locality / signed-budget investigation, 28 October 2026.
+% Candidate fragment for independent checking; no tracked files edited.
+% New proposed locality argument; requires independent check.
+\paragraph{Why an interior-hitting shortcut would be invalid.}
+The boundary-unforced crossing estimate alone does not imply a positive
+lower driving tail: it includes deterministic SLE$_0$ among its examples.
+In the Kemppainen--Smirnov definition the unforced annulus part is empty
+when the inner circle misses the current domain boundary; see
+\cite[Definition 2.3 and Section 1.4]{ks}. Thus an argument treating first
+entry into an interior ball as an already controlled unforced crossing
+would add an unproved premise. The next ray-deletion comparison repairs
+the particular driving-confinement argument by using corrected locality;
+it does not assert general interior small-ball nonconcentration.
+
+\subsection{Source locality and a ray deletion give a lower driving tail}
+\label{sec:locality-ray-lower-tail}
+
+The upper unforced-quad estimate alone does not control first entry
+into an interior ball. The following argument uses source locality
+essentially, turning the relevant interior point into a boundary slit
+tip in a comparison domain. It proves a lower \emph{driving} tail,
+not a general interior small-ball nonconcentration estimate.
+
+\paragraph{Admissible comparison states.}
+For a physical inverse chart $f:\mathbb H\to D$ and $r>0$, require
+that the domain
+\[
+ D'=f(\mathbb H\setminus\{iy:y\ge r\})
+ \tag{RL1}
+\]
+belongs to the family, with source $f(0)$ and either of the two
+appropriate target prime ends over the original target infinity.
+It is enough to use the right-hand target end. A canonical inverse
+chart for this comparison domain is $f\circ F_r$, where
+\[
+ F_r(w)=\frac r2\left(\sqrt{w+1}-\frac1{\sqrt{w+1}}\right),
+ \tag{RL1a}
+\]
+with the principal square root. Indeed the square root maps the half-plane
+onto a quadrant, and $s\mapsto(r/2)(s-1/s)$ maps that quadrant onto
+the ray-deleted half-plane, taking $1$ to $0$. This also provides a
+jointly Borel comparison state and target choice. Choose boundary colors
+so they agree with the original colors on the two real sides near zero. Source locality is assumed to compare
+the ordered prefixes up to first encounter with the removed ray.
+For regular distinct source and target points this is a usual
+source-neighborhood deletion. At rough states, this is an explicit
+prime-end/source-deletion admissibility requirement, not a consequence
+of Euclidean neighborhood locality at coincident impressions.
+
+\begin{lemma}[A lower driving tail from locality and boundary quads]
+\label{lem:ray-locality-driver-lower}
+Assume continuous Loewner generation with capacity $2t$, corrected
+source locality for (RL1), and the uniform boundary-robust unforced
+quad bound with constants $M>0$, $q<1$ on all these states.
+Put
+\[
+ \delta=\frac14e^{-2\pi M}.
+ \tag{RL2}
+\]
+Then, for every $h>0$,
+\[
+ \mathbb P\left\{\sup_{0\le s\le h}|W_s|>
+                       \delta\sqrt h\right\}\ge1-q.
+ \tag{RL3}
+\]
+Strong DMP gives the same conditional bound in the inherited centered
+chart after any finite stopping time.
+\end{lemma}
+\begin{proof}
+In the original half-plane chart set $z=i\sqrt h$ and delete the
+upward ray $A=\{iy:y\ge\sqrt h\}$. The comparison domain is
+$U=\mathbb H\setminus A$. It is simply connected. Its two ends at
+infinity are distinguished prime ends; choosing either one as target
+allows the boundary colors on the real line to match the original
+source colors. Corrected source locality couples the original trace
+and the comparison trace through their first hit of $A$.
+
+Let $E$ be the event $\sup_{s\le h}|W_s|\le\delta\sqrt h$.
+On $E$, the original trace and hull up to time $h$ lie in the vertical
+strip $|\operatorname{Re}w|\le\delta\sqrt h$ by the Loewner ODE.
+If its trace height were at most $\sqrt h$, its hull would lie in a
+disk of radius $\sqrt{(1+\delta^2)h}$. The area theorem would give
+$2h\le(1+\delta^2)h$, impossible because $\delta<1$.
+Consequently the trace reaches height $\sqrt h$ by time $h$ and
+there enters $B(z,2\delta\sqrt h)$.
+
+Entry into the open ball occurs strictly before the first encounter
+with $A$. If the first ray encounter before $h$ is outside this ball,
+its height is greater than $\sqrt h$, so an earlier height-$\sqrt h$
+point was already in the ball. If the first encounter itself lies in
+the ball, continuity puts an earlier point in that open ball. If there
+is no ray encounter before $h$, the asserted visit already precedes it.
+Thus the coupled comparison trace visits the ball on $E$, using only
+the common prefix; $E$ itself need not be a common-prefix event.
+
+In $U$, consider the annulus centered at $z$ of inner radius
+$2\delta\sqrt h$ and outer radius $\sqrt h/2$, slit along the
+upward ray. It is a boundary quad of opening angle $2\pi$, with
+both side arcs on the two prime-end sides of $A$. Its modulus is
+\[
+ \frac1{2\pi}\log\frac{\sqrt h/2}{2\delta\sqrt h}
+       =M.
+\]
+It is unforced: source zero and either target end at infinity can
+be connected outside its outer circle, on the chosen target side.
+The comparison trace starts outside its outer circle, so visiting
+the inner ball requires a crossing. The boundary-robust convention
+counts side contacts and a visit ending at the slit tip as well.
+The quad bound gives comparison visit probability at most $q$.
+Hence $\mathbb P(E)\le q$, proving (RL3).
+
+The same comparison can be made in every inherited restart chart.
+Genuine strong DMP therefore supplies the conditional version with
+the same constants. No conformal covariance of the physical family
+was used.
+\end{proof}
+
+\paragraph{What this does and does not establish.}
+Together with the upper bracket theorem and the stochastic lower-tail
+criterion, this gives uniformly elliptic bracket for a
+semimartingale driver from the current crossing bound and the stated
+ray-deletion locality. It does not identify the density as six,
+remove singular drift, or prove semimartingality. In particular it
+does not infer a general interior hitting estimate from the
+boundary-quad condition. Deterministic vertical SLE$_0$ fails the
+source-locality comparison used here, so it does not contradict this
+argument.
+
+\subsection{The driving variation index is two before semimartingality}
+\label{sec:driver-variation-index}
+
+The lower driving tail has a consequence which does not assume a
+finite signed budget, a bracket, or a semimartingale decomposition.
+For a continuous real path $x$ on $[a,b]$, write
+\[
+ V_r(x;[a,b])=\sup_\pi\sum_j|x(t_{j+1})-x(t_j)|^r,
+       \qquad r>0,
+ \tag{VI1}
+\]
+where the supremum is over finite partitions of that interval.
+
+\begin{proposition}[Uniform diffusive lower tails force variation index two]
+\label{prop:driver-variation-index}
+Let $X$ be continuous and adapted, and suppose there are fixed
+$\delta,p>0$ such that for all deterministic $t\ge0$ and $h>0$,
+\[
+ \mathbb P\{\sup_{0\le u\le h}|X_{t+u}-X_t|
+                 >\delta\sqrt h\mid\mathcal F_t\}\ge p.
+ \tag{VI2}
+\]
+Then, on one probability-one event, $V_r(X;[a,b])=\infty$ for
+every nontrivial interval and every $0<r<2$. If its paths are also
+locally H\"older for every exponent below $1/2$, then on that same
+event $V_r(X;[a,b])<\infty$ on every compact interval for every
+$r>2$. Thus the variation index is exactly two on every nontrivial
+interval. No assertion about $V_2$ or a quadratic-variation limit
+is made.
+\end{proposition}
+\begin{proof}
+Fix first a deterministic compact interval $[a,b]$, put
+$n=2^m$, $h=(b-a)/n$, $t_j=a+jh$, and define
+\[
+ I_j=\mathbf1_{\{\sup_{0\le u\le h}
+                  |X_{t_j+u}-X_{t_j}|>\delta\sqrt h\}}.
+\]
+These indicators are measurable at $t_{j+1}$, and
+$\mathbb E[I_j\mid\mathcal F_{t_j}]\ge p$.
+The martingale differences
+$D_j=I_j-\mathbb E[I_j\mid\mathcal F_{t_j}]$ are orthogonal in
+$L^2$ and satisfy $\mathbb E(\sum_jD_j)^2\le n$. Therefore
+\[
+ \mathbb P\{\textstyle\sum_jI_j<pn/2\}
+     \le\frac4{p^2n}.
+ \tag{VI3}
+\]
+This is summable over dyadic $n$. Borel--Cantelli gives
+$\sum_jI_j\ge pn/2$ for all sufficiently large $m$, almost surely.
+For every successful block, choose a time where its displacement
+from the left endpoint exceeds $\delta\sqrt h$. The ordered union
+of these times and the block endpoints is a finite partition, so
+simultaneously for every $r>0$,
+\[
+ V_r(X;[a,b])\ge\frac{pn}{2}\delta^r h^{r/2}
+       =\frac{p\delta^r}{2}(b-a)^{r/2}n^{1-r/2}.
+ \tag{VI4}
+\]
+No adapted selection is needed: this is a pathwise lower bound for a
+supremum over partitions. It diverges for every $r<2$ on the same
+event. Intersect over rational intervals, and place a rational
+subinterval inside any other nontrivial interval.
+
+If $r>2$, choose $1/r<\alpha<1/2$. A H\"older-$\alpha$ constant
+$K$ on a compact interval bounds every partition sum by
+$K^r\sum_j|t_{j+1}-t_j|^{\alpha r}\le K^r(b-a)^{\alpha r}$.
+The simultaneous upper assertion follows from the countable collection
+of rational H\"older exponents.
+\end{proof}
+
+By the ray-locality lemma and the already proved upper driving bounds,
+the continuum family has this variation index under the stated
+ray-deletion admissibility. In particular its drivers cannot have
+finite variation on any nontrivial interval. The lower proof controls
+block oscillations, not terminal increments of the blocks; replacing
+it by a claim of positive quadratic variation along deterministic
+partitions would be unjustified. Nor does variation index two imply
+semimartingality: the earlier Brownian-plus-Takagi example already
+shows the latter conclusion needs signed information.
+
+\subsection{A bounded bracket becomes uniformly elliptic}
+\label{sec:lower-bracket-from-locality}
+
+\begin{proposition}[Conditional lower tails make a bounded bracket elliptic]
+\label{prop:bracket-lower-tail}
+Let $X=X_0+M+A$ be a continuous semimartingale with
+$d\langle M\rangle=v_tdt$, $0\le v_t\le K$, and $A$ continuous finite
+variation. Suppose the conditional lower-tail bound (RL3), with lower probability
+$p>0$, holds with $X$ in place of $W$, at least at
+every deterministic $\tau=t$ and for all $h>0$ in a finite horizon.
+Then
+\[
+ v_t\ge \frac{p\delta^2}{32}
+       \quad dt\otimes d\mathbb P\hbox{-almost everywhere}.
+ \tag{NC3}
+\]
+No density or initial tangent of $A$ is assumed.
+\end{proposition}
+\begin{proof}
+Choose a bounded predictable version of $v$. For Lebesgue-almost every
+deterministic $t$, Fubini and Lebesgue differentiation give, almost surely,
+\[
+ \frac1h\int_t^{t+h}v_sds\longrightarrow v_t,
+ \qquad
+ \frac{\operatorname{Var}(A;[t,t+h])}{\sqrt h}\longrightarrow0.
+ \tag{NC4}
+\]
+The second assertion follows because the finite Stieltjes variation
+measure has a finite one-sided Lebesgue derivative almost everywhere.
+Fix such a $t$, set $\eta=p\delta^2/32$, and let
+$E=\{v_t<\eta\}\in\mathcal F_t$. The lower tail assumption implies
+\[
+ p\mathbb P(E)\le
+ \mathbb P\{E,\sup_{u\le h}|X_{t+u}-X_t|>\delta\sqrt h\}.
+\]
+The corresponding drift supremum is at most
+$\operatorname{Var}(A;[t,t+h])$, so its probability of exceeding
+$\delta\sqrt h/2$ tends to zero by (NC4). Since $v\le K$, $M$ is
+square integrable on finite horizons and Doob's inequality gives
+\[
+ \mathbb P\{E,\sup_{u\le h}|M_{t+u}-M_t|>\delta\sqrt h/2\}
+ \le\frac{16}{\delta^2h}
+       \mathbb E[\mathbf1_E(C_{t+h}-C_t)].
+\]
+Boundedness of $v$ and (NC4) permit dominated convergence of the last
+normalized expectation to $\mathbb E[\mathbf1_Ev_t]$.
+Thus $p\mathbb P(E)\le16\eta\mathbb P(E)/\delta^2
+=(p/2)\mathbb P(E)$, forcing $\mathbb P(E)=0$. Apply Fubini again.
+\end{proof}
+
+Combining this proposition with the upper bracket theorem and the
+ray-locality lemma gives $c\,dt\le dC\le K\,dt$, with
+$c=(1-q)\delta^2/32>0$, once the finite signed budget supplies
+semimartingality. The density is not yet identified as six. The lower
+conclusion uses corrected ray-deletion locality, not the boundary-quad
+estimate alone.
+
+\subsection{Bounded Brownian bracket does not remove a singular drift}
+\label{sec:reflected-driver-obstruction}
+
+The reflected Brownian process $X_t=|B_t|$ is a sharp process-level
+warning at the next stage. In its usual natural filtration it has
+canonical decomposition $X=N+\Lambda$, where $N$ is Brownian motion
+and $\Lambda$ is the continuous Skorokhod regulator, increasing only
+on $\{X=0\}$. That set has zero Lebesgue measure almost surely, so
+$d\Lambda$ is singular and nonzero. Tanaka's formula gives the
+decomposition in the Brownian filtration; the regulator is recovered
+from the occupation local time of $X$, so both summands are adapted
+to its smaller natural filtration, where the martingale identity
+continues to hold by conditioning.
+
+For every stopping time $\tau$ of $X$,
+\[
+ \sup_{u\le h}\bigl||B_{\tau+u}|-|B_\tau|\bigr|
+ \le\sup_{u\le h}|B_{\tau+u}-B_\tau|.
+ \tag{RB1}
+\]
+Brownian strong Markov and conditioning therefore give uniform
+conditional Gaussian-size increment bounds for $X$, even though its
+finite signed budget is carried by a singular regulator. In particular
+its bracket density is exactly one. This is not a curve-family
+counterexample: neither source locality nor the domain-indexed
+exploration axioms are asserted for this example. It shows why bounded
+bracket and unsigned driving estimates do not finish the drift argument.
+
+\section{Analytic locality and signed characteristic measures}
+\label{sec:analytic-locality-budget}
+
+\paragraph{Scope and matched localization.}
+This section uses source locality only to identify two initial ordered
+trace laws and their natural filtrations. On their common trace, let
+$h_t$ be the evolving analytic deletion map, recentered at the source,
+and write
+\[
+ p_t=h_t'(W_t)>0,\quad q_t=h_t''(W_t),\quad
+ u(t)=\int_0^t p_s^2\,ds,\quad
+ Y_t=\widehat W_{u(t)}=h_t(W_t)-h_0(0).
+ \tag{LB1}
+\]
+The exact recentering convention has no effect on the derivatives or
+characteristics. The two capacity clocks and their inverses are
+stopping-time clocks in the corresponding natural trace filtrations,
+by geometric reconstruction of a stopped trace. Stop on a strictly
+positive interval where the deletion has not collided with the trace,
+its field and inverse are absolutely continuous in time as
+$C^2$-valued fields on compact analytic source neighborhoods, with
+bounded spatial derivatives, and
+\[
+ |W|\le L,\quad |Y|\le\widehat L,\quad
+ 0<m\le p\le P,\quad |q|\le Q,\quad \theta\le T.
+ \tag{LB2}
+\]
+All identities below concern the processes stopped at this same physical
+trace time $\theta$, not two independently selected exit rules.
+The inherited stop $u(\theta)$ is a stopping time in deleted capacity,
+and $u(\theta)\le P^2T$.
+The deletion PDE gives the stated time regularity before collision.
+In particular, the time dependence of the field is pathwise finite variation;
+no stochastic regularity of $W$ is assumed in writing (LB1).
+
+\begin{proposition}[Local semimartingality and finite signed budgets are analytic-locality invariants]
+\label{prop:locality-budget-transfer}
+Under this setup, the original driver is locally a continuous
+semimartingale if and only if the deleted driver is, on the matched
+initial intervals. Suppose they have canonical decompositions
+$W=M+A$ and $\widehat W=\widehat M+\widehat A$, with brackets
+$C$ and $\widehat C$. Set $D_t=\widehat A_{u(t)}$. Then, before the
+matched stop,
+\[
+ dD=p\,dA+\frac q2(dC-6dt),\qquad
+ d\widehat C_{u(t)}=p^2\,dC.
+ \tag{LB3}
+\]
+For the bounded stopped processes let $V=\mathbb E\operatorname{Var}A$
+and $\widehat V=\mathbb E\operatorname{Var}D$, equivalently their
+conditional-variation budgets when finite. Then
+\[
+ \widehat V\le(P+LQ)V+\tfrac12QL^2+3QT,
+ \tag{LB4}
+\]
+and
+\[
+ V\le\left(m^{-1}+Q\widehat Lm^{-3}\right)\widehat V
+       +\tfrac12Q\widehat L^2m^{-3}+3QT/m.
+ \tag{LB5}
+\]
+In particular finite expected canonical variation, hence finite aggregate
+signed budget, transfers both ways after these matched bounded
+localizations. Neither estimate supplies a first-order time rate.
+\end{proposition}
+\begin{proof}
+Assume first $W$ is a semimartingale. The finite-variation-field
+It\^o--Wentzell formula applied to $h_t(W_t)$ gives
+\[
+ dY_t=p_t\,dM_t+p_t\,dA_t+\tfrac12q_t\,dC_t-3q_tdt.
+\]
+Here the final term is the Loewner deletion field identity
+$(\partial_t h_t)(W_t)=-3h_t''(W_t)$, which requires no stochastic
+calculus to derive. The geometric stopping-time clocks transfer the
+semimartingale and its natural filtration to deleted capacity. Conversely,
+if the deleted driver is a semimartingale, its pullback $Y$ is one in
+the common trace filtration. Apply the same finite-variation-field
+formula to $h_t^{-1}(Y_t+h_0(0))$. The inverse field is adapted,
+spatially analytic, and of finite variation in time on this interval;
+its derivatives are bounded under localization. Thus $W$ is a
+semimartingale. Uniqueness of canonical continuous decompositions now
+gives (LB3), without assuming any drift density or initial tangent.
+
+We use a useful elementary budget/bracket estimate. If a continuous
+semimartingale $Z=N+F$ starts at zero, is bounded by $K$, and has
+$\mathbb E\operatorname{Var}F<\infty$, then
+\[
+ \mathbb E\langle N\rangle_T
+   \le K^2+2K\mathbb E\operatorname{Var}F.
+ \tag{LB6}
+\]
+To prove it, stop to bound the bracket and total variation, take
+expectations in It\^o's formula for $Z^2$, and then use Fatou.
+The resulting finite expected bracket also makes the martingale
+square integrable, so the usual unstopped identity is justified.
+Apply (LB6) first to $W$ and use (LB3) and (LB2):
+\[
+ \widehat V\le P V+\tfrac12Q\mathbb E C_\theta+3QT,
+\]
+which gives (LB4). In the opposite direction put
+$\widetilde C_t=\widehat C_{u(t)}$ and solve (LB3):
+\[
+ dA=p^{-1}dD-\frac{q}{2p^3}d\widetilde C+3q p^{-1}dt.
+\]
+Apply (LB6) to $Y$ and use (LB2) to obtain (LB5). These estimates
+are invoked with the source-side budget finite; the corresponding
+conclusion then guarantees finiteness on the other side. The equality
+between budgets and expected variation is the earlier exact
+conditional-variation identity, applied to the matched stopped
+processes. A budget in the original capacity and one in the deleted
+capacity must retain their inherited stopping rules.
+\end{proof}
+
+\begin{proposition}[Two deletion directions eliminate singular characteristics]
+\label{prop:two-deletion-measures}
+Take two admissible deletion maps $h_t^+,h_t^-$ on the same initial
+trace. Suppose their drivers are continuous semimartingales. Define
+$p^\pm,q^\pm,u_\pm$ as in (LB1), let
+$D^\pm_t=\widehat A^\pm_{u_\pm(t)}$, and suppose
+\[
+ \Delta_t=p_t^+q_t^- -p_t^-q_t^+\ne0
+ \tag{LB7}
+\]
+on a positive initial interval. Then the original driver is a
+semimartingale and its characteristic measures satisfy
+\[
+ \boxed{\begin{aligned}
+ dA&=\frac{q^-\,dD^+-q^+\,dD^-}{\Delta},\\
+ dC-6dt&=\frac{2(p^+\,dD^- -p^-\,dD^+)}{\Delta}.
+ \end{aligned}}
+ \tag{LB8}
+\]
+No initial derivatives or drift densities are required. In particular,
+if both deleted drift measures are absolutely continuous in their
+capacity clocks, then the original drift and bracket are absolutely
+continuous on this interval. The original drift need not have been
+assumed absolutely continuous.
+\end{proposition}
+\begin{proof}
+The preceding proposition transfers semimartingality from either
+deleted chart to the original one. Apply (LB3) to both, and invert the
+two-by-two system of signed measures. This gives (LB8). The clocks
+$du_\pm=(p^\pm)^2dt$ are locally bi-Lipschitz after localization, so
+absolute continuity of a deleted drift in its own capacity is exactly
+absolute continuity of its pullback $D^\pm$ in $t$. Equation (LB8)
+then proves the assertion.
+\end{proof}
+
+\paragraph{The singular-part alternative is exact.}
+Take pathwise Lebesgue decompositions with respect to $dt$. Writing
+superscript $\perp$ for singular Stieltjes parts, (LB3) says
+\[
+ dD^\perp=p\,dA^\perp+\tfrac12q\,dC^\perp,
+ \qquad d\widetilde C^\perp=p^2\,dC^\perp.
+ \tag{LB9}
+\]
+Thus absence of a singular bracket is invariant under analytic local
+coordinate changes. Once the bracket is absolutely continuous,
+absence of a singular drift is invariant as well. If the bracket has
+a singular part, an It\^o correction can cancel that part from a
+particular chart's drift; two distinct directions with (LB7) cannot
+both cancel it. Formula (LB8) also gives the pathwise measure bounds
+\[
+ \begin{aligned}
+ |dA|&\le\frac{|q^-|\,|dD^+|+|q^+|\,|dD^-|}{|\Delta|},\\
+ |dC-6dt|&\le\frac{2p^+|dD^-|+2p^-|dD^+|}{|\Delta|}.
+ \end{aligned}
+ \tag{LB10}
+\]
+These also hold for singular parts, with the second left side replaced
+by the positive measure $dC^\perp$.
+
+For the mirrored shrinking slits of (DR6), initially
+$p_0^\pm=d_\epsilon\asymp\epsilon$ and
+$q_0^-=-q_0^+=-e_\epsilon^+$ with
+$|e_\epsilon^+|\asymp\epsilon^{-1}$. The determinant is nonzero.
+By stopping when the coefficients depart by a sufficiently small
+relative amount from these initial values, (LB10) gives, with an
+absolute numerical $K$ independent of small $\epsilon$,
+\[
+ |dA|\le K\epsilon^{-1}(|dD^+|+|dD^-|),\qquad
+ |dC-6dt|\le K\epsilon(|dD^+|+|dD^-|).
+ \tag{LB11}
+\]
+In particular singular bracket mass costs at least inverse-linear
+singular drift mass across these two deleted charts. The matched
+positive stopping interval may shrink with $\epsilon$. Therefore
+finiteness of each deleted budget does not permit passing to
+$\epsilon=0$ in (LB11) on a fixed interval. A quantitative uniform
+budget estimate is still needed; no regularity or classification is
+being deduced from bare locality by this calculation.
+
+\paragraph{What this changes in the research target.}
+Finiteness of a localized signed budget is a property of the local
+physical source law within a fixed complex structure, rather than an
+artifact of choosing one of its analytic deletion charts. Its numerical
+size is not invariant: (LB3)--(LB5) exhibit the bracket correction and
+small first derivative which can inflate it. Analytic coordinate changes
+are being used throughout; an arbitrary real affine normalization is
+not such a change. Thus this result neither selects the unknown affine
+structure nor asserts semimartingality in all affine structures. The new
+positive regularization is the two-direction elimination of singular
+characteristics. Obtaining finite budgets and the quantitative scale
+control required for Brownian rigidity remains open.
+
+\subsection{Target-invariant force-point branches still fail source locality}
+\label{sec:forcepoint-locality-audit}
+
+A useful test is the familiar target-invariant branching
+$\mathrm{SLE}_\kappa(\kappa-6)$ construction. Target invariance holds
+within one physical domain; it does not assert invariance under deleting
+remote pieces of that domain. The following calculation excludes the
+standard one-sided force-point family from the present conjecture,
+including the singular drift at an initially coincident force point.
+It does not assume a finite initial drift tangent.
+
+Use the convention
+\[
+ dW_t=\sqrt\kappa\,dB_t+\frac\rho{W_t-V_t}\,dt,
+ \qquad dV_t=\frac2{V_t-W_t}\,dt,
+ \qquad (W_0,V_0)=(0,0^+),\quad \rho>-2.
+ \tag{FP1}
+\]
+The right force point is the boundary-prime-end limit immediately to
+the right of the source, transported by the Loewner map. The gap
+$(V-W)/\sqrt\kappa$ is a Bessel process of dimension
+$\delta=1+2(\rho+2)/\kappa>1$. In particular, its zero set has Lebesgue
+measure zero, and the force drift in (FP1) is locally integrable.
+These standard statements follow from the Bessel construction; see
+Sheffield~\cite{sheffield-cle}, Section 3.1, Propositions 3.1 and 3.3,
+and Section 3.3.
+
+\begin{proposition}[Only the ordinary SLE$_6$ member is source-local]
+\label{prop:forcepoint-locality-exclusion}
+Let $\kappa>0$. Consider the canonical conformally covariant family with one force point
+immediately on a specified side of its source, defined by (FP1).
+If it satisfies source-neighborhood locality under remote hull deletions,
+then $\kappa=6$ and $\rho=0$.
+In particular, for $4<\kappa<8$, the target-invariant
+$\mathrm{SLE}_\kappa(\kappa-6)$ family fails that locality whenever
+$\kappa\ne6$.
+\end{proposition}
+\begin{proof}
+Let $A$ be a fixed half-plane hull away from $0$, let
+$h:\mathbb H\setminus A\to\mathbb H$ be its hydrodynamic map, and
+compare the exploration in $\mathbb H$ with that in
+$\mathbb H\setminus A$. Center the new source at $h(0)$.
+Work up to a positive stopping time before the growing hull encounters
+$A$, chosen so that the comparison maps are analytic across a fixed
+interval containing $W_t$ and $V_t$. Let $h_t$ be the evolving deletion
+map and $ds=h_t'(W_t)^2dt$. The centered transformed driver and force
+point are $h_t(W_t)-h(0)$ and $h_t(V_t)-h(0)$.
+The force point is transported exactly: the deletion-map PDE and (FP1)
+give
+\[
+ d\{h_t(V_t)\}
+ =\frac{2h_t'(W_t)^2}{h_t(V_t)-h_t(W_t)}\,dt.
+ \tag{FP2}
+\]
+The driving change-of-coordinate calculation yields the Brownian part
+$\sqrt\kappa\,d\widehat B_s$ and drift, in the original $dt$ clock,
+\[
+ \frac{\rho h_t'(W_t)}{W_t-V_t}
+       +\left(\frac\kappa2-3\right)h_t''(W_t).
+\]
+For the force-point law in the deleted domain, the required drift in
+that same clock is
+\[
+ \frac{\rho h_t'(W_t)^2}{h_t(W_t)-h_t(V_t)}.
+\]
+Therefore locality would require
+\[
+ \begin{split}
+ R_t={}&\rho\left\{
+ \frac{h_t'(W_t)}{W_t-V_t}
+ -\frac{h_t'(W_t)^2}{h_t(W_t)-h_t(V_t)}\right\}
+ +\frac{\kappa-6}{2}h_t''(W_t)=0
+ \end{split}
+ \tag{FP3}
+\]
+for Lebesgue-almost every sufficiently small $t$.
+This follows from uniqueness of the canonical semimartingale drift:
+the force point is the canonical one-sided source-boundary Loewner
+flow, with its instant-reflecting continuation at collisions. It is
+adapted to the driver and is transported as the specified boundary side,
+not an independently reassignable mark. The
+capacity change is invertible on the stopped comparison interval.
+All drift terms are integrable since $\delta>1$.
+
+For an analytic $H$ with $H'(w)>0$, put $d=w-v$. Taylor expansion gives
+\[
+ \frac{H'(w)}{d}
+ -\frac{H'(w)^2}{H(w)-H(v)}
+ =-\frac12H''(w)+\frac16 H'(w)\mathcal S H(w)\,d+O(d^2),
+ \tag{FP4}
+\]
+where $\mathcal S H=H'''/H'-\tfrac32(H''/H')^2$ is the Schwarzian.
+The remainder is uniform in a compact analytic neighborhood on which
+$H'$ is bounded away from zero. Consequently
+\[
+ R_t=\frac{\kappa-6-\rho}{2}h_t''(W_t)
+ +\frac\rho6 h_t'(W_t)\mathcal S h_t(W_t)(W_t-V_t)
+ +O((W_t-V_t)^2).
+ \tag{FP5}
+\]
+Choose, for example, the vertical slit
+$A=\{x+iy:0\le y\le a\}$ with $x,a>0$. Its map is
+$h(z)=x+\sqrt{(z-x)^2+a^2}$, with the hydrodynamic branch.
+At $0$ both $h''(0)\ne0$ and $\mathcal S h(0)\ne0$. More explicitly,
+writing $u=z-x$, the Schwarzian on the real analytic source interval is
+\[
+ \mathcal S h(z)
+ =-\frac{3a^2(u^2+a^2/2)}{u^2(u^2+a^2)^2}<0.
+ \tag{FP6}
+\]
+As $t\downarrow0$, $W_t,V_t\to0$ and the analytic maps $h_t$ converge
+locally to $h$, with their derivatives. If $\kappa-6-\rho\ne0$, (FP5)
+therefore makes $R_t$ bounded away from zero on a positive initial
+interval, contradicting (FP3). Thus $\rho=\kappa-6$.
+
+If this common value is nonzero, the second term of (FP5), divided by
+$W_t-V_t$, tends to
+$\rho h'(0)\mathcal S h(0)/6\ne0$. After decreasing the positive
+comparison time, $R_t\ne0$ whenever $W_t\ne V_t$. The latter holds
+for Lebesgue-almost every time by the Bessel zero-set statement, again
+contradicting (FP3). Hence $\rho=0$ and $\kappa=6$.
+
+Although written in half-plane coordinates, the test applies to bounded
+physical domains: map the half-plane and the remote slit into a disk by
+one fixed M\"obius map. The resulting physical domains agree near their
+common source. The same calculation in their chordal charts then
+contradicts source locality there.
+\end{proof}
+
+\paragraph{Why target invariance does not contradict this exclusion.}
+For a M\"obius $H$ one has the exact identity
+\[
+ \frac{H'(w)}{w-v}
+ -\frac{H'(w)^2}{H(w)-H(v)}=-\frac12H''(w).
+ \tag{FP7}
+\]
+Thus the force-point drift with $\rho=\kappa-6$ cancels the entire
+coordinate anomaly for M\"obius changes of target. A remote domain
+hull deletion instead has nonzero Schwarzian, leaving the second term
+of (FP5). Schramm--Wilson~\cite{schramm-wilson}, Theorem 3, establishes the M\"obius coordinate-change theorem with sum
+of force weights $\kappa-6$; it does not assert remote-domain locality:
+\url{https://nyjm.albany.edu/nyjm/j/2005/11-31.pdf}.
+Sheffield's Proposition 3.14 and Section 4.2 use target invariance to
+construct branching radial explorations within one fixed domain.
+Those statements are consistent with the calculation above.
+
+\paragraph{There is also an extra-state issue for strong DMP.}
+A force point started at $0^+$ is usually separated from the tip at
+positive times. Conditional continuation then carries its current
+boundary-prime-end image $V_t$, rather than restarting with a fresh
+force point at $W_t^+$. The standard force-point Markov property is
+therefore a property of the domain with this additional mark (and,
+in side-swapping variants, the appropriate excursion state). It is not
+by itself the required strong-DMP identity on a domain with only the
+two colored boundary arcs and marked source/target. A proposed intrinsic
+recovery of that mark from the colored domain would require its own
+proof. This issue is independent of the locality failure already proved.
+
+\paragraph{Consequence for the present research direction.}
+Even if the desired RSW estimates were granted to these branches, they
+would not be counterexamples to the current conjecture: the locality
+test excludes them before RSW enters. They are nevertheless a useful
+singular-drift test. Their Bessel force drift is integrable, so merely
+obtaining semimartingality or finite aggregate signed variation would
+not eliminate them. The exact locality comparison supplies information
+beyond initial drift tangents; in this explicit ansatz it is the
+Schwarzian remainder that distinguishes target independence from full
+source locality.
+
+The failure of source locality persists after any one fixed affine
+change applied to the entire family: such a change preserves common
+source neighborhoods and transports their stopped-law equality.
+
+
 \section{Near-critical germ singularity and the energy of a driving drift}
 \label{sec:germ-energy}
 
@@ -4825,6 +5638,13 @@ alone therefore cannot identify the universal germ law.
 
 
 \begin{thebibliography}{99}
+\bibitem{schramm-wilson} O. Schramm and D. B. Wilson,
+\emph{SLE coordinate changes}, New York J. Math. \textbf{11} (2005), 659--669.
+\url{https://nyjm.albany.edu/j/2005/11-31.pdf}.
+\bibitem{sheffield-cle} S. Sheffield,
+\emph{Exploration trees and conformal loop ensembles}, arXiv:math/0609167.
+\url{https://arxiv.org/abs/math/0609167}.
+
 \bibitem{ks} A. Kemppainen and S. Smirnov,
 \emph{Random curves, scaling limits and Loewner evolutions},
 Ann. Probab. \textbf{45} (2017), 698--779.
