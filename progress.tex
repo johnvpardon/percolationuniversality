@@ -21,7 +21,7 @@
 \title{Research record: locality, terminal information, and planar exploration laws}
 \hypersetup{pdftitle={Research record: locality, terminal information, and planar exploration laws},pdfauthor={Autonomous mathematical research}}
 \author{Autonomous mathematical investigation, with independent critical checks}
-\date{27 October 2026}
+\date{28 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -52,8 +52,9 @@ an exponentially integrable martingale correction and a functional
 Gaussian limit conditional on a deterministic variance rate.
 A spherical empirical-law decoder handles arbitrary sample-dependent
 local $C^1$ charts; a stationary-cylinder argument supplies dilation
-ergodicity for the relevant whole-plane SLE model. Intrinsic frontier
-point selection remains unresolved.
+ergodicity for the relevant whole-plane SLE model. A canonical tube-cluster measure supplies an affine-stable intrinsic
+measure class for compact content-regular model traces; identifying
+the relevant frontier pieces and their typical germs remains unresolved.
 Historical proofs, failed approaches, and all extra hypotheses are retained.
 \end{abstract}
 \tableofcontents
@@ -1246,7 +1247,7 @@ $[0,T]$, with $b$ progressively measurable and integrable in absolute
 value, and suppose a raw germ event $E$ has probability one for $X$
 and zero under $\mathbb W_\kappa$. Then
 \[
- \int_0^t b_s^2ds=\infty\quad\hbox{for every }t>0,
+ \int_0^t b_s^2ds=\infty\quad\hbox{for every }0<t\le T,
        \quad\hbox{almost surely}.
  \tag{GE3}
 \]
@@ -6641,6 +6642,349 @@ at a stopping time selected by the trace.
 
 
 
+\subsection{An intrinsic measure class without affine Minkowski convergence}
+\label{sec:intrinsic-tube-measure}
+
+There is a way to address the measure-selection part of the frontier
+problem without first proving existence of Minkowski content after every
+affine deformation. This does not supply a typical-tip theorem or a
+Borel choice of the relevant local frontier arc.
+
+Fix $0<d<2$. For a nonempty compact planar set $E$ and $\epsilon>0$ put
+\[
+ m_{E,\epsilon}(dx)=\epsilon^{d-2}
+       \mathbf1_{\{\operatorname{dist}(x,E)<\epsilon\}}\,dx.
+ \tag{IM1}
+\]
+Call $E$ content regular if these finite measures converge weakly, as
+$\epsilon\downarrow0$, to a finite nonzero measure $\mu_E$.
+This is an explicit local Minkowski-content hypothesis. The theorem below
+is deterministic; no SLE or exploration assumption enters its proof.
+
+\begin{theorem}[A Euclidean canonical affine-stable measure class]
+\label{thm:intrinsic-tube-measure}
+There is a Borel map $E\mapsto\nu_E$ from compact planar sets to finite
+positive measures, supported on $E$, with the following properties.
+It has exact $d$-dimensional similarity covariance: for
+$F(x)=sRx+t$, $s>0$ and $R$ orthogonal,
+$\nu_{FE}=s^d F_*\nu_E$.
+For every content-regular $E$, $\nu_E=\mu_E$. If $A$ is invertible
+real-linear, with smallest and largest singular values $a,b>0$, then
+\[
+ |\det A|\,b^{d-2} A_*\mu_E
+       \ \le\ \nu_{AE}\ \le\
+ |\det A|\,a^{d-2} A_*\mu_E
+ \tag{IM2}
+\]
+as measures. In particular, $\nu_{AE}$ and $A_*\mu_E$ have precisely
+the same null sets. No convergence of the tube measures of $AE$ is
+assumed. Exact affine covariance of the selected measure is not claimed.
+\end{theorem}
+\begin{proof}
+Consider the Borel set of compact sets
+\[
+ \mathcal E_d=\left\{E:
+ 0<\liminf_{\epsilon\downarrow0}m_{E,\epsilon}(\mathbb R^2)
+   \le\limsup_{\epsilon\downarrow0}m_{E,\epsilon}(\mathbb R^2)<\infty\right\}.
+\]
+The tube-measure map in (IM1) is Borel in the Hausdorff hyperspace of
+compact sets: the distance is jointly continuous in $(E,x)$, so integrals
+against bounded continuous test functions are Borel by measurable
+integration. The tube measure also depends continuously on positive
+$\epsilon$. Indeed every positive distance level has zero area:
+if $\operatorname{dist}(x,E)=r>0$, a nearest point of $E$ gives, in
+each sufficiently small ball about $x$, a ball of one quarter its radius
+where the distance is strictly below $r$. Thus the level set has no
+Lebesgue density points. Dominated convergence now proves the asserted
+continuity. All small-radius limit operations may consequently be coded
+using rational radii, proving that $\mathcal E_d$ is Borel.
+For $E\in\mathcal E_d$, the sufficiently small-radius tube measures have
+uniformly bounded masses and a common compact support, namely the closed
+unit neighborhood of $E$. Their weak cluster set $K(E)$ as $\epsilon\downarrow0$ is therefore
+nonempty compact. Every cluster measure is supported on $E$, and its
+mass lies between the displayed positive liminf and finite limsup.
+Let $C(E)$ be the closed convex hull of $K(E)$; it is compact, since it
+lies in the compact set of measures supported on $E$ with the same
+uniform mass bounds.
+
+For clarity, these compact-valued constructions admit Borel coding.
+Choose a complete metric for weak convergence of finite positive measures.
+For every open set $O$ in that measure space,
+\[
+ K(E)\cap O\ne\varnothing
+ \quad\Longleftrightarrow\quad
+ \begin{gathered}
+ \text{for some }k,\text{ for every }m,\text{ some }
+           \epsilon\in\mathbb Q\cap(0,1/m)\\
+ \text{has }\operatorname{dist}(m_{E,\epsilon},O^c)>1/k.
+ \end{gathered}
+ \tag{IM3}
+\]
+Precompactness proves both implications. The right side is Borel.
+Using a countable basis of balls and (IM3), choose a point of $K(E)$
+in each basis open set which meets it: successively take the first
+smaller basis ball meeting $K(E)$ whose closure lies in the preceding
+open ball, with radii tending to zero. The centers form a Cauchy
+sequence; its limit lies in $K(E)$ and in the original basis open set.
+All choices are least-integer choices of Borel predicates.
+This gives a Borel countable dense family in $K(E)$, and its rational
+convex combinations give a Borel countable dense family in $C(E)$.
+
+Select $\nu_E$ to minimize the Gaussian energy
+\[
+ J_E(\nu)=\iint e^{-|x-y|^2/\operatorname{diam}(E)^2}\,\nu(dx)\nu(dy)
+ \tag{IM4}
+\]
+over $C(E)$. The diameter is positive on $\mathcal E_d$, since a singleton
+has tube mass of order $\epsilon^d\to0$. The energy is continuous for weak convergence of finite
+positive measures, and its dependence on $E$ is Borel. It is strictly convex: for a nonzero finite signed
+measure $\eta$, the Gaussian Fourier identity gives
+\[
+ \iint e^{-|x-y|^2/\operatorname{diam}(E)^2}\,\eta(dx)\eta(dy)
+   =c_E\int e^{-\operatorname{diam}(E)^2|\xi|^2/4}
+                  |\widehat\eta(\xi)|^2d\xi>0,
+\]
+where $c_E>0$. The last inequality
+uses continuity and uniqueness of the Fourier transform of a finite
+measure. Thus the minimizer exists and is unique. It is Borel in $E$:
+the infimum over the countable dense family in $C(E)$ is Borel;
+choose its first member within $1/j$ of that infimum. Compactness and
+uniqueness force these approximate minimizers to converge to $\nu_E$.
+Set $\nu_E=0$ outside $\mathcal E_d$, also for the empty set.
+
+For a similarity $F(x)=sRx+t$, the tube change of variables gives
+$m_{FE,\epsilon}=s^d F_*m_{E,\epsilon/s}$. The full-radius cluster
+construction therefore gives $C(FE)=s^d F_*C(E)$. Also
+$J_{FE}(s^dF_*\nu)=s^{2d}J_E(\nu)$. Uniqueness gives the stated
+exact similarity covariance.
+If $E$ is content regular, $K(E)=C(E)=\{\mu_E\}$.
+
+For the affine comparison, the singular-value bounds give tube inclusions
+\[
+ A(E_{\epsilon/b})\subset(AE)_\epsilon
+                         \subset A(E_{\epsilon/a}),
+\]
+where $E_r$ is the open radius-$r$ neighborhood. Hence for every bounded
+nonnegative continuous $f$,
+\[
+ |\det A|\,b^{d-2}
+ m_{E,\epsilon/b}(f\circ A)
+ \le m_{AE,\epsilon}(f)
+ \le |\det A|\,a^{d-2}
+ m_{E,\epsilon/a}(f\circ A).
+ \tag{IM5}
+\]
+Full tube convergence for $E$ shows that every weak cluster
+measure of $AE$ satisfies (IM2). The total masses are bounded above
+and away from zero, so $AE\in\mathcal E_d$. The measure inequalities
+are preserved by convex combinations and weak limits. They therefore
+hold for every element of $C(AE)$, in particular its selected minimizer.
+Testing against nonnegative continuous functions proves the inequalities
+as Borel measures and finishes the proof.
+\end{proof}
+
+\begin{corollary}[Removing the randomness of an intrinsic-point decoder]
+\label{cor:intrinsic-point-decoder}
+Suppose a compact trace is an affine image $F=AE$ of a content-regular
+trace, and $\Theta(F,x)$ is a Borel local-arc tensor observation, with a
+cemetery value permitted. If for one tensor $Q$,
+\[
+ \Theta(F,x)=Q\quad\text{for }A_*\mu_E\text{-almost every }x,
+ \tag{IM6}
+\]
+then the same equality holds for $\nu_F$-almost every $x$.
+Moreover $Q$ is recoverable as a Borel function of $F$ alone whenever
+(IM6) holds, without choosing a capacity time or a random point.
+\end{corollary}
+\begin{proof}
+The null-set assertion is (IM2). On the Borel set where
+$\nu_F(\mathbb R^2)>0$, push $\nu_F/\nu_F(F)$ forward by
+$x\mapsto\Theta(F,x)$; outside it return the cemetery value. This is a Borel probability kernel in $F$ and,
+under (IM6), equals $\delta_Q$. The Dirac embedding of the Polish tensor
+space into its probability-measure space is Borel injective and has a
+Borel inverse on its image. Apply that inverse if the pushed measure is
+Dirac, and otherwise return the cemetery value. This constructs the
+claimed deterministic Borel decoder.
+\end{proof}
+
+\paragraph{Known natural-length sampling and the gap that remains.}
+Lawler--Rezaei~\cite{lawler-rezaei-content} proves existence of SLE
+Minkowski content and identifies natural parametrization. Zhan's
+decomposition theorem~\cite{zhan-natural-palm}, Theorem 4.1 and
+Corollaries 4.2--4.3, identifies the chordal-SLE curve--point measure
+obtained from Minkowski-content sampling with the integral of two-sided
+radial SLE through $z$ against its Green-function density. Thus a
+natural-length Palm decomposition is available, and is different from
+the deterministic-capacity-tip theorem in~\cite{zhan-tip}.
+To use (IM6) one still needs a Borel extraction of the appropriate
+ordered frontier arc and a decoder valid at its natural-length typical
+point. A capacity-almost-everywhere statement alone supplies neither.
+The robust random-chart decoder reduces the remaining model question
+to its explicit properness, isotropy, scale-ergodicity, and local-chart
+premises for that intrinsic-point law. No such frontier identification
+or all-stopping-time compatibility is asserted here.
+
+
+
+\subsection{Proposed extension to natural-length typical points of simple SLE}
+\label{sec:natural-point-tensor}
+\paragraph{Verification status at this checkpoint.}
+The following is a proposed argument preserved after an execution interruption.
+Its natural-point transfer is undergoing independent checking. It is not
+used by any established result or by the polished report at this checkpoint.
+
+
+The natural-length Palm law uses a different whole-plane model from the
+deterministic-capacity tip law. The stationary cylinder argument applies
+also to this model, with force parameter $\varrho=2$.
+We restrict to $0<\kappa<4$ so that the relevant traces are simple.
+Let $\mu_2$ be the whole-plane SLE$(\kappa;2)$ law from $0$ to
+$\infty$. Retain the proper spherical curve coding and Borel local
+stopping/completion premises of Theorem~\ref{thm:wp-robust-decoder}.
+Proposition~\ref{prop:wp-cylinder-ergodic}, with $\varrho=2$, supplies
+its full discrete-dilation ergodicity.
+
+Call a source-avoiding ordered germ at $0$ $\mu_2$-generic if a proper
+source-avoiding completion $Y$ has
+\[
+ \frac1N\sum_{n=1}^N\delta_{\rho^nY}\ \Longrightarrow\ \mu_2
+ \quad\text{for one fixed }\rho>1.
+ \tag{NP1}
+\]
+By tail replacement this does not depend on the completion and is a
+Borel germ property. It is stronger than merely assigning a tensor
+value to an arbitrary decoder. The spherical linearization argument
+shows pathwise that this property is preserved by every local
+conformal map fixing $0$ with nonzero derivative: the derivative is a
+similarity, and $\mu_2$ is rotation and dilation invariant. More
+generally applying any fixed affine $A$ makes the limit $A_*\mu_2$.
+These assertions hold simultaneously for sample-dependent local
+conformal maps, without another exceptional-set intersection.
+
+\begin{proposition}[The terminal germ of radial SLE$(\kappa;2)$]
+\label{prop:radial-two-terminal-germ}
+For every $\theta\in(0,2\pi)$, take radial SLE$(\kappa;2)$ in
+$\mathbb D$ from $e^{i\theta}$ to $0$, with boundary force point $1$.
+Its reversed terminal ordered germ at $0$ is $\mu_2$-generic almost
+surely. The same assertion holds in any conformally equivalent marked
+domain, using the physical Euclidean coordinate at its interior target.
+\end{proposition}
+\begin{proof}
+We use whole-plane SLE$(\kappa;2)$ reversibility, proved in
+\cite[Theorem 1.20]{ms-ig4}, and its conformal Markov property;
+the relation with radial SLE$(\kappa;2)$ is recalled explicitly in
+\cite[Section 2.1]{zhan-natural-regularity} and
+\cite[Section 2.2]{zhan-loops}. These are external SLE inputs.
+
+First construct a full stationary whole-plane SLE$(\kappa;2)$ trace
+$\gamma$ from $0$ to $\infty$, parametrized by whole-plane capacity,
+with Loewner maps $g_t$ and cylinder coordinates $\lambda_t,q_t$.
+Let $Z_t=\lambda_t-q_t\in(0,2\pi)$.
+Under inversion $J(z)=1/z$, $\Gamma=J\gamma$ is a whole-plane
+SLE$(\kappa;2)$ from $\infty$ to $0$. At time $0$, conditional
+on its explored past, the remaining path is radial SLE$(\kappa;2)$
+in the remaining domain, from its current tip to $0$, with force
+point at the prime end corresponding to $\infty$.
+The conformal chart
+\[
+ f(z)=\frac{e^{iq_0}}{g_0(1/z)}
+ \tag{NP2}
+\]
+maps that domain to the unit disk, fixes $0$, takes the force point
+to $1$, and takes the tip to $e^{-iZ_0}$. It is analytic with nonzero
+derivative at $0$. The normalization at capacity zero gives
+$f'(0)=e^{iq_0}$.
+
+Reversibility makes the full reversed $\Gamma$ a whole-plane
+SLE$(\kappa;2)$ from $0$ to $\infty$. Its initial germ is therefore
+$\mu_2$-generic almost surely. Applying the sample-dependent chart
+$f$ preserves (NP1). The resulting reversed terminal germ belongs,
+conditionally on the past, to the radial law in the statement with
+angle $\theta=-Z_0$ modulo $2\pi$.
+The stationary gap density is
+\[
+ \pi_Z(dz)=c\sin(z/2)^{8/\kappa}\,dz,
+ \tag{NP3}
+\]
+which is positive on $(0,2\pi)$. Disintegration therefore proves the
+proposition for Lebesgue-almost every starting angle $\theta$.
+
+To obtain every angle, start the radial law at an arbitrary
+$\theta_0\in(0,2\pi)$ and run it for a deterministic radial time
+$s>0$. After mapping by its radial Loewner map and rotating to put
+the current force point at $1$, its future is a radial law with
+gap $X_s$, where
+\[
+ dX_t=\sqrt\kappa\,dB_t+2\cot(X_t/2)\,dt,
+ \qquad X_0=\theta_0.
+ \tag{NP4}
+\]
+The endpoint Bessel dimension is $1+8/\kappa>2$, so neither endpoint
+is reached. The distribution of $X_s$ is absolutely continuous with
+respect to Lebesgue measure: on each compact subinterval of $(0,2\pi)$,
+the stopped drift is bounded, and Girsanov compares its endpoint law
+with Brownian motion on the event of no exit. These no-exit events
+increase to probability one as the compact intervals exhaust
+$(0,2\pi)$. Thus $X_s$ lies in the already proved good-angle set
+almost surely. Conditional DMP gives (NP1) for the future terminal
+germ in its new chart. The inverse radial chart is analytic near $0$
+with nonzero conformal derivative, so pathwise conformal invariance
+of (NP1) transfers the property back to the original terminal germ.
+For a general marked domain use an interior conformal chart at the
+target and the same pathwise invariance. No continuity of the good
+event as a function of $\theta$ is assumed.
+\end{proof}
+
+\begin{theorem}[A natural-length almost-everywhere affine tensor decoder]
+\label{thm:natural-point-tensor}
+Let $\beta$ be chordal SLE$_\kappa$, $0<\kappa<4$, in a simply
+connected domain, with its Minkowski-content measure $\mu_\beta$.
+Let $A\in GL^+(2,\mathbb R)$ be fixed. Use the decoder of
+Theorem~\ref{thm:wp-robust-decoder} constructed from the model $\mu_2$.
+Almost surely, for $\mu_\beta$-almost every interior point
+$z=\beta(t)$, the reversed incoming ordered germ of $A\beta$ at $Az$,
+translated to start at $0$, has decoded tensor
+\[
+ [(A^{-1})^{\mathsf T}A^{-1}].
+ \tag{NP5}
+\]
+The same holds for the outgoing germ. This is a statement about the
+intrinsic length measure, not capacity-almost every time.
+\end{theorem}
+\begin{proof}
+Zhan's natural-length Palm decomposition
+\cite[Theorem 4.1 and Corollaries 4.2--4.3]{zhan-natural-palm}
+identifies chordal SLE with a point sampled using its Minkowski content
+with two-sided radial SLE through that point, integrated against the
+SLE Green-function density. For every marked interior point $z$, the
+incoming arm of the two-sided radial curve is radial SLE$(\kappa;2)$
+from the source to $z$, with force point at the remote boundary target.
+Proposition~\ref{prop:radial-two-terminal-germ} makes its reversed
+terminal germ $\mu_2$-generic. Hence the affine-image empirical law
+is $A_*\mu_2$, which the robust decoder identifies as (NP5).
+Integrating the Palm identity over compact interior sets, followed by
+a countable exhaustion, proves that the expected Minkowski-content
+mass of bad points is zero. That mass is nonnegative, so it vanishes
+almost surely. Reversibility of two-sided radial SLE, recalled in
+\cite[Section 2.2]{zhan-loops}, gives the outgoing assertion.
+\end{proof}
+
+\paragraph{What this removes and what remains.}
+For compact simple-SLE pieces satisfying the content-regularity premise
+of Theorem~\ref{thm:intrinsic-tube-measure}, (NP5) supplies (IM6).
+Consequently a tensor can be recovered from their unlabelled trace by
+the intrinsic-measure construction, provided the local incoming or
+outgoing branch is Borel extracted from that trace. A simple compact
+arc has two possible orientations; (NP5) works for both, so choosing
+an orientation does not change its almost-everywhere tensor.
+This does not yet identify the laws of all accessible frontier arcs of
+an exploration, establish the content premise on a chosen frontier
+exhaustion, or prove compatibility at every random slit state and
+every exploration stopping time. It does not derive an affine-SLE
+representation from the three axioms.
+
+
+
 \paragraph{A relevant tip theorem and the unresolved selection problem.}
 Zhan's Theorem 5.3 in \cite{zhan-tip} maps the reversed past of a
 simple chordal SLE$_\kappa$, $0<\kappa<4$, at a deterministic
@@ -6659,11 +7003,13 @@ unlabelled open frontier arc. Exceptional points could give other
 values, and an affine change of the capacity clock need not preserve
 null sets. Zhan's remarks after Theorem 6.6 explicitly distinguish
 the local models at capacity-typical and natural-length-typical tips.
-Thus a frontier theorem needs both a canonical local arc extraction
-and a decoder valid at points selectable by an intrinsic measure,
-with compatibility at all exploration stopping times. A natural-length
-Palm theorem and an affine-comparable intrinsic arc measure are
-possible ingredients, but no such construction is proved here.
+Thus a frontier theorem still needs a canonical local arc extraction
+and a decoder valid at intrinsic typical points, with compatibility at
+all exploration stopping times. The tube-cluster construction above
+provides an affine-stable measure class for compact content-regular
+model traces, and the cited natural-length Palm decomposition is
+available for SLE. Identifying the appropriate frontier pieces and
+their intrinsic-point germs remains open.
 
 
 \section{Unsuccessful routes, revised objectives, and next experiments}
@@ -6721,9 +7067,10 @@ characteristics in every physical complex structure.
 A more concrete driving route is now available: prove the signed discrete
 conditional-bias estimate (DB4) after suitable bounded stopping in one
 fixed affine normalization, with the slit-growth control (BI5).
-Proposition~\ref{prop:discrete-bias-transfer} transfers those bounds without
-filtration convergence, and Theorem~\ref{thm:cbias-rigidity} then applies
-if its separate strong-DMP and canonical-restart premises are established.
+Proposition~\ref{prop:discrete-bias-transfer}, or the vanishing-corrector
+criterion, transfers those bounds without filtration convergence.
+Theorem~\ref{thm:cbias-rigidity} then applies if genuine strong DMP
+is established; canonical characteristic restart follows automatically.
 The annular strong law only centers empirical observations by their
 deterministic expectations; it does not establish convergence or identify
 those expectations.
@@ -6740,10 +7087,11 @@ Third establish strong limiting conditional kernels in random slit
 domains. Marginal convergence and the new resampling arguments avoid
 this step for their own conclusions, but do not solve it. For the
 abstract three-axiom conjecture, metric recovery from an unlabelled
-accessible frontier remains unresolved. The new decoder reads an
-ordered trace germ at a regular endpoint; it is not a random-tip
-frontier decoder, and Brownian full support still cannot replace
-stability at deterministic null histories.
+accessible frontier remains unresolved. Endpoint decoding and the new random-chart whole-plane decoder
+read ordered germs. The latter also covers deterministic simple-SLE
+capacity tips under its proper/coding premises. Intrinsic frontier
+arc identification remains open, and Brownian full support cannot
+replace stability at deterministic null histories.
 
 \paragraph{Reproducibility and preservation.}
 The concise handoff is \texttt{STATUS.md}. The polished driving,
@@ -6780,6 +7128,27 @@ Theorem 2.1 and Corollaries 2.2 and 5.1.
 \emph{Lecture 10: Change of measure and the Girsanov theorem},
 Theorems 1--2.
 \url{https://www.stat.uchicago.edu/~lalley/Courses/390/Lecture10.pdf}.
+\bibitem{lawler-rezaei-content} G. F. Lawler and M. A. Rezaei,
+\emph{Minkowski content and natural parameterization for the
+Schramm--Loewner evolution}, Ann. Probab. \textbf{43} (2015), 1082--1120.
+\url{https://arxiv.org/abs/1211.4146}.
+\bibitem{zhan-natural-palm} D. Zhan,
+\emph{Decomposition of Schramm--Loewner evolution along its curve},
+Stochastic Process. Appl. \textbf{129} (2019), 129--152.
+\url{https://arxiv.org/abs/1509.05015}.
+\bibitem{ms-ig4} J. Miller and S. Sheffield,
+\emph{Imaginary geometry IV: interior rays, whole-plane reversibility,
+and space-filling trees}, Probab. Theory Related Fields \textbf{169}
+(2017), 729--869, Theorem 1.20.
+\url{https://arxiv.org/abs/1302.4738}.
+\bibitem{zhan-loops} D. Zhan, \emph{SLE loop measures},
+Ann. Inst. Henri Poincare Probab. Stat. \textbf{57} (2021), 701--738.
+\url{https://arxiv.org/abs/1702.08026}.
+\bibitem{zhan-natural-regularity} D. Zhan,
+\emph{Optimal H\"older continuity and dimension properties for SLE with
+Minkowski content parametrization}, Probab. Theory Related Fields
+\textbf{175} (2019), 447--466.
+\url{https://arxiv.org/abs/1706.05603}.
 \bibitem{hormander} L. H\"ormander,
 \emph{Hypoelliptic second order differential equations},
 Acta Math. \textbf{119} (1967), 147--171, Theorem 1.1.

@@ -1,4 +1,4 @@
-# Research status — 27 October 2026
+# Research status — 28 October 2026
 
 **The corrected three-axiom classification and critical percolation universality remain open.** Locality compares common colored source neighborhoods, including different targets. The historical target-germ example does not satisfy this corrected axiom.
 
@@ -10,6 +10,10 @@
 - **Annular fluctuations admit a martingale description.** The existing exponential absolute regularity gives an exact nonstationary martingale/corrector decomposition, uniformly exponential corrector moments, and O(log N) maximal corrector almost surely. A deterministic asymptotic variance rate yields a functional CLT; fixed-lag Cesàro covariance limits suffice for that rate. Neither scale expectations nor variance convergence are derived for general percolation. See prop:annular-martingale and thm:annular-clt.
 - **Near-critical germ singularity forces an energy obstruction.** Aumann's 2014 theorem separates distinct near-critical interface parameters already on the raw initial ordered germ and supplies a curve-level dilation obstruction under its convergence hypotheses. A localized Girsanov argument proves that finite-energy Brownian driving drift preserves Wiener germ probabilities. If a nonzero near-critical limit has a Brownian-bracket-six plus absolutely continuous drift representation, its drift energy must be infinite on every positive initial interval. This is not a nonsemimartingality theorem or a construction of a coherent strong-DMP family. See sec:germ-energy.
 
+- **An intrinsic measure class survives affine deformation.** For compact model traces with finite nonzero local Minkowski content, a Borel tube-cluster construction selects a measure with exact similarity covariance. On every fixed affine image it has precisely the null sets of the transported model content, even without convergence of the affine image's tube measures. Gaussian-energy minimization makes the selector canonical. See thm:intrinsic-tube-measure and cor:intrinsic-point-decoder.
+
+A proposed natural-length decoder extension is preserved in sec:natural-point-tensor of progress.tex, explicitly marked as awaiting independent review. It is not yet promoted to final.tex or used by established results.
+
 ## Earlier results retained
 
 Controlled conditional first-moment bounds give bounded canonical drift; mirrored shrinking slits then force zero initial drift and bracket tangent six. Genuine strong DMP propagates these to SLE₆. Discrete signed capacity-bias bounds, or tested block estimates, transfer without filtration convergence. The shrinking-slit constants must satisfy εKε→0; this is not supplied by RSW. The new corrector criterion is an alternative way to establish the same bound.
@@ -20,13 +24,13 @@ Independent-color RSW shields give source-patch coalescence, an initial ordered-
 
 1. Construct a percolation driving corrector, or prove signed tested-block cancellation, in one unknown fixed affine normalization. Control the corrected bias constants in shrinking slit domains. RSW and Brownian-order absolute increments do not provide signed cancellation.
 2. Prove compatible strong continuation kernels on random slit domains, possibly through the new annealed criterion. Deterministic-domain marginal convergence, even with continuous individual kernels, is insufficient.
-3. For the abstract rough-frontier route, establish a Borel local-arc extraction and a tensor decoder at points selected by an intrinsic measure. Random C1 charts and full cylinder ergodicity are now addressed under the explicit model premises. Capacity-typical and natural-length-typical points have different local SLE models; dense correct capacity tips do not suffice. An affine-stable intrinsic measure construction is being checked separately.
+3. For the abstract rough-frontier route, establish a Borel local-arc extraction and a tensor decoder at points selected by an intrinsic measure. Random C1 charts and full cylinder ergodicity are now addressed under the explicit model premises. Capacity-typical and natural-length-typical points have different local SLE models; dense correct capacity tips do not suffice. The intrinsic measure class is now constructed for content-regular compact model traces. The natural-length-typical simple-SLE decoder proposal remains under review.
 4. Derive affine-SLE/affine-mixture marginals or identify deterministic scale expectations from coarse geometry. The annular Gaussian theorem isolates a variance limit but does not prove it. Whole-slit perturbation stability still lacks the deterministic implication from ordered disagreement to a boundary-arm event; tip shields leave altered boundary behind them.
 
 No unconditional near-critical counterexample is claimed. Its ordered-kernel coherence remains separate from known curve-germ singularity. Brownian full support does not repair null-history gaps.
 
 ## Preservation and verification
 
-The current checked proofs are integrated into progress.tex and final.tex. Both compile with resolved references and no layout warnings, to 94 and 49 pages at this intermediate checkpoint. Independent agents checked the corrector, canonical restart, energy, annular invariance-principle, robust decoder, and cylinder arguments. Compilation checks presentation only. Report PDFs will be refreshed after the remaining intrinsic-measure investigation; existing PDFs are from the preceding session during this intermediate checkpoint.
+The checked intrinsic-measure proof is integrated into both research sources. The natural-point extension is preserved only as an explicitly unverified proposal in progress.tex. Reports were last successfully built to 96 and 51 pages before this proposal was added; final PDF rebuilding and visual checks are underway. Independent agents checked the corrector, canonical restart, energy, annular invariance-principle, robust decoder, cylinder, and intrinsic-measure arguments. Compilation checks presentation only.
 
-The first current-session source checkpoint was pushed to main as 9204825 (near-critical germ/energy obstruction). AGENTS.md and PROJECT_DESCRIPTION.md are unchanged. All substantive arguments are integrated into tracked research sources; ignored work/ fragments are not needed to resume.
+Source checkpoints 9204825 and 1739b37 were pushed before the interruption. AGENTS.md and PROJECT_DESCRIPTION.md are unchanged. The detailed record preserves the remaining candidate so a fresh session need not rely on ignored work/ fragments.
