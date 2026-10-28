@@ -47,7 +47,18 @@ A separate signed conditional-bias criterion supplies semimartingality
 and the required initial tangents without postulating them; its discrete
 version passes to continuous driver limits without filtration convergence.
 The requisite bias cancellation and compatible limiting DMP remain unproved
-for general percolation. These results leave the corrected three-axiom classification and critical
+for general percolation.
+
+Strong DMP in the usual natural driver filtration automatically transports
+canonical drift and bracket. Vanishing adapted microscopic correctors
+can replace raw one-step driving-bias bounds. Annular scale sums admit
+an exponentially integrable martingale correction and a functional
+Gaussian limit conditional on a deterministic variance rate.
+A spherical empirical-law decoder handles arbitrary sample-dependent
+local $C^1$ charts; a stationary-cylinder argument supplies dilation
+ergodicity for the relevant whole-plane SLE model. Intrinsic frontier
+point selection remains unresolved.
+These results leave the corrected three-axiom classification and critical
 percolation universality open.
 \end{abstract}
 
@@ -839,6 +850,165 @@ otherwise necessary for this version.
 
 
 
+% Candidate addendum: canonical characteristics do not need a separate
+% restart assumption once strong DMP is supplied in the natural filtration.
+\section{Canonical characteristics under a genuine strong restart law}
+\label{sec:canonical-restart-automatic}
+
+The strong DMP required above is substantive. Once it is an identity of
+regular conditional laws in the usual natural driver filtration, however,
+compatibility of the continuous canonical characteristics follows from
+uniqueness. It is useful to separate these two issues.
+
+\begin{proposition}[Strong DMP transports continuous characteristics]
+\label{prop:automatic-characteristics}
+Let $\{P_f\}$ be a Borel family of laws on
+$C_0([0,\infty),\mathbb R)$. In each state the coordinate process has a
+continuous canonical decomposition $W=M^f+A^f$ in its usual natural
+filtration, where $A^f$ has finite variation on compact intervals. Write
+$C^f=\langle M^f\rangle$. Fix an initial state $f$ and a bounded stopping
+time $\tau$. Suppose $f_\tau$ is measurable at $\tau$ and the strong restart
+identity is literally
+\[
+ \mathcal L_{P_f}\bigl((W_{\tau+t}-W_\tau)_{t\ge0}
+                  \mid\mathcal F^f_\tau\bigr)=P_{f_\tau}.
+ \tag{KR1}
+\]
+Then, for almost every conditioned history, the shifted finite-variation
+process $A^f_{\tau+t}-A^f_\tau$ and bracket
+$C^f_{\tau+t}-C^f_\tau$ are the canonical characteristics of the restarted
+law. This is equality up to indistinguishability under that conditional
+law. No continuity of $f\mapsto P_f$ is required.
+
+The same conclusion applies to an inherited Loewner chart when the future
+coordinate in (KR1) is exactly that inherited driving process. Changing to
+a different chart or clock still requires the appropriate invertible
+adapted coordinate transformation.
+\end{proposition}
+\begin{proof}
+Write $P=P_f$, $M=M^f$, $A=A^f$, and $C=C^f$.
+The continuous adapted processes $M,A,C$ have raw Borel adapted versions,
+up to one $P$-evanescent set. Indeed, at a positive time approximate from
+strictly earlier rational times; a variable measurable in the usual
+filtration at $r<t$ has a version measurable in the raw filtration at
+some time strictly between $r$ and $t$. Make these choices on the
+countable rational approximation grid and take the continuous limits.
+Their values at zero are fixed. On exceptional paths retain the raw
+adapted pathwise-limit definitions, rather than zeroing a nonadapted
+exceptional set. After conditioning, freeze the stopped past, $\tau$,
+and any additional information in $\mathcal F_\tau$. Thus the
+shifted processes are adapted Borel functionals of the future coordinate
+$U_t=W_{\tau+t}-W_\tau$ alone.
+
+Choose stopping times $\sigma_n\uparrow\infty$ such that
+$M^{\sigma_n}$ and $(M^2-C)^{\sigma_n}$ are bounded martingales; for
+example stop at time $n$ or at the first time $|M|+C$ reaches $n$.
+For rational $0\le r<s$ and a bounded cylinder test $H$ of $U$ at
+rational times at most $r$, optional sampling and the tower property give
+\[
+ \mathbb E_P\!\left[
+   \bigl(M_{(\tau+s)\wedge\sigma_n}
+        -M_{(\tau+r)\wedge\sigma_n}\bigr)H
+       \mid\mathcal F^f_\tau\right]=0.
+ \tag{KR2}
+\]
+Use a countable cylinder class, for example indicators of finite
+intersections of rational half-lines. Disintegrating all these identities
+at once gives, outside one null set of histories, their martingale
+identities under the conditional future law. Monotone classes and
+continuity extend them to every time and bounded past test. The bounded
+martingales remain martingales after usual augmentation by conditioning
+at times decreasing to the desired time.
+
+Under any such conditional law put
+$T_n=(\sigma_n-\tau)^+$. The stopped shifted martingale
+$M_{\tau+t\wedge T_n}-M_\tau$ is the process in (KR2) with its initial
+value subtracted: if $\sigma_n\le\tau$ both are identically zero; otherwise
+they coincide. The $T_n$ are stopping times in the conditional future
+natural filtration, increase to infinity, and hence
+$M_{\tau+t}-M_\tau$ is a continuous local martingale there. The same
+argument applied to $M^2-C$, subtracting the frozen cross term
+$2M_\tau(M_{\tau+t}-M_\tau)$, identifies its bracket as
+$C_{\tau+t}-C_\tau$.
+
+The shifted $A$ is adapted, continuous, and of finite variation, so it is
+predictable. Consequently
+\[
+ U_t=(M_{\tau+t}-M_\tau)+(A_{\tau+t}-A_\tau)
+\]
+is a canonical decomposition in the conditional future natural
+filtration. By (KR1) this is the usual natural filtration of the
+coordinate process under $P_{f_\tau}$. Uniqueness of the continuous
+canonical decomposition and bracket proves the claim. A separate
+jointly measurable choice of characteristics over every deterministic
+state is unnecessary for this almost-every-history conclusion.
+\end{proof}
+
+\paragraph{Consequence for the driving criteria.}
+Under the genuine strong restart identity (KR1), the explicit
+canonical-restart-compatibility premises in the earlier conditional
+driving theorems are redundant. The locality identification of natural
+trace filtrations and the existence of the strong conditional kernels
+remain necessary premises of those arguments. This reduction does not
+deduce strong DMP from deterministic-domain convergence.
+
+\subsection{Pointwise convergence, even of continuous kernels, is insufficient}
+
+Here is a small counterexample to an otherwise tempting kernel-transfer
+argument. Let $V$ take the values $-1,1$ with equal probability and put
+$I_n=V$, $D_n=V/n$, and $Y_n=V$. Choose continuous functions
+$g_n:\mathbb R\to[-1,1]$ supported in the union of intervals of radius
+$1/(4n^2)$ around $-1/n$ and $1/n$, with
+$g_n(1/n)=1$ and $g_n(-1/n)=-1$. Define
+$K_n(d)=\delta_{g_n(d)}$. These are weakly continuous probability kernels,
+and for every fixed deterministic $d$,
+\[
+ K_n(d)\longrightarrow\delta_0=:K(d).
+ \tag{KR3}
+\]
+The limiting kernel $K$ is continuous. Moreover the exact conditional
+identity $\mathcal L(Y_n\mid I_n,D_n)=K_n(D_n)$ holds. Nevertheless
+$(I_n,D_n,Y_n)\to(V,0,V)$ almost surely, and
+$\mathcal L(V\mid V,0)=\delta_V\ne K(0)$. Thus pointwise convergence
+at every deterministic state, and continuity of every kernel including
+the limit, do not justify a conditional limit at random states. Uniform
+equicontinuity, sequential convergence along the actually visited
+states, or another quantitative substitute is essential.
+
+\begin{lemma}[An annealed substitute for sequential kernel convergence]
+\label{lem:annealed-kernel-transfer}
+Let the past, state, and future variables take values in fixed Polish
+spaces. Suppose $(I_n,D_n,Y_n)\Rightarrow(I,D,Y)$ and
+$\mathcal L(Y_n\mid I_n,D_n)=K_n(D_n)$. Suppose $K$ is a Borel kernel
+such that $d\mapsto K\varphi(d)$ is continuous at $D$ almost surely,
+for each member $\varphi$ of a countable bounded continuous
+convergence-determining class on the future space. It suffices that
+\[
+ \mathbb E\bigl|K_n\varphi(D_n)-K\varphi(D_n)\bigr|
+       \longrightarrow0
+ \tag{KR4}
+\]
+for each such $\varphi$. Then
+$\mathcal L(Y\mid I,D)=K(D)$.
+\end{lemma}
+\begin{proof}
+For any bounded continuous test $h$ of $(I_n,D_n)$, replace
+$K_n\varphi(D_n)$ in the exact finite-$n$ conditional identity by
+$K\varphi(D_n)$. The error is bounded by $\|h\|_\infty$ times (KR4).
+The continuous mapping theorem, with its almost-sure-continuity version,
+then passes the resulting identity to the limit. A monotone class in
+$h$, followed by the countable measure-determining class in $\varphi$,
+identifies the conditional law.
+\end{proof}
+
+Condition (KR4) only asks for a stability estimate on domains sampled by
+the exploration. It can therefore be more economical than a theorem
+uniform over every rough slit domain. It has not been proved here for
+percolation explorations. For strong DMP it must hold for the relevant
+stopping times, or be combined with an independent strong-Markov
+extension theorem.
+
+
 \section{Rigidity from conditional first-moment bounds}
 \label{sec:conditional-bias}
 
@@ -937,11 +1107,10 @@ $\epsilon$: the essential limsup is taken at fixed $\epsilon$ first.
 Let a Borel exploration family have continuous Loewner drivers on all
 $t\ge0$, source locality including the test deletions, and strong DMP.
 Require locality to identify the completed natural trace filtrations via
-the invertible capacity clocks. Under conditional restart in an inherited
-chart, require the canonical martingale, drift, and bracket to coincide
-with those of the restarted kernel. These are the same explicit
-filtration and characteristic compatibility premises as in the earlier
-conditional driving theorems. Suppose that, in every
+the invertible capacity clocks. Require strong DMP to be the regular-conditional-law identity (KR1)
+for the inherited driver in its usual natural filtration.
+Proposition~\ref{prop:automatic-characteristics} then supplies canonical
+characteristic compatibility; it is not a separate premise. Suppose that, in every
 deterministic state $f$, there is an increasing sequence of stopping times
 $\rho_{f,m}$ increasing almost surely to infinity, with $\rho_{f,1}>0$ almost surely,
 such that each $X^{f,m}_t=W^f_{t\wedge\rho_{f,m}}$ is bounded and
@@ -1765,6 +1934,145 @@ Corollary~\ref{cor:ed-mixtures} applied to this current state makes
 the two mixing measures equal, proving (ED13).
 \end{proof}
 
+
+
+\section{Microscopic correctors for signed driving cancellation}
+\label{sec:corrected-bias}
+
+The per-reveal condition (DB4) is sensitive to bounded microscopic
+oscillations which disappear in the continuum limit. The following
+criterion permits exactly this kind of cancellation. It supplies neither
+a corrector for a percolation exploration nor the required slit-uniform
+bounds; those remain mathematical tasks.
+
+\begin{proposition}[Vanishing-corrector transfer on an exploration clock]
+\label{prop:corrector-bias-transfer}
+Fix a deterministic horizon $T$. In the random-clock setting of (DB4),
+assume $|X^n_j|\le L$, $t^n_0=0$, $0\le t^n_j\le T_*$, every level $s<T$ is
+reached almost surely, and the maximum clock spacing tends to zero in
+probability. Require zero clock increments to have zero driver increments,
+so continuous interpolation is well defined. Suppose the interpolated
+$X^n$ converge in law in $C([0,T])$ to $X$.
+Let $R^n_j$ be adapted real correctors with
+$\mathbb E\sup_j|R^n_j|<\infty$ for every $n$, such that
+\[
+ \mathbb E\sup_j|R^n_j|\longrightarrow0.
+ \tag{MC1}
+\]
+Assume also zero clock increments have zero corrector increments.
+Set $Y^n_j=X^n_j+R^n_j$ and suppose for $K<\infty$ and
+$\delta_n\downarrow0$ that
+\[
+ \left|\mathbb E[Y^n_{j+1}-Y^n_j\mid\mathcal G^n_j]\right|
+ \le (K+\delta_n)
+       \mathbb E[t^n_{j+1}-t^n_j\mid\mathcal G^n_j].
+ \tag{MC2}
+\]
+Then $X$ satisfies (DB2) in its usual natural filtration. In particular its
+canonical drift is absolutely continuous with density bounded by $K$.
+If $K=0$, $X$ is a continuous martingale.
+\end{proposition}
+\begin{proof}
+The grid processes $Y^n_j+(K+\delta_n)t^n_j$ and
+$-Y^n_j+(K+\delta_n)t^n_j$ are submartingales. For each fixed $n$,
+their absolute values at all stopping indices are dominated by the
+integrable variable $L+\sup_j|R^n_j|+(K+\delta_n)T_*$.
+Consequently optional sampling applies to the almost surely finite
+indices, for $0\le s<t<T$, $J_n(s)=\inf\{j:t^n_j\ge s\}$ and $J_n(t)$, even when
+they have no deterministic upper bound. For every bounded nonnegative
+$\mathcal G^n_{J_n(s)}$-measurable test $H_n$, it gives
+\[
+ \left|\mathbb E[(Y^n_{J_n(t)}-Y^n_{J_n(s)})H_n]\right|
+ \le(K+\delta_n)
+       \mathbb E[(t^n_{J_n(t)}-t^n_{J_n(s)})H_n].
+\]
+Replace $Y^n$ by $X^n$. The resulting error is at most
+$2\|H_n\|_\infty\mathbb E\sup_j|R^n_j|=o(1)\|H_n\|_\infty$.
+Take $H_n=H(X^n_{\cdot\wedge t^n_{J_n(s)}})$ for a bounded
+nonnegative continuous stopped-path test $H$. Clock overshoots vanish
+in probability, and tightness in $C([0,T])$ identifies the limiting
+sampled values and stopped paths. The bound on $X^n$ and on the clock
+then passes their expectations to the limit and yields
+\[
+ |\mathbb E[(X_t-X_s)H(X_{\cdot\wedge s})]|
+ \le K(t-s)\mathbb E H(X_{\cdot\wedge s}).
+\]
+As in Proposition~\ref{prop:discrete-bias-transfer}, bounded continuous
+tests determine the corresponding finite signed measures, giving (DB2)
+in the raw natural filtration. Continuity and reverse-martingale
+convergence extend it to the usual augmentation. The endpoint $T$
+follows by continuity, and Lemma~\ref{lem:cbias-doobmeyer} identifies the
+canonical drift.
+\end{proof}
+
+\paragraph{A finite-state cell problem.}
+There is a useful sufficient construction of such a corrector. For
+simplicity let $t^n_j=jh_n^2$ and let $E^n_j$ be an adapted process in
+a fixed finite set $\mathcal E$ whose conditional transition matrix given
+$\mathcal G^n_j$ is a fixed irreducible stochastic matrix $P$.
+Suppose
+\[
+ \mathbb E[X^n_{j+1}-X^n_j\mid\mathcal G^n_j]
+       =h_n b(E^n_j)+h_n^2r^n_j,\qquad |r^n_j|\le K.
+ \tag{MC3}
+\]
+Let $\pi$ be the unique invariant probability of $P$. If
+$\sum_e\pi(e)b(e)=0$, the finite linear system
+\[
+ (I-P)\chi=b
+ \tag{MC4}
+\]
+has a solution $\chi$, unique up to an additive constant. This follows
+because the kernel of $I-P$ is the constants and the image is the
+$\pi$-mean-zero hyperplane; no aperiodicity assumption is needed.
+The adapted corrector $R^n_j=h_n\chi(E^n_j)$ then obeys (MC1), and
+\[
+ \mathbb E[\Delta(X^n+R^n)_j\mid\mathcal G^n_j]
+ =h_n\{b+P\chi-\chi\}(E^n_j)+h_n^2r^n_j
+ =h_n^2r^n_j.
+\]
+Thus (MC2) holds. The same computation remains valid before an adapted
+stopping index, provided both the driver and corrector are frozen there. The capacity
+clock may continue after this stopping index, with zero corrected
+driver increments.
+For a random clock the right side of (MC3) can instead be a residual
+bounded by $K\mathbb E[\Delta t^n_j\mid\mathcal G^n_j]$.
+
+This is only a finite-state sufficient model. The local conformal
+geometry of an explored percolation boundary is not represented by the
+tip orientation alone. No closure to a fixed finite $P$, and no solution
+of a percolation cell problem, is asserted.
+
+\begin{remark}[Raw one-step bias may diverge for Brownian approximants]
+\label{ex:oscillatory-bias}
+Let $Z_t=\sqrt6 B_{t\wedge\tau}$, where
+$\tau=\inf\{t:|\sqrt6 B_t|=L\}$, and let $h_n\downarrow0$.
+At the deterministic grid times $t_j^n=jh_n^2$, put
+\[
+ X^n_j=Z_{t^n_j}+h_n\{(-1)^j-1\}.
+ \tag{MC5}
+\]
+With the Brownian grid filtration, $X^n_0=0$ and the conditional signed
+increment is exactly $-2h_n(-1)^j$. Hence any (DB4) constant must satisfy
+$K_n\ge2/h_n\to\infty$. Nevertheless $|X^n_j|\le L+2h_n$ and
+continuous interpolation converges uniformly on compact time intervals,
+almost surely, to $Z$. The corrector
+$R^n_j=h_n\{1-(-1)^j\}$ has supremum at most $2h_n$ and makes
+$X^n+R^n$ an exact grid martingale. On a fixed positive horizon the sum
+of the absolute one-step predictable biases diverges like $h_n^{-1}$,
+while their cumulative signed sum stays bounded by $2h_n$.
+\end{remark}
+
+\paragraph{Implication for the universality reduction.}
+A percolation proof need not bound the raw per-reveal conditional bias.
+It would suffice to construct an adapted corrector satisfying (MC1)
+and the corrected estimate (MC2), in one fixed affine normalization.
+The resulting constants must still satisfy the shrinking-slit condition
+(BI5), and strong continuation and characteristic compatibility remain
+separate requirements of Theorem~\ref{thm:cbias-rigidity}.
+The example proves only a logical obstruction to treating (DB4) as a
+necessary property of approximating drivers; it is not a counterexample
+to (DB4) for a particular percolation lattice.
 
 
 \section{A discrete source shield and stability of two exploration starts}
@@ -2672,7 +2980,794 @@ it does not classify those deterministic statistics or produce random
 slit-domain exploration kernels.
 
 
-\begin{thebibliography}{9}
+\subsection{A martingale approximation and a variance criterion for Gaussian scale fluctuations}
+\label{sec:annular-martingale}
+
+The exponential absolute regularity in (AS4) yields more than the centered
+strong law. The following statements require no stationarity or dilation
+covariance. Their time variable counts source scales, rather than Loewner
+capacity.
+
+Let $Z_j=f_j(B_j)$ with deterministic Borel $|f_j|\le1$, put
+$Y_j=Z_j-\mathbb E Z_j$, and write
+$\mathcal A_j=\sigma(B_1,\ldots,B_j)$, with $\mathcal A_0$ trivial.
+Then $|Y_j|\le2$. For constants $C,c>0$ depending only on (AS4),
+\[
+ \left\|\mathbb E[Y_{j+k}\mid\mathcal A_j]\right\|_1
+       \le Ce^{-ck},\qquad j\ge0,\ k\ge1.
+ \tag{AM1}
+\]
+Indeed, test the joint law of the coarse vector and $Y_{j+k}$ against
+a bounded sign of this conditional expectation times $Y_{j+k}$;
+the product-law expectation vanishes. Boundedness then gives, for every
+real $p\ge1$,
+\[
+ \left\|\mathbb E[Y_{j+k}\mid\mathcal A_j]\right\|_p
+       \le C_1 e^{-ck/p}.
+ \tag{AM2}
+\]
+Here $C_1$ can be chosen independent of $p$, by
+$\|V\|_p^p\le2^{p-1}\|V\|_1$ when $|V|\le2$.
+
+\begin{proposition}[An exponentially integrable annular corrector]
+\label{prop:annular-martingale}
+Under (AS4), define in $L^p$, for any finite $p\ge1$,
+\[
+ U_j=\sum_{k=1}^{\infty}\mathbb E[Y_{j+k}\mid\mathcal A_j],
+ \qquad U_0=0,
+ \qquad D_j=Y_j+U_j-U_{j-1}.
+ \tag{AM3}
+\]
+The definitions give common versions for all finite $p$ and all integer
+$j$. The process $M_N=\sum_{j=1}^N D_j$ is a square-integrable
+$\mathcal A_N$-martingale and
+\[
+ S_N:=\sum_{j=1}^N Y_j=M_N-U_N.
+ \tag{AM4}
+\]
+For constants $a,C_2>0$,
+\[
+ \sup_j\mathbb E e^{a|U_j|}<\infty,
+ \qquad \sup_j\mathbb E e^{a|D_j|}<\infty,
+ \qquad
+ \max_{0\le j\le N}|U_j|=O(\log N)\quad\hbox{almost surely}.
+ \tag{AM5}
+\]
+\end{proposition}
+\begin{proof}
+Minkowski's inequality and (AM2) imply
+\[
+ \|U_j\|_p\le C_1\sum_{k\ge1}e^{-ck/p}
+      =\frac{C_1}{e^{c/p}-1}\le\frac{C_1}c p.
+\]
+Thus the series converges in each $L^p$, with the same $L^1$ limit.
+The tower property and termwise conditioning, justified by $L^1$
+convergence, give
+\[
+ \mathbb E[Y_j+U_j\mid\mathcal A_{j-1}]=U_{j-1},
+\]
+so the $D_j$ are martingale differences. Telescoping gives (AM4).
+The displayed $L^p$ bound and
+$\|D_j\|_p\le2+\|U_j\|_p+\|U_{j-1}\|_p$ give uniform bounds
+$\|U_j\|_p+\|D_j\|_p\le C_3p$.
+Expanding the exponential into its power series and using
+$m!\ge(m/e)^m$ proves the two exponential-moment assertions for
+sufficiently small $a>0$. In particular
+$\mathbb P(|U_j|>x)\le C_4e^{-ax}$ uniformly in $j$.
+The union bound gives
+\[
+ \mathbb P\left(\max_{j\le N}|U_j|>A\log N\right)
+       \le C_4 N^{1-aA}.
+\]
+Choose $aA>2$ and sum over integers $N\ge2$.
+Borel--Cantelli proves the last assertion of (AM5).
+\end{proof}
+
+\paragraph{Deterministic and conditional variance are distinct.}
+Orthogonality of martingale differences and (AM5) show
+\[
+ \left|\operatorname{Var}(S_N)-\sum_{j\le N}\mathbb E D_j^2\right|
+       =O(\sqrt N).
+ \tag{AM6}
+\]
+A martingale central limit theorem would normally ask for convergence of
+conditional variance averages. For the original bounded annular sequence,
+absolute regularity allows a direct blocking proof using only a
+deterministic variance limit, as follows.
+
+\begin{theorem}[A deterministic variance criterion for an annular invariance principle]
+\label{thm:annular-clt}
+Suppose (AS4) holds and, for a deterministic $\sigma^2\ge0$,
+\[
+ \frac1N\operatorname{Var}(S_N)\longrightarrow\sigma^2.
+ \tag{AM7}
+\]
+Let $\mathcal S_N$ be the continuous polygonal interpolation with
+$\mathcal S_N(j/N)=S_j/\sqrt N$. On every fixed compact time interval,
+\[
+ \mathcal S_N\ \Longrightarrow\ \sigma B
+       \quad\hbox{in the uniform topology}.
+ \tag{AM8}
+\]
+Consequently $S_N/\sqrt N$ tends in law to a centered Gaussian of
+variance $\sigma^2$. Condition (AM7) is an additional deterministic
+premise; it is not inferred from RSW or (AS4).
+\end{theorem}
+\begin{proof}
+We give a blocking and moment proof to separate (AM7) from a hidden
+stationarity or conditional-variance assumption. The covariance estimate
+from (AS4) gives
+\[
+ |\operatorname{Cov}(Y_i,Y_j)|\le C e^{-c|i-j|},\qquad i\ne j.
+ \tag{AM9}
+\]
+Thus the variance of a sum over any finite subset of indices is at most
+a constant times its cardinality. The covariance of sums over any two
+disjoint consecutive intervals, in either order, is uniformly bounded:
+sum the geometric bound over the two distances from their common boundary.
+
+First consider a centered bounded triangular array whose row is a
+deterministic bounded weighting of $O(N)$ successive variables $Y_j$
+and whose row-sum
+variance divided by $N$ has a limit $v$. The absolute-regularity and
+covariance bounds remain uniform. Split the row into big blocks of length
+$p_N=\lfloor N^{1/3}\rfloor$, separated by gaps of length
+$q_N=\lceil A\log N\rceil$, and omit the final remainder. The number of
+omitted indices is $O(Nq_N/p_N+p_N+q_N)=o(N)$, so their sum divided by
+$\sqrt N$ tends to zero in $L^2$.
+
+The total-variation distance between the joint big-block law and the
+product of its block marginals is at most
+$C(N/p_N)e^{-cq_N}=o(1)$ when $A$ is sufficiently large. To see this,
+separate the final block from the entire preceding block vector using
+(AS4), and iterate; total variation adds under this telescoping argument.
+For independent blocks with these marginals, the sum of block variances
+divided by $N$ tends to $v$. Indeed replacing the omitted variables
+changes the original variance by $o(N)$, and the sum of cross-block
+covariances is at most $CNp_Ne^{-cq_N}=o(N)$, by (AM9).
+Each independent block divided by $\sqrt N$ is deterministically bounded
+in magnitude by $Cp_N/\sqrt N=o(1)$. Taylor expansion of its characteristic
+function through second order has total remainder bounded by this maximum
+times the sum of the normalized block variances. Taking the product of
+characteristic functions therefore gives the limit $e^{-v\theta^2/2}$.
+The total-variation approximation and the omitted $L^2$ remainder prove
+the same Gaussian limit for the original weighted row. This argument also
+covers $v=0$; alternatively that case follows from Chebyshev's inequality.
+
+Apply this triangular-array statement to every fixed linear combination
+of increments of $S_{\lfloor Nt\rfloor}/\sqrt N$. Assumption (AM7) gives
+$N^{-1}\operatorname{Var}(S_{\lfloor Nt\rfloor})\to\sigma^2t$.
+The uniform bound on covariances between consecutive interval sums then
+shows that a linear combination with increment coefficients $a_\ell$
+and time intervals $(t_{\ell-1},t_\ell]$ has variance limit
+$\sigma^2\sum_\ell a_\ell^2(t_\ell-t_{\ell-1})$.
+Cram\'er--Wold thus gives the Brownian finite-dimensional limits.
+
+For tightness, write an ordered quadruple of indices as
+$i\le i+a\le i+a+b\le i+a+b+d$. Its centered-product expectation is
+bounded in absolute value by
+\[
+ C e^{-c\max(a,d)}.
+ \tag{AM10}
+\]
+When $a>0$, separate the first centered factor from the other three
+using (AS4); when $d>0$, separate the last centered factor instead.
+Use the stronger of these two estimates, or the trivial boundedness
+estimate if both gaps vanish. This argument permits repeated middle
+indices and repeated endpoint pairs. Summing (AM10) over quadruples
+in any interval of $m$ indices gives
+\[
+ \mathbb E\left|\sum_{j=r+1}^{r+m}Y_j\right|^4\le C_5m^2,
+ \tag{AM11}
+\]
+because $\sum_{a,d\ge0}e^{-c\max(a,d)}<\infty$ while the starting
+index and the middle gap have $O(m^2)$ choices. For the polygonal
+process, (AM11) gives
+$\mathbb E|\mathcal S_N(t)-\mathcal S_N(s)|^4\le C_6|t-s|^2$
+when $|t-s|\ge N^{-1}$: the two fractional endpoint pieces have
+total magnitude at most $4/\sqrt N$, which is absorbed in this
+fourth-moment bound. For shorter intervals use the deterministic
+slope bound $2\sqrt N$, giving the same estimate. The usual
+Kolmogorov tightness criterion, together with $\mathcal S_N(0)=0$,
+proves tightness in the uniform topology. Combining this with the
+finite-dimensional limits proves (AM8).
+\end{proof}
+
+\paragraph{A two-scale criterion for the variance limit.}
+As a more explicit sufficient target, suppose every fixed lag $k\ge0$
+has a deterministic Ces\`aro covariance limit
+\[
+ c_k=\lim_{N\to\infty}\frac1N
+          \sum_{j=1}^{N-k}\operatorname{Cov}(Y_j,Y_{j+k}).
+\]
+Then (AM9) and dominated summation imply (AM7), with the absolutely
+convergent formula
+\[
+ \sigma^2=c_0+2\sum_{k=1}^{\infty}c_k.
+ \tag{AM12}
+\]
+This provides a condition in terms of two-scale expectations, without
+requiring exact stationarity. No convergence of these expectations is
+asserted for the percolation scaling limits under study.
+
+\paragraph{The variance premise cannot be dropped.}
+Even independent bounded observations can have no asymptotic variance
+rate. For example let $Y_j=a_j\varepsilon_j$, with independent symmetric
+signs $\varepsilon_j$ and deterministic $a_j\in\{0,1\}$. Choose
+alternating $0$ and $1$ blocks whose successive lengths dominate all
+previous lengths. Then (AS4) holds with zero error, but
+$N^{-1}\operatorname{Var}(S_N)=N^{-1}\sum_{j\le N}a_j$ has subsequential
+limits $0$ and $1$. Thus the new invariance principle isolates another
+deterministic scale-statistics limit; it does not identify universal
+expectations or fluctuation variances and does not control Loewner-capacity
+increments.
+
+
+\section{An isotropic whole-plane law identifies its affine tensor}
+\label{sec:wholeplane-decoder}
+
+\begin{lemma}[Only similarities stabilize an isotropic scale-invariant curve law]
+\label{lem:wp-stabilizer}
+Let $\mu$ be the law of an almost surely nonconstant oriented continuous
+curve starting at $0$, with compact continuous prefixes up to every
+finite spatial exit. Suppose its law is invariant under every rotation
+and every positive scalar dilation. If $L\in GL^+(2,\RR)$ preserves
+$\mu$, then $L$ is a similarity. Consequently
+\[
+ A_*\mu=B_*\mu
+ \quad\Longleftrightarrow\quad
+ AA^{\mathsf T}=cBB^{\mathsf T}\text{ for some }c>0.
+ \tag{WP1}
+\]
+\end{lemma}
+\begin{proof}
+If $L$ is not a similarity, singular value decomposition, together
+with the rotation and scalar symmetries, makes
+$D=\operatorname{diag}(1,a)$, $0<a<1$, another symmetry of $\mu$.
+For $Y\sim\mu$, the law of $X=\sup|\operatorname{Re}Y|$
+is invariant under all positive scalar multiplications; hence
+$X\in\{0,\infty\}$ almost surely. The event $X=0$ says the
+nonconstant curve is contained in one specified line through $0$.
+Its images under countably many distinct rotations are disjoint and
+have equal probabilities, so each has probability zero. Thus $X=\infty$
+almost surely. In particular the first time $T$ with
+$|\operatorname{Re}Y(T)|=1$ is finite almost surely, and
+$M=\sup_{s\le T}|\operatorname{Im}Y(s)|<\infty$.
+
+The first unit-radius exit of $D^nY$ occurs by $T$; its initial
+trace stays within distance $a^nM$ of the real axis. Since $D^nY$
+has law $\mu$, for every $\epsilon>0$ the probability that the
+unit-radius stopped trace leaves the $\epsilon$-strip is at most
+$\mathbb P(a^nM>\epsilon)\to0$. Thus the unit-radius initial
+trace lies on the real axis almost surely. Rotation invariance
+also puts it on the imaginary axis almost surely, a contradiction.
+Finally $A_*\mu=B_*\mu$ is equivalent to $B^{-1}A$ stabilizing
+$\mu$, and a direct matrix calculation gives (WP1).
+\end{proof}
+
+
+
+% Candidate continuation: full spherical empirical measures yield a robust
+% ordered-germ tensor decoder.  Core files are maintained by the parent.
+\subsection{A decoder stable under random local differentiable maps}
+\label{sec:wp-robust-decoder}
+
+An affine decoder can be constructed with one exceptional set
+independent of the local coordinate map.  The useful change is to
+average whole curves in the Riemann sphere before extracting the tensor;
+first-radius stopping is then used only for Borel germ coding, not for
+continuity of an averaging observable.
+
+We make an additional explicit properness and coding assumption.
+Let $\mathcal C$ be a Polish space of oriented continuous curves in the
+Riemann sphere from $0$ to $\infty$, modulo increasing reparameterization
+and pauses, with bounded spherical Fr\'echet metric $d_{\mathcal C}$,
+induced by the chordal metric on the sphere.
+Assume the affine action and scalar dilation are continuous on this
+space and first-radius stopping is Borel.  Require the proper and
+source-avoiding curve sets to be Borel in this coding.  These are properties of the
+coding, not consequences of the exploration axioms.  A curve is
+\emph{proper} here if it has a continuous planar representative
+$y:[0,\infty)\to\mathbb C$ with $|y(t)|\to\infty$ as $t\to\infty$.
+
+\begin{lemma}[No later visit to the source]
+\label{lem:wp-no-source-return}
+Let $\mu$ be a dilation-invariant law supported on proper curves from
+$0$ to $\infty$.  Then almost surely the curve has no visit to $0$
+after it first leaves $0$.
+\end{lemma}
+\begin{proof}
+For $R>0$, let $E_R$ be the event of a visit to $0$ after the first
+radius-$R$ exit.  Dilation invariance makes $\mu(E_R)$ independent of
+$R$.  The events decrease as $R$ increases.  For every proper continuous
+curve, all visits to $0$ occur in a finite time interval, whose initial
+trace has finite radius.  Thus $\bigcap_{R>0}E_R$ is empty on the
+proper-curve set, and $\mu(E_R)=0$ for every $R$.  A nontrivial later
+visit to $0$ belongs to $E_R$ for some positive rational $R$.
+\end{proof}
+
+\begin{lemma}[Uniform spherical linearization]
+\label{lem:wp-spherical-linearization}
+Let $\psi$ be an orientation-preserving $C^1$ diffeomorphism on a
+neighborhood of $0$, with $\psi(0)=0$ and derivative $L\in GL^+(2,\RR)$.
+It has a global bi-Lipschitz extension $\Psi$ agreeing with $\psi$ on
+a smaller neighborhood and fixing $\infty$, such that
+\[
+ \sup_{z\in\widehat{\mathbb C}}
+ d_{\rm sph}\bigl(\lambda\Psi(z),\lambda Lz\bigr)
+       \longrightarrow0\quad(\lambda\to\infty).
+ \tag{WP3}
+\]
+Consequently the same upper bound controls
+$d_{\mathcal C}(\lambda\Psi Y,\lambda LY)$ for every curve $Y$.
+\end{lemma}
+\begin{proof}
+Write $\psi(z)=Lz+r(z)$, where $r(0)=0$ and $Dr(z)\to0$.
+Choose a smooth radial cutoff $\chi_\delta$, equal to one in
+$B(0,\delta)$ and zero outside $B(0,2\delta)$, and set
+$\Psi(z)=Lz+\chi_\delta(z)r(z)$, with the perturbation zero outside
+the chart.  For sufficiently small $\delta$ the Lipschitz norm of
+the perturbation is less than half the smallest singular value of
+$L$.  Hence $\Psi$ is globally bi-Lipschitz.  Surjectivity follows,
+for example, from the contraction mapping applied to
+$z=L^{-1}(w-\chi_\delta(z)r(z))$ for each $w$.
+
+There is $c>0$ with $|\Psi(z)|\ge c|z|$ and $|Lz|\ge c|z|$.
+Given $\eta>0$, choose $a>0$ such that
+$|\Psi(z)-Lz|\le\eta|z|$ for $|z|\le a$.
+The chordal formula (our convention for $d_{\rm sph}$)
+\[
+ d_{\rm sph}(u,v)=
+ \frac{|u-v|}{\sqrt{1+|u|^2}\sqrt{1+|v|^2}}
+\]
+then bounds the distance in (WP3), for $|z|\le a$, by
+\[
+ \frac{\eta\lambda|z|}{1+c^2\lambda^2|z|^2}
+       \le\frac{\eta}{2c}.
+\]
+For $|z|\ge a$, the triangle inequality through $\infty$ bounds
+the distance by $2/(c\lambda a)$.  First let $\lambda\to\infty$
+and then $\eta\downarrow0$.  Pairing identical curve parameters
+gives the Fr\'echet bound.
+\end{proof}
+
+\begin{lemma}[Changing a distant tail is invisible after magnification]
+\label{lem:wp-tail-replacement}
+Suppose two proper source-avoiding curves share a nonconstant initial
+ordered segment.  Then
+\[
+ d_{\mathcal C}(\lambda Y,\lambda\widetilde Y)
+       \longrightarrow0\quad(\lambda\to\infty).
+ \tag{WP4}
+\]
+Here source avoidance means that neither curve visits $0$ after its
+initial departure.
+\end{lemma}
+\begin{proof}
+Synchronize parameters along a common initial segment ending at a
+nonzero point.  Each remaining tail is a compact subset of the sphere
+disjoint from $0$; its finite planar points therefore have modulus at
+least some positive $b$.  After multiplication by $\lambda$, both
+tails lie within chordal distance $1/(\lambda b)$ of $\infty$.
+Match their remaining parameters arbitrarily.  The common prefixes
+agree exactly and the two tails have mutual distance at most
+$2/(\lambda b)$.
+\end{proof}
+
+\begin{theorem}[A robust affine decoder on initial ordered germs]
+\label{thm:wp-robust-decoder}
+Let $\mu$ be a nonconstant rotation- and dilation-invariant law on
+$\mathcal C$, supported on proper curves, and suppose dilation by
+one factor $\rho>1$ is ergodic.  There is one Borel tensor-valued
+decoder $D$, measurable from every positive-radius initial prefix
+on the proper source-avoiding curve set, with the following
+simultaneous property.  There is a single $\mu$-conull set
+$\mathcal G$ such that, for every $Y\in\mathcal G$, every
+$A\in GL^+(2,\RR)$, and every local orientation-preserving
+$C^1$ diffeomorphism $\psi$ fixing $0$, with derivative $L$,
+\[
+ D\bigl(\psi(AY)\bigr)
+    =\bigl[((LA)^{-1})^{\mathsf T}(LA)^{-1}\bigr].
+ \tag{WP5}
+\]
+The argument of $D$ can be any proper source-avoiding completion
+of the indicated local curve segment; the value is independent of
+the completion.  In particular $A$ and $\psi$ may depend arbitrarily
+on $Y$ and on additional randomness, provided the displayed local
+regularity holds for each realization.
+\end{theorem}
+\begin{proof}
+Let $T$ act by multiplication by $\rho$, and form empirical orbit
+measures in the Polish probability-measure space $\mathcal P(\mathcal C)$:
+\[
+ \Pi_N(Y)=\frac1N\sum_{n=1}^N\delta_{T^nY}.
+\]
+The ergodic theorem applied to a countable bounded continuous
+convergence-determining family gives a single conull Borel set
+$\mathcal G$ on which $\Pi_N(Y)\Rightarrow\mu$.  Intersect with
+the proper source-avoiding set, using
+Lemma~\ref{lem:wp-no-source-return}.
+
+For every $Y\in\mathcal G$ and every fixed linear $B$, commutation
+of $B$ with $T$ and continuity of its action give
+\[
+ \Pi_N(BY)=B_*\Pi_N(Y)\Rightarrow B_*\mu.
+ \tag{WP6}
+\]
+This is a deterministic consequence of weak convergence for the
+given $Y$, so it holds simultaneously for all $B$; it does not
+intersect uncountably many probability-one events.
+
+Extend $\psi$ to $\Psi$ as in
+Lemma~\ref{lem:wp-spherical-linearization}.  Applying that lemma
+to $\Psi\circ A$ gives
+$d_{\mathcal C}(T^n\Psi AY,T^nLAY)\to0$.
+For every bounded Lipschitz test function, the difference of its
+empirical averages consequently tends to zero by Ces\`aro averaging.
+Together with (WP6), this gives
+\[
+ \Pi_N(\Psi AY)\Rightarrow(LA)_*\mu.
+ \tag{WP7}
+\]
+Again this is a pathwise assertion for every admissible $A,\psi$.
+
+To decode the limiting law, parameterize projective positive
+definite tensors by determinant-one matrices $Q$ and set
+$A_Q=Q^{-1/2}$.  The map
+\[
+ Q\longmapsto(A_Q)_*\mu\in\mathcal P(\mathcal C)
+\]
+is continuous by the continuous affine action and is injective by
+Lemma~\ref{lem:wp-stabilizer}.  Its image is Borel and its inverse
+is Borel by Lusin--Souslin.  Apply that inverse to the weak limit
+of $\Pi_N$ when the limit exists and belongs to this image; otherwise
+assign a cemetery value.  This defines a Borel decoder.
+Rotation and scalar invariance identify the tensor of the law on
+the right side of (WP7) as the class in (WP5).
+
+It remains to check germ measurability.  For a proper source-avoiding
+curve $Y$, replace the tail after its first radius-$r$ exit by the
+radial ray to $\infty$, obtaining $E_rY$.  This is a Borel function
+of the initial prefix: use Borel stopping followed by continuous
+concatenation with the radial ray in the spherical curve coding.
+Lemma~\ref{lem:wp-tail-replacement} gives
+$d_{\mathcal C}(T^nY,T^nE_rY)\to0$.  Their empirical measures
+therefore have weak limits simultaneously, with the same limit
+when it exists.  More precisely, their bounded-Lipschitz distance is at most
+$N^{-1}\sum_{n\le N}d_{\mathcal C}(T^nY,T^nE_rY)\to0$.
+Hence $D(Y)=D(E_rY)$ for every $r>0$, including when the decoder
+has the cemetery value.  The same
+argument makes the decoder independent of the completion of a
+local curve segment and completes the proof.
+\end{proof}
+
+\paragraph{Scope for random tip charts.}
+If $L$ is conformal, the decoded tensor changes by the usual
+covariant rule $Q\mapsto[L^{-\mathsf T}QL^{-1}]$.
+If a random physical local curve is obtained by first applying a
+random conformal local map to $Y$ and then a fixed affine map $A$,
+its derivative is $A(aR)$ and (WP5) decodes
+$[(A^{-1})^{\mathsf T}A^{-1}]$, independently of the random
+similarity $aR$.  Thus dependence of the local map on the sampled
+curve is not by itself an obstruction once this proper,
+dilation-ergodic whole-plane model and a $C^1$ local chart are known.
+This theorem still supplies an ordered-germ decoder.  It does not
+select a canonical point of an unlabelled frontier, prove an
+intrinsic typical-tip theorem, establish compatibility at arbitrary
+exploration stopping times, or derive the required whole-plane law
+and dilation ergodicity from the three exploration axioms.
+
+
+% Additional candidate: full discrete-scale ergodicity of the stationary
+% whole-plane SLE driver, independently of the one-dimensional Z statistic.
+\subsection{Full scaling ergodicity from the stationary cylinder driver}
+\label{sec:wp-cylinder-ergodicity}
+
+Zhan's construction in Section 3 of \cite{zhan-tip} gives more than
+an ergodic one-dimensional angular statistic once the full cylinder
+process is retained.  The following argument supplies the full
+discrete-dilation ergodicity premise; it uses the classical
+H\"ormander hypoellipticity theorem for the smoothing step.
+
+\begin{proposition}[Every stationary cylinder skeleton is ergodic]
+\label{prop:wp-cylinder-ergodic}
+Let $\kappa>0$, $\varrho\ge\kappa/2-2$, and
+$a=\varrho/2+1>0$.  Let $Z_t\in(0,2\pi)$ be the two-sided stationary
+diffusion
+\[
+ dZ_t=\sqrt\kappa\,dB_t+a\cot(Z_t/2)\,dt,
+ \qquad
+ \pi_Z(dz)=c\sin(z/2)^{4a/\kappa}\,dz.
+ \tag{WP8}
+\]
+Let $q_0$ be uniform modulo $2\pi$, independent of the entire
+stationary path $Z$, and set
+\[
+ q_t=q_0-\int_0^t\cot(Z_s/2)\,ds\pmod{2\pi}.
+ \tag{WP9}
+\]
+Then the cylinder process $(q_t,Z_t)$ is stationary, and its
+two-sided stationary path law is ergodic under every fixed time
+shift $h\ne0$.  Consequently any Borel whole-plane Loewner trace
+constructed from $e^{i\lambda_t}$, $\lambda_t=q_t+Z_t$, is ergodic
+under multiplication by every fixed scalar $e^h\ne1$ as an
+unparameterized curve, on a conull invariant set where the trace is defined.
+\end{proposition}
+\begin{proof}
+The dimension of the radial Bessel diffusion is
+$1+4a/\kappa\ge2$, so its endpoints are not hit; this is the
+stationary construction in \cite[Section 3 and Appendix B]{zhan-tip}.
+Uniform independent $q_0$ makes $q_t$ uniform conditional on the
+entire path $Z$, proving stationarity and giving the invariant
+probability $\pi=(dq/(2\pi))\pi_Z(dz)$, with full support.
+
+The Markov generator on the open cylinder is
+\[
+ \mathcal L=\frac\kappa2\partial_z^2
+       +a\cot(z/2)\partial_z-\cot(z/2)\partial_q.
+ \tag{WP10}
+\]
+Write $V_1=\sqrt\kappa\,\partial_z$ and
+$V_0=a\cot(z/2)\partial_z-\cot(z/2)\partial_q$.  Then
+\[
+ [V_1,V_0]
+   =\frac{\sqrt\kappa}{2}\csc^2(z/2)
+                         (-a\partial_z+\partial_q).
+ \tag{WP11}
+\]
+Thus $V_1$ and $[V_1,V_0]$ span the spatial tangent space at every
+interior point.  The parabolic H\"ormander theorem applied to
+$\mathcal L-\partial_t$ gives the strong Feller property at every
+positive time.  Here is the localization needed for the singular
+endpoints.  On a relatively compact subcylinder, the killed backward
+semigroup applied to a bounded Borel function solves the homogeneous
+backward Kolmogorov equation in the interior at positive times, in
+the distributional sense.  H\"ormander's theorem~\cite[Theorem 1.1]{hormander} makes this solution
+smooth there.  For any initial interior point and finite horizon,
+endpoint nonattainment gives a compact subcylinder containing the
+entire path with probability at least $1-\varepsilon$.  Choose a
+slightly larger subcylinder.  Coupling nearby starting points with
+the same Brownian motion, local Lipschitz continuity and Gronwall's
+inequality show that their paths remain in the larger subcylinder
+on this same event, for all sufficiently close starting points.
+The full semigroup thus differs from that killed semigroup by at
+most $\|f\|_\infty\varepsilon$, uniformly near the given point.
+Let $\varepsilon\downarrow0$ to obtain continuity for every bounded
+Borel $f$.  H\"ormander smoothing is an external analytic input,
+not a consequence of stationarity alone.
+
+For clarity, topological irreducibility at every fixed time $h>0$
+can be checked directly, without a general support theorem.  Given
+two cylinder points $(q,z)$ and $(q',z')$, choose a smooth controlled
+path $z(s)$, $0\le s\le h$, from $z$ to $z'$, remaining in a
+compact subinterval of $(0,2\pi)$.  It can be chosen so that
+\[
+ -\int_0^h\cot(z(s)/2)\,ds=q'-q\pmod{2\pi}.
+\]
+Indeed let the path move to a variable interior level, remain there
+for a positive time, and return to $z'$.  As that level ranges from
+$0$ to $2\pi$, the integral varies continuously from $-\infty$
+to $+\infty$.  The required deterministic Brownian control is
+\[
+ w(s)=\kappa^{-1/2}\left(z(s)-z-
+                     a\int_0^s\cot(z(u)/2)\,du\right).
+\]
+It is a Cameron--Martin path.  Brownian motion has positive
+probability of lying in every uniform neighborhood of $w$.
+Local Lipschitz dependence of the additive-noise SDE and its
+integrated $q$ coordinate shows that the uncontrolled process ends
+in any prescribed neighborhood of $(q',z')$ with positive
+probability.  Hence each skeleton kernel $P_h$ is topologically
+irreducible.
+
+A strong Feller irreducible Markov kernel has at most one invariant
+probability, and its stationary probability is an extreme invariant
+probability.  Equivalently its two-sided stationary Markov path
+law is shift-ergodic.  Apply this standard Markov-kernel fact to
+$P_h$ for every fixed $h>0$.  The same conclusion holds on the
+full continuous path space under time shift $h$.  Indeed consider
+the Markov chain of path segments $(X_{nh+s})_{0\le s\le h}$,
+where $X=(q,Z)$.  Its transition law depends only on the previous
+endpoint.  The endpoint law of any invariant segment law must be
+invariant for $P_h$, hence must equal $\pi$.  The segment law is
+then necessarily the law obtained by starting the diffusion from
+$\pi$ and recording its next length-$h$ segment.  Thus the segment
+chain has a unique invariant law and is ergodic; concatenation
+intertwines its shift with the full continuous-path shift by $h$.
+Negative shifts have the same invariant events.
+
+Finally the deterministic whole-plane Loewner correspondence
+intertwines shifting $\lambda_t$ to $\lambda_{t+h}$ with mapping
+the capacity-parameterized trace $\gamma(t)$ to
+$e^{-h}\gamma(t+h)$.  After forgetting the parameter this is
+scalar multiplication by $e^{-h}$.  A Borel factor of an ergodic
+transformation is ergodic, proving the final assertion.
+\end{proof}
+
+\paragraph{Application and remaining premise.}
+For $0<\kappa<4$ and $\varrho=\kappa+2$, the stationary
+whole-plane SLE$(\kappa;\kappa+2)$ driver of
+\cite[Section 3]{zhan-tip} therefore has full dilation ergodicity,
+not only the ergodicity of its coordinate $Z$ used in Section 6
+of that paper.  Applying Theorem~\ref{thm:wp-robust-decoder} still
+requires its stated Borel spherical curve coding and proper
+continuous trace from $0$ to $\infty$; this proposition supplies
+the ergodicity input but does not prove those geometric inputs.
+
+\begin{corollary}[An affine tensor at a deterministic simple-SLE tip]
+\label{cor:wp-deterministic-tip-tensor}
+Fix $0<\kappa<4$ and assume the proper spherical curve coding
+premises of Theorem~\ref{thm:wp-robust-decoder} for the whole-plane
+SLE$(\kappa;\kappa+2)$ law.  Let $\beta$ be a chordal SLE$_\kappa$
+trace, let $t_0>0$ be a deterministic half-plane capacity time,
+and let $A\in GL^+(2,\RR)$ be fixed.  The same decoder applied
+to the reversed ordered germ of $A\beta$ at $A\beta(t_0)$,
+translated to start at $0$, almost surely returns
+\[
+ [(A^{-1})^{\mathsf T}A^{-1}].
+ \tag{WP12}
+\]
+For a general simply connected domain, use a conformal parameter
+chart and its corresponding deterministic chordal capacity time.
+\end{corollary}
+\begin{proof}
+Theorem 5.3 of \cite{zhan-tip} maps the reversed past of $\beta$
+at $t_0$ by a random conformal map to an initial segment of a
+whole-plane SLE$(\kappa;\kappa+2)$ trace.  Its local inverse at
+$0$ has a random nonzero conformal derivative $aR$.
+Proposition~\ref{prop:wp-cylinder-ergodic} supplies the whole-plane
+discrete-dilation ergodicity.  Apply
+Theorem~\ref{thm:wp-robust-decoder} to this random inverse chart
+followed by $A$.  The derivative is $A(aR)$, whose tensor class
+is exactly (WP12).  The decoder needs only the initial ordered
+germ, so the whole-plane segment can be completed arbitrarily.
+\end{proof}
+
+This corollary holds simultaneously at any prescribed countable
+set of deterministic capacity times.  It does not assert correctness
+at every tip, at a tip chosen by an arbitrary intrinsic rule, or
+at a stopping time selected by the trace.
+
+
+
+\section{Near-critical germ singularity and the energy of a driving drift}
+\label{sec:germ-energy}
+
+\paragraph{A stronger external obstruction.}
+Aumann~\cite{aumann}, Theorem 2.1 and Corollary 2.2, proves mutual
+singularity of distinct near-critical triangular-percolation interface
+limits already on the raw initial ordered-germ sigma-field. The theorem
+assumes a common subsequence with the stated quad-crossing convergence;
+for comparison with the critical parameter zero, that condition follows
+from Cardy's formula. Corollary 5.1 gives singularity under nontrivial
+scalar dilations at a fixed nonzero parameter, again with its convergence
+hypotheses. Thus a curve-level dilation obstruction is available, without
+identifying random slit-domain continuation kernels. It does not construct
+the coherent Borel strong-DMP family still needed for a counterexample to
+the corrected three-axiom conjecture.
+
+The following consequence concerns a proposed driving representation,
+not a claim of semimartingality of a near-critical interface.
+
+\begin{proposition}[Finite driving energy preserves the Brownian initial germ]
+\label{prop:finite-energy-germ}
+Let $X_0=0$ be continuous on $[0,T]$, and let $B$ be Brownian motion
+in a usual filtration to which $X$ is adapted. Suppose $\kappa>0$, $\rho>0$
+is a stopping time almost surely, and, for $t\le\rho\wedge T$,
+\[
+ X_t=\sqrt\kappa B_t+\int_0^t b_s\,ds,\qquad
+ \int_0^{\rho\wedge T}b_s^2\,ds<\infty\quad\hbox{almost surely},
+ \tag{GE1}
+\]
+where $b$ is progressively measurable. On the canonical continuous-path
+space put $\mathcal H_{0+}=\bigcap_{t>0}\sigma(x_s:0\le s\le t)$,
+using the raw sigma-fields. Then, for every $E\in\mathcal H_{0+}$,
+\[
+ \mathbb P\{X\in E\}=\mathbb W_\kappa(E)\in\{0,1\},
+ \tag{GE2}
+\]
+where $\mathbb W_\kappa$ is Wiener measure of variance rate $\kappa$.
+\end{proposition}
+\begin{proof}
+Set
+\[
+ \sigma=\rho\wedge T\wedge
+       \inf\left\{t:\int_0^{t\wedge\rho}b_s^2ds\ge\kappa\right\}.
+\]
+The finite energy in (GE1) implies $\sigma>0$ almost surely. Define
+$\theta_s=\kappa^{-1/2}b_s\mathbf1_{\{s\le\sigma\}}$. Its integrated
+square is at most one. Novikov's criterion and Girsanov's theorem
+(for example~\cite{lalley-girsanov}, Theorems 1--2) therefore make
+\[
+ Z_T=\exp\left\{-\int_0^T\theta_s\,dB_s
+                         -\frac12\int_0^T\theta_s^2ds\right\}
+\]
+a strictly positive density of an equivalent probability $Q$. Under $Q$,
+\[
+ \widetilde X_t=\sqrt\kappa B_t+\int_0^{t\wedge\sigma}b_sds
+\]
+is Brownian motion of variance rate $\kappa$ on $[0,T]$. The paths
+$X$ and $\widetilde X$ agree on the strictly positive interval
+$[0,\sigma]$. Every raw germ event has the same membership for two
+paths agreeing on some positive initial interval: choose any deterministic
+$1/n$ inside that interval and use measurability in
+$\sigma(x_s:s\le1/n)$. Consequently
+$Q\{X\in E\}=\mathbb W_\kappa(E)$. Blumenthal's zero--one law makes
+the latter probability zero or one; equivalence of $P$ and $Q$ gives
+(GE2). There is no global Novikov assumption on the original drift.
+\end{proof}
+
+\begin{corollary}[A near-critical limit cannot be a finite-energy drift of SLE]
+\label{cor:nearcritical-energy}
+Consider a nonzero near-critical interface limit covered by Aumann's
+comparison with the critical limit. Assume it has a continuous
+Loewner-generating parametrization, with an adapted Borel correspondence
+between driver prefixes and ordered trace prefixes. Its driver in a
+capacity chart where the critical comparison has law $\sqrt6 B$ cannot
+satisfy (GE1) with $\kappa=6$.
+\end{corollary}
+\begin{proof}
+A raw ordered trace-germ event is unchanged when two nonconstant
+Loewner traces agree for a positive capacity interval. In the preceding
+proof the original and the $Q$-Brownian drivers have precisely such an
+interval in common. The corresponding traces therefore have the same
+raw germ-event membership. Under $Q$ the comparison trace is SLE$_6$;
+its raw initial germ is zero--one (equivalently use the Brownian germ
+and the adapted correspondence). Equivalence then gives the same germ
+probabilities under the original law. This contradicts the germ event
+separating the nonzero near-critical and critical laws in
+Aumann's Corollary 2.2.
+\end{proof}
+
+\paragraph{The energy must diverge immediately if such an AC representation exists.}
+More precisely, suppose $X=\sqrt\kappa B+\int_0^\cdot b_sds$ on
+$[0,T]$, with $b$ progressively measurable and integrable in absolute
+value, and suppose a raw germ event $E$ has probability one for $X$
+and zero under $\mathbb W_\kappa$. Then
+\[
+ \int_0^t b_s^2ds=\infty\quad\hbox{for every }t>0,
+       \quad\hbox{almost surely}.
+ \tag{GE3}
+\]
+Indeed set $\sigma=T\wedge\inf\{t:\int_0^t b_s^2ds\ge\kappa\}$,
+allowing $\sigma=0$ on instantaneous infinite energy. This is a stopping
+time in the usual filtration. In all cases
+$\int_0^\sigma b_s^2ds\le\kappa$, by monotone convergence from times
+strictly below $\sigma$ when $\sigma>0$. The same bounded-energy
+change of measure as above makes
+$\widetilde X=\sqrt\kappa B+\int_0^{\cdot\wedge\sigma}b_sds$
+Brownian under an equivalent probability. Thus $E(\widetilde X)$
+has probability zero under both probabilities. On $\{\sigma>0\}$,
+however, $X$ and $\widetilde X$ have the same germ, so $E(X)=1$
+forces $\mathbb P(\sigma>0)=0$. Finite energy on any positive initial
+interval would imply $\sigma>0$, proving (GE3). The identical argument
+uses the trace-germ separator for the near-critical comparison.
+
+\paragraph{Why square integrability cannot be weakened to absolute integrability.}
+For $0<\alpha<1/2$, the process
+$X_t=\sqrt\kappa B_t+t^\alpha$ has a continuous absolutely continuous
+finite-variation drift, with density $\alpha t^{\alpha-1}$ integrable
+at zero but with infinite square integral on every positive interval.
+Brownian small-time H\"older regularity gives
+$B_t/t^\alpha\to0$ almost surely. Hence $X_t/t^\alpha\to1$ almost
+surely, while the corresponding Wiener limit is zero. This explicitly
+separates their raw initial germs and shows why the energy hypothesis
+in Proposition~\ref{prop:finite-energy-germ} is substantive.
+
+\paragraph{Scope and compatibility with source shielding.}
+This excludes Brownian driving with a locally bounded, or more generally
+locally square-integrable, absolutely continuous drift. It does not prove
+that a near-critical driver is not a semimartingale: a singular
+finite-variation part, infinite drift energy at every positive initial
+time, or a different martingale bracket is not excluded. Neither the
+bracket-six premise nor Loewner generation is supplied by the singularity
+theorem. Raw germ singularity between two laws is compatible with an
+individual germ zero--one law for each: different laws may assign
+different deterministic values to the same germ event. Source shielding
+alone therefore cannot identify the universal germ law.
+
+
+\begin{thebibliography}{99}
 \bibitem{lawler}G. F. Lawler, \emph{Schramm--Loewner Evolution},
 Park City lecture notes (2007), Lectures 3--4.
 \url{https://math.uchicago.edu/~lawler/utah.pdf}.
@@ -2683,6 +3778,21 @@ Indiana Univ. Math. J. \textbf{71} (2022), 1027--1046.
 reversibility of SLE$_\kappa$ for $\kappa\in(4,8)$},
 Ann. of Math. \textbf{184} (2016), 455--486.
 \url{https://annals.math.princeton.edu/2016/184-2/p03}.
+\bibitem{aumann} S. Aumann,
+\emph{Singularity of nearcritical percolation exploration paths},
+ALEA Lat. Am. J. Probab. Math. Stat. \textbf{11} (2014), 229--252,
+Theorem 2.1 and Corollaries 2.2 and 5.1.
+\url{https://alea.impa.br/articles/v11/11-08.pdf}.
+\bibitem{lalley-girsanov} S. Lalley,
+\emph{Lecture 10: Change of measure and the Girsanov theorem}, Theorems 1--2.
+\url{https://www.stat.uchicago.edu/~lalley/Courses/390/Lecture10.pdf}.
+\bibitem{zhan-tip} D. Zhan, \emph{Ergodicity of the tip of an SLE curve},
+Probab. Theory Related Fields \textbf{164} (2016), 333--360.
+\url{https://arxiv.org/abs/1310.2573}.
+\bibitem{hormander} L. H\"ormander,
+\emph{Hypoelliptic second order differential equations},
+Acta Math. \textbf{119} (1967), 147--171, Theorem 1.1.
+\url{https://doi.org/10.1007/BF02392081}.
 \bibitem{record}\emph{Research record: locality, terminal information, and planar exploration laws},
 \texttt{progress.tex} in this repository, including the original-locality
 investigation and the corrected-locality continuation (27 October 2026).
