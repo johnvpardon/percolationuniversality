@@ -21,7 +21,7 @@
 \title{Research record: locality, terminal information, and planar exploration laws}
 \hypersetup{pdftitle={Research record: locality, terminal information, and planar exploration laws},pdfauthor={Autonomous mathematical research}}
 \author{Autonomous mathematical investigation, with independent critical checks}
-\date{28 October 2026}
+\date{29 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -8600,7 +8600,7 @@ has not been inferred from arbitrary samplewise simple approximations.
 The corrected ray-locality comparison now supplies a uniform diffusive
 lower tail. Proposition~\ref{prop:driver-variation-index} consequently
 forces variation index two before any semimartingale premise.
-The next concrete target is still finite aggregate signed restart variation
+The next target at that checkpoint was finite aggregate signed restart variation
 (QV4) in a common unknown affine structure. If obtained, the upper and
 lower tail bounds automatically give a bounded uniformly positive bracket
 density, without drift tangents. Thus the remaining characteristic tasks
@@ -8631,6 +8631,370 @@ conversation or ignored scratch files. Both current reports are compiled
 under \texttt{results/}. Independent checks provide evidence of correctness;
 successful compilation checks presentation only.
 
+
+\section{Priority change: retain the unknown affine structure}
+\label{sec:affine-priority-29oct}
+
+The 29 October discussion identifies a gap in treating finite signed
+restart variation as the next unconditional target. We do not know
+whether ordinary driving in the wrong affine structure has a finite
+signed budget, even for a known affine image of SLE$_6$. We must first
+understand that model and choose regularity targets that encompass it.
+Existence of one common affine structure with tame driving is a major
+part of the classification problem, not an available normalization.
+
+The immediate program has two linked parts: determine the stochastic
+regularity and capacity changes of known affine-SLE$_6$ in arbitrary
+coordinates, and extract constraints from the abstract continuum axioms
+that remain valid in such coordinates. Retain one unknown constant
+physical Beltrami coefficient as part of the analysis; a conformal
+Loewner chart transports it to a history-dependent field. Neither an
+ordinary It\^o formula at the tip nor absolute continuity of the affine
+capacity clock is available without proof. The conditional rigidity
+criteria remain useful after the appropriate regularity is obtained.
+The results below provide coordinate-compatible exit clocks and a
+necessary clock test for wrong-coordinate semimartingality.
+
+% Candidate supplement, 29 October 2026. No tracked source modified.
+\section{Coordinate-compatible exit clocks before semimartingality}
+\label{sec:adaptive-exit-clocks}
+
+The upper and lower conditional oscillation bounds already proved for the
+continuum family have a stronger clock consequence. It is compatible with
+working in a wrong affine structure: it assumes neither a signed budget
+nor a canonical semimartingale decomposition. All constants may depend
+on the fixed affine distortion through the crossing constants.
+
+Let $X$ be a continuous adapted process on $[0,\infty)$ in a usual
+filtration. Suppose constants $C,c,\delta,p>0$, with $0<p<1$, satisfy,
+for every finite stopping time $\tau$, every $h>0$, and every $x\ge0$,
+\begin{align}
+ \mathbb P\{\sup_{u\le h}|X_{\tau+u}-X_\tau|>x\sqrt h
+       \mid\mathcal F_\tau\}&\le Ce^{-cx},\label{eq:exit-upper-input}\\
+ \mathbb P\{\sup_{u\le h}|X_{\tau+u}-X_\tau|>\delta\sqrt h
+       \mid\mathcal F_\tau\}&\ge p.\label{eq:exit-lower-input}
+\end{align}
+For the current exploration assumptions, these follow from the upper
+crossing estimate, corrected ray-deletion locality, and strong DMP.
+The rough-state admissibility qualifications of those results remain
+in force. Physical translation covariance is not needed for this deduction.
+
+\begin{proposition}[Uniform Brownian-order exit-time control]
+\label{prop:diffusive-exit-time}
+For $r>0$, put
+\[
+ \xi_r(\tau)=\inf\{u\ge0:|X_{\tau+u}-X_\tau|\ge r\}.
+\]
+There are constants $a_i>0$, depending only on the input constants,
+such that, conditionally on $\mathcal F_\tau$,
+\begin{align}
+ \mathbb P\{\xi_r(\tau)\le h\mid\mathcal F_\tau\}
+   &\le C\exp(-cr/\sqrt h),\label{eq:exit-fast-tail}\\
+ \mathbb P\{\xi_r(\tau)>h\mid\mathcal F_\tau\}
+   &\le (1-p)^{\lfloor\delta^2h/(4r^2)\rfloor},
+       \label{eq:exit-slow-tail}\\
+ a_1r^2\le\mathbb E[\xi_r(\tau)\mid\mathcal F_\tau]
+   &\le a_2r^2,\qquad
+ \mathbb E[\exp(a_3\xi_r(\tau)/r^2)\mid\mathcal F_\tau]
+   \le a_4.\label{eq:exit-moments}
+\end{align}
+In particular, exits occur in finite time almost surely.
+\end{proposition}
+\begin{proof}
+For the fast bound, the exit event implies that the supremum on $[0,h]$
+is at least $r$. Apply \eqref{eq:exit-upper-input} first at thresholds
+$r-\varepsilon$ and then let $\varepsilon\downarrow0$.
+For the slow bound, split time into blocks of length
+$d r^2$, where $d=4/\delta^2$. If the exit has not occurred by the end
+of a block, both the path and its value at the start of that block lie
+in the original interval $[X_\tau-r,X_\tau+r]$. Their displacement
+throughout the block is at most $2r=\delta\sqrt{d r^2}$.
+The conditional lower bound at the block's starting stopping time
+therefore bounds the conditional survival probability by $1-p$.
+Iteration proves \eqref{eq:exit-slow-tail}. Integrating that tail gives
+the upper mean and an exponential moment. Choose $a>0$ small enough
+that $Ce^{-c/\sqrt a}\le1/2$. The fast bound gives
+$\mathbb P\{\xi_r(\tau)>ar^2\mid\mathcal F_\tau\}\ge1/2$,
+hence the lower mean bound $ar^2/2$.
+\end{proof}
+
+\begin{proposition}[Adaptive quadratic activity is nondegenerate]
+\label{prop:adaptive-quadratic-activity}
+Define $\sigma^r_0=0$ and successive exits by
+\[
+ \sigma^r_{k+1}=\inf\{t\ge\sigma^r_k:
+                   |X_t-X_{\sigma^r_k}|\ge r\},\qquad
+ \nu_r=r^2\sum_{k\ge1}\delta_{\sigma^r_k}.
+\]
+The exit times do not accumulate on a finite interval. There are fixed
+$0<a<b<\infty$ and $A,\alpha>0$ such that for every deterministic
+interval $I=[s,t]$, $h=t-s>0$,
+\[
+ \mathbb P\{\nu_r(I)<ah\ \hbox{or}\ \nu_r(I)>bh\}
+       \le A\exp(-\alpha h/r^2).
+ \label{eq:exit-count-concentration}
+\]
+Consequently, on one probability-one event, the measures
+$\nu_{2^{-m}}$ are relatively compact on every finite interval, and
+every subsequential weak limit $\nu$ satisfies
+\[
+ a\,dt\le d\nu\le b\,dt
+ \label{eq:adaptive-clock-density}
+\]
+(after decreasing $a$ and increasing $b$ if necessary).
+These measures are realized squared increments on the corresponding
+exit partitions, not a claimed canonical quadratic variation.
+\end{proposition}
+\begin{proof}
+Finite-time nonaccumulation follows from continuity: infinitely many
+oscillations of size $r$ on a compact interval contradict uniform
+continuity. Every exit time is finite by the preceding proposition,
+and every completed exit increment has square exactly $r^2$.
+
+Write $D_k=(\sigma^r_{k+1}-\sigma^r_k)/r^2$.
+For some $\lambda>0$ and $K<\infty$, the preceding proposition gives
+\[
+ \mathbb E[e^{\lambda D_k}\mid\mathcal F_{\sigma^r_k}]\le K.
+ \label{eq:exit-positive-laplace}
+\]
+Also its fast-tail proof supplies $a_0>0$ with
+$\mathbb P\{D_k>a_0\mid\mathcal F_{\sigma^r_k}\}\ge1/2$.
+Thus, for every $\eta>0$,
+\[
+ \mathbb E[e^{-\eta D_k}\mid\mathcal F_{\sigma^r_k}]
+ \le\rho:=\tfrac12(1+e^{-\eta a_0})<1.
+ \label{eq:exit-negative-laplace}
+\]
+Iteration and exponential Markov inequalities give, for sums of $n$
+successive full exit durations, the bounds
+\[
+ \mathbb P\{\textstyle\sum_{j=1}^nD_j>H\mid\hbox{initial past}\}
+       \le K^ne^{-\lambda H},\qquad
+ \mathbb P\{\textstyle\sum_{j=1}^nD_j\le H\mid\hbox{initial past}\}
+       \le\rho^ne^{\eta H}.
+ \label{eq:exit-renewal-bounds}
+\]
+No independence of the durations is used.
+
+To count exits in a fixed interval starting at $s$, first wait for the
+first global exit $\theta\ge s$. The residual time $R=\theta-s$
+also has a uniform conditional exponential moment at scale $r^2$.
+Indeed, before $\theta$, the process remains within $r$ of the previous
+exit value, hence within $2r$ of $X_s$. Repeating the slow-tail proof
+with that larger confinement band gives
+$\mathbb P\{R>u\mid\mathcal F_s\}\le
+ (1-p)^{\lfloor\delta^2u/(16r^2)\rfloor}$.
+Consequently for a sufficiently small common $\lambda$,
+$\mathbb E[e^{\lambda R/r^2}\mid\mathcal F_s]\le K_0$.
+If an interval has at most $n$ exits, its residual duration plus $n$
+full durations is at least $h$. If it has at least $n+1$ exits, $n$ full
+durations after its first exit fit inside $h$. Thus
+\[
+ \mathbb P\{\nu_r(I)/r^2\le n\}\le K_0K^ne^{-\lambda h/r^2},
+ \qquad
+ \mathbb P\{\nu_r(I)/r^2\ge n+1\}\le\rho^ne^{\eta h/r^2}.
+\]
+Choose $n$ respectively as a sufficiently small and sufficiently large
+multiple of $h/r^2$. Rounding and bounded values of $h/r^2$ are absorbed
+in $A$. This proves \eqref{eq:exit-count-concentration}.
+
+For dyadic $r$, the right side of that estimate is summable for every
+fixed rational interval. Borel--Cantelli and a countable intersection
+give eventual upper and lower mass bounds on every rational interval.
+The upper bounds give relative compactness of finite measures on compact
+intervals. For any weak subsequential limit, use rational open intervals
+for the upper mass bound and rational closed intervals for the lower
+bound, applying the Portmanteau inequalities. Approximation by rational
+endpoints gives \eqref{eq:adaptive-clock-density}; in particular the
+limits have no atoms. Finite endpoint conventions in the counts do not
+affect the conclusion, since each atom of $\nu_r$ has mass $r^2$.
+\end{proof}
+
+\paragraph{What is gained and what is still missing.}
+The continuum axioms already supply nonzero finite quadratic activity
+along observable stopping-time partitions, with subsequential activity
+clocks comparable to capacity. This is stronger information than merely
+stating a variation index. It does not establish uniqueness of the clock,
+convergence along deterministic partitions, semimartingality, or variance
+six. Even uniqueness of a quadratic-activity clock could not by itself
+establish semimartingality: the earlier Brownian-plus-infinite-variation
+H\"older example remains a warning about missing signed cancellation.
+
+At exit times the displacement is $\varepsilon_kr$, with
+$\varepsilon_k\in\{-1,1\}$. The remaining observable signed quantity is
+\[
+ r\sum_{k<N}\left|\mathbb E[\varepsilon_k
+                         \mid\mathcal F_{\sigma^r_k}]\right|.
+\]
+The new clock estimate controls the number of summands by order $T/r^2$;
+it does not improve the resulting crude bound of order $T/r$ on this
+signed budget. A useful next question is how the predictable exit-sign
+bias changes under a candidate constant affine normalization, or whether
+locality yields cancellations for a corrected observable depending on
+the transported Beltrami field. Finite signed variation of the raw driver
+in every affine coordinate system is not being assumed or recommended.
+
+\section{Affine capacity clocks and the limits of scaling arguments}
+\label{sec:affine-clock-obstructions}
+
+% Research fragment, 29 October 2026. No claim of actual clock singularity.
+\subsection{A necessary clock regularity condition for wrong-coordinate semimartingality}
+\label{sec:affine-clock-semimartingale-test}
+
+Let $\eta_s$ be chordal SLE$_6$ in $\mathbb H$, parametrized by
+$\operatorname{hcap}(K_s)=2s$, and let $B_s$ be its ordinary Brownian driver
+divided by $\sqrt6$. Let $L$ be an orientation-preserving real-linear
+self-map of $\mathbb H$. Put
+\[
+ \tau(s)=\tfrac12\operatorname{hcap}(LK_s),\qquad
+ \gamma_{\tau(s)}=L\eta_s,
+\]
+and denote the ordinary Loewner driver of $\gamma$ by $W_t$.
+We assume continuous Loewner generation, strictly growing hulls, and
+infinite lifetimes for both parametrizations. Thus $\tau$ and its inverse
+are continuous increasing clocks. Completed natural filtrations are used.
+
+\begin{proposition}[Semimartingality forces absolute continuity of the affine clock]
+\label{prop:affine-clock-ac-necessary}
+Suppose $W=M+A$ is a continuous semimartingale in its natural
+filtration and its martingale bracket $C=\langle M\rangle$ satisfies
+\[
+ c\,dt\le dC_t\le C_0\,dt
+ \tag{AC1}
+\]
+on the relevant localized intervals, with deterministic constants
+$0<c\le C_0<\infty$. Then $\tau$ is absolutely continuous in $s$.
+There exists a Brownian-predictable $H$ such that, locally,
+\[
+ M_{\tau(s)}=\int_0^s H_u\,dB_u,
+ \qquad
+ c\,d\tau(s)\le H_s^2ds\le C_0\,d\tau(s).
+ \tag{AC2}
+\]
+In particular, a nonzero singular component of $d\tau$ would exclude
+semimartingality of $W$, whenever the crossing/locality hypotheses
+needed for (AC1) hold.
+\end{proposition}
+\begin{proof}
+An initial segment of $W$ reconstructs the corresponding ordered
+Loewner trace and hull. Applying $L^{-1}$ reconstructs the original
+SLE segment, its original capacity, and its driver. Conversely the
+Brownian driver up to $s$ reconstructs the transformed segment and
+its driver up to $\tau(s)$. Thus, with the usual completions,
+\[
+ \mathcal F^W_{\tau(s)}=\mathcal F^B_s.
+ \tag{AC3}
+\]
+This assertion retains the ordered trace and distinguished tip; an
+unlabelled hull or frontier alone is not substituted for that state.
+
+For every fixed $s$, $\tau(s)$ is a stopping time in the $W$
+filtration: at observed time $t$ one can reconstruct the original
+capacity $\tau^{-1}(t)$, and
+$\{\tau(s)\le t\}=\{\tau^{-1}(t)\ge s\}$.
+Consequently $N_s=M_{\tau(s)}$ is a continuous local martingale
+in the time-changed filtration, which is the Brownian filtration
+by (AC3). Localize both clocks and the martingale in the usual way.
+The Brownian martingale representation theorem gives
+$N_s=\int_0^sH_u\,dB_u$, and therefore
+$C_{\tau(s)}=\int_0^sH_u^2du$.
+
+The measure inequality (AC1), applied pathwise to each clock interval,
+gives
+\[
+ c\,d\tau\le d(C\circ\tau)\le C_0\,d\tau.
+\]
+Its middle measure equals $H_s^2ds$. The lower inequality forces
+$d\tau\ll ds$ and proves all assertions.
+\end{proof}
+
+The already established upper conditional driving moment bound yields
+the upper inequality in (AC1) once semimartingality is assumed.
+The ray-deletion locality lower tail yields the lower inequality.
+Thus (AC1) uses precisely those explicit continuum crossing and
+prime-end admissibility hypotheses; it is not a consequence of
+semimartingality alone. No singularity of the actual affine clock has
+been proved here. Absolute continuity of $\tau$ is only necessary,
+not sufficient for semimartingality. It also does not imply absolute
+continuity of its inverse: $\tau'$ might vanish on a positive-measure
+set. Global comparisons $c_Ls\le\tau(s)\le C_Ls$ do not remove this
+possibility or give an increment comparison.
+
+\subsection{Why scaling and a trivial germ do not regularize the bracket}
+\label{sec:elliptic-selfsimilar-counterexample}
+
+Here is a process-level obstruction to strengthening the previous
+scaling lemma without its initial-bracket premise. It is not a
+proposed exploration family satisfying locality and DMP.
+
+\begin{proposition}[A self-similar elliptic martingale without an initial bracket tangent]
+\label{prop:selfsimilar-elliptic-no-tangent}
+Let $B$ be standard Brownian motion and define
+\[
+ X_t=\int_0^t\sqrt{2+\sin(B_s/\sqrt s)}\,dB_s,
+ \qquad t\ge0.
+ \tag{AC4}
+\]
+The integrand at zero may be chosen arbitrarily. Then $X$ is a
+continuous martingale in its own natural filtration, its initial germ
+is trivial, and it has exact Brownian scaling. Its bracket satisfies
+\[
+ dt\le d\langle X\rangle_t\le3dt.
+ \tag{AC5}
+\]
+Nevertheless $\langle X\rangle_t/t$ has no limit in probability as
+$t\downarrow0$. It satisfies conditional Brownian-scale upper
+oscillation tails and a positive conditional lower oscillation tail
+uniformly over stopping times.
+\end{proposition}
+\begin{proof}
+The integrand is bounded and progressive, so the integral is a
+square-integrable martingale on each finite horizon. A martingale
+remains a martingale in its own smaller natural filtration; its
+bracket is the pathwise quadratic variation and hence remains
+\[
+ Q_t=\int_0^t[2+\sin(B_s/\sqrt s)]ds.
+\]
+This proves (AC5). The natural $X$ filtration is contained in the
+Brownian filtration, so its completed initial germ is trivial.
+For every $a>0$, substitution $\widetilde B_u=B_{au}/\sqrt a$
+in the stochastic integral proves
+$(a^{-1/2}X_{at})_{t\ge0}\stackrel{\rm law}=(X_t)_{t\ge0}$.
+The same substitution shows $Q_t/t$ has the fixed distribution of
+$Q_1$.
+
+This distribution is nondegenerate. Fix small $\epsilon>0$.
+On $[\epsilon,1]$, Brownian paths have positive probability of lying
+in a sufficiently small uniform neighborhood of either continuous
+function $s\mapsto\pi\sqrt s/2$ or its negative. This follows from
+Brownian full support after extending each function continuously to
+zero. On these two events the integral of the sine over
+$[\epsilon,1]$ is close respectively to $1-\epsilon$ and
+$-(1-\epsilon)$, whereas its contribution on $[0,\epsilon]$ has
+absolute value at most $\epsilon$. Thus $Q_1$ is nonconstant.
+
+If $Q_t/t$ converged in probability at zero, an almost surely
+converging subsequence would make its limit measurable in the
+Brownian initial germ. The limit would be deterministic, contradicting
+the fixed nondegenerate distribution. Hence there is no such limit.
+
+For completeness, the upper bracket bound and the exponential
+martingale inequality give conditional Gaussian upper tails for
+$\sup_{u\le h}|X_{\sigma+u}-X_\sigma|/\sqrt h$ at every
+stopping time $\sigma$. For the lower tail, restart the martingale
+at $\sigma$ and apply Dambis--Dubins--Schwarz. Its bracket over
+$[\sigma,\sigma+h]$ is at least $h$, so its maximum dominates
+the maximum of a Brownian motion over $[0,h]$. This gives any fixed
+positive Brownian lower-tail probability, conditionally on the
+past. Passing to the natural $X$ filtration preserves both bounds
+by conditional expectation.
+\end{proof}
+
+This example rules out the shortcut ``exact scaling + Brownian
+germ triviality + bounded elliptic bracket implies Brownian
+driving.'' It does not exclude the possibility that the actual
+wrong-coordinate affine-SLE driver is a semimartingale whose bracket
+density oscillates on every logarithmic scale near zero.
 
 \begin{thebibliography}{99}
 \bibitem{schramm-wilson} O. Schramm and D. B. Wilson,
