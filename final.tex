@@ -26,6 +26,17 @@
 \begin{document}
 \maketitle
 \begin{abstract}
+The regularity bridge is now expressed through exact exit-sign criteria:
+finite aggregate predictable sign budget is equivalent to integrable
+finite-variation drift; subquadratic weighted sign energies characterize
+$L^p$ absolutely continuous drift for $1<p<2$. Conditional crossing
+moments also give bounded cluster clocks along deterministic meshes
+and finite-mesh analytic-locality characteristic covariance without
+semimartingality. None of these criteria supplies the missing signed
+estimate from the exploration axioms. A singular analytic clock example
+shows why clock-path Taylor regularity alone cannot settle finite-affine
+clock absolute continuity; a dyadic uniform-integrability criterion
+identifies a precise increment-measure target.
 The 29 October priority is to understand affine-SLE$_6$ driving in
 arbitrary coordinates before imposing coordinate-sensitive stochastic
 regularity. Matched-prefix affine driving and capacity admit uniform
@@ -6724,6 +6735,765 @@ driving.'' It does not exclude the possibility that the actual
 wrong-coordinate affine-SLE driver is a semimartingale whose bracket
 density oscillates on every logarithmic scale near zero.
 
+\section{Finite-mesh locality characteristics before semimartingality}
+\label{sec:finite-mesh-locality}
+
+The existing characteristic transformation rules presuppose a
+semimartingale. The conditional crossing moments already allow a
+finite-mesh version with an error tending to zero in total expected
+variation. This identifies the signed quantities to study without
+first choosing a preferred affine structure or asserting a canonical
+quadratic variation.
+
+\subsection{Compactness of realized squared increments}
+
+\begin{proposition}[Bounded cluster clocks on deterministic meshes]
+\label{prop:finite-mesh-square-clocks}
+Let $X$ be continuous and adapted on $[0,T]$ in a usual filtration and
+suppose, for deterministic $s<t$, that
+\[
+ \mathbb E[|X_t-X_s|^2\mid\mathcal F_s]\le K_2(t-s),\qquad
+ \mathbb E[|X_t-X_s|^4\mid\mathcal F_s]\le K_4(t-s)^2.
+ \tag{FM1}
+\]
+For a deterministic partition $\pi=(t_i)$ write
+\[
+ a_i=\mathbb E[(X_{t_{i+1}}-X_{t_i})^2\mid\mathcal F_{t_i}].
+\]
+Let $Q^\pi$ be the continuous piecewise linear function starting at
+zero with increment $a_i$ on $[t_i,t_{i+1}]$, and let
+\[
+ R^\pi(t)=\sum_{t_{i+1}\le t}(X_{t_{i+1}}-X_{t_i})^2.
+\]
+Every $Q^\pi$ is increasing and $K_2$-Lipschitz. There is an absolute
+constant $C$ such that
+\[
+ \mathbb E\sup_{t\le T}|R^\pi(t)-Q^\pi(t)|^2
+ \le C K_4T\,|\pi|+C K_2^2|\pi|^2,
+ \tag{FM2}
+\]
+where $|\pi|$ denotes the largest mesh interval. In particular the
+realized square-sum processes are asymptotically tight with continuous
+increasing cluster limits whose densities are bounded by $K_2$.
+For every fixed mesh sequence with $\sum_n|\pi_n|<\infty$, almost
+surely their uniform cluster set is nonempty and every cluster path
+is increasing and $K_2$-Lipschitz.
+Neither uniqueness nor a positive lower density is asserted.
+\end{proposition}
+\begin{proof}
+The slope claim follows from $0\le a_i\le K_2(t_{i+1}-t_i)$.
+At partition endpoints the difference is the discrete martingale
+\[
+ Z_j=\sum_{i<j}\{(X_{t_{i+1}}-X_{t_i})^2-a_i\}.
+\]
+Conditional centering, orthogonality, and (FM1) give
+$\mathbb EZ_{\#\pi}^2\le K_4\sum_i(t_{i+1}-t_i)^2
+\le K_4T|\pi|$.
+Doob's inequality controls the maximum at grid points. Between grid
+points $R^\pi$ is constant and $Q^\pi$ moves by at most $K_2|\pi|$,
+which proves (FM2). The $Q^\pi$ lie in one compact subset of
+$C([0,T])$ by Arzela--Ascoli. Equation (FM2) proves tightness and
+the assertion about cluster laws. For summable mesh sizes,
+Markov's inequality and Borel--Cantelli give
+$\|R^{\pi_n}-Q^{\pi_n}\|_\infty\to0$ almost surely, hence the
+pathwise cluster assertion. A cluster selection need not produce
+one canonical adapted clock, and no such selection is claimed.
+\end{proof}
+
+The conditional exponential bounds from the crossing estimate imply
+(FM1), also for the bounded stopped drivers used in (QV1). Thus this
+is a further regularity consequence available before any signed
+budget is proved. It concerns cluster limits along deterministic
+meshes, whereas the earlier exit-clock theorem also supplies a lower
+density for its different, adaptive partitions. These facts do not
+identify the two kinds of cluster clock.
+
+\subsection{The variance-six anomaly has a finite-mesh form}
+
+Use a locality deletion map $h_t$ on a common physical trace before
+contact, as in (LB1). Stop at a matched trace time $\theta\le T$ so
+that the driver stays in a compact real interval, $h_t$ is analytic
+on a fixed larger neighborhood of that interval, and its spatial
+derivatives through order three, and the time derivatives needed
+below through spatial order two, are bounded by deterministic
+constants. Also require $0<m\le h_t'(W_t)\le P$. Such bounds are
+localization conditions on a deletion map strictly away from contact.
+Write
+\[
+ X_t=W_{t\wedge\theta},\quad
+ Y_t=h_{t\wedge\theta}(X_t)-h_0(W_0),\quad
+ A_t=t\wedge\theta,\quad
+ U_t=\int_0^{t\wedge\theta}h_s'(W_s)^2\,ds.
+ \tag{FM3}
+\]
+Here $Y$ is the deleted driver at the inherited clock $U$, not at
+deterministic deleted capacity. Suppose the original driving
+increments have the conditional supremum moment bounds
+\[
+ \mathbb E[\sup_{0\le u\le h}|X_{t+u}-X_t|^j
+                         \mid\mathcal F_t]\le C_jh^{j/2},
+ \qquad j=1,\ldots,6,
+ \tag{FM4}
+\]
+for $t+h\le T$. These are supplied by the stopped crossing estimate.
+
+For each deterministic partition interval put
+\[
+ \begin{aligned}
+ b_i^X&=\mathbb E[\Delta_iX\mid\mathcal F_{t_i}],&
+ a_i^X&=\mathbb E[(\Delta_iX)^2\mid\mathcal F_{t_i}],\\
+ b_i^Y&=\mathbb E[\Delta_iY\mid\mathcal F_{t_i}],&
+ a_i^Y&=\mathbb E[(\Delta_iY)^2\mid\mathcal F_{t_i}],\\
+ d_i&=\mathbb E[\Delta_iA\mid\mathcal F_{t_i}],&
+ e_i&=\mathbb E[\Delta_iU\mid\mathcal F_{t_i}],\\
+ p_i&=h_{t_i\wedge\theta}'(X_{t_i}),&
+ q_i&=h_{t_i\wedge\theta}''(X_{t_i}).
+ \end{aligned}
+ \tag{FM5}
+\]
+
+\begin{proposition}[Conditional characteristic covariance without Ito calculus]
+\label{prop:finite-mesh-deletion-covariance}
+In this setup there is a deterministic $C$, depending only on the
+localized map and moment bounds and $T$, such that, with
+$\delta_i=t_{i+1}-t_i$,
+\[
+ \begin{aligned}
+ b_i^Y&=p_i b_i^X+\tfrac12q_i(a_i^X-6d_i)+r_i,\\
+ a_i^Y&=p_i^2a_i^X+v_i,\qquad
+ e_i=p_i^2d_i+w_i,\\
+ |r_i|+|v_i|+|w_i|&\le C\delta_i^{3/2}.
+ \end{aligned}
+ \tag{FM6}
+\]
+All equalities and bounds hold almost surely. In particular
+\[
+ a_i^Y-6e_i=p_i^2(a_i^X-6d_i)+O(\delta_i^{3/2}),
+ \tag{FM7}
+\]
+and the sums of absolute errors in (FM6)--(FM7) are bounded by
+$CT\sqrt{|\pi|}$. No signed-budget, semimartingale, or canonical
+quadratic-variation assumption is used.
+\end{proposition}
+\begin{proof}
+Put $S_i=\sup_{u\in[t_i,t_{i+1}]}|X_u-X_{t_i}|$ and
+$\delta=\delta_i$. Spatial Taylor expansion and time integration of
+the stopped field give
+\[
+ \Delta_iY=p_i\Delta_iX+\tfrac12q_i(\Delta_iX)^2
+                  -3q_i\Delta_iA+\mathcal R_i,
+ \qquad
+ |\mathcal R_i|\le C(S_i^3+\delta S_i+\delta^2).
+ \tag{FM8}
+\]
+For clarity, the time contribution is
+$\int_{t_i\wedge\theta}^{t_{i+1}\wedge\theta}
+ (\partial_sh_s)(X_{t_{i+1}})ds$.
+The Loewner deletion PDE has the removable boundary value
+$(\partial_sh_s)(W_s)=-3h_s''(W_s)$.
+The bounded first spatial derivative of $\partial_sh_s$ permits
+replacing $X_{t_{i+1}}$ by $W_s$ at cost $C\delta S_i$.
+The bounded time derivative of $h_s''$ and bounded $h_s'''$ permit
+replacing $h_s''(W_s)$ by $q_i$ at cost
+$C\delta(S_i+\delta)$. This proves (FM8), including intervals
+straddling $\theta$; after $\theta$ everything is frozen.
+Taking conditional expectations and using (FM4) proves the first
+line of (FM6).
+
+The simpler pathwise bound
+$|\Delta_iY-p_i\Delta_iX|\le C(S_i^2+\delta)$
+follows directly from the bounded field derivatives. Squaring and
+using (FM4) shows
+\[
+ \mathbb E[| (\Delta_iY)^2-p_i^2(\Delta_iX)^2 |
+                      \mid\mathcal F_{t_i}]
+ \le C\mathbb E[S_i^3+\delta S_i+S_i^4+\delta^2
+                      \mid\mathcal F_{t_i}]
+ \le C\delta^{3/2},
+\]
+after enlarging $C$ on the fixed horizon. Finally
+$|h_s'(W_s)^2-p_i^2|\le C(S_i+\delta)$ while the clock is active.
+Integration and conditional expectation prove the estimate for $e_i$.
+Summing $\delta_i^{3/2}\le\sqrt{|\pi|}\delta_i$ gives the last claim.
+\end{proof}
+
+\paragraph{What this does and does not bridge.}
+The pair consisting of predictable signed increments and the
+variance-six defect has a coordinate transformation rule already at
+finite resolution. Its total error vanishes on fine deterministic
+meshes. Once a signed budget is finite this recovers the familiar
+characteristic-measure calculation, but its derivation here does not
+presuppose that missing regularity. Since
+$\sum_i|a_i^X-6d_i|\le(K_2+6)T$, it also explains directly why
+analytic locality changes can add only a bounded amount to an
+aggregate signed budget under matched bounded localizations.
+There is still no estimate forcing that budget to be finite.
+
+The inherited times $U_{t_i}$ are stopping times in the deleted
+natural trace filtration by geometric reconstruction. Their future
+increments are random, so (FM6) must not be reinterpreted as a
+fixed-duration transition identity for the deleted driver. Also the
+maps here are analytic deletion maps. A fixed physical affine
+deformation of a rough restarted domain carries a nonconstant
+transported Beltrami coefficient; it is not covered by replacing
+$h_t$ with a constant affine chart map.
+
+
+\section{Exit signs give exact signed-regularity criteria}
+\label{sec:exit-signed-bridge}
+
+The adaptive exits used to measure unsigned activity also suffice to test
+the missing signed regularity.  This gives a concrete grading of the
+remaining gap, without selecting an affine structure or assuming a
+semimartingale decomposition.  The criteria below are implications and
+equivalences for processes; no exit-sign estimate is deduced from the
+curve axioms in this section.
+
+Let $W$ be a continuous adapted process in a usual filtration, with
+$W_0=0$, and suppose its radius-$r$ exits are finite almost surely. Put
+\[
+ \sigma^r_0=0,\qquad
+ \sigma^r_{k+1}=\inf\{t\ge\sigma^r_k:
+              |W_t-W_{\sigma^r_k}|\ge r\},\qquad
+ G^r_k=\mathcal F_{\sigma^r_k}.
+\]
+Write
+\[
+ \beta^r_k=\mathbb E\left[
+       \frac{W_{\sigma^r_{k+1}}-W_{\sigma^r_k}}r
+                    \,\middle|\,G^r_k\right],\qquad
+ b^r_k=r\beta^r_k.
+ \tag{EX1}
+\]
+Every displacement divided by $r$ is $+1$ or $-1$. Fix $L,T>0$ and
+\[
+ \tau=T\wedge\inf\{t:|W_t|\ge L\},\qquad X_t=W_{t\wedge\tau},
+       \quad 0\le t\le T.
+\]
+Let $\mathcal V(X)$ be the conditional variation over deterministic time
+partitions, as in (QV4), and define the pure exit-sign budget
+\[
+ \mathcal B_r=\mathbb E\sum_{k:\,\sigma^r_k<\tau}|b^r_k|.
+ \tag{EX2}
+\]
+
+\begin{proposition}[One family of exit skeletons tests the whole signed budget]
+\label{prop:exit-budget-exact}
+One has
+\[
+ \mathcal V(X)\le\liminf_{r\downarrow0}\mathcal B_r.
+ \tag{EX3}
+\]
+Thus $\liminf_{r\downarrow0}\mathcal B_r<\infty$ is equivalent to
+$X=M+A$ with $M$ a uniformly integrable continuous martingale and
+$A$ predictable continuous finite variation with
+$\mathbb E\operatorname{Var}A<\infty$. In that case
+\[
+ \lim_{r\downarrow0}\mathcal B_r
+   =\mathcal V(X)=\mathbb E\operatorname{Var}_{[0,T]}A.
+ \tag{EX4}
+\]
+In particular one may test finiteness along any deterministic sequence
+of radii decreasing to zero.  No uniqueness of an unsigned activity clock
+is required.
+\end{proposition}
+\begin{proof}
+For a deterministic partition $0=t_0<\cdots<t_n=T$, let $H_j$ be
+$\mathcal F_{t_j}$-measurable and bounded by one. Set $u_j=t_j\wedge\tau$
+and $K_j=\inf\{k:\sigma^r_k\ge u_j\}$. Each $K_j$ is a stopping index
+for $(G^r_k)$, since $\{K_j\le k\}=\{u_j\le\sigma^r_k\}$.
+The active variable $H_j\mathbf1_{\{t_j<\tau\}}$ is measurable in
+$\mathcal F_{u_j}$ and hence in $G^r_{K_j}$. Consequently
+\[
+ L_k=\sum_{j=0}^{n-1}H_j\mathbf1_{\{t_j<\tau\}}
+                      \mathbf1_{\{K_j\le k<K_{j+1}\}}
+\]
+is $G^r_k$-measurable, bounded by one, and supported on $\sigma^r_k<\tau$.
+Thus the expected discrete gain is at most $\mathcal B_r$:
+\[
+ \mathbb E\sum_{j=0}^{n-1}H_j\mathbf1_{\{t_j<\tau\}}
+       (W_{\sigma^r_{K_{j+1}}}-W_{\sigma^r_{K_j}})
+       =\mathbb E\sum_kL_k b^r_k\le\mathcal B_r.
+ \tag{EX5}
+\]
+For clarity the equality follows first after truncating the sum at a
+deterministic index. The truncated gain telescopes into at most $n$
+differences of driver values prior to the first grid exit after $\tau$;
+all such values lie in $[-L-r,L+r]$. Dominated convergence applies to
+the gains, and absolute summability applies to the predictable terms if
+$\mathcal B_r<\infty$. If that budget is infinite the desired upper
+bound is automatic. This avoids an unjustified optional sampling at the
+last completed exit before a deterministic time.
+
+The value at the first grid exit after $u_j$ is within $2r$ of $W_{u_j}$.
+Hence (EX5) differs from
+$\mathbb E\sum_jH_j(X_{t_{j+1}}-X_{t_j})$ by at most $4nr$.
+Taking $r\downarrow0$ and then the supremum over the predictable
+variables and partitions proves (EX3).
+
+If the liminf is finite, the bounded continuous quasimartingale theorem
+and Proposition~\ref{prop:continuum-quasimartingale} give the asserted
+decomposition and $\mathcal V(X)=\mathbb E\operatorname{Var}A$.
+For the converse set, on $\{\sigma^r_k<\tau\}$,
+\[
+ \widetilde b^r_k=
+ \mathbb E[W_{\sigma^r_{k+1}\wedge\tau}-W_{\sigma^r_k}
+                        \mid G^r_k].
+\]
+Optional sampling of the uniformly integrable stopped martingale gives
+\[
+ \mathbb E\sum_{\sigma^r_k<\tau}|\widetilde b^r_k|
+       \le\mathbb E\operatorname{Var}A.
+\]
+There is at most one excursion straddling $\tau$, and its displacement
+between $\tau$ and its full exit is at most $2r$. Since
+$\{\sigma^r_k<\tau\}$ is $G^r_k$-measurable, conditional expectation
+and summation give the precise terminal-error bound
+\[
+ \mathbb E\sum_{\sigma^r_k<\tau}|b^r_k-\widetilde b^r_k|\le2r.
+ \tag{EX6}
+\]
+Therefore $\mathcal B_r\le\mathbb E\operatorname{Var}A+2r$.
+Combining this with (EX3) proves (EX4).
+\end{proof}
+
+\paragraph{Additional hypotheses for the energy criterion.}
+Assume now the uniform diffusive exit estimates from
+Proposition~\ref{prop:diffusive-exit-time}. In particular, for constants
+$a_1,a_2>0$ independent of $k,r$,
+\[
+ a_1r^2\le d^r_k:={\mathbb E}[\sigma^r_{k+1}-\sigma^r_k
+                                     \mid G^r_k]\le a_2r^2.
+ \tag{EX7}
+\]
+The same estimates give exponential residual-exit tails after any bounded
+stopping time: before the next global exit, the process remains within
+$2r$ of its current position. The block proof of
+Proposition~\ref{prop:diffusive-exit-time} therefore gives
+\[
+ \mathbb E[\sigma^r_{K(\theta)}-\theta\mid\mathcal F_\theta]
+       \le C r^2,\qquad
+ K(\theta)=\inf\{k:\sigma^r_k\ge\theta\}.
+ \tag{EX8}
+\]
+The original conditional lower oscillation estimate also excludes all
+constant nontrivial time intervals almost surely: subdivide any fixed
+rational interval into $n$ pieces, use the conditional bound on each
+piece, and let $n\to\infty$. Continuity then implies that the maximum
+length of an exit-grid interval intersecting a fixed compact time
+interval tends to zero as $r\downarrow0$. Otherwise converging endpoints
+of intervals of length bounded below would exhibit a constant interval.
+
+\begin{proposition}[Exit-sign energy tests square-integrable drift]
+\label{prop:exit-energy-ac}
+Define
+\[
+ \mathcal E_r=\mathbb E\sum_{\sigma^r_k<\tau}
+                            \frac{(b^r_k)^2}{d^r_k},\qquad
+ \widetilde{\mathcal E}_r=\mathbb E\sum_{\sigma^r_k<\tau}
+                       \frac{(\widetilde b^r_k)^2}{d^r_k}.
+ \tag{EX9}
+\]
+The following conditions are equivalent:
+\begin{enumerate}
+\item $\liminf_{r\downarrow0}\mathcal E_r<\infty$;
+\item $\liminf_{r\downarrow0}\widetilde{\mathcal E}_r<\infty$;
+\item $X=M+\int_0^{\cdot\wedge\tau}v_sds$, where $M$ is a uniformly
+ integrable continuous martingale and $v$ predictable, with
+ $\mathbb E\int_0^\tau v_s^2ds<\infty$.
+\end{enumerate}
+For the truncated means there is the exact limit
+\[
+ \lim_{r\downarrow0}\widetilde{\mathcal E}_r
+       =\mathbb E\int_0^\tau v_s^2ds.
+ \tag{EX10}
+\]
+For the raw pure-sign energy only the boundedness equivalence is asserted;
+the terminal excursion can cause a uniformly bounded energy error.
+By (EX7), condition 1 is equivalently boundedness along some radii of
+$\mathbb E\sum_{\sigma^r_k<\tau}(\beta^r_k)^2$.
+\end{proposition}
+\begin{proof}
+For a bounded deterministic-time elementary predictable process
+$H=\sum_jH_j\mathbf1_{(t_j,t_{j+1}]}$, use the indices and grid strategy
+$L_k$ from the preceding proof, now with the bound $\sup|H|$.
+Set $L^{r}(t)=L_k$ on $(\sigma^r_k,\sigma^r_{k+1}]$, and zero beyond
+the first exit after $\tau$. The vanishing grid mesh and (EX8) imply
+\[
+ \mathbb E\int_0^\infty|L^{r}(t)|^2dt
+       \longrightarrow\mathbb E\int_0^\tau|H_t|^2dt.
+ \tag{EX11}
+\]
+Indeed on $[0,\tau]$ there is bounded pointwise convergence away from the
+finitely many partition endpoints; the expected time of the excess
+terminal interval is $O(r^2)$. Predictability gives
+\[
+ \mathbb E\sum_kL_k^2d^r_k
+       =\mathbb E\int_0^\infty|L^{r}(t)|^2dt.
+\]
+Both $\mathbb E\sum_kL_kb^r_k$ and
+$\mathbb E\sum_kL_k\widetilde b^r_k$ tend to
+$\ell(H):=\mathbb E\sum_jH_j(X_{t_{j+1}}-X_{t_j})$;
+the first uses the $O(nr\sup|H|)$ discretization error, and the second
+also uses (EX6). Cauchy--Schwarz, followed by (EX11), yields
+\[
+ |\ell(H)|\le
+  \sqrt{\liminf_{r\downarrow0}\mathcal E_r}\,
+        \left(\mathbb E\int_0^\tau H_t^2dt\right)^{1/2},
+\]
+and the same inequality with $\widetilde{\mathcal E}_r$.
+Bounded deterministic-time elementary predictable processes are dense
+in the predictable $L^2(\mathbb P\,dt)$ space. Riesz representation
+therefore gives a predictable $v$, zero after $\tau$, such that
+$\ell(H)=\mathbb E\int_0^\tau H_tv_tdt$, and its squared norm is
+bounded by the corresponding liminf energy. Testing a single interval
+and every bounded $\mathcal F_s$ variable shows that
+$X-\int_0^{\cdot\wedge\tau}v_tdt$ is a martingale. Its integrable
+dominating variable is $L+\int_0^\tau|v_t|dt$, so it is uniformly
+integrable; continuity gives the continuous martingale decomposition.
+
+Conversely, assume condition 3. Conditional Cauchy--Schwarz on each
+excursion, including its possible truncation at $\tau$, gives
+\[
+ (\widetilde b^r_k)^2\le d^r_k\,
+  \mathbb E\left[\int_{\sigma^r_k}^{\sigma^r_{k+1}\wedge\tau}
+               v_s^2ds\,\middle|\,G^r_k\right]
+      \quad\text{on }\{\sigma^r_k<\tau\}.
+\]
+Thus $\widetilde{\mathcal E}_r\le\mathbb E\int_0^\tau v_s^2ds$.
+The lower norm bound from the Riesz argument gives the reverse liminf,
+proving (EX10). Finally, set
+$p^r_k=\mathbb P\{\sigma^r_k<\tau<\sigma^r_{k+1}\mid G^r_k\}$.
+Then $|b^r_k-\widetilde b^r_k|\le2rp^r_k$ on active starts, and
+\[
+ \mathbb E\sum_{\sigma^r_k<\tau}
+       \frac{|b^r_k-\widetilde b^r_k|^2}{d^r_k}
+   \le\frac4{a_1}\mathbb E\sum_kp^r_k\le\frac4{a_1}.
+\]
+The triangle inequality in the indexed $L^2$ space proves equivalence
+of the two bounded-energy conditions. This also shows why replacing
+the truncated energy by the raw sign energy need not preserve the
+numerical limit.
+\end{proof}
+
+\begin{corollary}[Any subquadratic sign energy distinguishes AC drift from singular drift]
+\label{cor:exit-subquadratic-energy}
+Fix $1<p<2$, and define
+\[
+ \mathcal E_{r,p}=\mathbb E\sum_{\sigma^r_k<\tau}
+                  \frac{|b^r_k|^p}{(d^r_k)^{p-1}}.
+ \tag{EX12}
+\]
+Then $\liminf_{r\downarrow0}\mathcal E_{r,p}<\infty$ is equivalent to
+$X=M+\int_0^{\cdot\wedge\tau}v_sds$ with
+$\mathbb E\int_0^\tau|v_s|^pds<\infty$. In that case the \emph{raw}
+pure-sign energy has the exact limit
+\[
+ \lim_{r\downarrow0}\mathcal E_{r,p}
+       =\mathbb E\int_0^\tau|v_s|^pds.
+ \tag{EX13}
+\]
+By (EX7), boundedness is equivalently boundedness of
+$r^{2-p}\mathbb E\sum_{\sigma^r_k<\tau}|\beta^r_k|^p$.
+\end{corollary}
+\begin{proof}
+Repeat the preceding proof with H\"older conjugate $p'=p/(p-1)$.
+The grid strategy satisfies
+\[
+ \mathbb E\sum_k|L_k|^{p'}d^r_k
+       \longrightarrow\mathbb E\int_0^\tau|H_t|^{p'}dt.
+\]
+Weighted H\"older's inequality and duality between predictable
+$L^{p'}$ and $L^p$ therefore identify a predictable density $v$ with
+$\mathbb E\int_0^\tau|v_s|^pds$ bounded by the liminf energy.
+For the terminal-truncated means, conditional H\"older gives
+\[
+ |\widetilde b^r_k|^p\le(d^r_k)^{p-1}
+  \mathbb E\left[\int_{\sigma^r_k}^{\sigma^r_{k+1}\wedge\tau}
+                 |v_s|^pds\,\middle|\,G^r_k\right]
+\]
+on active starts. Summation supplies the reverse upper bound, so the
+truncated-mean energy converges to the asserted $L^p$ norm.
+
+For the full-exit means, the terminal correction obeys
+\[
+ \mathbb E\sum_{\sigma^r_k<\tau}
+  \frac{|b^r_k-\widetilde b^r_k|^p}{(d^r_k)^{p-1}}
+ \le \frac{2^p}{a_1^{p-1}}\,r^{2-p}
+             \mathbb E\sum_k(p^r_k)^p
+ \le \frac{2^p}{a_1^{p-1}}\,r^{2-p}\longrightarrow0.
+ \tag{EX14}
+\]
+The triangle inequality for the corresponding weighted $L^p$ norms
+therefore transfers the same numerical limit to the raw sign energy.
+The exponent $2-p>0$ is essential for this last assertion. At $p=1$
+the limiting object is an arbitrary finite-variation drift measure,
+as in Proposition~\ref{prop:exit-budget-exact}; for every $p>1$ in the
+stated range, finiteness forces a density with respect to capacity time.
+\end{proof}
+
+\begin{corollary}[Order-$r$ exit-sign bias supplies bounded drift]
+\label{cor:exit-bias-bounded-drift}
+If, for all sufficiently small radii and all active starts,
+$|\beta^r_k|\le Kr$ with a deterministic constant $K$, then
+$X=M+\int_0^{\cdot\wedge\tau}v_sds$ with
+$|v_s|\le K/a_1$ almost everywhere.
+\end{corollary}
+\begin{proof}
+By (EX7), $|b^r_k|\le Kr^2\le(K/a_1)d^r_k$.
+The predictable test argument therefore bounds
+$|\ell(H)|$ by $(K/a_1)\mathbb E\int_0^\tau|H_t|dt$.
+The $L^1$--$L^\infty$ dual representation supplies the claimed bounded
+predictable density and hence the martingale decomposition.
+\end{proof}
+
+\paragraph{The classification gap is now quantitatively explicit.}
+Unsigned estimates give $|\beta^r_k|\le1$ and order $T/r^2$ exit
+terms. The exact finite-variation criterion asks for bounded
+$r\mathbb E\sum|\beta^r_k|$. The square-integrable drift criterion
+asks for bounded $\mathbb E\sum(\beta^r_k)^2$. The stronger pointwise
+bound $|\beta^r_k|\le Kr$ gives the bounded conditional-bias premise
+used in Theorem~\ref{thm:cbias-rigidity}. To apply that theorem one must
+still control these constants along mirrored shrinking-slit states:
+with uniform $a_1$, the required rate is
+$\epsilon K_\epsilon\to0$. Pointwise bounded drift in each unrelated
+state does not supply that rate.
+
+Even bounded drift alone gives no initial tangent without locality's
+additional comparison: $v(t)=\sin(\log t)$ has bounded magnitude but
+$t^{-1}\int_0^t v(s)ds=\tfrac12(\sin\log t-\cos\log t)$ has no limit
+at zero. Brownian motion plus this deterministic integral is only a
+process illustration, not a proposed family obeying the curve axioms.
+All these criteria are in a specified coordinate system. Neither finite
+raw exit-sign budget nor bounded sign energy is asserted in every affine
+structure, and no preferred affine tensor has been constructed.
+
+
+\section{Analytic clock families can acquire singular time change}
+\label{sec:analytic-clock-obstruction}
+
+The affine-prefix results give analytic dependence of the capacity clock
+on a small deformation parameter in the uniform path norm, and very high
+temporal regularity of its first parameter derivative. These properties,
+even supplemented by strict monotonicity and global capacity comparison,
+do not alone prove absolute continuity of a finite-deformation clock.
+The following explicit example separates this analytic issue from the
+unresolved geometry of the actual affine-SLE clock.
+
+\begin{proposition}[A singular analytic clock family]
+\label{prop:singular-analytic-clock-family}
+There is a family of continuous strictly increasing clocks
+$s_\epsilon:[0,\infty)\to[0,\infty)$, $|\epsilon|<1$, with the following
+properties.
+\begin{enumerate}
+\item $s_0(t)=t$, $s_\epsilon(t)=t$ outside $[1,2]$, and
+$\tfrac12t\le s_\epsilon(t)\le2t$ for every $t\ge0$.
+\item On every compact time interval the family extends holomorphically
+in $\epsilon$ into the Banach space of continuous paths on the disk
+$|\epsilon|<4$. In particular it has uniform Taylor remainders of all
+orders on any smaller parameter disk.
+\item Every finite parameter derivative at zero is temporally H\"older
+of every exponent below one. Its quadratic-increment sums vanish along
+every sequence of partitions of vanishing mesh. Its mixed sums with any
+path H\"older of some positive exponent also vanish, after choosing an
+appropriate exponent for the derivative path.
+\item For every real $0<|\epsilon|<1$, $ds_\epsilon$ has a nonzero
+singular continuous component relative to $dt$. The first parameter
+derivative $\partial_\epsilon s_\epsilon|_0$ is not of bounded variation.
+\end{enumerate}
+This example has no asserted realization by Loewner hulls.
+\end{proposition}
+
+\begin{proof}
+Work first on the circle $[0,2\pi]$. For real $|\epsilon|<1$, set
+\[
+ p_{\epsilon,N}(x)=\prod_{n=1}^N
+                  (1+\epsilon\cos(5^n x)),\qquad
+ \mu_{\epsilon,N}(dx)=p_{\epsilon,N}(x)\frac{dx}{2\pi}.
+\]
+Every factor is positive. In the Fourier expansion, frequencies are
+$k=\sum_{n=1}^N\sigma_n5^n$, $\sigma_n\in\{-1,0,1\}$, with coefficient
+$(\epsilon/2)^{\#\{n:\sigma_n\ne0\}}$. Such representations are unique:
+the largest nonzero digit in a difference of two representations has
+magnitude at least $5^m$, whereas all lower difference digits have total
+magnitude at most $2\sum_{n<m}5^n<5^m$. In particular the constant
+Fourier coefficient is one and these are probability measures.
+Their Fourier coefficients stabilize at every fixed integer frequency,
+so compactness and uniqueness of Fourier coefficients give a unique
+weak limit $\mu_\epsilon$.
+
+Let
+\[
+ C_{\epsilon,N}(x)=\int_0^x p_{\epsilon,N}(u)\,du.
+\]
+The nonconstant term with highest digit $m$ has frequency of magnitude
+at least $5^m-\sum_{n<m}5^n\ge(3/4)5^m$. Summing the absolute
+coefficients of all terms with this highest digit gives
+$|\epsilon|(1+|\epsilon|)^{m-1}$. Since
+$|\int_0^x e^{iku}du|\le2/|k|$, the largest-digit block contributes
+at most
+\[
+ C5^{-m}|\epsilon|(1+|\epsilon|)^{m-1}
+ \tag{SC1}
+\]
+in uniform norm. Therefore $C_{\epsilon,N}$ converges uniformly in $x$
+and locally uniformly for complex $|\epsilon|<4$ to a holomorphic
+$C([0,2\pi])$-valued function $C_\epsilon$. For real $|\epsilon|<1$
+it is increasing, $C_\epsilon(0)=0$, and $C_\epsilon(2\pi)=2\pi$.
+The uniform convergence also shows that the weak measure limit has no
+atoms and $dC_\epsilon=2\pi\,d\mu_\epsilon$.
+
+Now define
+\[
+ s_\epsilon(t)=
+ \begin{cases}
+ t,&t\notin[1,2],\\
+ 1+\dfrac{x+C_\epsilon(x)}{4\pi},
+       &t=1+x/(2\pi),\quad0\le x\le2\pi.
+ \end{cases}
+ \tag{SC2}
+\]
+On the middle interval its increment measure has one-half Lebesgue
+part, so the clock is strictly increasing; all joins are continuous.
+It maps $[1,2]$ onto $[1,2]$, giving the stated global comparisons.
+Analyticity and uniform Taylor bounds follow from (SC1).
+
+The first derivative is zero outside $[1,2]$ and inside equals
+\[
+ \left.\partial_\epsilon s_\epsilon(t)\right|_0
+    =\frac1{4\pi}\sum_{n\ge1}5^{-n}\sin(5^nx).
+ \tag{SC3}
+\]
+For a temporal separation $h$ its increment has magnitude at most
+$C|h|(1+|\log|h||)$: split the sum at $5^n|h|=1$ and use
+$|\sin(a+b)-\sin a|\le\min\{|b|,2\}$. More generally, in the
+coefficient of $\epsilon^j$ the sum of absolute Fourier coefficients
+in largest-digit block $m$ is
+$\binom{m-1}{j-1}$, up to constants depending only on $j$.
+The same split gives the modulus
+\[
+ C_j|h|(1+|\log|h||)^j.
+ \tag{SC4}
+\]
+This holds across the joins as well, since all derivative paths vanish
+at both endpoints. Thus each derivative is H\"older-$\alpha$ for every
+$\alpha<1$. An exponent $\alpha>1/2$ gives vanishing quadratic sums.
+For mixed sums with a H\"older-$\beta$ path, choose
+$\alpha<1$ with $\alpha+\beta>1$ and bound their absolute sum by
+$C T\operatorname{mesh}(\pi)^{\alpha+\beta-1}$.
+
+We prove singularity directly. Under $\mu_\epsilon$,
+\[
+ \mathbb E_{\mu_\epsilon}\cos(5^n x)=\epsilon/2,
+ \qquad
+ \mathbb E_{\mu_\epsilon}[\cos(5^n x)\cos(5^m x)]
+                  =\epsilon^2/4\quad(n\ne m).
+\]
+These identities are the Fourier coefficients at $5^n$ and
+$5^n\pm5^m$. Hence the centered variables are pairwise orthogonal
+and bounded. Their Cesaro average converges in $L^2(\mu_\epsilon)$
+to $\epsilon/2$, with squared error at most $C/N$. At $N=k^2$,
+Chebyshev and Borel--Cantelli give almost sure convergence; boundedness
+interpolates between consecutive squares. Under normalized Lebesgue
+measure the same argument gives almost sure limit zero. For
+$\epsilon\ne0$ the two full-measure sets are disjoint, proving
+$\mu_\epsilon\perp dx$. Formula (SC2) therefore has a nonzero singular
+continuous increment component in $[1,2]$.
+
+Finally put $F(x)=\sum_{n\ge1}5^{-n}\sin(5^nx)$. If $F$ were BV,
+its periodic distributional derivative would be a finite signed measure
+$\lambda$ with distributional Fourier series $\sum_{n\ge1}\cos(5^nx)$.
+Convolution with the normalized Fejer kernel of degree $M=2\cdot5^N$
+would have $L^1$ norm at most $\|\lambda\|_{\rm TV}$ and would equal
+\[
+ P_N(x)=\sum_{n=1}^N
+        \left(1-\frac{5^n}{M+1}\right)\cos(5^nx).
+\]
+All weights are between $1/2$ and one. Orthogonality gives
+$\|P_N\|_2\ge c\sqrt N$. The fourth moment is at most $CN^2$:
+in a zero signed sum of four powers of five the largest exponent must
+cancel with an opposite copy, since three lower powers have magnitude
+less than the largest. Only pairings remain. Therefore
+$\|P_N\|_4\le C\sqrt N$. Interpolation gives
+$\|P_N\|_1\ge\|P_N\|_2^3/\|P_N\|_4^2\ge c\sqrt N$, a contradiction.
+This proves the claimed failure of BV.
+\end{proof}
+
+\paragraph{Consequence for the research strategy.}
+Even an all-order affine-parameter Taylor theory whose clock derivatives
+have every temporal exponent below one does not, by itself, settle
+absolute continuity of the finite affine capacity clock. One needs an
+additional estimate that controls the increment measures, or new
+information from the actual Loewner/SLE geometry. The example does not
+decide the affine-SLE clock question, and is not a counterexample to the
+exploration classification conjecture.
+
+\subsection{An exact increment-measure target for clock regularity}
+
+There is a positive measure-theoretic formulation of the missing estimate.
+It concerns a martingale in the dyadic \emph{time variable}; it makes no
+semimartingale assumption about a Loewner driver.
+
+\begin{proposition}[A dyadic clock criterion]
+\label{prop:dyadic-clock-entropy}
+Let $s$ be a continuous increasing function on $[0,T]$, with $s(0)=0$
+and $s(T)=m>0$. For dyadic cells $I$ at level $n$, put
+\[
+ a_n(t)=\frac{s(\sup I)-s(\inf I)}{|I|},\quad t\in I.
+\]
+Then $ds\ll dt$ if and only if $(a_n)$ is uniformly integrable
+relative to Lebesgue measure on $[0,T]$. A sufficient condition is
+\[
+ \sup_n H_n<\infty,\qquad
+ H_n=\int_0^T a_n\log\frac{a_n}{m/T}\,dt.
+ \tag{SC5}
+\]
+Write $m_I=s(\sup I)-s(\inf I)$ and $I_-,I_+$ for the children of $I$.
+Condition (SC5) is equivalent, up to absolute multiplicative constants,
+to finiteness of
+\[
+ \sum_{I\text{ dyadic}}
+       \frac{(m_{I_-}-m_{I_+})^2}{m_I},
+ \tag{SC6}
+\]
+where a zero-mass summand is defined to be zero. If the clock is random,
+a uniform bound on $\mathbb E H_n$ is sufficient for almost sure
+absolute continuity.
+\end{proposition}
+\begin{proof}
+The $a_n$ form a nonnegative martingale on the probability space
+$([0,T],dt/T)$ with the increasing dyadic sigma-fields. They converge
+almost everywhere to the density of the absolutely continuous part of
+$ds$, by differentiation of measures. Uniform integrability is
+equivalent to preservation of their common integral $m$ at the limit,
+which is equivalent to absence of singular mass. If $ds=a\,dt$,
+then $a_n$ are the dyadic conditional averages of the integrable
+function $a$ and hence are uniformly integrable.
+
+The entropy condition gives uniform integrability by the elementary
+$x\log x$ tail bound. Jensen's inequality makes $H_n$ nonnegative
+and increasing. At a split of a positive-mass cell, put
+$p=m_{I_-}/m_I$. The entropy increment is exactly
+\[
+ m_I\{p\log(2p)+(1-p)\log(2(1-p))\}.
+\]
+For $\delta=2p-1$, its bracket equals
+$\sum_{k\ge1}\delta^{2k}/[2k(2k-1)]$, and is bounded between
+$\delta^2/2$ and $(\log2)\delta^2$. Summing the increments proves
+the equivalence with (SC6). Finally a uniform expected entropy bound
+and monotone convergence give finite limiting entropy almost surely,
+which implies the pathwise criterion.
+\end{proof}
+
+This supplies a concrete new model task: control the dyadic mass-split
+energy of the actual affine-SLE capacity clock. Uniform integrability,
+rather than merely temporal H\"older regularity of clock tangents,
+is exactly what is needed for clock absolute continuity. The entropy
+bound is sufficient, not necessary; no such bound is proved here from
+the exploration axioms or for affine SLE. Clock AC would remain only a
+necessary condition in the existing wrong-driver semimartingale test.
+
+
 \begin{thebibliography}{99}
 \bibitem{schramm-wilson} O. Schramm and D. B. Wilson,
 \emph{SLE coordinate changes}, New York J. Math. \textbf{11} (2005), 659--669.
@@ -6804,4 +7574,5 @@ Math. Ann. \textbf{390} (2024), 4789--4812.
 \url{https://doi.org/10.1007/s00208-024-02866-0}.
 \end{thebibliography}
 \end{document}
+
 
