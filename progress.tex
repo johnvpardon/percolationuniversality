@@ -29,7 +29,9 @@ The 29 October priority is to understand affine-SLE$_6$ driving in
 arbitrary coordinates before imposing coordinate-sensitive stochastic
 regularity. Matched-prefix affine driving and capacity admit uniform
 first variations even for nonsimple filled hulls; the linear capacity
-response is one-half H\"older. The continuum crossing/locality bounds
+response has every temporal exponent below one under the crossing
+assumptions, and the linear driver response retains
+every temporal exponent below one-half. The continuum crossing/locality bounds
 give nondegenerate subsequential adaptive quadratic-activity clocks
 without semimartingality. Wrong-coordinate semimartingality would force
 absolute continuity of the affine capacity clock, which remains open.
@@ -9023,6 +9025,159 @@ crossing-controlled driver as well as the affine-SLE model. They
 give regularity in the \emph{deformation parameter}. Apart from the
 separate one-half H\"older bound on $E$, they give no temporal
 regularity estimate for $D$ and no finite signed variation of $W$ or $D$.
+
+% Independently checked, 29 October 2026.
+\subsection{Temporal regularity of the first affine driver response}
+\label{sec:temporal-affine-response}
+
+Use the fixed-cutoff matched-prefix setup above, with $K_t\subset B_R$
+for $t\le T$. Let $D_t=\partial_\epsilon U_\epsilon(t)|_0$ in affine
+direction $\nu$. For $0\le s<t\le T$ set
+\[
+ r_{s,t}=\sup_{s\le u\le t}|W_u-W_s|+2\sqrt{t-s}.
+\]
+\begin{proposition}[The linear affine driver response retains temporal roughness bounds]
+\label{prop:temporal-affine-response}
+For every integer $N\ge1$, there is $C_N$ depending only on $N$ and the
+fixed cutoff profile such that
+\[
+ |D_t-D_s|\le C_N|\nu|R^{1/(N+1)}r_{s,t}^{N/(N+1)}.
+ \tag{TD1}
+\]
+Consequently if $W$ is H\"older for every exponent below $1/2$, then so is
+its matched-prefix first affine response $D$.
+\end{proposition}
+
+\begin{proof}
+Fix $p\ge2(N+1)$, taking $p>2$ in the case $N=1$. The principal Beltrami
+solution at prefix $s$ is $F_s^\epsilon=\operatorname{id}+\mathcal Ch_{\epsilon,s}$,
+with coefficient support in $B_{CR}$ and
+\[
+ \|h_{\epsilon,s}\|_p\le C_p|\epsilon\nu|R^{2/p},
+ \qquad |\epsilon\nu|\le c_p.
+\]
+The Cauchy transform maps $L^p(\mathbb C)$ to the homogeneous H\"older
+class with exponent $1-2/p$, by splitting its difference kernel at the
+separation of the two evaluation points. Thus
+\[
+ |F_s^\epsilon(z)-F_s^\epsilon(w)|
+ \le |z-w|+C_p|\epsilon\nu|R^{2/p}|z-w|^{1-2/p}.
+ \tag{TD2}
+\]
+This holds on the closed half-plane, since the Cauchy representation is
+continuous there.
+
+The old-chart increment hull between $s$ and $t$ is contained in
+$B(W_s,r_{s,t})$: its centered driving oscillation bounds horizontal
+extent and its height is at most $2\sqrt{t-s}$. The comparison map
+$F_s^\epsilon$ maps it to the increment hull in the deformed chart.
+The map agrees on the actual physical hull with the affine deformation,
+since the fixed cutoff is one on all prefixes. Equation (TD2) and the
+deterministic driver localization estimate applied to this increment give
+\[
+ |U_\epsilon(t)-U_\epsilon(s)|
+ \le3r_{s,t}+C_p|\epsilon\nu|R^{2/p}r_{s,t}^{1-2/p}.
+ \tag{TD3}
+\]
+No stochastic Markov property is used here.
+
+The rational expression for $m_{\epsilon,t}$ and the uniformly convergent
+Beurling Neumann series are analytic in the real parameter $\epsilon$
+on one interval $|\epsilon\nu|<c_p$, uniformly over prefixes in $B_R$.
+More explicitly, their complex analytic extension is obtained by
+extending the upper and lower reflected rational coefficient formulas
+with the same complex parameter; reflection symmetry is needed only
+for real parameters. Their $L^p$ Taylor coefficients are bounded by
+$R^{2/p}(C_p|\nu|)^j$. The Cauchy transform estimate gives a uniform
+order-$N$ remainder $C_{N,p}|\nu|^{N+1}|\epsilon|^{N+1}R$ for the
+matched-prefix driving value.
+
+Choose finite-difference weights $a_1,\dots,a_N$ with
+$\sum_{k=1}^N a_kk^j=\mathbf1_{\{j=1\}}$ for $1\le j\le N$.
+They give
+\[
+ D_t=\frac1\epsilon\sum_{k=1}^Na_k
+       (U_{k\epsilon}(t)-W_t)
+       +O_N(|\epsilon|^N|\nu|^{N+1}R),
+ \tag{TD4}
+\]
+uniformly in $t$. Subtract this formula at $s$ and apply (TD3), obtaining
+\[
+ |D_t-D_s|\le C_N\left\{
+ \frac{r_{s,t}}{|\epsilon|}
+ +|\nu|R^{2/p}r_{s,t}^{1-2/p}
+ +|\epsilon|^N|\nu|^{N+1}R\right\}.
+ \tag{TD5}
+\]
+For $r_{s,t}/R$ below a sufficiently small constant, choose
+$|\epsilon\nu|=c_N(r_{s,t}/R)^{1/(N+1)}$ so all the finite-difference
+parameters remain within the analytic interval. The first and third
+terms give (TD1); the second is no larger because $2/p\le1/(N+1)$.
+For larger $r_{s,t}/R$, (TD1) follows from $\sup|D|\le C|\nu|R$.
+The case $\nu=0$ is immediate.
+
+If $W$ is H\"older-$\alpha$ on a fixed horizon with $\alpha<1/2$,
+then $r_{s,t}\le C(\omega)(t-s)^\alpha$. Equation (TD1) gives exponent
+$\alpha N/(N+1)$ for $D$. Given any $\beta<1/2$, first choose
+$\beta<\alpha<1/2$ and then $N$ sufficiently large. Countable choices
+of $\alpha,N$ give the simultaneous conclusion.
+\end{proof}
+
+
+\begin{corollary}[The linear clock response has every temporal exponent below one]
+\label{cor:temporal-clock-response-nearly-lipschitz}
+For every $0<\theta<2$, the same bounded-hull setup gives
+\[
+ |E_t-E_s|\le C_\theta|\nu|R^{2-\theta}r_{s,t}^{\theta}.
+ \tag{TD6}
+\]
+If $W$ is H\"older for every exponent below $1/2$, then $E$ is
+H\"older for every exponent below $1$. In particular it has finite
+$q$-variation for every $q>1$, its sums of squared increments tend
+to zero along every sequence of partitions with mesh tending to zero,
+and the same is true of mixed sums $\sum\Delta W\Delta E$.
+Neither bounded variation nor absolute continuity is asserted.
+\end{corollary}
+\begin{proof}
+Choose arbitrarily large $p>2$, and restrict real parameters to a
+small interval $|\epsilon\nu|\le\delta_p$ on which the preceding
+$L^p$ bounds hold. Put $\alpha=1-2/p$. For $r=r_{s,t}\le R$,
+(TD2) bounds the radius of the transformed incremental hull by
+$C_p R(r/R)^\alpha$. Its half-plane capacity is at most the square
+of this radius. Consequently, uniformly in those real parameters,
+\[
+ 0\le s_\epsilon(t)-s_\epsilon(s)
+      \le C_p R^2(r/R)^{2\alpha}.
+\]
+The same holomorphic parameter argument gives uniform order-$N$
+Taylor remainders $C_{N,p}|\epsilon|^{N+1}|\nu|^{N+1}R^2$
+for capacity. Apply the finite-difference formula for its first
+parameter derivative at both $s$ and $t$. For $a=|\epsilon\nu|$
+small enough to accommodate all sample points this yields
+\[
+ |E_t-E_s|\le C_{N,p}|\nu|R^2
+                \{(r/R)^{2\alpha}/a+a^N\}.
+\]
+Optimize $a$ proportional to $(r/R)^{2\alpha/(N+1)}$, capping
+it at the allowed parameter radius. Small $r/R$ gives exponent
+$2\alpha N/(N+1)$; larger $r/R$ uses the uniform bound on $E$.
+Choose $p,N$ so this exponent exceeds the prescribed $\theta$.
+This proves (TD6). The temporal conclusion follows exactly as for
+$D$, using $r_{s,t}\le C(\omega)(t-s)^\gamma$ for each
+$\gamma<1/2$.
+
+For the final assertions choose a temporal H\"older exponent for
+$E$ greater than $1/q$ to obtain finite $q$-variation, or greater
+than $1/2$ to obtain vanishing squared-increment sums. For mixed
+sums, choose exponents $\gamma<1/2$ for $W$ and $\beta<1$ for
+$E$ with $\gamma+\beta>1$; the absolute mixed sum is bounded by
+a constant times $T\,\operatorname{mesh}(\pi)^{\gamma+\beta-1}$.
+\end{proof}
+
+This is temporal path regularity of the linear affine response under the
+original-prefix clock. It proves neither finite signed variation nor
+semimartingality, and does not justify differentiating the own-capacity
+wrong-coordinate driver with respect to anisotropy.
 
 \paragraph{A useful check.}
 For the deterministic vertical slit driven by $W_t=0$, the pure-shear
