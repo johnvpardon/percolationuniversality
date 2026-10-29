@@ -38,7 +38,12 @@ semimartingality. None of these criteria supplies the missing signed
 estimate from the exploration axioms. A singular analytic clock example
 shows why clock-path Taylor regularity alone cannot settle finite-affine
 clock absolute continuity; a dyadic uniform-integrability criterion
-identifies a precise increment-measure target.
+identifies a precise increment-measure target. Signed-test drift energy
+is lower semicontinuous in the affine tensor; fixed-state affine driving
+laws are continuous under the standing admissibility and lifetime
+conditions. A compact finite-test selection principle can therefore
+select a common tensor jointly with signed-energy estimates, if common
+finite envelopes and a compact ellipticity class can be established.
 The 29 October priority is to understand affine-SLE$_6$ driving in
 arbitrary coordinates before imposing coordinate-sensitive stochastic
 regularity. Matched-prefix affine driving and capacity admit uniform
@@ -10708,6 +10713,287 @@ is exactly what is needed for clock absolute continuity. The entropy
 bound is sufficient, not necessary; no such bound is proved here from
 the exploration axioms or for affine SLE. Clock AC would remain only a
 necessary condition in the existing wrong-driver semimartingale test.
+
+
+\section{Selecting an unknown affine tensor through finite signed tests}
+\label{sec:finite-affine-energy-selection}
+
+One need not identify the affine tensor before formulating a useful
+signed regularity estimate. It can be retained as a compact parameter
+and selected jointly with the estimates. The following conditional
+principle makes this precise without extending from a dense collection
+of domains or assuming a domain Feller property.
+
+Fix $1<p<\infty$ and $q=p/(p-1)$. On $C([0,T],\mathbb R)$ let
+$W_t(w)=w(t)$, and suppose all coordinate variables are integrable
+under the law $P$. Let $\mathcal H_T$ consist of processes
+\[
+ H_t=\sum_{i=0}^{n-1}h_i(W|_{[0,t_i]})
+                       \mathbf1_{(t_i,t_{i+1}]}(t),
+ \qquad 0=t_0<\cdots<t_n=T,
+\]
+where every $h_i$ is bounded and continuous on its past-path space.
+Put
+\[
+ \mathcal J_{p,T}(P)=\sup_{H\in\mathcal H_T}
+ \left\{p\,\mathbb E_P\sum_i h_i(W)(W_{t_{i+1}}-W_{t_i})
+       -(p-1)\mathbb E_P\int_0^T|H_t|^qdt\right\}.
+ \tag{FS1}
+\]
+
+\begin{proposition}[A signed-test characterization of $L^p$ drift]
+\label{prop:signed-test-lp-drift}
+The functional in (FS1) is finite if and only if, in the completed
+right-continuous natural filtration, there is a predictable
+$b\in L^p(P\otimes dt)$ such that
+\[
+ W_t=W_0+M_t+\int_0^t b_sds
+ \tag{FS2}
+\]
+with $M$ a continuous martingale starting at zero. In that case
+\[
+ \mathcal J_{p,T}(P)=\mathbb E_P\int_0^T|b_s|^pds.
+ \tag{FS3}
+\]
+The drift is unique up to $P\otimes dt$-null sets.
+\end{proposition}
+\begin{proof}
+Write $L(H)=\mathbb E\sum_i h_i\Delta W_i$ and
+$\|H\|_q=(\mathbb E\int|H|^qdt)^{1/q}$. Scaling $H$ by any real
+constant in (FS1), and optimizing that scalar, shows
+\[
+ |L(H)|\le\mathcal J_{p,T}(P)^{1/p}\|H\|_q.
+ \tag{FS4}
+\]
+In particular $L$ respects equivalence modulo $P\otimes dt$.
+Continuous bounded past-path functions are dense in every finite
+$L^q$ space of past-measurable variables, since path space is Polish.
+Consequently $\mathcal H_T$ is dense in the predictable $L^q$ space.
+For the usual augmentation one may first approximate any augmented
+past variable by raw past variables at times $t+\delta$, then delay
+the start of its elementary interval by $\delta$; the lost interval
+has vanishing $P\otimes dt$ norm. This gives the same density result.
+
+Extend $L$ continuously and apply $L^q$ duality on the raw predictable
+sigma-field (completed for $P\otimes dt$) to obtain a predictable
+$b\in L^p$, choosing a raw predictable version, with
+$L(H)=\mathbb E\int Hb\,dt$ and
+$\|b\|_p\le\mathcal J_{p,T}(P)^{1/p}$.
+Testing one interval $(s,t]$ against a bounded continuous functional of
+$W|_{[0,s]}$ gives zero conditional mean for increments of
+$W-\int bdt$. The identity extends to every bounded past-measurable
+variable: it is equality of finite signed measures on the Polish
+past-path space, tested against all bounded continuous functions.
+Thus the continuous integrable process $M$ in (FS2) is a martingale
+in the raw natural filtration. It extends to the usual augmentation:
+it is closed by its integrable terminal value, and right limits of
+conditional expectations agree with its continuous paths.
+
+Conversely, under (FS2), martingale increments contribute zero, so
+$L(H)=\mathbb E\int Hb\,dt$. Pointwise convex duality gives
+\[
+ \sup_{h\in\mathbb R}\{phb-(p-1)|h|^q\}=|b|^p.
+\]
+Approximate the optimizing predictable variable
+$\operatorname{sgn}(b)|b|^{p-1}$ in $L^q$ by members of
+$\mathcal H_T$ to obtain equality (FS3). Uniqueness follows from
+uniqueness of the continuous semimartingale decomposition.
+\end{proof}
+
+\begin{proposition}[Lower semicontinuity and common-tensor selection]
+\label{prop:finite-affine-selection}
+Let $\mathcal K$ be a compact parameter space of normalized affine
+tensors. For each state $f$ in an arbitrary index set and each
+horizon $T$, suppose $A\mapsto P_{f,T}^A$ is weakly continuous on
+$C([0,T],\mathbb R)$, and, for each deterministic time $t$, the
+family of random variables $W_t$ is uniformly integrable over these
+laws. Then $A\mapsto\mathcal J_{p,T}(P_{f,T}^A)$ is lower
+semicontinuous.
+
+Fix a deterministic finite envelope $B_{f,T}$ for every desired
+state/horizon pair. If every finite collection of elementary signed
+tests, from any finite collection of state/horizon pairs, admits
+one common $A\in\mathcal K$ for which all the individual test
+expressions in (FS1) are at most their prescribed $B_{f,T}$, then
+there exists one $A_*\in\mathcal K$ such that
+\[
+ \mathcal J_{p,T}(P_{f,T}^{A_*})\le B_{f,T}
+ \quad\hbox{for every desired }(f,T).
+ \tag{FS5}
+\]
+In particular all these drivers simultaneously have absolutely
+continuous $L^p$ drift with the corresponding envelopes.
+The same conclusion holds if finite collections can only be satisfied
+up to an arbitrary common error $\eta>0$.
+\end{proposition}
+\begin{proof}
+For fixed $H$, its penalty expectation is a bounded continuous
+function of the law. Each increment expectation is continuous as
+well: its integrand is continuous, and its absolute value is at
+most a fixed multiple of $|W_{t_i}|+|W_{t_{i+1}}|$; uniform
+integrability allows truncation. Therefore each elementary test
+expression is continuous in $A$. Their supremum is lower
+semicontinuous.
+
+The constraint that one test expression is at most $B_{f,T}$ is
+closed in $\mathcal K$. The simultaneous finite-test hypothesis is
+exactly the finite-intersection property for these closed sets.
+Compactness gives a point in their entire intersection, and taking
+the supremum over tests gives (FS5). In the approximate version,
+compactness and continuity first let $\eta\downarrow0$ for each fixed
+finite collection, giving the exact finite-intersection property.
+No countability of the state
+index set and no dense-state extension are used.
+\end{proof}
+
+One possible compact tensor class is
+$\{Q=Q^{\mathsf T}>0:\det Q=1,\ \lambda^{-1}I\le Q\le\lambda I\}$.
+The common ellipticity bound $\lambda$ must be proved or assumed.
+The finite envelopes must also be specified in advance; the claim
+that each finite test collection has some finite but uncontrolled
+budget is not enough for the compactness conclusion.
+
+\subsection{Physical affine-coordinate continuity for a fixed state}
+
+The law-continuity premise above can be proved pathwise for changes
+of affine coordinates. The transported coefficient is essential.
+This is not a continuity assertion as the physical state itself varies.
+
+\begin{proposition}[Uniform driver continuity under asymptotically conformal changes]
+\label{prop:qc-coordinate-driver-continuity}
+Let $K_t$, $0\le t\le T_0$, be a continuously driven half-plane
+Loewner chain with driver $W_t$ and $K_t\subset B_R$. Let
+$F_n:\mathbb H\to\mathbb H$ be quasiconformal homeomorphisms fixing
+$0,1,\infty$, with maximal dilatations tending to one. Suppose the
+image hull chains admit their continuous capacity parametrizations.
+Write
+\[
+ s_n(t)=\tfrac12\operatorname{hcap}(F_nK_t),\qquad
+ U_n(t)=\widehat g^{\,n}_{s_n(t)}(F_n\gamma(t)),
+\]
+where tips are interpreted as prime ends. Then
+\[
+ \sup_{t\le T_0}|s_n(t)-t|\longrightarrow0,\qquad
+ \sup_{t\le T_0}|U_n(t)-W_t|\longrightarrow0.
+ \tag{FS6}
+\]
+Consequently their own-capacity drivers converge uniformly to $W$
+on every $[0,T]$ with $T<T_0$.
+\end{proposition}
+\begin{proof}
+Reflect $F_n$ across the real line. Normalized quasiconformal
+compactness gives $F_n\to\operatorname{id}$ uniformly in spherical
+distance, and hence uniformly on compact subsets of the plane.
+The image hulls all lie in a fixed disk $B_{R'}$. At each fixed $t$,
+their complements converge in the Caratheodory kernel sense to
+$\mathbb H\setminus K_t$: any compact subset persists by uniform
+convergence of $F_n^{-1}$, and any purported larger kernel
+neighborhood would contain points $F_n(z_n)\in F_nK_t$ converging
+to a point of $K_t$. Hydrodynamic maps converge locally uniformly.
+Since all hulls are uniformly bounded, the maps reflect conformally
+across the real line outside a fixed disk; convergence on a sufficiently
+large fixed circle gives convergence of their $1/z$ coefficients,
+hence $s_n(t)\to t$. Monotonicity in $t$ and a finite-grid sandwich
+against the continuous limit give uniform clock convergence.
+
+Set $f_t=g_t^{-1}$ and consider
+\[
+ Q_{n,t}=\widehat g^{\,n}_{s_n(t)}\circ F_n\circ f_t.
+\]
+This is a quasiconformal self-homeomorphism of the half-plane,
+fixing infinity, with dilatation tending to one uniformly in $t$.
+Uniform hydrodynamic bounds for hulls in a fixed disk give, for
+every sufficiently large fixed $Y$,
+\[
+ \sup_{t\le T_0}|Q_{n,t}(iY)-iY|
+       \le CR^2/Y+o_n(1),
+ \tag{FS7}
+\]
+enlarging $R$ by a fixed factor if necessary. Indeed
+$f_t(iY)=iY+O(R^2/Y)$ uniformly in $t$, $F_n$ converges uniformly
+on the compact set of these values, and the transformed
+hydrodynamic map changes its argument by $O(R^2/Y)$.
+
+For any sequence $t_n$, the images of the three distinct sphere
+points $\infty,iY,2iY$, with one sufficiently large fixed $Y$,
+remain respectively infinity and in separated compact neighborhoods
+of $iY,2iY$. Normalized quasiconformal compactness therefore keeps
+the reflected $Q_{n,t_n}$ away from degenerate limits. Any subsequential normalized
+quasiconformal limit is therefore a conformal sphere
+homeomorphism fixing infinity and preserving $\mathbb H$, hence
+$z\mapsto az+b$ with $a>0$ and $b\in\mathbb R$. The estimate
+(FS7), for arbitrarily large fixed $Y$, forces $a=1,b=0$.
+Thus $Q_{n,t}\to\operatorname{id}$ uniformly on bounded closed
+half-plane sets, uniformly in $t$. Since $W_t$ remains bounded,
+$U_n(t)=Q_{n,t}(W_t)$ proves the driver assertion in (FS6).
+Uniform inverse-clock convergence on $[0,T]$, followed by uniform
+continuity of $W$, proves the final statement.
+\end{proof}
+
+For a fixed physical state $f_0:\mathbb H\to D_0$, choose one
+third marked prime end $f_0(1)$ to normalize its chordal charts.
+If physical affine maps $A_n\to\operatorname{id}$, the comparison
+$F_n=\varphi_n\circ A_n\circ f_0$, where
+$\varphi_n:A_nD_0\to\mathbb H$ sends the three corresponding
+ends to $0,1,\infty$, has coefficient
+\[
+ \mu_{F_n}(z)=\mu_{A_n}
+             \frac{\overline{f_0'(z)}}{f_0'(z)}.
+ \tag{FS8}
+\]
+Its norm tends to zero, so the preceding proposition applies.
+At a general base affine map $A_0$, use the reference domain
+$A_0D$ and the relative maps $A_nA_0^{-1}$. For each deterministic
+convergent sequence of affine maps, this gives samplewise convergence
+of normalized driving paths on horizons strictly inside the available
+capacity lifetime, on the common probability-one event of admissibility
+for that countable sequence. Bounded continuous functionals then give
+weak law continuity by dominated convergence. Admissibility almost
+surely for each individual affine map suffices for this argument;
+a universal event for an uncountable tensor class is not asserted.
+No domain Feller assertion is used. Uniform integrability
+of increments remains a separate requirement, for example from
+uniform crossing tails over a compact ellipticity class.
+
+\begin{corollary}[The selection continuity assumptions under uniform crossings]
+\label{cor:affine-selection-continuity-crossings}
+Suppose a fixed physical-state law has the uniform avoidable-quad
+crossing upper bound used earlier, and its curves are continuously
+Loewner admissible after every affine map in a compact normalized
+ellipticity class $\mathcal K$, with infinite capacity lifetime in each such chart.
+Normalize each initial chart by three
+corresponding prime ends. Then the associated own-capacity driver
+laws are weakly continuous in $A\in\mathcal K$ and have uniformly
+integrable coordinate increments on each finite capacity horizon.
+Thus the lower semicontinuity premise of
+Proposition~\ref{prop:finite-affine-selection} holds for that state.
+\end{corollary}
+\begin{proof}
+Weak continuity is the preceding deterministic argument, coupled
+through the fixed physical curve sample. If all affine maps have
+quasiconformal dilatation at most $K_*$, modulus distortion shows
+that a transformed quad of modulus at least $K_*M$ pulls back to
+one of modulus at least $M$. Avoidability and the crossing event
+are topological, so the same probability upper bound survives
+uniformly over the class, with the enlarged modulus threshold.
+The established driving upper-tail theorem consequently supplies
+uniform exponential tails for the driving supremum divided by
+$\sqrt T$, with constants depending only on the original crossing
+constants and $K_*$. This gives uniform integrability, indeed all
+finite moments, for the finitely many coordinate increments in
+each elementary test.
+\end{proof}
+
+\paragraph{Status and role.}
+These propositions are compactness and stochastic duality tools.
+They do not prove the simultaneous finite-test bound or a common
+ellipticity class from the exploration axioms. They show that a regularity
+theorem may select its affine tensor as part of its conclusion.
+It is unnecessary to know the tensor first, but it remains
+necessary to prove an estimate uniform over finite collections
+of tests. Mere $L^p$ drift, without the additional locality/slit
+control in the rigidity theorems, is not claimed to finish
+classification.
 
 
 \begin{thebibliography}{99}
