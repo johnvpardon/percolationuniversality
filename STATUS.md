@@ -1,6 +1,6 @@
 # Research status — 29 October 2026
 
-**Continuum classification under RSW remains open. Current priority: understand affine-SLE₆ driving in arbitrary coordinates before imposing coordinate-sensitive stochastic regularity.** Verification of the axioms for lattice scaling limits remains deferred.
+**Continuum classification under RSW remains open. Current priority: bridge the regularity implied by crossing estimates, locality, strong DMP, and translation covariance to a classification-compatible regularity statement before choosing a preferred affine structure.** Verification of the axioms for lattice scaling limits remains deferred.
 
 ## Scope and standing assumptions
 
@@ -15,6 +15,8 @@ The quantitative input is an upper bound q<1 for avoidable boundary quads of mod
 The axioms do not yet select a correct affine structure. Existence of one common structure with tame driving is a major missing step, not an available normalization. For fixed-affine SLE₆, the ordinary driver in wrong coordinates is not Brownian and cannot satisfy the existing tame-characteristic assumptions throughout the domain family. Those obstructions do **not** settle semimartingality or finiteness of its raw signed restart budget.
 
 Study the actual affine-SLE₆ driver and its capacity change, while deriving affine-compatible constraints on the unknown family. Retain the constant physical Beltrami coefficient as an unknown; identify anisotropy and stochastic law together. Do not demand finite raw signed variation in every affine coordinate system.
+
+The user's 29 October clarification makes the regularity bridge the primary objective. Known-model calculations should test candidate regularity classes and expose invalid implications; they should not postpone deductions from the abstract axioms indefinitely. First examine geometric exit skeletons: crossing estimates control the number and durations of exits, while predictable exit-sign biases isolate the missing signed input. Establish exact criteria and analytic-locality transformation rules without assuming semimartingality. Any theorem selecting a common affine structure must derive it, rather than build it into an initial normalization.
 
 ## New checked results
 
