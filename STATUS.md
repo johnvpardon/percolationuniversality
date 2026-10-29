@@ -1,6 +1,14 @@
-# Research status — 28 October 2026
+# Research status — 29 October 2026
 
 **Continuum classification under RSW remains the priority and remains open.** Verification of domain Markov, locality, and translation covariance for percolation scaling limits is deferred.
+
+## Current priority: understand driving in arbitrary affine coordinates
+
+The next task is to determine the actual regularity of the ordinary Euclidean Loewner driver of a fixed-affine SLE₆, and use that model to choose attainable regularity targets for the unknown family. Do not presuppose a correct complex structure: proving existence of one common affine normalization with tame driving is a major missing step, not preliminary bookkeeping. Finiteness of the uncorrected signed restart budget is not presently known even for the wrong-coordinate affine-SLE₆ model.
+
+Work in two linked directions: (1) study the known affine-SLE₆ driver, its capacity change, and its evolving quasiconformal correction, including small anisotropy; (2) seek regularity/cancellation consequences of DMP, corrected locality, translation covariance and the stated crossing input that accommodate this full model family. For a half-plane-preserving real-linear map L, the exact comparison is F_t = ĝ_{s(t)} ∘ L ∘ g_t⁻¹, with F_t(W_t) the corrected driver and μ_{F_t} = μ_L · overline{(g_t⁻¹)′}/(g_t⁻¹)′. This carries one unknown constant physical Beltrami coefficient into a history-dependent field. Its tip behavior and clock regularity must be justified; this identity alone is not a stochastic classification.
+
+First establish what holds in wrong coordinates: semimartingality remains undecided by our existing obstruction, as do the precise drift/bracket or alternative stochastic descriptions. Preserve the conditional rigidity tools below, but do not use their coordinate-sensitive hypotheses as consequences of the axioms. The aim is to identify anisotropy and the stochastic law together, rather than require a separate prior decoder for the unknown exploration.
 
 ## Scope and precise assumptions
 
@@ -22,7 +30,7 @@ These arguments received primary and independent critical checks. The rough-stat
 
 ## Remaining bottlenecks and next questions
 
-1. Prove finite aggregate signed restart variation (QV4) in one common unknown affine structure, or find a counterexample satisfying all continuum assumptions. The new two-sided driving tails and variation index do not imply this finiteness. Brownian plus a deterministic infinite-variation Hölder drift demonstrates why unsigned regularity is insufficient at the process level.
+1. Establish the regularity class of fixed-affine SLE₆ in arbitrary Euclidean coordinates, then formulate an affine-compatible signed target (possibly using the evolving Beltrami field). Proving finite aggregate signed restart variation (QV4) in some common affine structure remains an eventual route, but neither its existence nor its validity in wrong coordinates is established. Two-sided driving tails and variation index do not imply it; Brownian plus deterministic infinite-variation Hölder drift demonstrates the process-level obstruction.
 2. Once semimartingality is obtained, eliminate the singular drift and control AC bias across shrinking slit states. The bracket is then already bounded and positive. Locality transports drift measures, but source-dependent stopping intervals and constants can degenerate; finite budgets alone do not give the required first-order rate.
 3. Investigate whether the non-Möbius/Schwarzian part of full locality supplies cancellation beyond target invariance. Do not assume finite-dimensional force-point closure. A variation modulus uniform over all rescalings of a chart can silently assume martingality and is not a legitimate coarse input.
 4. Keep locality conventions on rough source prime ends explicit. The decoder remains supporting work: simple-SLE model arcs are not segments of the unknown nonsimple exploration. Frontier-law identification is not the main route.
