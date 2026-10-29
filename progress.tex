@@ -25,6 +25,13 @@
 \begin{document}
 \maketitle
 \begin{abstract}
+Literal strong DMP at time zero makes the initial trace germ trivial.
+Consequently any family represented using one common prior on smooth
+global coordinate diffeomorphisms collapses, under translation covariance,
+to a deterministic affine-SLE$_6$ metric. No such representation is
+assumed for the unknown family. A quantitative necessity estimate at
+visited states identifies the inverse-linear drift and inverse-cubic
+variance anomalies that the signed-energy bound must eliminate.
 The regularity bridge is now expressed through exact exit-sign criteria:
 finite aggregate predictable sign budget is equivalent to integrable
 finite-variation drift; subquadratic weighted sign energies characterize
@@ -5360,10 +5367,13 @@ At an analytic regular source, the initial decoder likewise returns the
 latent tensor almost surely. Therefore a nontrivial mixture of affine
 metrics has a nontrivial initial trace-germ sigma-field. At every
 positive exploration time the metric posterior has already collapsed to
-a point, even though its prior was nontrivial. This rules out such
-mixtures under an additional initial-germ zero-one premise. It does not
-rule out a deterministic source-germ metric assignment; that mechanism
-still asks whether the current unlabelled frontier recovers the tensor.
+a point, even though its prior was nontrivial. This rules out such mixtures under an initial-germ zero-one premise.
+Under the current literal strong DMP in the usual right-continuous
+natural filtration, that premise is automatic by
+Lemma~\ref{lem:dmp-zero-germ}. The independent-color version remains
+useful before a limiting strong DMP theorem is available. A deterministic
+source-germ metric assignment remains unresolved; it requires restart
+consistency at every rough contact state.
 
 \begin{proposition}[DMP forces restarted mixing measures to be pure]
 \label{prop:ed-posterior}
@@ -10490,6 +10500,119 @@ physical Beltrami coefficient before these signed-energy hypotheses can
 be expected to hold.
 
 
+\subsection{A necessary energy blow-up at characteristic Lebesgue states}
+\label{sec:visited-energy-necessity}
+
+The shrinking-slit energy condition is quantitatively adapted to the
+actual characteristic anomalies. Mere finiteness of energy in each
+state cannot replace it. The following necessity statement applies on
+the states visited by a driver with locally $L^p$ drift, without any
+initial energy-density assumption at every deterministic state.
+
+Assume the family and locality premises of
+Theorem~\ref{thm:exit-energy-rigidity}, and (ER1), with $1<p<2$.
+For a deterministic state $g$ and a bounded stopping time $\rho_g>0$
+with bounded stopped driver, define the extended nonnegative quantity
+\[
+ \underline K_p(g;\rho_g)=
+ \left(\liminf_{h\downarrow0}\frac1h
+       \liminf_{r\downarrow0}
+          \mathcal E^g_{r,p}(h\wedge\rho_g)\right)^{1/p}.
+ \tag{VN1}
+\]
+No finiteness of this quantity is assumed.
+
+\begin{proposition}[Anomalies force inverse-scale source energy]
+\label{prop:visited-state-energy-necessity}
+Fix an initial law $P_f$ with canonical characteristics
+$A_t=\int_0^t b_sds$ and $C_t=\int_0^t v_sds$.
+For Lebesgue-almost every deterministic time $t$, for almost every
+conditioned history at that time, put $g=f_t$, $b=b_t$, and $v=v_t$.
+For every fixed admissible mirrored-slit scale $\epsilon$, choose any
+positive bounded initial localizations $\rho_\epsilon^\pm$ in the two
+deleted states. With $d_\epsilon$ and $e_\epsilon=e_\epsilon^+$ as
+in (DR9), one has
+\[
+ \underline K_p(g_\epsilon^\pm;\rho_\epsilon^\pm)
+ \ge\left|\frac b{d_\epsilon}
+       \mathbin{\pm}\frac{e_\epsilon}{2d_\epsilon^2}(v-6)\right|.
+ \tag{VN2}
+\]
+Consequently
+\[
+ \max_{\pm}\underline K_p(g_\epsilon^\pm;\rho_\epsilon^\pm)
+ \ge \frac{|b|}{d_\epsilon}
+       +\frac{|e_\epsilon|}{2d_\epsilon^2}|v-6|.
+ \tag{VN3}
+\]
+The assertion holds simultaneously for every scale in any prescribed
+countable sequence. Thus a nonzero variance anomaly forces at least
+order $\epsilon^{-3}$ source-energy roots, while nonzero drift forces
+at least order $\epsilon^{-1}$ roots.
+\end{proposition}
+
+\begin{proof}
+Local absolute continuity and pathwise Lebesgue differentiation,
+followed by Fubini, give for almost every deterministic $t$, almost
+surely,
+\[
+ \frac1h\int_t^{t+h}|b_s-b_t|ds\longrightarrow0,
+ \qquad
+ \frac1h\int_t^{t+h}|v_s-v_t|ds\longrightarrow0.
+ \tag{VN4}
+\]
+Condition on the past at such a time and use strong DMP and canonical
+restart compatibility. Outside a null set of histories, the restarted
+canonical drift and bracket satisfy (VN4) at zero with the frozen
+deterministic constants $b_t,v_t$. In particular their variation per
+unit time is bounded near zero, and their integrated initial tangents
+are respectively $b$ and $v$.
+
+For a fixed $\epsilon$, couple the restarted trace with each deleted
+initial trace by locality. The analytic characteristic identity gives
+\[
+ \widehat A^\pm_{u_\pm(h)}
+ =\int_0^h p_s^\pm b_sds
+   +\frac12\int_0^h q_s^\pm(v_s-6)ds,
+ \qquad
+ \frac{u_\pm(h)}h\longrightarrow d_\epsilon^2.
+\]
+Continuity of $p^\pm,q^\pm$, their initial values
+$d_\epsilon,\pm e_\epsilon$, and (VN4) show that the deleted
+integrated drift has the deterministic initial tangent
+\[
+ B_\epsilon^\pm=\frac b{d_\epsilon}
+       \mathbin{\pm}\frac{e_\epsilon}{2d_\epsilon^2}(v-6).
+ \tag{VN5}
+\]
+These are initial germ statements; the locality coupling is only
+needed until its strictly positive comparison stopping time.
+
+For any positive bounded localization $\rho$ in a deleted law,
+H\"older's inequality gives
+\[
+ \frac1h\,\mathbb E\int_0^{h\wedge\rho}|\widehat b_s|^pds
+ \ge\mathbb E\left|
+          \frac{\widehat A_{h\wedge\rho}}h\right|^p.
+\]
+The random variables inside the right side converge in probability to
+$|B_\epsilon^\pm|^p$. Fatou's lemma along an almost surely converging
+subsequence proves the corresponding liminf lower bound. The exact
+raw exit-energy identity (EX13), applied at $h\wedge\rho$, converts
+this into (VN2). For real $x,y$,
+$\max\{|x+y|,|x-y|\}=|x|+|y|$, proving (VN3). Countable intersections
+give the simultaneous sequence claim, and the scales follow from
+$d_\epsilon\asymp\epsilon$,
+$|e_\epsilon|\asymp\epsilon^{-1}$.
+\end{proof}
+
+This is a restriction on possible regularity estimates rather than a
+new derivation of signed cancellation. At almost every visited state,
+the rate $\epsilon\max_\pm K(g_\epsilon^\pm)\to0$ can hold only if
+both characteristic anomalies vanish. Obtaining that rate from the
+curve axioms therefore remains the substantive classification step.
+
+
 \section{Analytic clock families can acquire singular time change}
 \label{sec:analytic-clock-obstruction}
 
@@ -10996,7 +11119,256 @@ control in the rigidity theorems, is not claimed to finish
 classification.
 
 
+\section{Strong restart excludes a shared smooth random coordinate medium}
+\label{sec:random-smooth-medium-rigidity}
+
+A natural possible counterexample is to sample a translation-invariant
+smooth random geometry and run SLE$_6$ in that geometry.  The following
+argument excludes this class. In fact the prior on the coordinate map
+need not be stationary: translation covariance of the resulting family
+is enough. This result does not assume an analogous representation for
+the unknown exploration family.
+
+\begin{lemma}[The literal time-zero restart makes the initial germ trivial]
+\label{lem:dmp-zero-germ}
+Let $P_f$ be one law in the family, with deterministic initial state $f$,
+and suppose strong DMP (KR1) holds at $\tau=0$ in its usual
+right-continuous natural driver filtration, with $f_0=f$. Then
+$\mathcal F^f_0$ is $P_f$-trivial. In particular every Borel ordered
+initial-trace-germ observable is almost surely constant.
+\end{lemma}
+\begin{proof}
+For each bounded Borel functional $F$ of the entire future driver,
+the time-zero restart identity says
+\[
+ \mathbb E_f[F(W)\mid\mathcal F^f_0]=\mathbb E_fF(W).
+ \tag{RM1}
+\]
+The usual initial sigma-field is contained in the completed sigma-field
+of the full driver. Apply (RM1) to a full-driver version of any event in
+$\mathcal F^f_0$: its indicator equals its probability almost surely.
+
+For completeness an ordered initial-trace-germ statistic belongs to
+$\mathcal F^f_0$. It is measurable from the prefix stopped on every
+source circle of radius $r$. The corresponding capacity stopping times
+decrease to zero almost surely as $r\downarrow0$, by continuity and
+strict initial Loewner growth. For any fixed $t>0$, the statistic is
+therefore $\mathcal F^f_t$-measurable, by taking the union of events on
+which those stopping times are at most $t$. Right continuity gives its
+measurability in $\mathcal F^f_0$.
+\end{proof}
+
+This is a deduction from the \emph{literal} time-zero strong restart
+convention. It is not justified merely by DMP at positive times in an
+unaugmented filtration. The independent-color germ theorem proved
+earlier remains useful without assuming a limiting strong DMP theorem.
+
+\begin{lemma}[Endpoint tensor decoding only needs a first-order error]
+\label{lem:endpoint-decoder-first-order}
+Lemma~\ref{lem:ed-linearization} remains valid with its quadratic error
+replaced by
+\[
+ \Phi(z)=Lz+o(|z|),\qquad z\to0
+ \tag{RM2}
+\]
+uniformly on its closed half-neighborhood. Consequently the same
+universal physical endpoint decoder recovers
+$[Dh(p)^{\mathsf T}Dh(p)]$ from a sample with law
+\[
+ (h^{-1})_*\operatorname{SLE}_6(hD;hp,hq)
+ \tag{RM3}
+\]
+whenever $D$ is a bounded smooth Jordan domain and $h$ is an
+orientation-preserving $C^{1,\alpha}_{\mathrm{loc}}$ diffeomorphism
+of the plane, $0<\alpha<1$.
+\end{lemma}
+\begin{proof}
+In the proof of Lemma~\ref{lem:ed-linearization}, the scaled error on a
+fixed bounded preimage disk is now at most $\omega(Cr_n)$, for a
+deterministic modulus $\omega(s)\to0$, in place of $Cr_n$. For every
+fixed radial tolerance $\delta>0$, it is eventually smaller than
+$\delta$. The same stopping sandwich therefore bounds the observable
+difference by $\omega(Cr_n)+h_\delta(Y_n)$. Ces\`aro averaging removes
+the first term; ergodicity bounds the second by
+$\mathbb E h_\delta(Y)$; let $\delta\downarrow0$ as in the original
+proof. No rate of the first-order error is needed.
+
+To apply this to (RM3), choose a conformal map
+$\phi:\mathbb H\to hD$ sending $0,\infty$ to $hp,hq$.
+The image boundary is $C^{1,\alpha}$ and hence Dini-smooth. The
+classical boundary differentiability theorem gives
+\[
+ \phi(z)=hp+c z+o(|z|),\qquad c\ne0,
+\]
+for unrestricted approach in the closed half-plane; see
+\cite[Theorem 1]{warschawski-boundary-1961}. Composition with the
+differentiable map $h^{-1}$ gives a first-order local embedding into $D$.
+After rotating the known physical tangent half-plane to $\mathbb H$ by
+$Q$, its derivative is
+$L=QDh(p)^{-1}M_c$, where $M_c$ is complex multiplication by $c$.
+The endpoint decoder recovers
+\[
+ [(L^{-1})^{\mathsf T}L^{-1}]
+       =[QDh(p)^{\mathsf T}Dh(p)Q^{\mathsf T}],
+\]
+so conjugating back by $Q$ gives the asserted tensor in physical axes.
+The same Borel decoder is used for every map $h$.
+\end{proof}
+
+\begin{theorem}[A common smooth random-coordinate prior collapses to one affine metric]
+\label{thm:random-smooth-chart-rigidity}
+Let $\Pi$ be a probability measure on orientation-preserving global
+$C^{1,\alpha}_{\mathrm{loc}}$ diffeomorphisms of $\mathbb R^2$, and
+consider the family
+\[
+ P_{D,p,q}=\int
+ (h^{-1})_*\operatorname{SLE}_6(hD;hp,hq)\,\Pi(dh).
+ \tag{RM4}
+\]
+The \emph{same prior $\Pi$} is used for every deterministic marked
+domain. Suppose the family is Borel, has the standing continuous
+Loewner admissibility, is physically translation covariant, and obeys
+the time-zero strong restart identity of Lemma~\ref{lem:dmp-zero-germ}.
+It suffices to impose these assumptions for translations of one smooth
+bounded Jordan domain with a regular marked source.
+
+Then there is one deterministic positive-definite projective tensor
+$T_*$ such that, for $\Pi$-almost every $h$,
+\[
+ h(x)=a_h A x+b_h,
+ \tag{RM5}
+\]
+where $A=T_*^{1/2}$ after choosing determinant-one normalization,
+$a_h\ne0$ acts by complex multiplication, and $b_h$ is a translation.
+Consequently (RM4) is the pure fixed-affine SLE$_6$ family with metric
+$T_*$; the random similarities $a_h,b_h$ disappear from its law.
+\end{theorem}
+\begin{proof}
+Take a reference disk $D_0$ whose source is $0$, and translate it to
+$D_p=D_0+p$ with translated target. For a fixed $p$, condition first
+on $h$. The endpoint decoder of the preceding lemma recovers
+\[
+ T_h(p)=[Dh(p)^{\mathsf T}Dh(p)]
+ \tag{RM6}
+\]
+almost surely under the conditional curve law. Integrating over the
+common prior shows that the decoder under $P_{D_p,p,q_p}$ has exactly
+the $\Pi$-distribution of $T_h(p)$. It is an initial-germ statistic,
+so Lemma~\ref{lem:dmp-zero-germ} makes this distribution a point mass,
+say at $t(p)$.
+
+The physical tangent frames of the translated disks are translates of
+the same frame. Physical translation covariance and the universal
+decoder therefore give $t(p)=t(0)=T_*$ for every deterministic $p$.
+For all rational-coordinate points simultaneously, (RM6) equals $T_*$
+outside one $\Pi$-null set. Continuity of $Dh$ extends this equality
+to all $x\in\mathbb R^2$. Thus
+\[
+ Dh(x)^{\mathsf T}Dh(x)=c_h(x)T_*,\qquad c_h(x)>0.
+ \tag{RM7}
+\]
+With $A=T_*^{1/2}$, the derivative of $k_h(y)=h(A^{-1}y)$ is an
+orientation-preserving Euclidean similarity at every point. Its $C^1$
+coordinate functions satisfy the Cauchy--Riemann equations, so $k_h$ is
+an entire conformal map. It is a global homeomorphism and hence proper;
+an entire proper injective map is a polynomial of degree one. This gives
+(RM5). SLE similarity covariance now makes every conditional law in
+(RM4) equal to $A^{-1}_*\operatorname{SLE}_6(AD;Ap,Aq)$.
+\end{proof}
+
+\paragraph{Scope of this obstruction.}
+No RSW estimate, independent-color coupling, or stationarity assumption
+on the random chart is used. The theorem rules out a smooth random
+coordinate medium sampled from one common prior as a source of additional
+families. It does not establish a smooth-coordinate representation for
+the unknown family. It leaves open rough coordinate media and rules
+using a different prior for each source/domain, including possible
+source-germ assignments whose restart consistency remains unresolved.
+Full natural-filtration strong DMP at zero is essential to this argument.
+
+
+
+\section{Why a short analytic deletion does not amplify unsigned information}
+\label{sec:unsigned-jet-horizon}
+
+The finite-mesh locality identities do not by themselves improve the
+unsigned moment bounds to a signed estimate. There is a general geometric
+scale obstruction behind the earlier particular shrinking-slit example.
+
+\begin{lemma}[A source collar bounds its deletion jet]
+\label{lem:deletion-jet-collar}
+Suppose a deletion map $h$ extends conformally and injectively to the
+disk $B(0,\rho)$, and put $p=h'(0)>0$, $q=h''(0)$. Then
+\[
+ \frac{|q|}{p}\le\frac4\rho.
+ \tag{JH1}
+\]
+For a hydrodynamic half-plane deletion whose removed hull misses
+$B(0,\rho)$, Schwarz reflection gives the required extension and
+univalence across the source interval.
+\end{lemma}
+\begin{proof}
+Normalize $F(z)=(h(\rho z)-h(0))/(\rho h'(0))$. It is univalent in the
+unit disk, $F(0)=0$, $F'(0)=1$, and its second coefficient is
+$a_2=\rho q/(2p)$. The classical bound $|a_2|\le2$ gives (JH1).
+It follows directly from the area theorem: the odd univalent map
+$G(z)=\sqrt{F(z^2)}=z+(a_2/2)z^3+\cdots$ has exterior reciprocal
+$1/G(1/\zeta)=\zeta-(a_2/2)\zeta^{-1}+\cdots$, whose first negative
+coefficient has modulus at most one.
+
+For the last assertion the reflected upper- and lower-half disk images
+lie in opposite half-planes, while the real source interval is mapped
+strictly increasingly. Injectivity therefore persists across that
+interval.
+\end{proof}
+
+\begin{proposition}[A bounded variance anomaly is below Brownian size on a perturbative collar]
+\label{prop:unsigned-locality-jet-horizon}
+In a second-order matched-prefix deletion comparison, consider a bounded
+putative variance-six defect $\delta$ over an original capacity interval
+of length $s$. Its initial-jet contribution to the transformed mean is
+$\tfrac12q\delta s$. Relative to the Brownian-order transformed driving
+scale $p\sqrt s$, one has
+\[
+ \frac{|q\delta|s/2}{p\sqrt s}
+       \le2|\delta|\frac{\sqrt s}{\rho}.
+ \tag{JH2}
+\]
+Thus if the comparison is restricted to the perturbative regime
+$s/\rho^2\to0$, this contribution is $o(p\sqrt s)$ even when
+$\delta\ne0$. A large boundary second derivative cannot remove this
+scale obstruction by itself: its ratio to the first derivative is
+limited by the source collar radius.
+\end{proposition}
+\begin{proof}
+Substitute (JH1). The scale $p\sqrt s$ is the correct unsigned comparison
+scale: on a relative derivative collar, the deleted capacity time is
+bounded by a constant times $p^2s$, and the upper driving estimate bounds
+its endpoint by the supremum up to that deterministic time. The exact
+endpoint is still at an inherited random stopping time; it is not
+identified with a deterministic deleted-capacity increment.
+\end{proof}
+
+\paragraph{What this rules out as an argument.}
+One cannot force a variance defect to vanish merely by making the initial
+second derivative of an analytic deletion large and bounding both mean
+increments by their unsigned Brownian scales. During the short interval
+on which that initial jet is perturbatively valid, the anomalous signed
+term fits inside those bounds. At times of order $\rho^2$, the initial
+jet approximation no longer has a vanishing relative error without
+additional analysis. This is a limitation of this particular use of the
+locality identity, not a counterexample to the curve axioms or an
+impossibility result for multiscale signed comparisons. A successful
+argument needs cancellation or compatibility information beyond separate
+unsigned size estimates.
+
+
 \begin{thebibliography}{99}
+\bibitem{warschawski-boundary-1961} S. E. Warschawski,
+\emph{On differentiability at the boundary in conformal mapping},
+Proc. Amer. Math. Soc. \textbf{12} (1961), no. 4, 614--620.
+\url{https://doi.org/10.1090/S0002-9939-1961-0131524-8}.
+
 \bibitem{schramm-wilson} O. Schramm and D. B. Wilson,
 \emph{SLE coordinate changes}, New York J. Math. \textbf{11} (2005), 659--669.
 \url{https://nyjm.albany.edu/j/2005/11-31.pdf}.
