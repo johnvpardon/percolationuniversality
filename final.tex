@@ -29,8 +29,11 @@
 The regularity bridge is now expressed through exact exit-sign criteria:
 finite aggregate predictable sign budget is equivalent to integrable
 finite-variation drift; subquadratic weighted sign energies characterize
-$L^p$ absolutely continuous drift for $1<p<2$. Conditional crossing
-moments also give bounded cluster clocks along deterministic meshes
+$L^p$ absolutely continuous drift for $1<p<2$. A new conditional
+rigidity theorem identifies SLE$_6$ from source-linear expected $L^p$
+exit-energy bounds whose constants grow subcritically along mirrored
+shrinking-slit comparisons; no bounded drift density or initial tangent
+is assumed. Conditional crossing moments also give bounded cluster clocks along deterministic meshes
 and finite-mesh analytic-locality characteristic covariance without
 semimartingality. None of these criteria supplies the missing signed
 estimate from the exploration axioms. A singular analytic clock example
@@ -7267,6 +7270,201 @@ process illustration, not a proposed family obeying the curve axioms.
 All these criteria are in a specified coordinate system. Neither finite
 raw exit-sign budget nor bounded sign energy is asserted in every affine
 structure, and no preferred affine tensor has been constructed.
+
+
+\section{Source-linear exit energy is sufficient for locality rigidity}
+\label{sec:exit-energy-rigidity}
+
+The preceding exit criteria can be linked to classification using a
+weaker hypothesis than pointwise bounded driving drift.  The new input
+is a bound on \emph{expected initial drift energy per unit capacity},
+expressible entirely in exit-sign observables.  It still requires a
+quantitative rate along the locality-related shrinking-slit states.
+Neither that rate nor the energy bound is derived from RSW here.
+
+Fix $1<p<2$ and one physical conformal structure. Assume the Borel family,
+continuous Loewner generation, strong natural-filtration DMP (KR1), and
+source locality for the mirrored tests (DR6), with the invertible
+capacity-clock and rough-prime-end requirements used previously. Assume
+also the uniform upper conditional driving moments and diffusive exit
+estimates already obtained from the explicit crossing/locality inputs.
+Thus Proposition~\ref{prop:moment-bracket-domination} and the exit-energy
+criteria apply once their stated signed hypotheses hold.
+
+For each state $f$, write $\mathcal E^f_{r,p}(\theta)$ for the raw energy
+in (EX12), stopped at a bounded stopping time $\theta$ at which the
+stopped driver is bounded.  The proofs of
+Propositions~\ref{prop:exit-budget-exact}--\ref{prop:exit-energy-ac} and
+Corollary~\ref{cor:exit-subquadratic-energy} apply to every such $\theta$:
+only boundedness of the stopped driver, the stopping-time property, and
+the residual-exit estimate are used. In particular $\theta$ need not
+be exactly the first exit from a symmetric driving interval.
+
+\begin{theorem}[Conditional classification from initial exit energy]
+\label{thm:exit-energy-rigidity}
+Suppose the following additional signed conditions hold.
+\begin{enumerate}
+\item For every deterministic state $f$ and $L,T>0$, with
+ $\tau_{L,T}=T\wedge\inf\{t:|W_t|\ge L\}$,
+ \[
+  \liminf_{r\downarrow0}\mathcal E^f_{r,p}(\tau_{L,T})<\infty.
+  \tag{ER1}
+ \]
+\item For each deterministic state $f$, there is a bounded stopping time
+ $\rho_f>0$ almost surely, with bounded stopped driver, and a finite
+ deterministic constant $K(f)$ such that
+ \[
+  \limsup_{h\downarrow0}\frac1h
+       \liminf_{r\downarrow0}\mathcal E^f_{r,p}(h\wedge\rho_f)
+                \le K(f)^p.
+  \tag{ER2}
+ \]
+\item For each state $f$, along some sequence $\epsilon_n\downarrow0$,
+ the mirrored deleted states obey
+ \[
+  \epsilon_n\max_{\sigma=\pm}K(f_{\epsilon_n}^{\sigma})
+                    \longrightarrow0.
+  \tag{ER3}
+ \]
+\end{enumerate}
+Then every driver is $\sqrt6 B$ in the specified conformal structure,
+and the exploration family is chordal SLE$_6$ in that structure.
+\end{theorem}
+\begin{proof}
+The exit-energy criterion applied to (ER1), and uniqueness on overlapping
+stopped intervals, supply the global continuous canonical decomposition
+\[
+ W=M+A,\qquad A_t=\int_0^t b_sds,
+\]
+where $b$ is predictable and locally $L^p(\mathbb P\,dt)$ after bounded
+driving localization. The upper conditional moment estimate and
+Proposition~\ref{prop:moment-bracket-domination} give
+$C=\langle M\rangle=\int_0^t v_sds$ with a locally bounded predictable
+density.  The exact energy limit (EX13) turns (ER2) into
+\[
+ \limsup_{h\downarrow0}\frac1h
+   \mathbb E_f\int_0^{h\wedge\rho_f}|b_s|^pds\le K(f)^p.
+ \tag{ER4}
+\]
+No pointwise bound or right limit of $b$ is assumed.
+
+Fix a deterministic state $f$ and one $\epsilon$. Couple its initial
+trace to each mirrored deleted-domain trace by locality and use their
+invertible capacity clocks. Put $d=d_\epsilon$,
+$e=e_\epsilon^+$, and
+$K_\epsilon=\max_\sigma K(f_\epsilon^\sigma)$.
+The canonical characteristic identity (BI3) reads, before contact,
+\[
+ p_t^\sigma b_t+\tfrac12q_t^\sigma(v_t-6)
+        =(p_t^\sigma)^2\widehat b^\sigma_{u_\sigma(t)},
+ \qquad du_\sigma(t)=(p_t^\sigma)^2dt.
+ \tag{ER5}
+\]
+Here $p_0^\sigma=d$ and $q_0^\pm=\pm e$. There is an almost surely
+positive stopping time $\lambda_\epsilon$ on which the original and
+both deleted initial localizations remain valid, $p_t^\sigma$ lies
+between $d/2$ and $2d$, and each $q_t^\sigma$ remains within
+$|e|/2$ of its initial value. The two-by-two system in (ER5) is then
+uniformly invertible in these relative bounds. With a numerical constant
+$C$ independent of $\epsilon$,
+\[
+ |b_t|\le Cd\sum_{\sigma=\pm}
+                 |\widehat b^\sigma_{u_\sigma(t)}|,
+ \qquad
+ |v_t-6|\le C\frac{d^2}{|e|}\sum_{\sigma=\pm}
+                 |\widehat b^\sigma_{u_\sigma(t)}|
+ \tag{ER6}
+\]
+for almost every $t<\lambda_\epsilon$.
+
+Changing variables in the first inequality, using
+$u_\sigma(h\wedge\lambda_\epsilon)\le4d^2h$ and stopping before
+$\rho_{f_\epsilon^\sigma}$, gives
+\[
+ \mathbb E\operatorname{Var}(A;[0,h\wedge\lambda_\epsilon])
+ \le\frac Cd\sum_{\sigma=\pm}
+   \mathbb E\int_0^{4d^2h\wedge\rho_{f_\epsilon^\sigma}}
+                     |\widehat b^\sigma_u|du.
+\]
+H\"older's inequality on probability times capacity and (ER4) imply,
+at fixed $\epsilon$,
+\[
+ \mathbb E\int_0^{4d^2h\wedge\rho_{f_\epsilon^\sigma}}
+           |\widehat b^\sigma_u|du
+       \le4d^2h\bigl(K_\epsilon+o_\epsilon(1)\bigr),
+       \qquad h\downarrow0.
+\]
+The second inequality in (ER6) is treated identically. Thus
+\begin{align}
+ \limsup_{h\downarrow0}\frac1h\,
+  \mathbb E\operatorname{Var}(A;[0,h\wedge\lambda_\epsilon])
+       &\le CdK_\epsilon,\label{eq:energy-drift-slit-bound}\\
+ \limsup_{h\downarrow0}\frac1h\,
+  \mathbb E\operatorname{Var}(C-6\operatorname{id};
+                            [0,h\wedge\lambda_\epsilon])
+       &\le C\frac{d^2}{|e|}K_\epsilon.
+       \label{eq:energy-bracket-slit-bound}
+\end{align}
+In applying (ER4), the deleted drift is evaluated in its own canonical
+filtration and capacity clock. Its law is the deleted-state law by
+locality; the time change in (ER5) is not replaced by a deterministic
+capacity equality.
+
+For any $a>0$, Markov's inequality and
+$\mathbb P\{\lambda_\epsilon<h\}\to0$ give
+\[
+ \limsup_{h\downarrow0}\mathbb P\left\{
+       h^{-1}\sup_{s\le h}|A_s|>a\right\}
+           \le C a^{-1}dK_\epsilon,
+\]
+and the corresponding bound for $C_s-6s$ with
+$dK_\epsilon$ replaced by $d^2K_\epsilon/|e|$.
+Since $d_\epsilon\asymp\epsilon$ and
+$|e_\epsilon|\asymp\epsilon^{-1}$, condition (ER3), first taking
+$h\downarrow0$ at fixed $\epsilon_n$ and then $n\to\infty$, proves
+\[
+ h^{-1}\sup_{s\le h}|A_s|\longrightarrow0,\qquad
+ h^{-1}\sup_{s\le h}|C_s-6s|\longrightarrow0
+          \quad\text{in probability}
+ \tag{ER7}
+\]
+in every deterministic state.
+
+It remains to propagate the initial conclusion without assuming a
+tangent of the original density. Proposition~\ref{prop:automatic-characteristics}
+and strong DMP transport the canonical shifted characteristics at each
+deterministic time $t$. Along any fixed sequence $h_n\downarrow0$,
+for almost every conditioned history their law is the restarted state's
+canonical law. Statement (ER7) holds in that state. Conditional
+probabilities are bounded by one, so dominated convergence under the
+regular conditional law yields
+\[
+ \frac{A_{t+h_n}-A_t}{h_n}\longrightarrow0,
+ \qquad
+ \frac{C_{t+h_n}-C_t}{h_n}\longrightarrow6
+          \quad\text{in probability}.
+ \tag{ER8}
+\]
+On the other hand, absolute continuity and Fubini imply that for
+Lebesgue-almost every deterministic $t$, these same quotients converge
+almost surely to $b_t$ and $v_t$. Uniqueness of limits in probability
+gives $b_t=0$ and $v_t=6$ almost surely for almost every $t$.
+Another Fubini argument gives $A=0$ and $C_t=6t$ up to
+indistinguishability. L\'evy's characterization identifies $W=\sqrt6 B$.
+\end{proof}
+
+\paragraph{What is sufficient, and what is not proved.}
+This theorem replaces pointwise order-$r$ exit-sign bias by averaged
+order-$r$ signed energy.  Conditions (ER1)--(ER3) are still missing
+theorems for the unknown family in an appropriate common structure.
+Finite exit energy alone supplies AC drift and bounded bracket but no
+rate in the slit comparison. The drift and variance anomaly rates are
+respectively $\epsilon K_\epsilon$ and $\epsilon^3K_\epsilon$.
+All estimates are conditional classification tools, not a construction
+of the affine normalizer. In arbitrary initial coordinates an adequate
+regularity statement may need a correction involving an unknown constant
+physical Beltrami coefficient before these signed-energy hypotheses can
+be expected to hold.
 
 
 \section{Analytic clock families can acquire singular time change}
