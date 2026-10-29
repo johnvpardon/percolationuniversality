@@ -25,6 +25,14 @@
 \begin{document}
 \maketitle
 \begin{abstract}
+The 29 October priority is to understand affine-SLE$_6$ driving in
+arbitrary coordinates before imposing coordinate-sensitive stochastic
+regularity. Matched-prefix affine driving and capacity admit uniform
+first variations even for nonsimple filled hulls; the linear capacity
+response is one-half H\"older. The continuum crossing/locality bounds
+give nondegenerate subsequential adaptive quadratic-activity clocks
+without semimartingality. Wrong-coordinate semimartingality would force
+absolute continuity of the affine capacity clock, which remains open.
 The current priority is continuum classification under explicit RSW-type
 crossing assumptions, with verification for lattice limits deferred.
 Corrected source locality and a ray-deletion comparison give a diffusive
@@ -8656,6 +8664,518 @@ The results below provide coordinate-compatible exit clocks and a
 necessary clock test for wrong-coordinate semimartingality.
 
 % Candidate supplement, 29 October 2026. No tracked source modified.
+% Candidate independently checkable research fragment, 29 October 2026.
+% Do not confuse original-prefix indexing with each deformed curve's own capacity.
+\section{Affine deformation without assuming regular driving characteristics}
+\label{sec:affine-beltrami-prefix}
+
+\paragraph{Scope.}
+The statements in this section are deterministic statements about bounded
+half-plane hulls and continuously generated Loewner chains. No simple-curve,
+zero-area, or semimartingale hypothesis is made. Boundary values of conformal
+maps are interpreted at the distinguished tip prime end. A real-linear map
+of the half-plane preserves filled hulls, and the transformed chain is
+assumed to have its continuous capacity parametrization, as supplied by the
+affine admissibility results for the model under consideration.
+
+Let $g_t:\mathbb H\setminus K_t\to\mathbb H$ be hydrodynamically
+normalized, $g_t(z)=z+2t/z+O(z^{-2})$, with continuous driver $W_t$, and put
+$f_t=g_t^{-1}$. Let $L(z)=az+b\bar z$ be an orientation-preserving
+real-linear self-map of $\mathbb H$. Write
+\[
+ s(t)=\tfrac12\operatorname{hcap}(LK_t),\qquad
+ F_t=\widehat g_{s(t)}\circ L\circ f_t,\qquad
+ U_t=F_t(W_t),
+ \tag{AB1}
+\]
+where $\widehat g$ uniformizes the transformed hulls. Then
+\[
+ \mu_{F_t}(z)=\frac ba\,
+       \frac{\overline{f_t'(z)}}{f_t'(z)}.
+ \tag{AB2}
+\]
+For a model in which $L\gamma$ is SLE$_6$, $U_t=\sqrt6B_{s(t)}$.
+This is an identity for a known model, not a classification consequence
+of the exploration axioms.
+
+\begin{proposition}[An interior Stieltjes evolution]
+\label{prop:beltrami-stieltjes}
+At every $z\in\mathbb H$, locally in finite time,
+\[
+ dF_t(z)=\frac{2\,ds(t)}{F_t(z)-U_t}
+ -\left\{\frac{2(F_t)_z(z)}{z-W_t}
+          +\frac{2(F_t)_{\bar z}(z)}{\bar z-W_t}\right\}dt.
+ \tag{AB3}
+\]
+The equation is an equality of finite-variation measures, locally
+uniformly on compact subsets of $\mathbb H$. It does not require that
+$s$ be absolutely continuous. The field
+$\mu_t=\mu_{F_t}$ satisfies, in the interior,
+\[
+ \partial_t\mu_t
+ =-v_t\partial_z\mu_t-\overline{v_t}\partial_{\bar z}\mu_t
+       +(v_t'-\overline{v_t'})\mu_t,
+ \qquad v_t(z)=\frac2{z-W_t}.
+ \tag{AB4}
+\]
+\end{proposition}
+\begin{proof}
+Inverse Loewner evolution gives $\partial_tf_t=-v_tf_t'$. Apply the
+ordinary chain rule to (AB1), using the Loewner equation for
+$\widehat g$ in its clock $s$ and the real-linear derivative of $L$.
+The two contributions from $\partial_tf_t$ are exactly the two
+$dt$ terms in (AB3). On any compact spatial set and finite localized
+time interval, the images stay a positive distance from the real line;
+the spatial derivatives and denominators are bounded. Since $s$ is
+continuous increasing, the displayed terms have finite total variation.
+For (AB4), differentiate
+$\partial_tf_t'=-v_tf_t''-v_t'f_t'$
+and its conjugate in (AB2). This calculation is entirely in the interior.
+\end{proof}
+
+Interior finite variation of $F$ does not justify applying It\^o's formula
+to $F_t(W_t)$. Neither boundary differentiability of $F_t$ at $W_t$ nor
+the necessary uniform boundary time regularity has been proved.
+
+\subsection{A normalization-safe first variation at an arbitrary hull}
+
+We use the boundary-fixed affine perturbation
+\[
+ L_\epsilon(w)=w+\epsilon\nu(\bar w-w),\qquad \nu\in\mathbb C,
+ \quad \epsilon\in\mathbb R.
+ \tag{AV1}
+\]
+For small $\epsilon$ it maps $\mathbb H$ onto itself and fixes every
+real boundary point. These perturbations span the two real anisotropy
+directions modulo similarities.
+
+Fix a bounded hull $K=K_t$ contained in $\{|w|\le R\}$ with $R>0$.
+Take a real smooth radial cutoff $\chi_R$ equal to one on $|w|\le2R$
+and zero on $|w|\ge4R$, with derivatives of order $j$ bounded by
+$C_jR^{-j}$. Set
+\[
+ V(w)=\chi_R(w)\nu(\bar w-w),\qquad
+ \Phi_\epsilon(w)=w+\epsilon V(w),\qquad f=g_t^{-1},\quad W=W_t.
+ \tag{AV2}
+\]
+For sufficiently small $|\epsilon|$ this is a plane diffeomorphism,
+fixes $\mathbb R$ pointwise, preserves $\mathbb H$, and equals
+$L_\epsilon$ on $K$. Define the compactly supported bounded coefficient
+on $\mathbb H$
+\[
+ \eta(z)=V_{\bar w}(f(z))\,
+                \frac{\overline{f'(z)}}{f'(z)}.
+ \tag{AV3}
+\]
+Extend it to the lower half-plane by
+$\eta(\bar z)=\overline{\eta(z)}$.
+
+\begin{proposition}[First variation indexed by the original hull prefix]
+\label{prop:affine-prefix-variation}
+Let
+\[
+ s_\epsilon=\tfrac12\operatorname{hcap}(L_\epsilon K),\qquad
+ U_\epsilon=\widehat g^{\,\epsilon}_{s_\epsilon}
+                   (L_\epsilon\gamma(t)),
+ \tag{AV4}
+\]
+where the second expression is interpreted by the tip prime end.
+Both quantities are differentiable at $\epsilon=0$, and
+\[
+ \boxed{\begin{aligned}
+ \left.\partial_\epsilon U_\epsilon\right|_0
+  &=-\frac2\pi\operatorname{Re}
+       \int_{\mathbb H}\frac{\eta(z)}{z-W}\,d^2z,\\
+ \left.\partial_\epsilon s_\epsilon\right|_0
+  &=\frac1\pi\operatorname{Re}\int_{\mathbb H}\eta(z)\,d^2z.
+ \end{aligned}}
+ \tag{AV5}
+\]
+The integrals are absolutely convergent, including at the tip.
+Their values are independent of the choice of the stated cutoff.
+There are absolute cutoff-dependent constants such that
+\[
+ |\partial_\epsilon U_\epsilon|_0\le C|\nu|R,
+ \qquad |\partial_\epsilon s_\epsilon|_0\le C|\nu|R^2.
+ \tag{AV6}
+\]
+\end{proposition}
+\begin{proof}
+The derivative of $\Phi_\epsilon$ is uniformly close to the identity,
+so this map is a global diffeomorphism for sufficiently small $\epsilon$.
+Since $\operatorname{Im}\Phi_\epsilon(x+iy)
+=y(1-2\epsilon\operatorname{Re}(\nu)\chi_R(x+iy))$, it preserves
+both half-planes. Its image of $K$ agrees with $L_\epsilon K$.
+
+Put
+$F_\epsilon=\widehat g^{\,\epsilon}_{s_\epsilon}
+\circ\Phi_\epsilon\circ f$ and reflect it across $\mathbb R$.
+It is a plane quasiconformal map with principal normalization
+\[
+ F_\epsilon(z)
+  =z+\frac{2(s_\epsilon-t)}z+O(z^{-2})
+   \quad (z\to\infty).
+ \tag{AV7}
+\]
+Indeed $\Phi_\epsilon$ is the identity outside a fixed disk, so the
+composition there is the composition of the two hydrodynamic conformal
+maps. Its Beltrami coefficient is, in the upper half-plane,
+\[
+ m_\epsilon(z)=
+ \frac{\epsilon V_{\bar w}(f(z))}
+      {1+\epsilon V_w(f(z))}
+       \frac{\overline{f'(z)}}{f'(z)}
+   =\epsilon\eta(z)+O(\epsilon^2),
+ \tag{AV8}
+\]
+with the reflected coefficient in the lower half-plane. The remainder
+bound is in $L^\infty$, supported on one bounded disk independent of
+$\epsilon$. Boundedness of the support follows also directly from
+hydrodynamic univalence: the image under $g_t$ of the portion of
+$\mathbb H\setminus K$ in a fixed disk is bounded. With the above
+cutoff scales, the support is contained in a disk of radius $CR$.
+
+Here is an explicit version of the required differentiability argument.
+Let
+\[
+ \mathcal C h(z)=\frac1\pi\int_{\mathbb C}
+                     \frac{h(\zeta)}{z-\zeta}\,d^2\zeta,
+ \qquad \mathcal S=\partial_z\mathcal C.
+\]
+For fixed $p>2$, the Beurling transform is bounded on $L^p$. For
+sufficiently small $\epsilon$ the principal solution has
+\[
+ F_\epsilon=z+\mathcal C h_\epsilon,\qquad
+ h_\epsilon=(I-m_\epsilon\mathcal S)^{-1}m_\epsilon.
+ \tag{AV9}
+\]
+The Neumann series and (AV8) imply
+$h_\epsilon/\epsilon\to\eta$ in $L^p$, and also in $L^1$ since
+all these functions have the same bounded support. On functions
+supported in this disk, the Cauchy transform maps $L^p$, $p>2$,
+continuously to bounded continuous functions, by H\"older's inequality
+at its integrable singularity and the elementary far-field bound.
+Consequently
+\[
+ \frac{F_\epsilon(z)-z}{\epsilon}
+       \longrightarrow\mathcal C\eta(z)
+ \tag{AV10}
+\]
+uniformly in $z$, including $z=W\in\mathbb R$.
+The boundary identity $U_\epsilon=F_\epsilon(W)$ gives the first
+formula (AV5); reflection combines the two half-plane integrals.
+The coefficient of $1/z$ in (AV9) is
+$\pi^{-1}\int h_\epsilon$, so (AV7) and $L^1$ convergence give
+the second formula. Neither step differentiates the physical tip.
+
+All cutoffs produce exactly the same transformed hull $L_\epsilon K$
+and distinguished prime end, so their driver and capacity variations
+coincide. Finally $\|\eta\|_\infty\le C|\nu|$, its support lies in
+$|z|\le CR$, and $|W|\le3R$. Integrating $1/|z-W|$ over this disk
+gives the first bound (AV6); its area gives the second.
+\end{proof}
+
+\begin{corollary}[An explicit constant-anisotropy response]
+\label{cor:affine-global-response}
+For the boundary-fixed affine deformation (AV1), the driver response
+can also be written without a cutoff:
+\[
+ \boxed{\left.\partial_\epsilon U_\epsilon\right|_0
+ =-\frac2\pi\operatorname{Re}\int_{\mathbb H}
+ \frac{\nu}{z-W}
+ \left(\frac{\overline{f'(z)}}{f'(z)}-1\right)d^2z.}
+ \tag{AV11}
+\]
+The integral is absolutely convergent. This formula remains indexed
+by the original hull prefix.
+\end{corollary}
+\begin{proof}
+Use the actual affine map in place of the cutoff and write
+$F_\epsilon=\widehat g^{\,\epsilon}_{s_\epsilon}
+\circ L_\epsilon\circ f$ and
+$Q_\epsilon=F_\epsilon-L_\epsilon$. Set
+$\phi=\overline{f'}/f'$ and
+$\mu_\epsilon=\epsilon\nu\phi/(1-\epsilon\nu)$.
+The Beltrami equation gives exactly
+\[
+ (Q_\epsilon)_{\bar z}
+       -\mu_\epsilon(Q_\epsilon)_z
+ =\epsilon\nu(\phi-1).
+ \tag{AV12}
+\]
+The map $Q_\epsilon$ has real boundary values since $L_\epsilon$
+fixes $\mathbb R$, so reflect $Q_\epsilon$ and the two coefficients
+across the real line. Its normalization at infinity is
+$Q_\epsilon=O(|z|^{-1})$. The right side divided by $\epsilon$,
+denoted $m$, is bounded and satisfies $m(z)=O(|z|^{-2})$ at infinity,
+because $f'(z)=1+O(z^{-2})$. In particular $m\in L^p\cap L^q$
+for fixed $p>2>q>1$.
+
+Writing $\xi_\epsilon=(Q_\epsilon)_{\bar z}$, the normalized
+solution of (AV12) is
+\[
+ \xi_\epsilon=\epsilon(I-\mu_\epsilon\mathcal S)^{-1}m,
+ \qquad Q_\epsilon=\mathcal C\xi_\epsilon.
+ \tag{AV13}
+\]
+For small $\epsilon$, the two inverse operators are bounded on both
+$L^p$ and $L^q$, so $\xi_\epsilon/\epsilon\to m$ in their
+intersection. Near the Cauchy kernel singularity use $p>2$;
+at infinity use $q<2$. This proves uniform convergence
+$Q_\epsilon/\epsilon\to\mathcal Cm$, including boundary points.
+The normalized solution in (AV13) agrees with the geometrically
+defined $Q_\epsilon$: their difference solves the homogeneous
+Beltrami equation and vanishes at infinity, so factorization through
+the normalized quasiconformal homeomorphism reduces it to a bounded
+entire function vanishing at infinity. Finally
+$L_\epsilon(W)=W$, and reflection yields (AV11).
+\end{proof}
+
+\begin{proposition}[Uniform Taylor expansion along matched prefixes]
+\label{prop:affine-prefix-taylor}
+Suppose $K_t\subset\{|z|\le R\}$ for $0\le t\le T$, and use the
+same cutoff $V$ from (AV2) for every prefix. Write $D_t$ and $E_t$
+for the two first derivatives in (AV5). There are absolute constants
+$c,C>0$, depending only on the fixed cutoff profile, such that for
+$|\epsilon\nu|\le c$,
+\[
+ \begin{split}
+ \sup_{t\le T}|U_\epsilon(t)-W_t-\epsilon D_t|
+       &\le C\epsilon^2|\nu|^2R,\\
+ \sup_{t\le T}|s_\epsilon(t)-t-\epsilon E_t|
+       &\le C\epsilon^2|\nu|^2R^2,\\
+ \sup_{t\le T}|D_t|&\le C|\nu|R,\qquad
+ \sup_{t\le T}|E_t|\le C|\nu|R^2.
+ \end{split}
+ \tag{AV14}
+\]
+In particular the matched-prefix pair is differentiable in the
+uniform path norm at $\epsilon=0$, with continuous first derivative
+paths $D,E$. This remains a statement in the original prefix clock.
+\end{proposition}
+\begin{proof}
+For every $t\le T$, the coefficients $m_{\epsilon,t}$ in (AV8)
+are supported in the same disk of radius $CR$. The bounds
+$\|\eta_t\|_\infty\le C|\nu|$ and
+$\|m_{\epsilon,t}-\epsilon\eta_t\|_\infty
+\le C\epsilon^2|\nu|^2$ hold with constants independent of $t$,
+the hulls, and $R$. Fix one $p>2$. Choosing $c$ so that the
+Neumann-series inverses on $L^p$ have norm at most two gives
+\[
+ \|h_{\epsilon,t}-\epsilon\eta_t\|_p
+       \le C\epsilon^2|\nu|^2R^{2/p}.
+ \tag{AV15}
+\]
+The difference is supported in the same disk. For a function $k$
+supported in that disk, H\"older's inequality gives
+$\|\mathcal Ck\|_\infty\le CR^{1-2/p}\|k\|_p$.
+Thus (AV15) gives the first remainder in (AV14), even before
+evaluating at the moving real point $W_t$. The coefficient at
+infinity is estimated in $L^1$:
+$\|h_{\epsilon,t}-\epsilon\eta_t\|_1
+\le C\epsilon^2|\nu|^2R^2$, proving the second remainder.
+The two first-derivative bounds follow by the same estimates.
+Continuity of $U_\epsilon(t)$ and $s_\epsilon(t)$, together with
+uniform convergence of the difference quotients, gives continuity
+of $D_t$ and $E_t$.
+\end{proof}
+
+\begin{corollary}[Temporal one-half H\"older regularity of the linear clock response]
+\label{cor:affine-clock-holder}
+Under the preceding proposition,
+\[
+ |E_t-E_s|\le C|\nu|R\sqrt{t-s},\qquad 0\le s<t\le T.
+ \tag{AV17}
+\]
+This is a deterministic statement in the original capacity clock.
+It does not assert absolute continuity of $E$ or of $s_\epsilon$.
+\end{corollary}
+\begin{proof}
+Write $\Delta=t-s$. Monotonicity of transformed hull capacity gives
+$s_\epsilon(t)-s_\epsilon(s)\ge0$ for both signs of $\epsilon$.
+Choose its sign opposite to that of $E_t-E_s$ and apply the two
+Taylor remainder bounds. For $0<a\le c/|\nu|$ this gives
+\[
+ |E_t-E_s|\le\frac{\Delta}{a}
+                     +2Ca|\nu|^2R^2.
+\]
+For $\Delta$ below a sufficiently small constant times $R^2$,
+choose $a$ proportional to $\sqrt\Delta/(|\nu|R)$.
+For larger $\Delta$, use $|E_t-E_s|\le C|\nu|R^2$ from (AV14).
+The case $\nu=0$ is immediate.
+\end{proof}
+
+\paragraph{Uniform stochastic parameter regularity.}
+For a continuous Loewner driver on $[0,T]$, the strip and height
+bounds give the deterministic hull-radius estimate
+\[
+ R_T\le\sup_{t\le T}|W_t|+2\sqrt T.
+ \tag{AV16}
+\]
+Consequently the conditional driving tail (NS4), applied in a
+restarted centered half-plane chart, implies conditional exponential
+tails for $\sup_{t\le h}|D_t|/(|\nu|\sqrt h)$ and for
+$\sqrt{\sup_{t\le h}|E_t|/(|\nu|h)}$, with changed numerical
+constants. The two uniform Taylor remainders have respectively
+the same Brownian and quadratic size bounds multiplied by
+$\epsilon^2|\nu|^2$. These conclusions hold for the unknown
+crossing-controlled driver as well as the affine-SLE model. They
+give regularity in the \emph{deformation parameter}. Apart from the
+separate one-half H\"older bound on $E$, they give no temporal
+regularity estimate for $D$ and no finite signed variation of $W$ or $D$.
+
+\paragraph{A useful check.}
+For the deterministic vertical slit driven by $W_t=0$, the pure-shear
+direction $\nu=i$ gives the response $16\sqrt t/\pi$; this agrees
+with the derivative of the standard square-root driver of a slanted
+straight ray. Indeed the straight-ray driver $c\sqrt{s}$ has ray angle
+$\theta(c)=\tfrac\pi2(1-c/\sqrt{c^2+16})$, so
+$\theta'(0)=-\pi/8$, whereas the shear changes the vertical
+ray angle by $-2\epsilon+O(\epsilon^2)$. This checks the sign
+and constant geometrically. For a pure vertical stretch, symmetry gives zero
+driver response and the geometric capacity derivative is $-4t$.
+
+\paragraph{Indexing warning.}
+The derivative in (AV5) compares the same original ordered prefix.
+It is not the derivative at fixed numerical capacity in the transformed
+curve. Inverting $s_\epsilon(t)$ changes the time argument of the
+original rough driver. Even a differentiable clock perturbation can
+destroy differentiability in $\epsilon$ for a Brownian path.
+No fixed-capacity pathwise first variation is claimed.
+
+\paragraph{A model-independent consequence of the crossing radius bound.}
+For a continuum family satisfying the conditional crossing assumptions
+used earlier, the filled hull during a restarted capacity interval of
+length $h$ lies in a disk of radius $R_h$ with
+$\mathbb P(R_h>x\sqrt h\mid\mathcal F_\tau)\le C e^{-cx}$,
+after changing constants. Apply (AV6) to the restarted half-plane hull.
+The affine response of its endpoint driver has conditional moments
+$\mathbb E(|\delta U_h|^p\mid\mathcal F_\tau)\le C_p|\nu|^ph^{p/2}$;
+the capacity response has moments bounded by $C_p|\nu|^ph^p$.
+This concerns affine perturbation of the \emph{restarted chart hull},
+not a fixed physical affine perturbation of a rough slit domain.
+The latter is encoded by (AB2), rather than a constant chart coefficient.
+Neither estimate establishes temporal semimartingality of the driver or
+of its first variation.
+
+\paragraph{Literature boundary.}
+Sung--Wang~\cite[Theorem 1.1]{sung-wang}, treats a simple chord and
+deformation supported away from it. The proof above, using the principal-solution method of
+Ahlfors--Bers~\cite{ahlfors-bers}, instead keeps the
+bounded filled hull fixed, pulls a compactly supported smooth physical
+deformation into its uniformizing half-plane, and uses the principal
+Beltrami solution. It does not use a theorem about simple approximants
+or omit swallowed positive-area sets from a physical-domain change of
+variables.
+
+% Independently checked fixed-prefix model calculation, 29 October 2026.
+\section{Mean affine response through a reverse Loewner flow}
+\label{sec:reverse-affine-response}
+
+Let $W_t=\sqrt\kappa B_t$, $\kappa>0$, be the driver of ordinary
+chordal SLE, and let $f_t=g_t^{-1}$. The matched-prefix affine driver
+response in direction $\nu$ is
+\[
+ D_t=-\frac2\pi\operatorname{Re}\nu I_t,\qquad
+ I_t=\int_{\mathbb H}\frac{
+ \overline{f_t'(W_t+z)}/f_t'(W_t+z)-1}{z}\,dA(z).
+\]
+The same original hull prefix, rather than the same deformed capacity,
+is held fixed.
+
+\paragraph{Absolute integrability and Fubini.}
+For $K_t\subset B_R$, the inverse map is hydrodynamically univalent and
+$f_t'(z)=1+O(R^2/|z|^2)$ uniformly for $|z|>CR$. Since $|W_t|\le3R$,
+\[
+ \int_{\mathbb H}\frac{|\overline{f_t'(W_t+z)}/f_t'(W_t+z)-1|}{|z|}
+ \,dA(z)\le CR.
+\]
+Indeed the near part is bounded by $2/|z|$ over a disk of radius $CR$,
+and the far part by $CR^2/|z|^3$. For Brownian driving we can take
+$R=\sup_{s\le t}|W_s|+2\sqrt t$, so $\mathbb ER\le C_\kappa\sqrt t$.
+Thus expectation and the displayed integral may be interchanged. This
+uses neither a simple trace nor a zero-area hull.
+
+\paragraph{Reverse-flow representation.}
+For fixed $t$ and $0\le r\le t$, put
+\[
+ H_r(z)=g_{t-r}(f_t(z+W_t))-W_{t-r}.
+\]
+Then $H_0(z)=z$, $H_t(z)=f_t(z+W_t)$, and pathwise the reverse
+Loewner equation is driven by $W_t-W_{t-r}$. This reversed increment
+process has Brownian law. Hence the derivative field at time $t$ has
+the same law as the spatial derivative of
+\[
+ dh_r(z)=-\frac2{h_r(z)}dr+\sqrt\kappa\,d\widetilde B_r,
+ \qquad h_0(z)=z.
+\]
+The sign of the Brownian term does not affect its law. Its spatial
+derivative satisfies $\partial_rh'_r=2h'_r/h_r^2$. Therefore
+\[
+ \frac{\overline{h'_t(z)}}{h'_t(z)}
+ =\exp\left\{\int_0^t
+  2\left(\frac1{\overline{h_r(z)}^2}-\frac1{h_r(z)^2}\right)dr\right\}.
+\]
+For fixed initial height $y>0$, the reverse image height increases, so
+all the coefficients are bounded away from their boundary singularity
+on finite time intervals.
+
+Define
+\[
+ u(t,z)=\mathbb E\frac{\overline{h'_t(z)}}{h'_t(z)}.
+\]
+It is the bounded Feynman--Kac solution, in the stochastic semigroup
+sense, of
+\[
+ \partial_tu=\mathcal Lu+qu,\quad u(0,z)=1,
+\]
+where
+\[
+ \mathcal L=\frac\kappa2\partial_x^2-
+       \frac{2x}{x^2+y^2}\partial_x+
+       \frac{2y}{x^2+y^2}\partial_y,
+ \qquad q(z)=\frac{8ixy}{(x^2+y^2)^2}.
+\]
+No boundary condition at $y=0$ is inserted: the stochastic representation
+from each interior starting point specifies the solution. Uniqueness among bounded classical solutions, or within the stated
+stochastic semigroup class, follows by stopped It\^o/Feynman--Kac on $y\ge y_0>0$ and
+localization in $x$, since the phase potential is purely imaginary.
+Consequently
+\[
+ \mathbb ED_t=-\frac2\pi\operatorname{Re}
+ \left\{\nu\int_{\mathbb H}\frac{u(t,z)-1}{z}\,dA(z)\right\}.
+\]
+The integral is absolutely convergent by the preceding Fubini bound.
+
+\paragraph{Symmetry and scaling.}
+Reflection of Brownian driving gives
+$u(t,-\bar z)=\overline{u(t,z)}$, so the last integral is purely
+imaginary. Brownian scaling makes it $iJ_\kappa\sqrt t$ for a real
+constant $J_\kappa$. Thus
+\[
+ \mathbb ED_t=c_\kappa\operatorname{Im}(\nu)\sqrt t,
+ \qquad c_\kappa=2J_\kappa/\pi.
+\]
+The first-order mean vertical-stretch response vanishes, whereas a shear
+response is allowed by symmetry. Determining whether $c_6$ is zero,
+and more generally computing $c_\kappa$, is a concrete next model task.
+This calculation does not determine temporal semimartingality of $D$
+or of the finite-affine wrong-coordinate driver.
+
+\paragraph{An interior cancellation, not a boundary conclusion.}
+Let $\mathcal L^*$ denote the formal transpose under the bilinear
+integral pairing, so the multiplication potential remains $q$, not
+its complex conjugate. Direct differentiation gives the pointwise identity
+\[
+ (\mathcal L^*+q)\frac1z=\frac{\kappa-6}{z^3},\qquad z\in\mathbb H.
+\]
+At $\kappa=6$ the interior term vanishes. This does not justify
+integrating by parts over the full half-plane: the test $1/z$ is
+singular at the boundary and has a noncompact tail. Boundary and
+infinity fluxes have not been controlled. In particular no vanishing
+or nonvanishing of $c_6$ is deduced. Studying those fluxes is a precise
+next question for the affine-SLE$_6$ model.
+
 \section{Coordinate-compatible exit clocks before semimartingality}
 \label{sec:adaptive-exit-clocks}
 
@@ -8838,6 +9358,74 @@ in every affine coordinate system is not being assumed or recommended.
 \label{sec:affine-clock-obstructions}
 
 % Research fragment, 29 October 2026. No claim of actual clock singularity.
+\subsection{Global affine capacity comparison does not control clock increments}
+\label{sec:global-affine-capacity}
+
+The affine clock at least has a deterministic global comparison. This
+uses only the geometric capacity theorem of Lalley--Lawler--Narayanan
+\cite[Theorem 1]{lln-capacity}, not any regularity of the trace or driver.
+
+\begin{proposition}[Capacity distortion by a fixed affine map]
+\label{prop:global-affine-capacity}
+Let $L(x+iy)=\alpha x+\beta y+i\delta y$, where
+$\alpha,\delta>0$ and $\beta\in\mathbb R$. There are constants
+$0<c_L\le C_L<\infty$ such that every bounded half-plane hull $K$
+satisfies
+\[
+ c_L\operatorname{hcap}(K)\le\operatorname{hcap}(LK)
+          \le C_L\operatorname{hcap}(K).
+ \tag{GC1}
+\]
+Consequently, if $\operatorname{hcap}(K_t)=2t$, its affine clock
+$s(t)=\operatorname{hcap}(LK_t)/2$ satisfies $c_Lt\le s(t)\le C_Lt$.
+The constants can be chosen uniformly when $L$ ranges over a compact
+set of invertible half-plane-preserving linear maps.
+\end{proposition}
+\begin{proof}
+For a family of disks $\{B_j\}$ with bounded radii, the elementary
+Vitali selection argument gives, for every $\lambda\ge1$,
+\[
+ \left|\bigcup_j\lambda B_j\right|
+       \le(2\lambda+3)^2\left|\bigcup_jB_j\right|.
+ \tag{GC2}
+\]
+Indeed one can select disjoint disks such that each original disk
+meets a selected disk of at least half its radius. Its $\lambda$-dilate
+then lies in the $(2\lambda+3)$-dilate of that selected disk. Sum their
+areas; arbitrary families reduce to countable subfamilies of the open
+union.
+
+Let $m,M$ be the smallest and largest singular values of $L$, and
+$d=\det L$. Put
+\[
+ H(K)=\bigcup_{z\in K}B(z,\operatorname{Im}z),
+ \qquad \operatorname{hsiz}(K)=|H(K)|.
+\]
+For $z=x+iy$, the ellipse $LB(z,y)$ contains $B(Lz,my)$ and is
+contained in $B(Lz,My)$, whereas the corresponding disk in $H(LK)$
+is $B(Lz,\delta y)$. Since $m\le\delta\le M$, (GC2) yields
+\[
+ \frac{d}{(2M/\delta+3)^2}\operatorname{hsiz}(K)
+ \le\operatorname{hsiz}(LK)
+ \le d(2\delta/m+3)^2\operatorname{hsiz}(K).
+ \tag{GC3}
+\]
+The cited theorem gives universal positive $a,b$ with
+$a\operatorname{hsiz}(K)\le\operatorname{hcap}(K)
+\le b\operatorname{hsiz}(K)$. Apply it to both $K$ and $LK$.
+This proves (GC1), the clock assertion, and local uniformity in $L$.
+\end{proof}
+
+This is a comparison from the original source time zero, not an
+increment estimate. After mapping out $K_t$, the transported affine
+map is quasiconformal with a history-dependent field; it is no longer
+the original linear map. Applying (GC1) to that increment would be
+invalid. Even for increasing continuous functions, $s(t)\asymp t$
+does not imply absolute continuity: $s(t)=t+\epsilon C(t)$, with
+$C$ a Cantor staircase supported on $[1,2]$, has a singular part and
+still satisfies such a comparison. Determining whether the actual
+affine-SLE clock has a singular component remains open here.
+
 \subsection{A necessary clock regularity condition for wrong-coordinate semimartingality}
 \label{sec:affine-clock-semimartingale-test}
 
@@ -9068,6 +9656,19 @@ J. Amer. Math. Soc. \textbf{22} (2009), 797--819.
 \emph{The scaling limits of near-critical and dynamical percolation},
 J. Eur. Math. Soc. \textbf{20} (2018), 1195--1268,
 especially Section 13.2. \url{https://arxiv.org/abs/1305.5526}.
+\bibitem{lln-capacity} S. Lalley, G. Lawler and H. Narayanan,
+\emph{A geometric interpretation of half-plane capacity},
+Electron. Commun. Probab. \textbf{14} (2009), 566--571, Theorem 1.
+\url{https://www.math.uchicago.edu/~lawler/LLN.pdf}.
+\bibitem{ahlfors-bers} L. Ahlfors and L. Bers,
+\emph{Riemann's mapping theorem for variable metrics},
+Ann. of Math. (2) \textbf{72} (1960), 385--404.
+\url{https://www.cimat.mx/~mmoreno/teaching/fall10/AhlforsBers.pdf}.
+\bibitem{sung-wang} J. Sung and Y. Wang,
+\emph{Quasiconformal deformation of the chordal Loewner driving
+function and first variation of the Loewner energy},
+Math. Ann. \textbf{390} (2024), 4789--4812.
+\url{https://doi.org/10.1007/s00208-024-02866-0}.
 \end{thebibliography}
 \end{document}
 
