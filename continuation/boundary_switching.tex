@@ -1,0 +1,496 @@
+\section{Certified fresh SLE$_6$ frontiers at stopping times}
+\label{sec:frontier-certificate-bridge}
+
+Use the comparable-cluster certificate $\mathsf C_Q$ with $d=4/3$
+and the empirical decoder associated to whole-plane SLE$(8/3;2)$.
+For standard SLE$_6$ in $\mathbb H$, write $K_t,g_t,W_t,\gamma_t$
+and $h_t=g_t^{-1}$. Let $[\ell_t,r_t]$ be the swallowed old-real
+interval and let $c_t,d_t$ be the boundary images of its endpoints.
+For $t>0$, $c_t<d_t$ and $c_t\le W_t\le d_t$.
+
+We use the following specific external inputs from
+Zhan~\cite{zhan-duality-ii}: Theorem 1.1 identifies the frontier at
+the swallowing time $T_p$ of fixed $p\ne0$ as a simple crosscut with
+a mixed dual force-point SLE law; Lemma 6.1 gives positive probability
+for either swallowing order of two real points on opposite sides;
+Theorem 6.1 describes the simple fresh frontier sides at each chosen
+finite stopping time. We transfer the stronger certificate below;
+the dimension conclusion alone is insufficient.
+
+\begin{lemma}[The special swallowing-time frontier is certified]
+\label{lem:swallow-frontier-certified}
+Almost surely every nonconstant compact interior subarc of
+$\partial K_{T_p}\cap\mathbb H$ has certificate $\mathsf C_I$.
+This holds simultaneously for any prescribed countable set of
+nonzero real $p$.
+\end{lemma}
+\begin{proof}
+Fix first a landing-point parameter $y$ in the duality mixture.
+For $\kappa'=8/3$, the force weights are
+\[
+ (-4/3,0,2/3,-4/3)
+ \quad\hbox{at }(0,y^a,y^b,p),\qquad
+ a=\operatorname{sign}p,\quad b=-a.
+ \tag{FB1}
+\]
+The dual trace is a simple crosscut staying in $\mathbb H$ between
+its two real endpoints. Its driver has Brownian coefficient
+$\sqrt{8/3}$ and drift $\sum_j\rho_j/(U-V_j)$.
+A nondegenerate force point cannot be swallowed before the terminal
+boundary hit: before then the hull is a simple interior slit.
+The degenerate force gaps separate immediately and stay nonzero at
+positive times; their weights $0,2/3$ exceed
+$\kappa'/2-2=-2/3$. Consequently all force gaps are bounded away
+from zero on compact time windows strictly inside the lifetime.
+
+Restart at a positive rational time and stop before a force gap is
+smaller than $1/n$, within an integer horizon. The driver drift is
+bounded. Conditional bounded-drift Girsanov gives equivalence with
+ordinary SLE$_{8/3}$ up to this stop. The all-affine, all-subarc
+event of Theorem~\ref{thm:hereditary-cluster-certificate}, followed
+by the pathwise conformal stability of
+Lemma~\ref{lem:certificate-conformal-stability}, certifies the compact
+future subarcs in the original dual coordinate. The inverse restart
+chart is conformal near each such compact piece. Countably many
+positive rational restart times, gap bounds and horizons cover all
+compact interior dual subarcs; heredity handles their arbitrary
+endpoints.
+
+This is a Borel event on the unlabelled compact crosscut. Use a Borel
+orientation with endpoints $u,v$; cut at the first radius-$1/n$
+exit from $u$ and at the first such exit from $v$ along the reversed
+arc. When $2/n<|u-v|$, the middle compact subarc $X_n$ is Borel
+and is contained in the interior. Every compact interior subarc is
+in $X_n$ for all large $n$. Thus the event is exactly that all these
+$X_n$ have the hereditary Borel certificate. Integrating the
+duality mixture is therefore legitimate. Intersecting over the
+prescribed countable set of $p$ proves the assertion.
+\end{proof}
+
+\begin{theorem}[Certified fresh branches at each chosen stopping time]
+\label{thm:stopping-frontier-certified}
+For every chosen admissible stopping time $0<T<\infty$, almost surely
+$h_T$ is injective on each of $(c_T,W_T)$ and $(W_T,d_T)$,
+these images lie in $\mathbb H$, and every nonconstant compact
+subarc has certificate $\mathsf C_I$. At least one of these
+intervals is nonempty. No uncountable all-time intersection is used.
+\end{theorem}
+\begin{proof}
+Take rational $a<b$ on $\{c_T<a<b<W_T\}$.
+The predicate that $h_T|_{[a,b]}$ fails injectivity, fails compact
+containment in $\mathbb H$, or has image outside $\mathsf C_I$ is
+$\mathcal F_T$-measurable. Suppose this bad event has positive
+probability. Choose a deterministic positive integer $p$ so that
+its intersection with $\{r_T<p\}$ still has positive probability.
+Continue by an independent centered SLE$_6$ after $T$. Conditional
+on the past, put
+\[
+ q=g_T(p)-W_T>0,\qquad s=b-W_T<0.
+ \tag{FB2}
+\]
+The continuation swallows $q$ before $s$ with strictly positive
+conditional probability. At that time its left swallowed endpoint
+is strictly greater than $s$, leaving $[a-W_T,b-W_T]$ untouched.
+The original left old endpoint is unchanged.
+
+Let $\widehat g$ be the future map and put
+$F(x)=W_T+\widehat g(x-W_T)$ on the untouched interval.
+It is analytic with positive real derivative there,
+$F(c_T)=c_{T_p}$, and $F([a,b])$ is a compact subinterval of the
+fresh crosscut interval at the original $T_p$. The inverse
+composition identity gives $h_T=h_{T_p}\circ F$ on $[a,b]$.
+The special-time lemma now forces injectivity, interior location,
+and the certificate of its image. Thus the proposed bad event
+cannot survive a conditional event of strictly positive probability.
+Its intersection with the preservation event would have positive
+probability, contradicting the almost-sure special-time conclusion.
+
+Reflect for the right fresh interval, using a deterministic negative
+integer $p<\ell_T$. Intersect over rational $a,b$ and the countably
+many such integers. Every compact subinterval is contained in a
+rational one; heredity and restriction prove the result.
+The assertions apply on $\{0<T<\infty\}$ by localization.
+\end{proof}
+
+\begin{corollary}[Rough physical charts and one-sided source supply]
+\label{cor:physical-stopping-frontier-certified}
+Let a fixed-affine SLE$_6$ law have physical inverse chart $A\psi$,
+where $\psi$ is conformal on $\mathbb H$ and $A$ is real-linear
+and orientation preserving. At every chosen positive finite stopping
+time before the target, at least one open prime-end boundary interval
+adjacent to its source has all compact subinterval images simple,
+regular, and certified by
+$\mathsf C_{[(A^{-1})^{\mathsf T}A^{-1}]}$.
+\end{corollary}
+\begin{proof}
+Each compact fresh piece in the theorem lies strictly inside the
+initial $\mathbb H$. The map $\psi$ is conformal near it, so
+pathwise conformal stability followed by $A$ gives its certificate.
+The updated inverse chart is
+$A\psi h_T(\,\cdot+W_T)$. One fresh interval adjacent to its
+centered source is nonempty. No regularity of the initial physical
+boundary near those compact pieces is needed. Physical trace
+continuity and observable invertible capacity clocks retain their
+standing admissibility meanings.
+\end{proof}
+
+\begin{lemma}[Immediate hitting of either adjacent boundary interval]
+\label{lem:sle-six-immediate-side-hits}
+For standard SLE$_6$, first hitting of $(0,\epsilon)$ has infimum
+zero almost surely for every $\epsilon>0$, and likewise for
+$(-\epsilon,0)$. Every fixed non-source real point is avoided.
+\end{lemma}
+\begin{proof}
+The swallowing times are nondecreasing in $p>0$, finite almost
+surely, and satisfy $T_p\stackrel d=p^2T_1$. Hence
+$T_{2^{-n}}\downarrow0$ almost surely. Zhan's strict overshoot gives
+$\gamma(T_{2^{-n}})>2^{-n}$ on the real boundary. Continuity at
+zero makes these positive boundary hits tend to zero in both space
+and time. Reflect for the negative side. A fixed real $p\ne0$
+cannot be visited at its swallowing time, by strict overshoot, and
+thereafter is target-invisible; this proves avoidance.
+\end{proof}
+
+\section{A boundary-recorded one-time change of affine metric}
+\label{sec:one-switch-construction}
+
+We give a construction on the Borel class of bounded simply connected
+marked domains whose inverse disk maps extend continuously to the
+closed disk. Boundaries are locally connected, but may have dense
+touches and distinct prime ends with the same physical impression.
+This class is closed under the restart kernels below and contains
+the analytic comparison domains. Extension to arbitrary non-continuously
+charted prime-end domains is not claimed.
+
+\subsection{State coding and known-model kernels}
+
+Use bounded univalent holomorphic inverse charts $f:\mathbb H\to D$
+with continuous extension to the compactified closed half-plane.
+Source and target are $0,\infty$ in the prime-end coordinate, and
+the two real sides carry the two colors.
+This is a Borel class in the compact-open holomorphic-function space.
+After a Cayley map, continuous closed extension is equivalent to
+uniform Cauchy convergence of the radial restrictions in
+$C(\overline{\mathbb D})$. Boundary evaluation is a Borel limit
+of interior evaluations.
+
+Positive scalings are the only chart redundancy. An explicit Borel
+slice is obtained by taking the first rational point $q(D)$ in $D$,
+letting $c(f)=|f^{-1}(q(D))|$, and choosing
+$\widehat f(z)=f(c(f)z)$. The injective evaluation map
+$(f,z)\mapsto(f,f(z))$ and Lusin--Souslin show that inverse evaluation
+and $q(D)$ are Borel. Since $c(f(d\,\cdot))=c(f)/d$, this gives
+one representative per physical marked state.
+
+Fix a nonconformal orientation-preserving real-linear $B$ and set
+\[
+ Q_0=I,\qquad Q_1=[B^{-\mathsf T}B^{-1}].
+ \tag{OS1}
+\]
+Let $P^0$ be ordinary SLE$_6$ and
+$P^1_D=B_*\operatorname{SLE}_6(B^{-1}D)$.
+For explicit Borel dependence put $A=B^{-1}$ and let $u_f$ be the
+quasiconformal self-map of $\mathbb H$ fixing $0,1,\infty$ with
+coefficient
+$\mu_f=\mu_A\overline{f'}/f'$. Reflection and the measurable
+Riemann mapping theorem~\cite{ahlfors-bers} give existence and uniqueness. Then
+\[
+ F_f=A f u_f^{-1}
+ \tag{OS2}
+\]
+is conformal onto $AD$, and a physical phase-one curve is
+$f(u_f^{-1}\gamma)$ for standard SLE$_6$ $\gamma$.
+
+The normalized $u_f$ lie in a fixed compact family of normalized
+quasiconformal sphere maps. Their graph is closed: $\mu_f$ is smooth
+in $\mathbb H$ and depends smoothly on compact subsets on $f$,
+and its distributional equation reads
+\[
+ \int_{\mathbb H} u_f
+ \{\overline\partial\phi-\partial(\mu_f\phi)\}\,dA=0,
+ \qquad \phi\in C_c^\infty(\mathbb H).
+ \tag{OS3}
+\]
+A countable dense family suffices, and the identity passes to uniform
+limits. Uniqueness and compactness give continuity of $f\mapsto u_f$,
+in particular Borelness. Its boundary extension is a homeomorphism.
+Thus both known-model kernels and their restart charts are Borel.
+
+In a baseline conformal coordinate the remaining inverse map is
+$f g_t^{-1}(\,\cdot+W_t)$ and has a continuous closed extension.
+Fixed affine changes preserve locally connected boundaries; the same
+quasiconformal uniformization returns the restart to the stated
+ordinary conformal chart class. Finite piecing is also admissible.
+A quasiconformal self-homeomorphism of $\mathbb H$ preserves strict
+growth of filled hulls and sends locally uniform simple approximants
+to such approximants. Yuan's Theorem 1.1~\cite{yuan} gives continuous
+Loewner generation in the changed coordinate; Section 2 of that
+paper gives gluing through the previous inverse map with concatenated
+drivers.
+
+For completeness, full physical curves are uniform limits of embedded
+arcs with converging prime-end endpoints. Approximate successively
+longer pretarget prefixes by simple traces and map through the
+continuous initial chart. The constructed half-plane curve tends
+to infinity, since each known SLE curve does and the intervening
+quasiconformal and inverse hull maps fix infinity. Physical continuity
+of the initial chart at infinity makes its tail diameter tend to
+zero. End each approximant at the prefix endpoint; after
+reparameterization its error is bounded by the prefix error plus
+the tail diameter. Endpoints approach the marked prime ends.
+Truncation just inside endpoints handles coincident physical
+impressions. Fixed physical approximation endpoints are not required.
+The physical ordered trace determines its prime-end lift on dense
+interior times by injectivity, and then everywhere by continuity;
+no hidden side label is added to its filtration.
+
+\subsection{The Borel open portion of marked old boundary}
+
+Use the hereditary arc certificate with $d=4/3$ and put
+\[
+ \mathsf C=\mathsf C_{Q_1}\ \cup\
+ \{X:X\text{ is a nonconstant compact simple arc on a circle
+ of radius one}\}.
+ \tag{OS4}
+\]
+The class is Borel, hereditary and translation invariant.
+For the circle alternative, the relation
+$X\subset\{z:|z-a|=1\}$ is closed and possible centers stay bounded
+along a convergent sequence of nonempty compact $X$.
+Its existence projection is therefore closed; intersect with the
+Borel simple-arc class. Fresh type-zero frontier pieces fail both
+alternatives: their certificate has tensor $Q_0\ne Q_1$, and smooth
+finite-length arcs have zero $4/3$-dimensional tube mass.
+
+For rational compact nondegenerate intervals
+$I\subset\mathbb R\setminus\{0\}$ select those for which $f|_I$
+is injective and $f(I)\in\mathsf C$, and set
+\[
+ O(f)=\bigcup_{I\text{ selected}}\operatorname{int}I.
+ \tag{OS5}
+\]
+The tests and this state-dependent open set are Borel.
+Heredity shows that every real compact interval in
+$\mathbb R\setminus\{0\}$ gives the same union: restrict to rational
+subintervals. Thus it is intrinsic under prime-end
+reparameterization. Qualification is local at every interior point
+of a qualifying interval: restrict its physical image into a
+common neighborhood. Full colored prime-end sides are retained.
+
+For the phase-zero curve in its initial chart let
+\[
+ S_f=\inf\{t\ge0:\gamma(t)\in O(f)\}.
+ \tag{OS6}
+\]
+This is a jointly Borel stopping time, even with an unattained
+infimum: exhaust selected intervals by compact inner intervals and
+take the countable infimum of their closed-set hitting times.
+The usual right-continuous filtration is used. Hence
+\[
+ \alpha(f)=P^0_f\{S_f=0\}
+ \tag{OS7}
+\]
+is Borel and takes values only zero and one by the Brownian
+initial zero-one law.
+
+\subsection{Restart transport and absorption}
+
+\begin{lemma}[Old-marker transport and phase-one absorption]
+\label{lem:one-switch-marker-transport}
+At a chosen positive finite phase-zero stopping time $T$,
+\[
+ O(f_T)=g_T\bigl(O(f)\cap
+ ((-\infty,\ell_T)\cup(r_T,\infty))\bigr)-W_T.
+ \tag{OS8}
+\]
+Future first visits agree with first visits to the surviving initial
+open set, up to finite old/fresh seams which a future SLE$_6$
+avoids. Almost surely on $\{0<S_f<\infty\}$,
+$\alpha(f_{S_f})=1$. At each chosen strictly positive phase-one
+stopping time before the target, its remaining ordinary-chart state
+$h$ likewise has $\alpha(h)=1$ almost surely.
+\end{lemma}
+\begin{proof}
+The remaining real boundary consists of surviving old open pieces,
+one or two fresh frontier intervals, and two seams.
+Every compact fresh phase-zero piece has certificate $\mathsf C_{Q_0}$.
+If a selected interval intersected a fresh open interval, heredity
+would certify a compact fresh subpiece, a contradiction.
+A seam cannot be interior to a selected interval, since its
+neighboring fresh open piece would then be intersected.
+On surviving old pieces $g_T$ is an analytic real diffeomorphism,
+and the physical arc image is unchanged. This proves (OS8).
+
+Swallowed interior old boundary is target-invisible. A possible
+remaining seam discrepancy is a fixed non-source prime end,
+conditionally on the state, which a future standard SLE$_6$ avoids
+by the preceding lemma.
+
+At an attained activation, its real stopping tip is an old swallowed
+extreme, by Zhan's Theorem 6.1. The initial open marked interval
+therefore has a surviving one-sided portion adjacent to the source.
+Phase-zero SLE$_6$ hits it immediately. At an unattained finite
+infimum, the original phase-zero path has visits to $O(f)$
+arbitrarily close from the right. Strong Markov at $S_f$, (OS8),
+and seam avoidance give zero future activation infimum as well.
+Thus $\alpha(f_{S_f})=1$.
+
+At a positive phase-one stop, every compact subinterval of one
+fresh source-adjacent interval has certificate $\mathsf C_{Q_1}$.
+The boundary homeomorphism between its two metric charts sends
+this to a full one-sided ordinary-chart interval adjacent to zero.
+It is contained in $O(h)$. Immediate phase-zero boundary hitting
+gives $\alpha(h)=1$.
+\end{proof}
+
+\subsection{Piecing and genuine strong DMP}
+
+Run $P^0_f$ to $S_f$ and, if finite, independently run
+$P^1_{f_{S_f}}$ thereafter. For $S_f=0$ start phase one immediately;
+for $S_f=\infty$ use phase zero throughout. Borel hitting, state
+and concatenation maps give a Borel physical family $Q$.
+
+An unattained switch need not remain the same observed hitting
+functional after replacing its future. Use first the expanded
+piecing filtration $\mathcal G$: it reveals phase zero only up to
+the switch and phase one through its current elapsed time, with
+the observable exact capacity change. All completions are on the
+same product probability space; adjoining its common null sets to
+the phase-zero filtration does not change strong Markov.
+Use initial ordinary half-plane capacity as global clock.
+Before switching,
+\[
+ E\in\mathcal G_t\ \Longrightarrow\
+ E\cap\{S>t\}\in\mathcal F^0_t.
+ \tag{OS9}
+\]
+This persists under right-continuous augmentation: intersections
+with $\{S>t+1/m\}$ are in $\mathcal F^0_{t+1/m}$; their increasing
+union is the required restriction and lies in
+$\bigcap_m\mathcal F^0_{t+1/m}$.
+
+For any $\mathcal G$-stopping time $\tau$, put $\tau_0=\tau$ on
+$\{\tau<S\}$ and infinity otherwise. It is a genuine phase-zero
+stopping time because
+\[
+ \{\tau_0\le t\}=\{\tau\le t,S>t\}\ \cup\
+ \bigcup_{r\in\mathbb Q\cap[0,t]}
+ \bigl(\{\tau\le r,S>r\}\cap\{S\le t\}\bigr).
+ \tag{OS10}
+\]
+The same formula with a $\mathcal G_\tau$ event inserted proves
+the corresponding restriction of stopping-time information.
+Phase-zero strong DMP and (OS8) therefore give conditional future
+$Q_{f_\tau}$ on $\{\tau<S\}$, without a domain-Feller assumption.
+At equality use $\alpha(f_S)=1$ when $S>0$ and (OS7) when $S=0$;
+then $Q_{f_S}=P^1_{f_S}$. After switching, condition on switch data
+and use phase-one strong DMP at the shifted stopping time with its
+exact inherited clock. Absorption gives
+$Q_{f_\tau}=P^1_{f_\tau}$ there too.
+These cases prove the state-only strong restart identity in
+$\mathcal G$.
+
+The usual natural trace filtration is contained in $\mathcal G$.
+Its stopping times are therefore $\mathcal G$-stopping times.
+Taking conditional expectations, since the kernel depends only on
+the observed state, proves strong DMP in the usual right-continuous
+natural filtration, including time zero. Equation (OS7) excludes
+a hidden random initial phase. The argument does not require
+observability of the auxiliary switch from the final trace.
+
+\subsection{Locality, translations and crossing estimates}
+
+For full colored source neighborhoods which coincide, qualifying
+old prime-end portions coincide locally by heredity. Couple the
+phase-zero curves by corrected SLE$_6$ locality until exit.
+Their activation rules agree before exit; if activation precedes
+exit, couple phase-one continuations by the same locality.
+Full boundary colors retain the same target side at contacts.
+Thus corrected source locality holds also for different remote
+targets. Translation covariance follows from that of the arc
+class and the baselines.
+
+Chart scaling does not affect the physical rule.
+For $f_c(z)=f(cz)$,
+$u_{f_c}(z)=u_f(cz)/u_f(c)$; the metric-one inverse chart changes
+only by positive scaling. Also $O(f_c)=c^{-1}O(f)$.
+SLE scaling and its exact clock identify the same physical prefixes.
+Hence $Q$ descends to the Borel normalized physical state space.
+
+Choose a common baseline unforced boundary-quad bound $q<1/2$
+above modulus $M$. The direct SLE estimate in
+\cite[Section 1.4, proof of Theorem 1.10]{ks} tends to zero with
+modulus by reduction to approaching a fixed non-source boundary
+point. The two fixed affine metrics change constants by bounded
+quasiconformal distortion.
+
+Split an initially unforced quad of modulus $2M$ by its middle
+crosscut $C$; both marks are in the near complementary component.
+Let $H_C$ be first hit, including its prime-end endpoints.
+If $S\ge H_C$, a full crossing requires phase zero to cross the
+near half, costing at most $q$.
+If $S<H_C$, the prefix stays on the near side. The far half is
+untouched, and is either swallowed or remains unforced in the
+target component: the untouched connected crosscut attaches its far
+pocket to only one near component and cannot reconnect two near
+components separated by the prefix. Phase one's conditional crossing
+bound is at most $q$. Thus the hybrid bound is $2q<1$.
+Strong DMP gives the same conditional estimate at every restart.
+No independence of the activation rule and the initial curve is used.
+
+\begin{theorem}[Different affine metrics in two analytic domains]
+\label{thm:one-switch-lc-counterexample}
+On the explicit Borel restart-closed class of bounded locally
+connected marked domains above, $Q$ has genuine strong DMP,
+corrected source locality, physical translation covariance, and a
+uniform unforced boundary-quad crossing bound. It has continuous
+Loewner generation, strict hull growth and uniform simple
+approximation with converging prime-end endpoints.
+There is no deterministic affine normalizer common to all its laws.
+\end{theorem}
+\begin{proof}
+Only the last assertion remains. In a unit disk, all old boundary
+arcs satisfy the circle alternative in (OS4). Its source-adjacent
+intervals are marked, so $S_f=0$ almost surely and $Q_f=P^1_f$.
+In a radius-two disk, all old arcs are smooth and none lies on
+a unit circle. Its marked set is empty, so $Q_f=P^0_f$.
+The analytic endpoint tensor decoder of
+Theorem~\ref{thm:ed-analytic} identifies respectively $Q_1$ and
+$Q_0=I$ from these known-model laws. They are distinct.
+A single affine normalizer would identify the same physical
+tensor in both domains, a contradiction.
+\end{proof}
+
+\begin{proposition}[A continuity property respected by every fixed metric]
+\label{prop:affine-sle-closed-chart-continuity}
+If inverse charts $f_n,f$ converge uniformly on the closed
+prime-end disk, the physical curves of each fixed affine-SLE$_6$
+family admit a uniform whole-curve coupling. The new family $Q$
+fails this property already along analytic disk radii tending to one.
+\end{proposition}
+\begin{proof}
+Closed-chart uniform convergence implies compact-open convergence.
+The compact closed-graph argument in (OS3) gives $u_{f_n}\to u_f$
+uniformly on the sphere, and their inverses converge uniformly.
+Uniform convergence of $f_n$ and uniform continuity of $f$ give
+uniform physical convergence of $f_n u_{f_n}^{-1}$ to
+$f u_f^{-1}$. Apply them to one common standard SLE$_6$ curve.
+
+For $r_n\to1$, $r_n\ne1$, disks $D_{r_n}=r_n\mathbb D$ have
+empty marked boundary and $Q_{D_{r_n}}=P^0_{D_{r_n}}$.
+These laws converge to $P^0_{\mathbb D}$, whereas
+$Q_{\mathbb D}=P^1_{\mathbb D}\ne P^0_{\mathbb D}$.
+\end{proof}
+
+\paragraph{Scope and next question.}
+This is a counterexample on the explicit continuously charted,
+restart-closed class, with converging approximation endpoints.
+No extension to arbitrary non-continuously charted prime-end
+domains is asserted. The remaining domain records the phase;
+no extra color or hidden random medium is appended to the state.
+A suitable domain-continuity hypothesis excludes this example,
+but its sufficiency for classification is open. Earlier rigidity
+results conditional on a fixed-tensor mixture representation retain
+that hypothesis: a general law here has a geometric change of metric.
+The bare axioms on this class cannot force the common signed
+regularity needed for the earlier classification theorems.
