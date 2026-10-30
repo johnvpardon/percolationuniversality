@@ -25,6 +25,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
+A pair of remote signed-energy comparisons controls both driving characteristics. On two bounded physical calibration states this yields the polynomial coercivity bound $\kappa(A)^{p-1}\le C(1+\mathcal B_p(A))$, so signed calibration estimates would also compactify the unknown affine structure. A hereditary Borel arc certificate, stable under local conformal charts in the isotropic case, strengthens the known simple-SLE tensor decoder. These additions do not supply the missing signed estimate from the exploration axioms.
 Literal strong DMP at time zero makes the initial trace germ trivial.
 Consequently any family represented using one common prior on smooth
 global coordinate diffeomorphisms collapses, under translation covariance,
@@ -7257,6 +7258,247 @@ frontier pieces and their model laws remains open.
 
 
 % Research fragment from nonsimple_restart; no tracked files edited.
+% Reconstructed after interruption, 29 October 2026.
+% Deterministic certificate and known simple-SLE application.
+% No frontier decomposition or one-switch family is asserted here.
+\subsection{A hereditary Borel arc certificate from comparable tube clusters}
+\label{sec:hereditary-cluster-certificate}
+
+A Borel tensor decoder on known simple-SLE arcs need not have hereditary
+fibers on arbitrary arcs. Uniform comparison of the entire tube-cluster
+class repairs this issue without a new two-arm Palm theorem or a
+continuity assumption on the decoder. Retain the full-radius cluster
+set $K(X)$, its closed convex hull $C(X)$, and the canonical measure
+$\nu_X\in C(X)$ of Section~\ref{sec:intrinsic-tube-measure}.
+Thus $X\in\mathcal E_d$ means that its $d$-dimensional total tube
+masses have finite limsup and strictly positive liminf as the radius
+tends to zero. The canonical measure is Borel in $X$ and has exact
+similarity covariance. Take $1<d<2$.
+
+For a nonconstant compact simple arc $X$, use either Borel orientation
+from Lemma~\ref{lem:borel-simple-arc}. At an interior point $x$, cut
+both branches, translate them to start at $0$, and complete each from
+its other endpoint by the outward radial ray to infinity. Apply a
+fixed Borel initial-germ tensor decoder $D$ to obtain
+$\Theta^-(X,x)$ and $\Theta^+(X,x)$. We require the already proved
+Borelness and germ locality of $D$, including for arbitrary proper
+source-avoiding completions. Give the endpoints cemetery observations.
+Both observations are jointly Borel; their unordered pair does not
+depend on the chosen orientation.
+
+\begin{definition}[Comparable-cluster certificate]
+\label{def:comparable-cluster-certificate}
+For a fixed tensor $Q$, a compact set $X$ has certificate $\mathsf C_Q$
+if:
+\begin{enumerate}
+\item $X$ is a nonconstant compact simple arc in $\mathcal E_d$;
+\item $\nu_X$ is atomless and has full support $X$;
+\item for some integer $L\ge1$, every $\lambda\in K(X)$ satisfies
+ \[
+  L^{-1}\nu_X\le\lambda\le L\nu_X;
+  \tag{HC1}
+ \]
+\item both branch observations equal $Q$ at $\nu_X$-almost every point:
+ \[
+   \Theta^-(X,x)=\Theta^+(X,x)=Q
+          \quad\text{for }\nu_X\text{-almost every }x.
+   \tag{HC2}
+ \]
+\end{enumerate}
+\end{definition}
+
+Full support prevents a nontrivial subarc from being invisible to all
+cluster measures. Uniform comparison of every cluster in (HC1), rather
+than equivalence of only one selected measure, is used below.
+
+\begin{theorem}[A hereditary Borel known-model certificate]
+\label{thm:hereditary-cluster-certificate}
+The class $\mathsf C_Q$ is Borel, translation invariant, and hereditary
+under taking every nonconstant compact subarc. It contains no
+nonconstant finite-length $C^1$ arc.
+
+For $0<\kappa<4$, take $d=1+\kappa/8$ and the decoder constructed
+from the whole-plane SLE$(\kappa;2)$ natural-point law. If $\beta$ is
+chordal SLE$_\kappa$ in $\mathbb H$, then on one probability-one
+event, simultaneously for every $A\in GL^+(2,\mathbb R)$ and every
+nonconstant compact interior subarc $E$ of $\beta$,
+\[
+       AE\in\mathsf C_{[(A^{-1})^{\mathsf T}A^{-1}]}.
+       \tag{HC3}
+\]
+It belongs to no certificate class with a different tensor.
+\end{theorem}
+\begin{proof}
+First check Borelness. The intrinsic-tube-measure theorem constructs
+the Borel set $\mathcal E_d$, the compact-valued multifunction $K(X)$
+on it, Borel dense selections $\lambda_n(X)$ in $K(X)$, and $\nu_X$.
+For fixed $L$, (HC1) is equivalent to the inequalities for every
+$\lambda_n(X)$: measure order is preserved under weak convergence.
+Each inequality is tested against a fixed countable nonnegative
+continuous compactly supported family determining measure order.
+One may use nonnegative rational piecewise-linear functions on
+rational square meshes. Thus the existence of an integer $L$ is
+a Borel predicate.
+
+For a finite compactly supported measure, atomlessness is equivalent
+to the supremum of its masses on balls of radius $2^{-j}$ tending
+to zero. Rational centers give the same supremum for open balls,
+or one can use slightly enlarged rational radii. Full support $X$
+is equivalent to positive measure in every rational open ball meeting
+$X$. These are Borel tests on $(X,\nu_X)$. The integral against
+$\nu_X$ of the jointly Borel indicator of the failure of (HC2)
+is Borel. Together with the Borel simple-arc and cutting lemma, this
+proves Borelness. Translation translates the full cluster set and
+its canonical measure, and leaves each translated-to-zero branch
+unchanged, proving translation invariance.
+
+For heredity, let $Y$ be any nonconstant compact subarc of
+$X\in\mathsf C_Q$. Along any sequence $\epsilon_n\downarrow0$,
+\[
+       m_{Y,\epsilon_n}\le m_{X,\epsilon_n}.
+       \tag{HC4}
+\]
+The right side has bounded mass and common compact support. Pass to
+a subsequence where both sides converge weakly to $\eta$ and
+$\lambda\in K(X)$. Then $\eta\le\lambda$. Since
+$\lambda\le L\nu_X$ and $\nu_X$ is atomless, both limits are
+atomless, and $\eta$ is supported on $Y$.
+
+Every point in the relative interior of $Y$ has a physical ball
+whose closure is separated from the complementary tails of $X$.
+On a smaller such ball the $X$- and $Y$-tube densities are identical
+for all sufficiently small radii. The two limit measures therefore
+coincide on the relative interior of $Y$. Neither charges its
+endpoints, so
+\[
+   \eta=\lambda|_Y,\qquad
+   L^{-1}\nu_X|_Y\le\eta\le L\nu_X|_Y.
+   \tag{HC5}
+\]
+The restricted measure $\nu_X|_Y$ is nonzero, atomless, and fully
+supported on $Y$. Indeed any ball meeting $Y$ contains an interior
+point of $Y$ and a smaller ball around it separated from the
+complementary tails; full support of $\nu_X$ gives positive mass.
+
+Because the original radius sequence was arbitrary, (HC5) proves
+that the total $Y$-tube masses are bounded above and away from zero.
+Thus $Y\in\mathcal E_d$, and every cluster measure of $Y$ obeys
+the two bounds in (HC5). They pass to convex combinations and weak
+limits, hence to $\nu_Y\in C(Y)$. Consequently
+\[
+    L^{-2}\nu_Y\le\eta\le L^2\nu_Y
+            \quad\text{for every }\eta\in K(Y).
+    \tag{HC6}
+\]
+The same comparisons make $\nu_Y$ atomless, fully supported on $Y$,
+and equivalent to $\nu_X|_Y$. At an interior point of $Y$, the two
+ordered branch germs are exactly the corresponding germs of $X$,
+possibly with their orientations interchanged. Germ locality of $D$
+and (HC2), together with $\nu_Y\ll\nu_X|_Y$, establish (HC2) for
+$Y$. This proves heredity for arbitrary, including sample-dependent,
+subarc endpoints. The Borel definition did not use an uncountable
+quantifier over subarcs.
+
+A finite-length $C^1$ arc has tube area $O(\epsilon)$: cover its
+arclength parameter by $O(1+\operatorname{length}(X)/\epsilon)$
+balls of radius $2\epsilon$. Its total $d$-dimensional tube mass
+is $O(\epsilon^{d-1})\to0$, so it does not belong to
+$\mathcal E_d$.
+
+For the SLE assertion, take the simultaneous natural-point and
+segment-content event in Theorem~\ref{thm:unlabelled-simple-arc}.
+On every compact nonconstant interior subarc $E$, the natural measure
+$\mu_E$ is finite, positive, atomless, and fully supported. By
+(IM5), every $\lambda\in K(AE)$ lies between fixed positive
+finite multiples $c_A A_*\mu_E$ and $C_A A_*\mu_E$.
+The canonical $\nu_{AE}\in C(AE)$ obeys the same bounds.
+Thus (HC1) holds with any sufficiently large integer
+$L\ge C_A/c_A$, and $\nu_{AE}$ is atomless and fully supported.
+The both-branch natural-point theorem gives (HC2) at
+$A_*\mu_E$-almost every point, hence at $\nu_{AE}$-almost every
+point. Distinct certificate tensors cannot both be almost-everywhere
+constant values of the same observations under a nonzero measure.
+All comparisons after the common SLE conull event are deterministic,
+giving simultaneity for every $A$ and every subarc.
+\end{proof}
+
+\begin{lemma}[Pathwise stability under local conformal maps]
+\label{lem:certificate-conformal-stability}
+Use specifically the empirical-law decoder of
+Theorem~\ref{thm:wp-robust-decoder}, built from the isotropic
+whole-plane law $\mu$, so that $D=I$ means that the branch empirical
+law is exactly $\mu$. If $X\in\mathsf C_I$ and $\psi$ is conformal
+and injective on an open neighborhood of $X$, then for every
+$A\in GL^+(2,\mathbb R)$,
+\[
+       A\psi(X)\in
+       \mathsf C_{[(A^{-1})^{\mathsf T}A^{-1}]}.
+       \tag{HC7}
+\]
+This is a deterministic assertion for every such $A,\psi$ after $X$
+is fixed. In particular the map and the affine transformation may
+depend on an underlying random sample.
+\end{lemma}
+\begin{proof}
+Write $\Psi=A\psi$. On a sufficiently small relatively compact
+neighborhood of $X$, this is a $C^1$ diffeomorphism with bi-Lipschitz
+constants $0<a\le b<\infty$ and Jacobian bounds
+$0<j_-\le|\det D\Psi|\le j_+<\infty$. The lower Lipschitz bound
+follows near the diagonal from the nonvanishing derivative, and away
+from it from injectivity and compactness. The image neighborhood
+contains all sufficiently small tubes around $\Psi(X)$.
+For small $\epsilon$,
+\[
+ \Psi(X_{\epsilon/b})\subset(\Psi X)_\epsilon
+                         \subset\Psi(X_{\epsilon/a}).
+ \tag{HC8}
+\]
+For any nonnegative continuous test function $f$, change of variables
+therefore gives
+\[
+ j_-b^{d-2}m_{X,\epsilon/b}(f\circ\Psi)
+ \le m_{\Psi X,\epsilon}(f)
+ \le j_+a^{d-2}m_{X,\epsilon/a}(f\circ\Psi).
+ \tag{HC9}
+\]
+The compositions may be extended continuously away from a fixed
+small neighborhood of $X$; this does not affect the small tubes.
+
+Along any target-radius sequence, extract jointly convergent source
+tube measures at radii $\epsilon/a$ and $\epsilon/b$. Every source
+cluster lies between $L^{-1}\nu_X$ and $L\nu_X$. Thus every
+target cluster $\eta$ satisfies, with fixed constants $0<c\le C$,
+\[
+      c\Psi_*\nu_X\le\eta\le C\Psi_*\nu_X.
+      \tag{HC10}
+\]
+The same argument bounds target masses above and away from zero,
+so $\Psi X\in\mathcal E_d$. Its canonical measure satisfies
+(HC10) as well. Hence it is atomless and fully supported and all
+its clusters are uniformly comparable to it.
+
+At $\nu_X$-almost every $x$, both branch empirical laws are
+exactly $\mu$. Centering at $x$ and at $\Psi(x)$, the map between
+the two local branches has derivative
+$A\psi'(x)=A(s_xR_x)$, with $s_x>0$ and $R_x$ a rotation.
+The pathwise spherical linearization and tail-replacement proof of
+Theorem~\ref{thm:wp-robust-decoder} sends each empirical law to
+$A_*\mu$, because $\mu$ is invariant under similarities.
+Their decoded tensor is therefore the tensor in (HC7).
+The canonical target measure is equivalent to $\Psi_*\nu_X$ by
+(HC10), establishing its almost-everywhere branch condition.
+All conclusions are deterministic for the fixed generic branches,
+so no exceptional-set intersection over $A,\psi$ is involved.
+\end{proof}
+
+\paragraph{Scope.}
+These are hereditary certificates for compact arcs, with a known-model
+simple-SLE application. They do not by themselves identify accessible
+SLE$_6$ frontier laws, prove certified-arc supply at every random slit
+state, or construct a Borel family with a consistent one-time change
+of affine metric. Those model and restart questions remain separate.
+
+
 \section{Restart states and direct driving bounds for nonsimple traces}
 \label{sec:nonsimple-direct-bounds}
 
@@ -11363,6 +11605,325 @@ argument needs cancellation or compatibility information beyond separate
 unsigned size estimates.
 
 
+% Reconstructed checked result after execution interruption, 29 October 2026.
+% Scratch fragment only; the parent integrates the common repository sources.
+\section{Signed calibration energies force affine compactness}
+\label{sec:affine-tensor-coercivity}
+
+Compactness of the unknown affine structure can follow from signed
+calibration bounds, without an affine-SLE representation. Two remote
+analytic deletions control both driving characteristics. Two physical
+orientations then exclude degenerating anisotropy. The bounds used are
+four full signed energies in candidate-dependent auxiliary charts;
+finite collections of scalar tests do not supply them automatically.
+
+\subsection{Two opposite deletions control both characteristics}
+
+Fix $A^\pm=\{\pm10+iy:0\le y\le1\}$ in $\mathbb H$. There is a
+deterministic $h_0>0$ such that every continuous driver $W_0=0$,
+stopped at
+\[
+ \theta=h_0\wedge\inf\{t:|W_t|\ge1\},
+ \tag{TC1}
+\]
+has evolving deletion maps $h_t^\pm$ with uniformly bounded analytic
+jets near the driving interval and
+\[
+ 0<m\le p_t^\pm=(h_t^\pm)'(W_t)\le P,\qquad
+ |p_t^+q_t^- -p_t^-q_t^+|\ge d_0>0,
+ \quad q_t^\pm=(h_t^\pm)''(W_t).
+ \tag{TC2}
+\]
+All constants are deterministic and independent of the driver. At
+time zero the hydrodynamic maps are
+$h_0^\pm(z)=\pm10+\sqrt{(z\mp10)^2+1}$, with the square-root branch
+asymptotic to $z\mp10$. On $[-1,1]$ their first derivatives are
+positive, whereas $q_0^+<0<q_0^-$. The determinant is therefore
+bounded away from zero. For drivers bounded by one, the Loewner ODE
+on a fixed neighborhood of each remote slit gives
+$g_t=\operatorname{id}+O(t)$ there with all required derivatives,
+uniformly over drivers. The image slits remain uniformly separated
+from the driving interval and converge in this analytic
+parameterization to the original slits. Hydrodynamic uniformization
+and reflection give uniform convergence of the deletion-map jets
+near $[-1,1]$. Decreasing $h_0$ preserves (TC2).
+
+Put $u_\pm(t)=\int_0^{t\wedge\theta}(p_s^\pm)^2ds$, and let
+$\widehat W^\pm$ be the corresponding deleted drivers in their own
+capacities, frozen after $u_\pm(\theta)$ and centered at zero. Then
+\[
+ \widehat W^\pm_{u_\pm(t)}
+       =h_{t\wedge\theta}^\pm(W_{t\wedge\theta})-h_0^\pm(0).
+ \tag{TC3}
+\]
+The same physical prefix is retained throughout. Its reconstruction
+from either driver identifies the stopped natural trace filtrations
+and makes these increasing clocks stopping-time changes. The same
+statements hold with any additional observable terminal prefix stop
+included in $\theta$.
+
+\begin{proposition}[Two remote signed energies regularize both characteristics]
+\label{prop:two-slit-characteristic-control}
+Let $1<p<\infty$. Suppose the two stopped own-capacity drivers have
+continuous martingale decompositions
+\[
+ \widehat W^\pm_u=\widehat M^\pm_u+
+    \int_0^{u\wedge u_\pm(\theta)}\widehat b^\pm_vdv,
+ \qquad
+ \mathbb E\int_0^{u_\pm(\theta)}|\widehat b^\pm_v|^pdv\le B.
+ \tag{TC4}
+\]
+Then $X_t=W_{t\wedge\theta}$ is a continuous semimartingale with
+absolutely continuous drift and bracket,
+\[
+ X_t=M_t+\int_0^{t\wedge\theta}b_sds,\qquad
+ \langle M\rangle_t=\int_0^{t\wedge\theta}v_sds,\qquad
+ \mathbb E\int_0^\theta\bigl(|b_s|^p+|v_s-6|^p\bigr)ds\le C_pB.
+ \tag{TC5}
+\]
+For $0<h\le h_0$ and $0<\delta<1$ one consequently has
+\[
+ \mathbb P\{\sup_{t\le h}|X_t|>\delta\}
+ \le C_p\delta^{-2}\{h+B^{1/p}h^{1-1/p}\}
+          +C_p\delta^{-p}Bh^{p-1}.
+ \tag{TC6}
+\]
+Constants depend only on the fixed slits, $h_0$, and $p$.
+\end{proposition}
+\begin{proof}
+Pull the first deleted driver back through its stopping-time clock.
+It is a semimartingale in the original trace filtration. The inverse
+analytic field $(h_t^+)^{-1}$ is adapted, absolutely continuous in
+$t$, and has bounded required spatial derivatives on the localized
+region. Its finite-variation random-field It\^o formula, applied to
+(TC3), makes $X$ a continuous semimartingale. Denote its canonical
+drift and bracket measures by $dA,dC$, without assuming their
+absolute continuity.
+
+For an analytic deletion the time derivative at the moving driving
+point contributes $-3q_t^\pm dt$. Uniqueness of the canonical
+decomposition and It\^o's formula therefore give, on the active
+interval $[0,\theta]$,
+\[
+ p_t^\pm dA_t+\tfrac12q_t^\pm(dC_t-6dt)
+       =(p_t^\pm)^2\widehat b^\pm_{u_\pm(t)}dt.
+ \tag{TC7}
+\]
+The determinant in (TC2) makes this a uniformly invertible system
+of two signed-measure equations. Thus $dA=b\,dt$, $dC=v\,dt$, and
+\[
+ |b_t|+|v_t-6|\le C\bigl(
+       |\widehat b^+_{u_+(t)}|+|\widehat b^-_{u_-(t)}|\bigr).
+\]
+Changing variables with $m^2dt\le du_\pm\le P^2dt$ proves (TC5).
+It also gives
+$\mathbb E\langle M\rangle_h\le6h+C_pB^{1/p}h^{1-1/p}$.
+The martingale is square integrable by this bracket bound. Doob's
+inequality controls its supremum; H\"older's inequality gives
+$\mathbb E\sup_{t\le h}|\int_0^{t\wedge\theta}b_sds|^p
+\le C_pBh^{p-1}$. Split at $\delta/2$ to obtain (TC6).
+\end{proof}
+
+By Proposition~\ref{prop:signed-test-lp-drift}, condition (TC4) is
+exactly $\mathcal J_{p,P^2h_0}(\operatorname{Law}(\widehat W^\pm))
+\le B$, with the drivers frozen after their matched stops. No signed
+energy of the original driver is assumed. Locality is relevant when
+comparison laws are identified with the corresponding deleted-domain
+members of an exploration family.
+
+\subsection{Nonflat calibration prefixes exclude diverging anisotropy}
+
+For the moment suppose the physical half-plane states
+$D_1=\mathbb H,D_2=i\mathbb H$ are admissible, with source zero,
+target infinity, and third normalization marks $1,i$. Rotate their
+traces back to $\mathbb H$ and let $K^1,K^2$ be their filled
+capacity-one hulls. If each is almost surely not contained in a line,
+there are $R_0<\infty$, $0<\delta<1/8$, and $\eta>0$ such that
+for $j=1,2$,
+\[
+ \mathbb P\left\{K^j\subset B_{R_0},\quad
+   \inf_{|\beta|\le\sqrt2}\sup_{z\in K^j}
+          |\operatorname{Re}z+\beta\operatorname{Im}z|
+                         \ge4\delta\right\}\ge\eta.
+ \tag{TC8}
+\]
+Indeed the supremum is continuous in $\beta$; its minimum on this
+compact interval vanishes only for a hull contained in one of the
+corresponding lines. Boundedness of the hulls and monotone choices
+of $R_0,\delta$ prove (TC8).
+
+The conditional lower oscillation bound supplies this nonflatness.
+A positive-capacity straight-ray driver has form $c\sqrt t$.
+On $[1/2,1]$, for $|c|\le C$, its oscillation on each of $n$ equal
+intervals is $O(C/n)$, below the lower-tail threshold of order
+$n^{-1/2}$ for large $n$. Conditioning successively bounds the
+probability of all such small oscillations by $(1-p_0)^n$.
+Let $n\to\infty$, then take a countable union over integer $C$.
+
+\begin{theorem}[Model-independent coercivity of baseline slit energies]
+\label{thm:baseline-affine-coercivity}
+Assume the two calibration laws satisfy (TC8) and continuous affine
+Loewner admissibility. Let $\mathcal A$ be any collection of
+orientation-preserving determinant-one linear candidates. In each
+candidate's transformed flat-state chart, normalized by the third
+mark, suppose both remote slit comparisons satisfy (TC4), with the
+same $p>1$ and $B<\infty$. Then the condition numbers of all
+$A\in\mathcal A$ are uniformly bounded. Their normalized conformal
+tensors lie in a compact ellipticity class. The bound depends only on
+$p,B$, the fixed slits, and the calibration constants.
+\end{theorem}
+\begin{proof}
+Choose $e_j\in\{1,i\}$ with $|Ae_j|\ge\|A\|/\sqrt2$. Its
+normalized transformed chart is the half-plane self-map
+\[
+ B_A(z)=\frac{A(e_jz)}{Ae_j}=x+\beta y+icy,
+ \quad z=x+iy,
+ \qquad |\beta|\le\sqrt2,\quad \|B_A\|\le\sqrt2,
+ \quad c=|Ae_j|^{-2}\le\frac2{\kappa(A)},
+ \tag{TC9}
+\]
+where $\kappa(A)=\|A\|\|A^{-1}\|=\|A\|^2$ because $\det A=1$.
+On the event in (TC8), $B_AK^j$ has horizontal extent at least
+$4\delta$, radius at most $\sqrt2R_0$, and height at most $cR_0$.
+
+A half-plane hull of radius at most $R$ and height at most $H\le R$
+has $\operatorname{hcap}\le CRH$. The geometric capacity theorem
+\cite[Theorem 1]{lln-capacity} bounds capacity by a constant times
+the area of its tangent-disk union; that union lies in a rectangle
+of width at most $2R+2H$ and height $2H$. Thus, on this event,
+\[
+ s_A(1)=\tfrac12\operatorname{hcap}(B_AK^j)
+                     \le CR_0^2/\kappa(A).
+ \tag{TC10}
+\]
+Choose $h_*\le h_0$ such that $2\sqrt{h_*}\le\delta$ and the
+right side of (TC6), at threshold $\delta$, is smaller than $\eta$.
+If $\kappa(A)\ge CR_0^2/h_*$, then $s_A(1)\le h_*$ on the
+calibration event. The deterministic Loewner hull-radius estimate
+\[
+ \sup_{z\in B_AK^j}|z|
+     \le\sup_{u\le s_A(1)}|W_u^A|+2\sqrt{s_A(1)}
+\]
+forces the driver to reach magnitude at least $3\delta$ by time
+$h_*$. Its version stopped on exiting $[-1,1]$ therefore has
+supremum greater than $\delta$. This occurs with probability at
+least $\eta$, contradicting (TC6). Hence the stated condition-number
+bound holds.
+\end{proof}
+
+This half-plane statement uses admissible unbounded states explicitly.
+The original bounded-domain formulation does not silently supply them.
+The next version uses only bounded physical calibration states.
+
+\begin{corollary}[Coercivity using two bounded physical prefixes]
+\label{cor:bounded-prefix-affine-coercivity}
+Take two fixed bounded half-disks $D_j\subset e_j\mathbb H$,
+$e_1=1,e_2=i$, with flat source zero, remote targets, and radii
+larger than $2r>0$. Stop each physical exploration at its first
+exit from $B_r(0)$, rotate back by $e_j^{-1}$, and fill relative
+to the auxiliary half-plane $\mathbb H$; call the resulting hull
+$K^j$. It has finite positive auxiliary capacity time $T_j$ and
+a continuous auxiliary driver. The original bounded-state
+conditional lower oscillation bound implies that $K^j$ is almost
+surely not contained in a line, hence satisfies (TC8).
+
+For each candidate $A$ form the transformed prefix in the auxiliary
+chart $B_{A,j}(z)=A(e_jz)/(Ae_j)$, with terminal capacity $T_{A,j}$.
+Extend its driver constantly after $T_{A,j}$ and use
+\[
+ \theta_{A,j}=h_0\wedge\inf\{t:|W_t^{A,j}|\ge1\}
+                                     \wedge T_{A,j}.
+ \tag{TC11}
+\]
+If the two corresponding slit-comparison drivers in each orientation,
+frozen at $u_\pm(\theta_{A,j})$, satisfy (TC4) uniformly over $A$,
+then the same condition-number bound follows. No unbounded ensemble
+state or infinite capacity lifetime is required.
+\end{corollary}
+\begin{proof}
+The initial actual chordal chart is analytic on the smaller source
+half-disk and reflects across its flat boundary. Local analytic
+Loewner comparison therefore gives continuous auxiliary half-plane
+driving and a strictly increasing continuous clock through the stopped
+prefix. Its auxiliary capacity is positive by strict hull growth and
+finite by boundedness. Its radius is at most $r$: filling a path in
+the convex source half-disk cannot add points outside that half-disk.
+
+A line-supported prefix would be a straight ray segment initially.
+Its image under the analytic actual chart is an analytic simple
+slit, whose driver is continuously differentiable on every strictly
+positive interior capacity interval. The lower oscillation bound
+excludes a locally Lipschitz driver on any nontrivial interval:
+partition a rational interval into $n$ pieces, apply the same
+$(1-p_0)^n$ estimate, and take countable unions over rational intervals
+and integer Lipschitz constants. This proves nonflatness and (TC8).
+
+The terminal auxiliary time is observable in its driver filtration:
+\[
+ T_{A,j}=\inf\{u:\sup_{z\in K_u}|B_{A,j}^{-1}z|\ge r\}.
+\]
+Before the trace reaches the physical circle, its filled physical
+hull stays in the convex source half-disk. After constant extension,
+the artificial Loewner hulls retain the terminal hull, so the same
+first-contact formula still holds. Deleted terminal stops are
+observable by the inverse geometric reconstruction.
+
+The deletion identities and (TC5)--(TC6) thus remain valid with the
+additional terminal stop in (TC11), with the time measure active
+only up to that stop. The constant extension has no further driver
+movement. On the calibration event the thin-hull estimate now gives
+$T_{A,j}\le CR_0^2/\kappa(A)$; the radius estimate at that terminal
+time gives precisely the preceding contradiction.
+\end{proof}
+
+The auxiliary target infinity is a normalization of local hull
+observables, not a newly asserted target of the bounded-state family.
+These four energies are observables of two fixed stopped physical
+laws in candidate-dependent auxiliary charts. They are not the
+canonical drivers of four fixed physical deleted states. Locality can
+identify suitable comparison laws when its hypotheses apply, but the
+stated uniform signed bounds must themselves be proved.
+
+\begin{corollary}[Polynomial properness of the calibration energy]
+\label{cor:polynomial-affine-coercivity}
+In the bounded-prefix setup put
+\[
+ \mathcal B_p(A)=\max_{j=1,2,\,\sigma=\pm}
+   \mathcal J_{p,P^2h_0}
+       (\operatorname{Law}(\widehat W^{A,j,\sigma})).
+\]
+There is a constant $C$ independent of $A$, with extended values
+allowed, such that
+\[
+ \kappa(A)^{p-1}\le C\bigl(1+\mathcal B_p(A)\bigr).
+ \tag{TC12}
+\]
+\end{corollary}
+\begin{proof}
+For $B=\mathcal B_p(A)<\infty$ choose
+$h_*=c(1+B)^{-1/(p-1)}$. A sufficiently small fixed $c>0$ ensures
+$h_*\le h_0$, $2\sqrt{h_*}\le\delta$, and (TC6) is smaller than
+$\eta$, since
+\[
+ B^{1/p}h_*^{1-1/p}\le c^{(p-1)/p},\qquad
+ Bh_*^{p-1}\le c^{p-1}.
+\]
+The preceding argument gives $\kappa(A)\le CR_0^2/h_*$. Raising
+to the power $p-1$ proves (TC12). Infinite $B$ is immediate.
+\end{proof}
+
+\paragraph{Use in common-tensor selection and the remaining gap.}
+An energy-bounded calibration class has compact closure in the
+nondegenerate normalized tensor space. Its baseline class need not
+itself be closed. One may apply the earlier lower-semicontinuity and
+finite-intersection selection argument on its compact closure, provided
+every finite collection of target tests has a candidate in this same
+baseline class with the same prescribed envelopes. The coercivity
+result does not prove that simultaneous signed feasibility. Its four
+bounds are full energies, not four scalar constraints, and none is
+claimed as a consequence of unsigned RSW alone.
+
+
 \begin{thebibliography}{99}
 \bibitem{warschawski-boundary-1961} S. E. Warschawski,
 \emph{On differentiability at the boundary in conformal mapping},
@@ -11455,5 +12016,6 @@ Math. Ann. \textbf{390} (2024), 4789--4812.
 \url{https://doi.org/10.1007/s00208-024-02866-0}.
 \end{thebibliography}
 \end{document}
+
 
 
